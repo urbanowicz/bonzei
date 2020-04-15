@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SetAlarmViewController.swift
 //  Bonzei
 //
 //  Created by Tomasz on 15/04/2020.
@@ -8,23 +8,16 @@
 
 import UIKit
 
-class WakeUpViewController: UIViewController {
-    
-    @IBOutlet weak var setAlarmButton: UIButton!
-    @IBOutlet weak var setFirstAlarmButton: UIButton!
-    @IBOutlet weak var wakeUpLabel: UILabel!
-    
+class SetAlarmViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func setAlarmButtonPressed(_ sender: UIButton) {
-
-    }
     
-    
+
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -32,12 +25,6 @@ class WakeUpViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    
-    @IBAction func unwindToWakeUp(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
-        // Use data from the view controller which initiated the unwind segue
-    }
-    
-    
-}
+    */
 
+}
