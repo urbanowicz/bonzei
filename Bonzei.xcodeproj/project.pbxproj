@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE22447089F008E9227 /* AppDelegate.swift */; };
 		F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE42447089F008E9227 /* SceneDelegate.swift */; };
-		F17ABEE72447089F008E9227 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE62447089F008E9227 /* FirstViewController.swift */; };
+		F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE62447089F008E9227 /* WakeUpViewController.swift */; };
 		F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE82447089F008E9227 /* SecondViewController.swift */; };
 		F17ABEEC2447089F008E9227 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17ABEEA2447089F008E9227 /* Main.storyboard */; };
 		F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEED2447089F008E9227 /* Bonzei.xcdatamodeld */; };
@@ -32,7 +32,7 @@
 		F17ABEDF2447089F008E9227 /* Bonzei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bonzei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17ABEE22447089F008E9227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17ABEE42447089F008E9227 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F17ABEE62447089F008E9227 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		F17ABEE62447089F008E9227 /* WakeUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpViewController.swift; sourceTree = "<group>"; };
 		F17ABEE82447089F008E9227 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		F17ABEEB2447089F008E9227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F17ABEEE2447089F008E9227 /* Bonzei.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bonzei.xcdatamodel; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 			children = (
 				F17ABEE22447089F008E9227 /* AppDelegate.swift */,
 				F17ABEE42447089F008E9227 /* SceneDelegate.swift */,
-				F17ABEE62447089F008E9227 /* FirstViewController.swift */,
+				F17ABEE62447089F008E9227 /* WakeUpViewController.swift */,
 				F17ABEE82447089F008E9227 /* SecondViewController.swift */,
 				F17ABEEA2447089F008E9227 /* Main.storyboard */,
 				F17ABEF0244708A2008E9227 /* Assets.xcassets */,
@@ -207,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */,
-				F17ABEE72447089F008E9227 /* FirstViewController.swift in Sources */,
+				F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */,
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */,
 				F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */,
