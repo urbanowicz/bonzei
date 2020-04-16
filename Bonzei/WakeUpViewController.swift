@@ -13,11 +13,16 @@ class WakeUpViewController: UIViewController {
     @IBOutlet weak var setAlarmButton: UIButton!
     @IBOutlet weak var setFirstAlarmButton: UIButton!
     @IBOutlet weak var wakeUpLabel: UILabel!
+    @IBOutlet weak var alarmsTable: UITableView!
+    var alarmsTableDataSource = AlarmsTableDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //alarmsTable.delegate = self
+        alarmsTable.dataSource = alarmsTableDataSource
     }
 
     @IBAction func setAlarmButtonPressed(_ sender: UIButton) {
