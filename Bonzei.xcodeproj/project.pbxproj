@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
+		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
+		F15526C6244A0F4B00741E80 /* FileDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C5244A0F4B00741E80 /* FileDB.swift */; };
 		F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE22447089F008E9227 /* AppDelegate.swift */; };
 		F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE42447089F008E9227 /* SceneDelegate.swift */; };
 		F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE62447089F008E9227 /* WakeUpViewController.swift */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
+		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		F15526C5244A0F4B00741E80 /* FileDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDB.swift; sourceTree = "<group>"; };
 		F17ABEDF2447089F008E9227 /* Bonzei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bonzei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17ABEE22447089F008E9227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17ABEE42447089F008E9227 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F15526C2244A01E900741E80 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F15526C3244A060300741E80 /* Alarm.swift */,
+				F15526C5244A0F4B00741E80 /* FileDB.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F17ABED62447089F008E9227 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +100,7 @@
 		F17ABEE12447089F008E9227 /* Bonzei */ = {
 			isa = PBXGroup;
 			children = (
+				F15526C2244A01E900741E80 /* Model */,
 				F17ABEE22447089F008E9227 /* AppDelegate.swift */,
 				F17ABEE42447089F008E9227 /* SceneDelegate.swift */,
 				F17ABEE62447089F008E9227 /* WakeUpViewController.swift */,
@@ -215,6 +229,8 @@
 				F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */,
 				F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */,
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
+				F15526C4244A060300741E80 /* Alarm.swift in Sources */,
+				F15526C6244A0F4B00741E80 /* FileDB.swift in Sources */,
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
 				F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */,
 				F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */,
