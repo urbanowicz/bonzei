@@ -15,14 +15,23 @@ class WakeUpViewController: UIViewController {
     @IBOutlet weak var wakeUpLabel: UILabel!
     @IBOutlet weak var alarmsTable: UITableView!
     var alarmsTableDataSource = AlarmsTableDataSource()
+    private var newAlarm: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        //alarmsTable.delegate = self
         alarmsTable.dataSource = alarmsTableDataSource
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if newAlarm != nil {
+            alarmsTableDataSource.alarms.append(newAlarm!)
+            alarmsTable.beginUpdates()
+            alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
+                                   with: UITableView.RowAnimation.top)
+            alarmsTable.endUpdates()
+            newAlarm = nil
+        }
     }
 
     @IBAction func setAlarmButtonPressed(_ sender: UIButton) {
@@ -36,11 +45,14 @@ class WakeUpViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier! == "WakeUpToSetAlarmSegue" {
+            
+        }
     }
     
     @IBAction func unwindToWakeUp(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
-        // Use data from the view controller which initiated the unwind segue
+        let src = unwindSegue.source as! SetAlarmViewController
+        self.newAlarm = src.newAlarm
     }
     
     

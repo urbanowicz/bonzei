@@ -9,14 +9,19 @@
 import UIKit
 
 class SetAlarmViewController: UIViewController {
-
+    
+    var newAlarm:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func newAlarmPressed(_ sender: UIButton) {
+        newAlarm = "08:30 AM"
+    }
+    
     /*
     // MARK: - Navigation
 
