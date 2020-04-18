@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetAlarmViewController: UINavigationController {
+class SetAlarmViewController: UIViewController {
     
     var newAlarm:String?
     

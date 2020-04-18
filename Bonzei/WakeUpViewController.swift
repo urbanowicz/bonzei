@@ -50,7 +50,7 @@ class WakeUpViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToWakeUp(_ unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindSaveAlarm(_ unwindSegue: UIStoryboardSegue) {
         let src = unwindSegue.source as! SetAlarmViewController
         self.newAlarm = src.newAlarm
     }

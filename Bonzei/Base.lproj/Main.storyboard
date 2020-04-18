@@ -89,13 +89,40 @@
                     <view key="view" contentMode="scaleToFill" id="XNR-8J-fs7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-bc-pLe" userLabel="VStack">
+                                <rect key="frame" x="20" y="34" width="374" height="828"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-Mh-4Ei">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="786"/>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pv-Ko-fib">
+                                        <rect key="frame" x="0.0" y="786" width="374" height="42"/>
+                                        <color key="backgroundColor" red="0.13353109359741211" green="0.32952338457107544" blue="0.25182774662971497" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <segue destination="5Gm-9t-4jN" kind="unwind" unwindAction="unwindSaveAlarm:" id="4aZ-xc-F7k"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wZf-bc-pLe" firstAttribute="trailing" secondItem="XNR-8J-fs7" secondAttribute="trailingMargin" id="RY2-31-RcV"/>
+                            <constraint firstItem="wZf-bc-pLe" firstAttribute="bottom" secondItem="Cpd-bb-Gf2" secondAttribute="bottom" id="UFm-lT-PpP"/>
+                            <constraint firstItem="wZf-bc-pLe" firstAttribute="leading" secondItem="XNR-8J-fs7" secondAttribute="leadingMargin" id="gPh-Rq-cRn"/>
+                            <constraint firstItem="wZf-bc-pLe" firstAttribute="centerY" secondItem="XNR-8J-fs7" secondAttribute="centerY" id="n4m-x8-4eM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Cpd-bb-Gf2"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgF-Jv-OLy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="5Gm-9t-4jN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1526" y="-320"/>
+            <point key="canvasLocation" x="1524.6376811594205" y="-320.08928571428572"/>
         </scene>
         <!--Learn-->
         <scene sceneID="wg7-f3-ORb">
