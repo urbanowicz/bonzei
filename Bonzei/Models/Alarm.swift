@@ -10,6 +10,14 @@ import Foundation
 
 struct Alarm {
     var date: Date
+    var dateString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .medium
+        dateFormatter.setLocalizedDateFormatFromTemplate("hh:mm")
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: date)
+    }
     var repeatOn:[Bool] = [true, true, true, true, true, true, true]
     var melodyName: String
 }
