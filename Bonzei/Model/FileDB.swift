@@ -8,9 +8,9 @@
 
 import Foundation
 
-//Persists an object in user's document directory.
-//
-//Returns true if operation was successful. Otherwise it returns false.
+///Persists an object in user's document directory.
+///
+///Returns: 'true' if operation was successful. Otherwise 'false'.
 func fileDbWrite(fileName: String, object: Any) -> Bool {
     do {
         let data = try NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: false)
@@ -22,9 +22,9 @@ func fileDbWrite(fileName: String, object: Any) -> Bool {
     return false
 }
 
-//Reads an object from user's document directory.
-//
-//Returns the object if operation was successful. Otherwise it returns nil
+///Reads an object from user's document directory.
+///
+///Returns: the object if operation was successful. nil otherwise
 func fileDbRead(fileName: String) -> Any? {
     do {
         let data = try Data(contentsOf: documentPathFor(fileName))

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetAlarmViewController: UIViewController {
+class SetAlarmViewController: UINavigationController {
     
     var newAlarm:String?
     
@@ -18,9 +18,6 @@ class SetAlarmViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func newAlarmPressed(_ sender: UIButton) {
-        newAlarm = "08:30 AM"
-    }
     
     /*
     // MARK: - Navigation

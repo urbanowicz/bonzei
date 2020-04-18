@@ -29,6 +29,4 @@ class AlarmsTableDataSource: NSObject, UITableViewDataSource {
         cell.textLabel!.text = alarms[indexPath.row]
         return cell
     }
-    
-    
 }

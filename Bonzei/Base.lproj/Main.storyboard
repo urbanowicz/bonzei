@@ -89,37 +89,11 @@
                     <view key="view" contentMode="scaleToFill" id="XNR-8J-fs7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgd-mY-J2V">
-                                <rect key="frame" x="190" y="416" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="5Gm-9t-4jN" kind="unwind" unwindAction="unwindToWakeUp:" id="Cc6-qp-TT6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWO-ik-y6O">
-                                <rect key="frame" x="125.5" y="285" width="163" height="51"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <state key="normal" title="New Alarm">
-                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="newAlarmPressed:" destination="WKb-vj-sEy" eventType="touchUpInside" id="LCw-Q1-1VE"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="hgd-mY-J2V" firstAttribute="centerX" secondItem="XNR-8J-fs7" secondAttribute="centerX" id="DmH-TC-9yV"/>
-                            <constraint firstItem="DWO-ik-y6O" firstAttribute="centerX" secondItem="hgd-mY-J2V" secondAttribute="centerX" id="Ib8-OI-ehD"/>
-                            <constraint firstItem="hgd-mY-J2V" firstAttribute="top" secondItem="Cpd-bb-Gf2" secondAttribute="top" constant="372" id="NOf-jd-dg8"/>
-                            <constraint firstItem="DWO-ik-y6O" firstAttribute="top" secondItem="Cpd-bb-Gf2" secondAttribute="top" constant="241" id="gid-6v-nF6"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Cpd-bb-Gf2"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgF-Jv-OLy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="5Gm-9t-4jN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1526" y="-320"/>
         </scene>
