@@ -15,7 +15,7 @@ class WakeUpViewController: UIViewController {
     @IBOutlet weak var wakeUpLabel: UILabel!
     @IBOutlet weak var alarmsTable: UITableView!
     var alarmsTableDataSource = AlarmsTableDataSource()
-    private var newAlarm: String?
+    private var newAlarm: Alarm?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class WakeUpViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if newAlarm != nil {
-            alarmsTableDataSource.alarms.insert(newAlarm!, at: 0)
+            alarmsTableDataSource.alarms.insert(newAlarm!.dateString, at: 0)
             alarmsTable.beginUpdates()
             alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
                                    with: UITableView.RowAnimation.top)

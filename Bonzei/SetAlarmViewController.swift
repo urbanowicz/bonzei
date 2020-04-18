@@ -10,7 +10,7 @@ import UIKit
 
 class SetAlarmViewController: UIViewController {
     
-    var newAlarm:String?
+    var newAlarm:Alarm?
     
     //A standard date picker. Not customizable. Need to be replaced with a custom widget.
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -23,12 +23,7 @@ class SetAlarmViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .medium
-        dateFormatter.setLocalizedDateFormatFromTemplate("hh:mm")
-        dateFormatter.locale = Locale(identifier: "en_US")
-        newAlarm = dateFormatter.string(from: datePicker.date)
+        newAlarm = Alarm(date: datePicker.date, melodyName: "Midnight Moon")
         performSegue(withIdentifier: "unwindSaveAlarmSegue", sender: self) 
     }
     
