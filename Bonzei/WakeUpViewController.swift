@@ -25,7 +25,7 @@ class WakeUpViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if newAlarm != nil {
-            alarmsTableDataSource.alarms.append(newAlarm!)
+            alarmsTableDataSource.alarms.insert(newAlarm!, at: 0)
             alarmsTable.beginUpdates()
             alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
                                    with: UITableView.RowAnimation.top)
@@ -54,7 +54,5 @@ class WakeUpViewController: UIViewController {
         let src = unwindSegue.source as! SetAlarmViewController
         self.newAlarm = src.newAlarm
     }
-    
-    
 }
 

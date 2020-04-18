@@ -103,7 +103,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
-                                            <segue destination="5Gm-9t-4jN" kind="unwind" unwindAction="unwindSaveAlarm:" id="4aZ-xc-F7k"/>
+                                            <action selector="saveButtonPressed:" destination="WKb-vj-sEy" eventType="touchUpInside" id="6w0-Cf-4mQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -118,6 +118,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cpd-bb-Gf2"/>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="PFR-Mh-4Ei" id="mna-Hf-63g"/>
+                        <outlet property="saveButton" destination="3pv-Ko-fib" id="dfI-iX-qOe"/>
+                        <segue destination="5Gm-9t-4jN" kind="unwind" identifier="unwindSaveAlarmSegue" unwindAction="unwindSaveAlarm:" id="Huo-eK-pUv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgF-Jv-OLy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="5Gm-9t-4jN" userLabel="Exit" sceneMemberID="exit"/>

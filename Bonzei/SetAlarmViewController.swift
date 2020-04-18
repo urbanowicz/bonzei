@@ -12,12 +12,24 @@ class SetAlarmViewController: UIViewController {
     
     var newAlarm:String?
     
+    //A standard date picker. Not customizable. Need to be replaced with a custom widget.
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var saveButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .medium
+        dateFormatter.locale = Locale(identifier: "en_US")
+        newAlarm = dateFormatter.string(from: datePicker.date)
+        performSegue(withIdentifier: "unwindSaveAlarmSegue", sender: self) 
+    }
     
     /*
     // MARK: - Navigation
