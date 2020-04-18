@@ -26,6 +26,7 @@ class SetAlarmViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .medium
+        dateFormatter.setLocalizedDateFormatFromTemplate("hh:mm")
         dateFormatter.locale = Locale(identifier: "en_US")
         newAlarm = dateFormatter.string(from: datePicker.date)
         performSegue(withIdentifier: "unwindSaveAlarmSegue", sender: self) 
