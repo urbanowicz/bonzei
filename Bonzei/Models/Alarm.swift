@@ -9,9 +9,7 @@
 import Foundation
 
 struct Alarm {
-    var hour: Int
-    var minutes: Int
-    var isAM: Bool
-    var repeatOn: [Bool]
+    var date: Date
+    var repeatOn:[Bool] = [true, true, true, true, true, true, true]
     var melodyName: String
 }

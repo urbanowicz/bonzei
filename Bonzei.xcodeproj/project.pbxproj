@@ -70,13 +70,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F15526C2244A01E900741E80 /* Model */ = {
+		F15526C2244A01E900741E80 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F15526C3244A060300741E80 /* Alarm.swift */,
 				F15526C5244A0F4B00741E80 /* FileDB.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F17ABED62447089F008E9227 = {
@@ -100,7 +100,7 @@
 		F17ABEE12447089F008E9227 /* Bonzei */ = {
 			isa = PBXGroup;
 			children = (
-				F15526C2244A01E900741E80 /* Model */,
+				F15526C2244A01E900741E80 /* Models */,
 				F17ABEE22447089F008E9227 /* AppDelegate.swift */,
 				F17ABEE42447089F008E9227 /* SceneDelegate.swift */,
 				F17ABEE62447089F008E9227 /* WakeUpViewController.swift */,
