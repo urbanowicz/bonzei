@@ -96,8 +96,24 @@
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-Mh-4Ei">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="216"/>
                                     </datePicker>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="oTG-VP-ZdH" userLabel="HStack">
+                                        <rect key="frame" x="0.0" y="389.5" width="374" height="24"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Midnight Moon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvx-bA-ZYS" userLabel="MelodyLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="313.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9b-bz-mgS" userLabel="MelodyButton">
+                                                <rect key="frame" x="313.5" y="0.0" width="60.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="&gt;" image="chevron.right" catalog="system"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSh-C6-7s3" userLabel="HStack">
-                                        <rect key="frame" x="0.0" y="488.5" width="374" height="31"/>
+                                        <rect key="frame" x="0.0" y="587.5" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snooze" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2a-np-g7B" userLabel="SnoozeLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -193,5 +209,6 @@
     <resources>
         <image name="alarm" catalog="system" width="62" height="64"/>
         <image name="book" catalog="system" width="64" height="50"/>
+        <image name="chevron.right" catalog="system" width="48" height="64"/>
     </resources>
 </document>
