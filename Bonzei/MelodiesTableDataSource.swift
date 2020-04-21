@@ -15,7 +15,7 @@ class MelodiesTableDataSource: NSObject, UITableViewDataSource {
                     "Forset Light Rays",
                     "Midnight Moon"]
     
-    let cellReuseId = "melodiesTableCell"
+    let cellReuseId = "MelodiesTableCell"
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return melodies.count

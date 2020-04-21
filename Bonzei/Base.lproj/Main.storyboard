@@ -202,21 +202,51 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n6l-lS-POV" userLabel="MelodiesTable">
+                                <rect key="frame" x="20" y="119" width="374" height="743"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MelodiesTableCell" textLabel="K4w-Y9-nke" rowHeight="80" style="IBUITableViewCellStyleDefault" id="dln-UK-mql" userLabel="Cell">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dln-UK-mql" id="hnN-mh-Phh">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Melody" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K4w-Y9-nke">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="gcm-1M-TKd" firstAttribute="centerX" secondItem="afu-yN-PUz" secondAttribute="centerX" id="8Ae-uF-r7V"/>
+                            <constraint firstItem="n6l-lS-POV" firstAttribute="top" secondItem="woo-qV-J7H" secondAttribute="bottom" constant="30" id="FJS-Qt-sxd"/>
+                            <constraint firstItem="afu-yN-PUz" firstAttribute="trailing" secondItem="n6l-lS-POV" secondAttribute="trailing" constant="20" id="OcK-t1-7j8"/>
                             <constraint firstItem="gcm-1M-TKd" firstAttribute="centerY" secondItem="woo-qV-J7H" secondAttribute="centerY" id="Zgw-FS-vZI"/>
                             <constraint firstItem="woo-qV-J7H" firstAttribute="leading" secondItem="afu-yN-PUz" secondAttribute="leading" constant="20" id="cTq-RS-VHS"/>
+                            <constraint firstItem="n6l-lS-POV" firstAttribute="leading" secondItem="afu-yN-PUz" secondAttribute="leading" constant="20" id="j1q-u0-sob"/>
                             <constraint firstItem="woo-qV-J7H" firstAttribute="top" secondItem="afu-yN-PUz" secondAttribute="top" id="rbE-9L-2Cb"/>
+                            <constraint firstItem="n6l-lS-POV" firstAttribute="bottom" secondItem="afu-yN-PUz" secondAttribute="bottom" id="vbp-Cp-LGx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="afu-yN-PUz"/>
                     </view>
+                    <connections>
+                        <outlet property="melodiesTable" destination="n6l-lS-POV" id="DWN-wG-G6m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbB-UX-Tma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="DdJ-FN-jBh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2364" y="-320"/>
+            <point key="canvasLocation" x="2362.3188405797105" y="-320.08928571428572"/>
         </scene>
         <!--Learn-->
         <scene sceneID="wg7-f3-ORb">

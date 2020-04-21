@@ -9,11 +9,13 @@
 import UIKit
 
 class SetMelodyViewController: UIViewController {
-
+    var melodiesTableDataSource = MelodiesTableDataSource()
+    
+    @IBOutlet weak var melodiesTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        melodiesTable.dataSource = melodiesTableDataSource 
     }
     
 
