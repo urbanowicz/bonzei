@@ -21,6 +21,7 @@
 		F17ABEF4244708A2008E9227 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17ABEF2244708A2008E9227 /* LaunchScreen.storyboard */; };
 		F17ABEFF244708A2008E9227 /* BonzeiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEFE244708A2008E9227 /* BonzeiTests.swift */; };
 		F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */; };
+		F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		F17ABEFE244708A2008E9227 /* BonzeiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiTests.swift; sourceTree = "<group>"; };
 		F17ABF00244708A2008E9227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsTableDataSource.swift; sourceTree = "<group>"; };
+		F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodiesTableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				F118BED324478FAD00C38981 /* SetAlarmViewController.swift */,
 				F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */,
 				F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */,
+				F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */,
 			);
 			path = Bonzei;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			files = (
 				F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */,
 				F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */,
+				F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */,
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F15526C4244A060300741E80 /* Alarm.swift in Sources */,
 				F15526C6244A0F4B00741E80 /* FileDB.swift in Sources */,
