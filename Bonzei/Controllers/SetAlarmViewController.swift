@@ -12,9 +12,11 @@ class SetAlarmViewController: UIViewController {
     
     var newAlarm:Alarm?
     
+    var selectedMelody = "Ambient Sea Waves"
     //A standard date picker. Not customizable. Need to be replaced with a custom widget.
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var melodyLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +24,13 @@ class SetAlarmViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        melodyLabel.text = selectedMelody
+    }
+    
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        newAlarm = Alarm(date: datePicker.date, melodyName: "Midnight Moon")
+        newAlarm = Alarm(date: datePicker.date, melodyName: selectedMelody)
         performSegue(withIdentifier: "unwindSaveAlarmSegue", sender: self) 
     }
     
@@ -38,6 +45,9 @@ class SetAlarmViewController: UIViewController {
     */
     
     @IBAction func unwindSetMelody(_ unwindSegue: UIStoryboardSegue) {
-        
+        let setMelodyViewController = unwindSegue.source as! SetMelodyViewController
+        if setMelodyViewController.selectedMelody != nil {
+            selectedMelody = setMelodyViewController.selectedMelody!
+        }
     }
 }

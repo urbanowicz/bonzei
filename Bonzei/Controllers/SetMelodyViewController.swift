@@ -10,6 +10,7 @@ import UIKit
 
 class SetMelodyViewController: UIViewController {
     var melodiesTableDataSource = MelodiesTableDataSource()
+    var selectedMelody:String?
     
     @IBOutlet weak var melodiesTable: UITableView!
     override func viewDidLoad() {
@@ -28,5 +29,11 @@ class SetMelodyViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        if let selectedRowIndex = melodiesTable.indexPathForSelectedRow {
+            let selectedCell = melodiesTable.cellForRow(at: selectedRowIndex)!
+            selectedMelody = selectedCell.textLabel!.text!
+        }
+        performSegue(withIdentifier: "UnwindSetMelody", sender: self)
+    }
 }

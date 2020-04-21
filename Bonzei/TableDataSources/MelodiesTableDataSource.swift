@@ -12,7 +12,7 @@ class MelodiesTableDataSource: NSObject, UITableViewDataSource {
     var melodies = ["Ambient Sea Waves",
                     "Emerald Mountains",
                     "Endorphin Birds",
-                    "Forset Light Rays",
+                    "Forest Light Rays",
                     "Midnight Moon"]
     
     let cellReuseId = "MelodiesTableCell"

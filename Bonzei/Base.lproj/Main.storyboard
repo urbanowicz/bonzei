@@ -167,6 +167,7 @@
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="PFR-Mh-4Ei" id="mna-Hf-63g"/>
+                        <outlet property="melodyLabel" destination="Rvx-bA-ZYS" id="mlq-n0-9QL"/>
                         <outlet property="saveButton" destination="3pv-Ko-fib" id="dfI-iX-qOe"/>
                         <segue destination="5Gm-9t-4jN" kind="unwind" identifier="unwindSaveAlarmSegue" unwindAction="unwindSaveAlarm:" id="Huo-eK-pUv"/>
                     </connections>
@@ -193,7 +194,7 @@
                                 </constraints>
                                 <state key="normal" image="chevron.left" catalog="system"/>
                                 <connections>
-                                    <segue destination="DdJ-FN-jBh" kind="unwind" identifier="unwindSetMelodySegue" unwindAction="unwindSetMelody:" id="NRX-MN-LIa"/>
+                                    <action selector="backButtonPressed:" destination="471-3X-WLW" eventType="touchUpInside" id="dxI-3G-2gO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Melody" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcm-1M-TKd" userLabel="MelodyLabel">
@@ -241,6 +242,7 @@
                     </view>
                     <connections>
                         <outlet property="melodiesTable" destination="n6l-lS-POV" id="DWN-wG-G6m"/>
+                        <segue destination="DdJ-FN-jBh" kind="unwind" identifier="UnwindSetMelody" unwindAction="unwindSetMelody:" id="qj6-wz-AaF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbB-UX-Tma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
