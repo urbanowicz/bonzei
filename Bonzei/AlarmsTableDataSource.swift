@@ -15,8 +15,8 @@ class AlarmsTableDataSource: NSObject, UITableViewDataSource {
     
     override init() {
         super.init()
-        if let a = fileDbRead(fileName: "alarms.db") as? [String] {
-            alarms = a
+        if let savedAlarms = fileDbRead(fileName: "alarms.db") as? [String] {
+            alarms = savedAlarms
         }
     }
     
