@@ -74,6 +74,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F11E3F1C244EFEF400CF6B4A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F17ABEE62447089F008E9227 /* WakeUpViewController.swift */,
+				F118BED324478FAD00C38981 /* SetAlarmViewController.swift */,
+				F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F11E3F1D244EFFE400CF6B4A /* TableDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */,
+				F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */,
+			);
+			path = TableDataSources;
+			sourceTree = "<group>";
+		};
 		F15526C2244A01E900741E80 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,20 +123,17 @@
 		F17ABEE12447089F008E9227 /* Bonzei */ = {
 			isa = PBXGroup;
 			children = (
+				F11E3F1D244EFFE400CF6B4A /* TableDataSources */,
+				F11E3F1C244EFEF400CF6B4A /* Controllers */,
 				F15526C2244A01E900741E80 /* Models */,
 				F17ABEE22447089F008E9227 /* AppDelegate.swift */,
 				F17ABEE42447089F008E9227 /* SceneDelegate.swift */,
-				F17ABEE62447089F008E9227 /* WakeUpViewController.swift */,
 				F17ABEE82447089F008E9227 /* SecondViewController.swift */,
 				F17ABEEA2447089F008E9227 /* Main.storyboard */,
 				F17ABEF0244708A2008E9227 /* Assets.xcassets */,
 				F17ABEF2244708A2008E9227 /* LaunchScreen.storyboard */,
 				F17ABEF5244708A2008E9227 /* Info.plist */,
 				F17ABEED2447089F008E9227 /* Bonzei.xcdatamodeld */,
-				F118BED324478FAD00C38981 /* SetAlarmViewController.swift */,
-				F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */,
-				F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */,
-				F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */,
 			);
 			path = Bonzei;
 			sourceTree = "<group>";
