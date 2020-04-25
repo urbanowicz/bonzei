@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
+		F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1421C252454B710003D226A /* DayOfWeekPicker.swift */; };
 		F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */; };
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F15526C6244A0F4B00741E80 /* FileDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C5244A0F4B00741E80 /* FileDB.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
+		F1421C252454B710003D226A /* DayOfWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekPicker.swift; sourceTree = "<group>"; };
 		F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMelodyViewController.swift; sourceTree = "<group>"; };
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		F15526C5244A0F4B00741E80 /* FileDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDB.swift; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 			path = TableDataSources;
 			sourceTree = "<group>";
 		};
+		F1421C242454B6BF003D226A /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				F1421C252454B710003D226A /* DayOfWeekPicker.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		F15526C2244A01E900741E80 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 		F17ABEE12447089F008E9227 /* Bonzei */ = {
 			isa = PBXGroup;
 			children = (
+				F1421C242454B6BF003D226A /* Controls */,
 				F11E3F1D244EFFE400CF6B4A /* TableDataSources */,
 				F11E3F1C244EFEF400CF6B4A /* Controllers */,
 				F15526C2244A01E900741E80 /* Models */,
@@ -257,6 +268,7 @@
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
 				F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */,
 				F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */,
+				F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */,
 				F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */,
 				F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */,
 			);
