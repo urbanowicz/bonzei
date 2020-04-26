@@ -123,14 +123,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-bc-pLe" userLabel="VStack">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-bc-pLe" userLabel="VStack">
                                 <rect key="frame" x="20" y="59" width="374" height="778"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clockPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Tgh-Vc-7YN">
+                                        <rect key="frame" x="0.0" y="0.0" width="374.00000000000011" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="NX2-Oa-nKx"/>
+                                        </constraints>
+                                    </imageView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-Mh-4Ei">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="216"/>
+                                        <rect key="frame" x="0.0" y="238" width="374" height="216"/>
                                     </datePicker>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-hN-NrP" customClass="DayOfWeekPicker" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="313.5" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="492" width="374" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="so1-HR-iuD"/>
@@ -145,7 +151,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="oTG-VP-ZdH" userLabel="HStack">
-                                        <rect key="frame" x="0.0" y="461" width="374" height="45"/>
+                                        <rect key="frame" x="0.0" y="580" width="374" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0L-Sf-8Df" userLabel="PlayMelodyButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="42.5" height="45"/>
@@ -181,7 +187,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSh-C6-7s3" userLabel="HStack">
-                                        <rect key="frame" x="0.0" y="603.5" width="374" height="31"/>
+                                        <rect key="frame" x="0.0" y="663" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snooze" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2a-np-g7B" userLabel="SnoozeLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -356,6 +362,7 @@
         <image name="book" catalog="system" width="64" height="50"/>
         <image name="chevron.left" catalog="system" width="48" height="64"/>
         <image name="chevron.right" catalog="system" width="48" height="64"/>
+        <image name="clockPlaceholder" width="748" height="400"/>
         <image name="play.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>
