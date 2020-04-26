@@ -17,6 +17,9 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
     //Corner radius of the selection rectangle
     @IBInspectable var radius:Float = 15
     
+    //Color of the selection rectangle
+    @IBInspectable var color:UIColor = UIColor.systemGreen
+    
     //Day of week labels 'M' 'T' 'W' 'T' 'F' 'S' 'S'
     private var labels = [DayOfWeekLabel]()
     
@@ -74,7 +77,7 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
     
     private func initSelectionLayer() {
         selectionLayer.backgroundColor = UIColor.clear.cgColor
-        selectionLayer.fillColor = UIColor.green.cgColor
+        selectionLayer.fillColor = color.cgColor
         layer.addSublayer(selectionLayer)
     }
     
