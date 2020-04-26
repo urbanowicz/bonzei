@@ -12,10 +12,12 @@ class SetMelodyViewController: UIViewController {
     var melodiesTableDataSource = MelodiesTableDataSource()
     var selectedMelody:String?
     
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var melodiesTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        backButton.backgroundColor = UIColor.clear
         melodiesTable.dataSource = melodiesTableDataSource 
     }
     

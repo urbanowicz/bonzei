@@ -108,7 +108,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0L-Sf-8Df" userLabel="PlayMelodyButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="45.5" height="45"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="rVw-CA-1uv"/>
                                                 </constraints>
@@ -125,7 +125,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9b-bz-mgS" userLabel="SetMelodyButton">
                                                 <rect key="frame" x="329" y="0.0" width="45" height="45"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="45" id="cRA-YG-Ktc"/>
                                                 </constraints>
@@ -178,7 +178,9 @@
                     <connections>
                         <outlet property="datePicker" destination="PFR-Mh-4Ei" id="mna-Hf-63g"/>
                         <outlet property="melodyLabel" destination="Rvx-bA-ZYS" id="mlq-n0-9QL"/>
+                        <outlet property="playMelodyButton" destination="y0L-Sf-8Df" id="UF3-bE-SAp"/>
                         <outlet property="saveButton" destination="3pv-Ko-fib" id="dfI-iX-qOe"/>
+                        <outlet property="setMelodyButton" destination="b9b-bz-mgS" id="ALC-Zp-GRm"/>
                         <segue destination="5Gm-9t-4jN" kind="unwind" identifier="unwindSaveAlarmSegue" unwindAction="unwindSaveAlarm:" id="Huo-eK-pUv"/>
                     </connections>
                 </viewController>
@@ -251,6 +253,7 @@
                         <viewLayoutGuide key="safeArea" id="afu-yN-PUz"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="woo-qV-J7H" id="Yis-9V-dCP"/>
                         <outlet property="melodiesTable" destination="n6l-lS-POV" id="DWN-wG-G6m"/>
                         <segue destination="DdJ-FN-jBh" kind="unwind" identifier="UnwindSetMelody" unwindAction="unwindSetMelody:" id="qj6-wz-AaF"/>
                     </connections>

@@ -17,9 +17,13 @@ class SetAlarmViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var melodyLabel: UILabel!
+    @IBOutlet weak var playMelodyButton: UIButton!
+    @IBOutlet weak var setMelodyButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playMelodyButton.backgroundColor = UIColor.clear
+        setMelodyButton.backgroundColor = UIColor.clear 
         
         // Do any additional setup after loading the view.
     }
