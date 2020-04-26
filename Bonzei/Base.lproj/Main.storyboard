@@ -35,15 +35,15 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-Yu-6ic" userLabel="AlarmsTable">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-Yu-6ic" userLabel="AlarmsTable">
                                 <rect key="frame" x="20" y="126" width="374" height="687"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alarmsTableCell" id="nb0-Db-ZNB" customClass="AlarmsTableCell" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nb0-Db-ZNB" id="WUJ-f4-lPi">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="M42-Xr-7rz">
@@ -64,17 +64,16 @@
                                                     </subviews>
                                                 </stackView>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dHv-wg-m6g">
-                                                    <rect key="frame" x="325" y="14.5" width="51" height="31"/>
+                                                    <rect key="frame" x="323" y="15" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="M42-Xr-7rz" secondAttribute="trailing" constant="100" id="6EF-Y5-box"/>
                                                 <constraint firstItem="M42-Xr-7rz" firstAttribute="top" secondItem="WUJ-f4-lPi" secondAttribute="top" id="PZh-1l-aYQ"/>
-                                                <constraint firstItem="dHv-wg-m6g" firstAttribute="leading" secondItem="M42-Xr-7rz" secondAttribute="trailing" constant="51" id="QXB-z2-Tys"/>
-                                                <constraint firstAttribute="trailing" secondItem="dHv-wg-m6g" secondAttribute="trailing" id="f1q-up-uej"/>
-                                                <constraint firstAttribute="bottom" secondItem="M42-Xr-7rz" secondAttribute="bottom" id="fjf-RV-nq5"/>
-                                                <constraint firstItem="dHv-wg-m6g" firstAttribute="centerY" secondItem="WUJ-f4-lPi" secondAttribute="centerY" id="qTx-Ao-nSE"/>
+                                                <constraint firstItem="dHv-wg-m6g" firstAttribute="centerY" secondItem="Kii-g2-JUS" secondAttribute="firstBaseline" id="VqF-Sg-SS8"/>
+                                                <constraint firstAttribute="trailing" secondItem="dHv-wg-m6g" secondAttribute="trailing" constant="2" id="f1q-up-uej"/>
+                                                <constraint firstAttribute="bottom" secondItem="M42-Xr-7rz" secondAttribute="bottom" constant="20" id="fjf-RV-nq5"/>
                                                 <constraint firstItem="M42-Xr-7rz" firstAttribute="leading" secondItem="WUJ-f4-lPi" secondAttribute="leading" id="yfJ-3S-Qkp"/>
                                             </constraints>
                                         </tableViewCellContentView>
