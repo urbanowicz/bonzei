@@ -56,3 +56,9 @@ class WakeUpViewController: UIViewController {
     }
 }
 
+/// A custom cell for the 'Alarms Table'
+/// Note: It should live in a separate file (eg. Views/AlarmsTableCell.swift) but for some reason 'Assistant Editor' didn't allow me to connect outlets if the class weren't here.
+class AlarmsTableCell: UITableViewCell {
+   
+    @IBOutlet weak var timeLabel: UILabel!
+}

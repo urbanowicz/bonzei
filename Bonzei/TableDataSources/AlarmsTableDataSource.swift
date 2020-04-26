@@ -12,7 +12,6 @@ class AlarmsTableDataSource: NSObject, UITableViewDataSource {
     var alarms = [String]()
     let cellReuseId = "alarmsTableCell"
     
-    
     override init() {
         super.init()
         if let savedAlarms = fileDbRead(fileName: "alarms.db") as? [String] {
@@ -25,8 +24,8 @@ class AlarmsTableDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId)!
-        cell.textLabel!.text = alarms[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId) as! AlarmsTableCell
+        cell.timeLabel!.text = alarms[indexPath.row]
         return cell
     }
 }
