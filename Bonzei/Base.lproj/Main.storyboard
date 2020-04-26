@@ -139,23 +139,8 @@
                                             <constraint firstAttribute="height" constant="140" id="wRW-38-YJC"/>
                                         </constraints>
                                     </datePicker>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-hN-NrP" customClass="DayOfWeekPicker" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="401" width="374" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="so1-HR-iuD"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="spacing">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
-                                                <real key="value" value="17"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="oTG-VP-ZdH" userLabel="HStack">
-                                        <rect key="frame" x="0.0" y="518" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="401" width="374" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0L-Sf-8Df" userLabel="PlayMelodyButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -192,6 +177,21 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-hN-NrP" customClass="DayOfWeekPicker" customModule="Bonzei" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="518" width="374" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="so1-HR-iuD"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSh-C6-7s3" userLabel="HStack">
                                         <rect key="frame" x="0.0" y="634.5" width="374" height="31"/>
                                         <subviews>
