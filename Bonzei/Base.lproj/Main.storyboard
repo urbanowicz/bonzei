@@ -35,7 +35,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-Yu-6ic" userLabel="AlarmsTable">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-Yu-6ic" userLabel="AlarmsTable">
                                 <rect key="frame" x="20" y="194.5" width="374" height="618.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -100,6 +100,7 @@
                             <constraint firstItem="pp5-aH-gMu" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="DO6-9k-Mik"/>
                             <constraint firstItem="6Z7-re-qkz" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="nwI-JD-nYN"/>
                             <constraint firstItem="VAZ-Yu-6ic" firstAttribute="top" secondItem="6Z7-re-qkz" secondAttribute="bottom" constant="12" id="pR5-8l-Ozs"/>
+                            <constraint firstItem="fW0-bm-2EE" firstAttribute="leading" secondItem="6Z7-re-qkz" secondAttribute="trailing" constant="286" id="soU-PL-GoP"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="pp5-aH-gMu" secondAttribute="trailing" constant="20" id="wrz-7f-Uut"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
