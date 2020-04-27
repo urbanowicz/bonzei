@@ -81,6 +81,9 @@
                                                 </stackView>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dHv-wg-m6g">
                                                     <rect key="frame" x="323" y="17" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="toggleAlarm:" destination="9pv-A4-QxB" eventType="valueChanged" id="fPc-Jy-eQH"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -93,8 +96,17 @@
                                                 <constraint firstItem="M42-Xr-7rz" firstAttribute="leading" secondItem="WUJ-f4-lPi" secondAttribute="leading" id="yfJ-3S-Qkp"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                                <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="melodyLabel" destination="R82-Pj-IU8" id="H8p-AE-u1r"/>
+                                            <outlet property="repeatOnLabel" destination="1IJ-h7-Pff" id="16M-Ju-nwP"/>
                                             <outlet property="timeLabel" destination="Kii-g2-JUS" id="Uta-bq-rfY"/>
                                         </connections>
                                     </tableViewCell>

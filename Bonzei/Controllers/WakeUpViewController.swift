@@ -38,6 +38,21 @@ class WakeUpViewController: UIViewController {
 
     }
     
+    @IBAction func toggleAlarm(_ sender: UISwitch) {
+        
+        //One of the super views of the 'ui switch' must be an'AlarmsTableCell'. Find it.
+        var v = sender.superview
+        while ((v as? AlarmsTableCell) == nil && v != nil) {
+            v = v!.superview
+        }
+        
+        //cell - the AlarmsTableCell that was toggled
+        if let cell = v as? AlarmsTableCell {
+            let i = alarmsTable.indexPath(for: cell)!.row
+            alarmsTableDataSource.alarms[i].isActive.toggle()
+            cell.isAlarmActive.toggle()
+        }
+    }
     
     // MARK: - Navigation
 
@@ -59,7 +74,23 @@ class WakeUpViewController: UIViewController {
 /// A custom cell for the 'Alarms Table'
 /// Note: It should live in a separate file (eg. Views/AlarmsTableCell.swift) but for some reason 'Assistant Editor' didn't allow me to connect outlets if the class weren't here.
 class AlarmsTableCell: UITableViewCell {
-   
+    @IBInspectable var activeColor: UIColor = UIColor.black
+    @IBInspectable var disabledColor: UIColor = UIColor.systemGray
+    var isAlarmActive = true {
+        didSet {
+            if self.isAlarmActive {
+                timeLabel.textColor = activeColor
+                melodyLabel.textColor = activeColor
+                repeatOnLabel.textColor = activeColor
+            } else {
+                timeLabel.textColor = disabledColor
+                melodyLabel.textColor = disabledColor
+                repeatOnLabel.textColor = disabledColor
+            }
+            self.setNeedsDisplay()
+        }
+    }
+    @IBOutlet weak var repeatOnLabel: UILabel!
     @IBOutlet weak var melodyLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
 }
