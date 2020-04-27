@@ -94,6 +94,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="melodyLabel" destination="R82-Pj-IU8" id="H8p-AE-u1r"/>
                                             <outlet property="timeLabel" destination="Kii-g2-JUS" id="Uta-bq-rfY"/>
                                         </connections>
                                     </tableViewCell>

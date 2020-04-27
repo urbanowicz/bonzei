@@ -9,12 +9,12 @@
 import UIKit
 
 class AlarmsTableDataSource: NSObject, UITableViewDataSource {
-    var alarms = [String]()
+    var alarms = [Alarm]()
     let cellReuseId = "alarmsTableCell"
     
     override init() {
         super.init()
-        if let savedAlarms = fileDbRead(fileName: "alarms.db") as? [String] {
+        if let savedAlarms = fileDbRead(fileName: "alarms.db") as? [Alarm] {
             alarms = savedAlarms
         }
     }
@@ -25,7 +25,9 @@ class AlarmsTableDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId) as! AlarmsTableCell
-        cell.timeLabel!.text = alarms[indexPath.row]
+        let alarm = alarms[indexPath.row]
+        cell.timeLabel!.text = alarm.dateString
+        cell.melodyLabel!.text = alarm.melodyName
         return cell
     }
 }

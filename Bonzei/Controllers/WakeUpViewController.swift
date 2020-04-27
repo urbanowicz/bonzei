@@ -25,7 +25,7 @@ class WakeUpViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if newAlarm != nil {
-            alarmsTableDataSource.alarms.insert(newAlarm!.dateString, at: 0)
+            alarmsTableDataSource.alarms.insert(newAlarm!, at: 0)
             alarmsTable.beginUpdates()
             alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
                                    with: UITableView.RowAnimation.top)
@@ -60,5 +60,6 @@ class WakeUpViewController: UIViewController {
 /// Note: It should live in a separate file (eg. Views/AlarmsTableCell.swift) but for some reason 'Assistant Editor' didn't allow me to connect outlets if the class weren't here.
 class AlarmsTableCell: UITableViewCell {
    
+    @IBOutlet weak var melodyLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
 }
