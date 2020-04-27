@@ -101,7 +101,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Z7-re-qkz">
-                                <rect key="frame" x="20" y="164.5" width="48" height="18"/>
+                                <rect key="frame" x="20" y="164.5" width="374" height="18"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -109,6 +109,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="6Z7-re-qkz" secondAttribute="trailing" constant="20" id="0fd-pe-ZAt"/>
                             <constraint firstItem="pp5-aH-gMu" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="43" id="3wD-pg-pL9"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="VAZ-Yu-6ic" secondAttribute="trailing" constant="20" id="7dP-Z5-F6q"/>
                             <constraint firstItem="VAZ-Yu-6ic" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="8u4-uW-bgK"/>
