@@ -20,4 +20,5 @@ struct Alarm {
     }
     var repeatOn:[Bool] = [true, true, true, true, true, true, true]
     var melodyName: String
+    var isActive: Bool = true
 }
