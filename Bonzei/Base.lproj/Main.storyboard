@@ -282,6 +282,7 @@
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="PFR-Mh-4Ei" id="mna-Hf-63g"/>
+                        <outlet property="dayOfWeekPicker" destination="Kaw-hN-NrP" id="aFh-YC-wVQ"/>
                         <outlet property="melodyLabel" destination="Rvx-bA-ZYS" id="mlq-n0-9QL"/>
                         <outlet property="playMelodyButton" destination="y0L-Sf-8Df" id="UF3-bE-SAp"/>
                         <outlet property="saveButton" destination="3pv-Ko-fib" id="dfI-iX-qOe"/>

@@ -25,9 +25,7 @@ class AlarmsTableDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId) as! AlarmsTableCell
-        let alarm = alarms[indexPath.row]
-        cell.timeLabel!.text = alarm.dateString
-        cell.melodyLabel!.text = "\u{266A} " + alarm.melodyName
+        cell.alarm = alarms[indexPath.row]
         return cell
     }
 }

@@ -19,13 +19,12 @@ class SetAlarmViewController: UIViewController {
     @IBOutlet weak var melodyLabel: UILabel!
     @IBOutlet weak var playMelodyButton: UIButton!
     @IBOutlet weak var setMelodyButton: UIButton!
+    @IBOutlet weak var dayOfWeekPicker: DayOfWeekPicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playMelodyButton.backgroundColor = UIColor.clear
-        setMelodyButton.backgroundColor = UIColor.clear 
-        
-        // Do any additional setup after loading the view.
+        setMelodyButton.backgroundColor = UIColor.clear
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +33,12 @@ class SetAlarmViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        newAlarm = Alarm(date: datePicker.date, melodyName: selectedMelody)
+        //1.
+        newAlarm = Alarm(date: datePicker.date,
+                         repeatOn: dayOfWeekPicker.selection,
+                         melodyName: selectedMelody)
+        
+        //2.
         performSegue(withIdentifier: "unwindSaveAlarmSegue", sender: self) 
     }
     

@@ -50,7 +50,7 @@ class WakeUpViewController: UIViewController {
         if let cell = v as? AlarmsTableCell {
             let i = alarmsTable.indexPath(for: cell)!.row
             alarmsTableDataSource.alarms[i].isActive.toggle()
-            cell.isAlarmActive.toggle()
+            cell.alarm = alarmsTableDataSource.alarms[i]
         }
     }
     
@@ -76,9 +76,13 @@ class WakeUpViewController: UIViewController {
 class AlarmsTableCell: UITableViewCell {
     @IBInspectable var activeColor: UIColor = UIColor.black
     @IBInspectable var disabledColor: UIColor = UIColor.systemGray
-    var isAlarmActive = true {
+    
+    var alarm : Alarm! {
         didSet {
-            if self.isAlarmActive {
+            timeLabel.text = alarm.dateString
+            melodyLabel.text = "\u{266A} " + alarm.melodyName
+            
+            if self.alarm.isActive {
                 timeLabel.textColor = activeColor
                 melodyLabel.textColor = activeColor
                 repeatOnLabel.textColor = activeColor
@@ -90,6 +94,23 @@ class AlarmsTableCell: UITableViewCell {
             self.setNeedsDisplay()
         }
     }
+    
+    
+//    var isAlarmActive = true {
+//        didSet {
+//            if self.isAlarmActive {
+//                timeLabel.textColor = activeColor
+//                melodyLabel.textColor = activeColor
+//                repeatOnLabel.textColor = activeColor
+//            } else {
+//                timeLabel.textColor = disabledColor
+//                melodyLabel.textColor = disabledColor
+//                repeatOnLabel.textColor = disabledColor
+//            }
+//            self.setNeedsDisplay()
+//        }
+//    }
+    
     @IBOutlet weak var repeatOnLabel: UILabel!
     @IBOutlet weak var melodyLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
