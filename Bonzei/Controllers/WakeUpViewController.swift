@@ -76,40 +76,37 @@ class WakeUpViewController: UIViewController {
 class AlarmsTableCell: UITableViewCell {
     @IBInspectable var activeColor: UIColor = UIColor.black
     @IBInspectable var disabledColor: UIColor = UIColor.systemGray
+    @IBInspectable var kern: Float = 20.0
     
-    var alarm : Alarm! {
+    var alarm: Alarm! {
         didSet {
             timeLabel.text = alarm.dateString
             melodyLabel.text = "\u{266A} " + alarm.melodyName
-            
+            let s = NSMutableAttributedString(string: "MTWTFSS")
+            s.addAttribute(.kern, value: kern, range: NSRange(location: 0, length: s.length))
             if self.alarm.isActive {
+                
+                //Set color for each day of the week depending on whether it was picked or not
+                for i in 0...6 {
+                    if alarm.repeatOn.contains(i) {
+                        s.addAttribute(.foregroundColor, value: activeColor, range: NSRange(location: i, length: 1))
+                    } else {
+                        s.addAttribute(.foregroundColor, value: disabledColor, range: NSRange(location: i, length: 1))
+                    }
+                }
+                repeatOnLabel.attributedText = s
                 timeLabel.textColor = activeColor
                 melodyLabel.textColor = activeColor
-                repeatOnLabel.textColor = activeColor
+
             } else {
+                s.addAttribute(.foregroundColor, value: disabledColor, range: NSRange(location:0, length: s.length))
+                repeatOnLabel.attributedText = s
                 timeLabel.textColor = disabledColor
                 melodyLabel.textColor = disabledColor
-                repeatOnLabel.textColor = disabledColor
             }
             self.setNeedsDisplay()
         }
     }
-    
-    
-//    var isAlarmActive = true {
-//        didSet {
-//            if self.isAlarmActive {
-//                timeLabel.textColor = activeColor
-//                melodyLabel.textColor = activeColor
-//                repeatOnLabel.textColor = activeColor
-//            } else {
-//                timeLabel.textColor = disabledColor
-//                melodyLabel.textColor = disabledColor
-//                repeatOnLabel.textColor = disabledColor
-//            }
-//            self.setNeedsDisplay()
-//        }
-//    }
     
     @IBOutlet weak var repeatOnLabel: UILabel!
     @IBOutlet weak var melodyLabel: UILabel!
