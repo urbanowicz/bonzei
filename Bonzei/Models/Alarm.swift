@@ -18,7 +18,7 @@ struct Alarm {
         dateFormatter.locale = Locale(identifier: "en_US")
         return dateFormatter.string(from: date)
     }
-    var repeatOn:[Bool] = [true, true, true, true, true, true, true]
+    var repeatOn = Set<Int>([0])
     var melodyName: String
     var isActive: Bool = true
 }
