@@ -40,14 +40,18 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if newAlarm != nil {
-            alarmsTableDataSource.alarms.insert(newAlarm!, at: 0)
-            alarmsTable.beginUpdates()
-            alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
-                                   with: UITableView.RowAnimation.top)
-            alarmsTable.endUpdates()
-            newAlarm = nil
+        func insertNewAlarmIntoTable() {
+            if newAlarm != nil {
+                alarmsTableDataSource.alarms.insert(newAlarm!, at: 0)
+                alarmsTable.beginUpdates()
+                alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
+                                       with: UITableView.RowAnimation.top)
+                alarmsTable.endUpdates()
+                newAlarm = nil
+            }
         }
+        
+        insertNewAlarmIntoTable()
     }
 
     // MARK: - Actions
