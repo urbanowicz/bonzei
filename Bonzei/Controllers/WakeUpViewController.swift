@@ -8,19 +8,35 @@
 
 import UIKit
 
-class WakeUpViewController: UIViewController {
+class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var setAlarmButton: UIButton!
     @IBOutlet weak var setFirstAlarmButton: UIButton!
     @IBOutlet weak var wakeUpLabel: UILabel!
     @IBOutlet weak var alarmsTable: UITableView!
+    
     var alarmsTableDataSource = AlarmsTableDataSource()
+    
     private var newAlarm: Alarm?
     
+    // MARK: - Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        alarmsTable.dataSource = alarmsTableDataSource
+        //1. AlarmsTable
+        func setupAlarmsTable() {
+            func addTapGestureRecognizerToAlarmsTable() {
+                let tapGestureRecognizer = UITapGestureRecognizer()
+                tapGestureRecognizer.delegate = self
+                tapGestureRecognizer.addTarget(self,action:#selector(WakeUpViewController.alarmsTableTapped(recognizer:)))
+                alarmsTable.addGestureRecognizer(tapGestureRecognizer)
+            }
+            
+            alarmsTable.dataSource = alarmsTableDataSource
+            addTapGestureRecognizerToAlarmsTable()
+        }
+        
+        setupAlarmsTable()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,6 +50,7 @@ class WakeUpViewController: UIViewController {
         }
     }
 
+    // MARK: - Actions
     @IBAction func setAlarmButtonPressed(_ sender: UIButton) {
 
     }
@@ -51,6 +68,13 @@ class WakeUpViewController: UIViewController {
             let i = alarmsTable.indexPath(for: cell)!.row
             alarmsTableDataSource.alarms[i].isActive.toggle()
             cell.alarm = alarmsTableDataSource.alarms[i]
+        }
+    }
+    
+    //MARK: - Gestures
+    @IBAction func alarmsTableTapped(recognizer: UITapGestureRecognizer) {
+        if let alarmIndex = alarmsTable.indexPathForRow(at: recognizer.location(in: alarmsTable))?.row {
+            print(alarmsTableDataSource.alarms[alarmIndex])
         }
     }
     
@@ -111,4 +135,5 @@ class AlarmsTableCell: UITableViewCell {
     @IBOutlet weak var repeatOnLabel: UILabel!
     @IBOutlet weak var melodyLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    
 }
