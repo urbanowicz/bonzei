@@ -23,7 +23,6 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //1. AlarmsTable
         func setupAlarmsTable() {
             func addTapGestureRecognizerToAlarmsTable() {
                 let tapGestureRecognizer = UITapGestureRecognizer()
@@ -40,18 +39,23 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        func insertNewAlarmIntoTable() {
-            if newAlarm != nil {
-                alarmsTableDataSource.alarms.insert(newAlarm!, at: 0)
+        
+        /// Inserts an alarm into the 'AlarmsTable'
+        func insert(alarm: Alarm?, into table:UITableView) {
                 alarmsTable.beginUpdates()
                 alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
                                        with: UITableView.RowAnimation.top)
                 alarmsTable.endUpdates()
-                newAlarm = nil
-            }
         }
         
-        insertNewAlarmIntoTable()
+        // if new alarm was set:
+        // 1. persist it
+        // 2. display it
+        if newAlarm != nil {
+            alarmsTableDataSource.alarms.insert(newAlarm!, at: 0)
+            insert(alarm: newAlarm!, into: alarmsTable)
+            newAlarm = nil
+        }
     }
 
     // MARK: - Actions
@@ -76,6 +80,12 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     //MARK: - Gestures
+    
+    /// Handles tap gestures on the 'AlarmsTable'.
+    /// - A user will tap on a row in the 'AlarmsTable' to edit an alarm.
+    /// - When a cell in the 'AlarmsTable' is tapped a segue to 'SetAlarmViewController' must be performed.
+    /// - 'SetAlarmViewController' handles the editing of the alarm.
+    /// - When the user is done editing the alarm, 'WakeUpViewController' must update and display the relevant row in the 'AlarmsTable'
     @IBAction func alarmsTableTapped(recognizer: UITapGestureRecognizer) {
         if let alarmIndex = alarmsTable.indexPathForRow(at: recognizer.location(in: alarmsTable))?.row {
             print(alarmsTableDataSource.alarms[alarmIndex])
