@@ -82,6 +82,10 @@ class SetAlarmViewController: UIViewController {
         performSegue(withIdentifier: "unwindSaveAlarmSegue", sender: self) 
     }
     
+    @IBAction func cancelPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "unwindCancel", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 

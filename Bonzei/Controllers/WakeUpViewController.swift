@@ -128,6 +128,11 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
             editedCell.alarm = alarms[alarmIndex!]
         }
     }
+    
+    @IBAction func unwindCancel(_ unwindSegue: UIStoryboardSegue) {
+        //nothing to do here.
+    }
+    
 }
 
 /// A custom cell for the 'Alarms Table'
