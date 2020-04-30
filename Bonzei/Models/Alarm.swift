@@ -20,6 +20,7 @@ struct Alarm {
     }
     var repeatOn = Set<Int>([0])
     var melodyName: String
+    var snoozeEnabled = true
     var isActive: Bool = true
 }
 

@@ -40,6 +40,7 @@ class SetAlarmViewController: UIViewController {
     @IBOutlet weak var playMelodyButton: UIButton!
     @IBOutlet weak var setMelodyButton: UIButton!
     @IBOutlet weak var dayOfWeekPicker: DayOfWeekPicker!
+    @IBOutlet weak var snoozeSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,7 @@ class SetAlarmViewController: UIViewController {
                 melodyLabel.text = alarm.melodyName
                 dayOfWeekPicker.selection = alarm.repeatOn
                 datePicker.date = alarm.date
+                snoozeSwitch.isOn = alarm.snoozeEnabled
             }
         }
         else {
@@ -68,9 +70,13 @@ class SetAlarmViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        let alarm = Alarm(date: datePicker.date,
-                          repeatOn: dayOfWeekPicker.selection,
-                          melodyName: selectedMelody)
+        let alarm = Alarm(
+            date: datePicker.date,
+            repeatOn: dayOfWeekPicker.selection,
+            melodyName: selectedMelody,
+            snoozeEnabled: snoozeSwitch.isOn
+        )
+        
         switch request {
         case .newAlarm:
             newAlarm = alarm

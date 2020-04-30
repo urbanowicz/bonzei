@@ -304,6 +304,7 @@
                         <outlet property="playMelodyButton" destination="y0L-Sf-8Df" id="UF3-bE-SAp"/>
                         <outlet property="saveButton" destination="3pv-Ko-fib" id="dfI-iX-qOe"/>
                         <outlet property="setMelodyButton" destination="b9b-bz-mgS" id="ALC-Zp-GRm"/>
+                        <outlet property="snoozeSwitch" destination="CJp-ET-CKq" id="e3B-iM-XUI"/>
                         <segue destination="5Gm-9t-4jN" kind="unwind" identifier="unwindSaveAlarmSegue" unwindAction="unwindSaveAlarm:" id="Huo-eK-pUv"/>
                         <segue destination="5Gm-9t-4jN" kind="unwind" identifier="unwindCancel" unwindAction="unwindCancel:" id="Eol-WB-Kgu"/>
                     </connections>
