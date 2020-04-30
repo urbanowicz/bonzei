@@ -10,9 +10,24 @@ import UIKit
 
 class SetAlarmViewController: UIViewController {
     
+    /// Used to indicate the kind of request the controller is requested to handle.
+    /// - 'newAlarm' means a user wishes to set a new alarm.
+    /// - 'editExistingAlarm' means a user wishes to edit an alarm he has previously created.
+    enum RequestType {
+        case newAlarm
+        case editExistingAlarm
+    }
+    
+    /// Used to indicate the kind of request the controller is requested to handle.
+    /// Must be set by the presenting controller
+    var request:RequestType = .newAlarm
+    
+    /// - In case of 'RequestType.newAlarm' request this variable will hold the newly created alarm.
+    /// - In case of 'RequestType.editExistingAlarm' the variable should be ignored.
     var newAlarm:Alarm?
     
     var selectedMelody = "Ambient Sea Waves"
+    
     //A standard date picker. Not customizable. Need to be replaced with a custom widget.
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!

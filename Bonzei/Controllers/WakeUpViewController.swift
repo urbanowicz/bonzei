@@ -59,24 +59,26 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     // MARK: - Actions
-    @IBAction func setAlarmButtonPressed(_ sender: UIButton) {
 
-    }
     
     @IBAction func toggleAlarm(_ sender: UISwitch) {
         
-        //One of the super views of the 'ui switch' must be an'AlarmsTableCell'. Find it.
+        // One of the super views of the 'ui switch' must be an'AlarmsTableCell'. Find it.
         var v = sender.superview
         while ((v as? AlarmsTableCell) == nil && v != nil) {
             v = v!.superview
         }
         
-        //cell - the AlarmsTableCell that was toggled
+        // cell - the AlarmsTableCell that was toggled
         if let cell = v as? AlarmsTableCell {
             let i = alarmsTable.indexPath(for: cell)!.row
             alarmsTableDataSource.alarms[i].isActive.toggle()
             cell.alarm = alarmsTableDataSource.alarms[i]
         }
+    }
+    
+    @IBAction func setAlarmButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "NewAlarm", sender: self)
     }
     
     //MARK: - Gestures
@@ -88,24 +90,24 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     /// - When the user is done editing the alarm, 'WakeUpViewController' must update and display the relevant row in the 'AlarmsTable'
     @IBAction func alarmsTableTapped(recognizer: UITapGestureRecognizer) {
         if let alarmIndex = alarmsTable.indexPathForRow(at: recognizer.location(in: alarmsTable))?.row {
-            print(alarmsTableDataSource.alarms[alarmIndex])
+            print("Edit Alarm: \(alarmsTableDataSource.alarms[alarmIndex])")
         }
     }
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if segue.identifier! == "WakeUpToSetAlarmSegue" {
-            
+        if segue.identifier! == "NewAlarm" {
+            let setAlarmViewController = segue.destination as! SetAlarmViewController
+            setAlarmViewController.request = .newAlarm
         }
     }
     
     @IBAction func unwindSaveAlarm(_ unwindSegue: UIStoryboardSegue) {
-        let src = unwindSegue.source as! SetAlarmViewController
-        self.newAlarm = src.newAlarm
+        let setAlarmViewControler = unwindSegue.source as! SetAlarmViewController
+        if (setAlarmViewControler.request == .newAlarm) {
+            self.newAlarm = setAlarmViewControler.newAlarm
+        }
     }
 }
 

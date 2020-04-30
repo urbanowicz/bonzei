@@ -30,7 +30,6 @@
                                         <state key="normal" title="Add"/>
                                         <connections>
                                             <action selector="setAlarmButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="95V-wx-p4N"/>
-                                            <segue destination="WKb-vj-sEy" kind="presentation" identifier="WakeUpToSetAlarmSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="B3r-2J-1fH"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -139,6 +138,8 @@
                         <outlet property="alarmsTable" destination="VAZ-Yu-6ic" id="Cin-uv-sf2"/>
                         <outlet property="setAlarmButton" destination="fW0-bm-2EE" id="LyW-3b-taz"/>
                         <outlet property="wakeUpLabel" destination="du5-cL-cDe" id="eha-DO-j7n"/>
+                        <segue destination="WKb-vj-sEy" kind="presentation" identifier="NewAlarm" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="Qew-y1-UeD"/>
+                        <segue destination="WKb-vj-sEy" kind="presentation" identifier="EditExistingAlarm" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="6e3-ZK-DPt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -423,4 +424,7 @@
         <image name="chevron.right" catalog="system" width="48" height="64"/>
         <image name="playButton" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6e3-ZK-DPt"/>
+    </inferredMetricsTieBreakers>
 </document>
