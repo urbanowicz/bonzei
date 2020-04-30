@@ -15,9 +15,18 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var wakeUpLabel: UILabel!
     @IBOutlet weak var alarmsTable: UITableView!
     
+    /// A data source for the alarms table.
     var alarmsTableDataSource = AlarmsTableDataSource()
     
-    private var newAlarm: Alarm?
+    /// Index of the alarm that a user last tapped or selected in the table.
+    var alarmIndex:Int?
+    
+    /// If  a new alarm has been created by the 'SetAlarmViewController' this variable will hold the new alarm.
+    /// This is needed so that this controller can:
+    /// - insert the alarm into 'UIViewTable',
+    /// - store the alarm in the model,
+    /// - persist the alarm in 'FileDb'.
+    var newAlarm: Alarm?
     
     // MARK: - Initialization
     override func viewDidLoad() {
@@ -40,7 +49,7 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        /// Inserts an alarm into the 'AlarmsTable'
+        /// Inserts an alarm into 'AlarmsTable'
         func insert(alarm: Alarm?, into table:UITableView) {
                 alarmsTable.beginUpdates()
                 alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
@@ -52,17 +61,15 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         // 1. persist it
         // 2. display it
         if newAlarm != nil {
-            alarmsTableDataSource.alarms.insert(newAlarm!, at: 0)
+            alarms.insert(newAlarm!, at: 0)
             insert(alarm: newAlarm!, into: alarmsTable)
             newAlarm = nil
         }
     }
 
     // MARK: - Actions
-
     
-    @IBAction func toggleAlarm(_ sender: UISwitch) {
-        
+    @IBAction func toggleAlarm(_ sender: UISwitch) {        
         // One of the super views of the 'ui switch' must be an'AlarmsTableCell'. Find it.
         var v = sender.superview
         while ((v as? AlarmsTableCell) == nil && v != nil) {
@@ -72,8 +79,8 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         // cell - the AlarmsTableCell that was toggled
         if let cell = v as? AlarmsTableCell {
             let i = alarmsTable.indexPath(for: cell)!.row
-            alarmsTableDataSource.alarms[i].isActive.toggle()
-            cell.alarm = alarmsTableDataSource.alarms[i]
+            alarms[i].isActive.toggle()
+            cell.alarm = alarms[i]
         }
     }
     
@@ -90,7 +97,8 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     /// - When the user is done editing the alarm, 'WakeUpViewController' must update and display the relevant row in the 'AlarmsTable'
     @IBAction func alarmsTableTapped(recognizer: UITapGestureRecognizer) {
         if let alarmIndex = alarmsTable.indexPathForRow(at: recognizer.location(in: alarmsTable))?.row {
-            print("Edit Alarm: \(alarmsTableDataSource.alarms[alarmIndex])")
+            self.alarmIndex = alarmIndex
+            performSegue(withIdentifier: "EditExistingAlarm", sender: self)
         }
     }
     
@@ -101,12 +109,23 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
             let setAlarmViewController = segue.destination as! SetAlarmViewController
             setAlarmViewController.request = .newAlarm
         }
+        
+        if segue.identifier! == "EditExistingAlarm" {
+            let setAlarmViewController = segue.destination as! SetAlarmViewController
+            setAlarmViewController.request = .editExistingAlarm
+            setAlarmViewController.alarmIndex = alarmIndex
+        }
     }
     
     @IBAction func unwindSaveAlarm(_ unwindSegue: UIStoryboardSegue) {
         let setAlarmViewControler = unwindSegue.source as! SetAlarmViewController
-        if (setAlarmViewControler.request == .newAlarm) {
+        switch setAlarmViewControler.request {
+        case .newAlarm :
             self.newAlarm = setAlarmViewControler.newAlarm
+        
+        case .editExistingAlarm:
+            let editedCell = alarmsTable.cellForRow(at: IndexPath(row: alarmIndex!, section: 0)) as! AlarmsTableCell
+            editedCell.alarm = alarms[alarmIndex!]
         }
     }
 }

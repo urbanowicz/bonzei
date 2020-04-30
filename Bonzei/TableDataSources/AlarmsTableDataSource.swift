@@ -9,7 +9,7 @@
 import UIKit
 
 class AlarmsTableDataSource: NSObject, UITableViewDataSource {
-    var alarms = [Alarm]()
+    
     let cellReuseId = "alarmsTableCell"
     
     override init() {

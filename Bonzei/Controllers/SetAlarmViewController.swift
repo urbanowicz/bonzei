@@ -20,11 +20,16 @@ class SetAlarmViewController: UIViewController {
     
     /// Used to indicate the kind of request the controller is requested to handle.
     /// Must be set by the presenting controller
-    var request:RequestType = .newAlarm
+    var request: RequestType = .newAlarm
     
-    /// - In case of 'RequestType.newAlarm' request this variable will hold the newly created alarm.
-    /// - In case of 'RequestType.editExistingAlarm' the variable should be ignored.
-    var newAlarm:Alarm?
+    /// - In case of 'RequestType.newAlarm' this variable will hold the new alarm after it has been created by this controller.
+    /// - In case of 'RequestType.editExistingAlarm' the variable is ignored.
+    var newAlarm: Alarm?
+    
+    /// - In case of 'RequestType.newAlarm' the variable is ignored.
+    /// - In case of 'RequestType.editExistingAlarm' the variable must be set to a valid index of the alarm that a user wishes to edit.
+    /// - Must be set by the presenting view controller.
+    var alarmIndex: Int?
     
     var selectedMelody = "Ambient Sea Waves"
     
@@ -44,16 +49,36 @@ class SetAlarmViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        melodyLabel.text = selectedMelody
+        
+        if isBeingPresented {
+            switch request {
+            case .newAlarm:
+                melodyLabel.text = selectedMelody
+                
+            case .editExistingAlarm:
+                let alarm = alarms[alarmIndex!]
+                melodyLabel.text = alarm.melodyName
+                dayOfWeekPicker.selection = alarm.repeatOn
+                datePicker.date = alarm.date
+            }
+        }
+        else {
+            melodyLabel.text = selectedMelody
+        }
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        //1.
-        newAlarm = Alarm(date: datePicker.date,
-                         repeatOn: dayOfWeekPicker.selection,
-                         melodyName: selectedMelody)
+        let alarm = Alarm(date: datePicker.date,
+                          repeatOn: dayOfWeekPicker.selection,
+                          melodyName: selectedMelody)
+        switch request {
+        case .newAlarm:
+            newAlarm = alarm
         
-        //2.
+        case .editExistingAlarm:
+            alarms[alarmIndex!] = alarm
+        }
+        
         performSegue(withIdentifier: "unwindSaveAlarmSegue", sender: self) 
     }
     
