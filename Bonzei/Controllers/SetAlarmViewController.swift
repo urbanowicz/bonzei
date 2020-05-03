@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SetAlarmViewController: UIViewController {
     
@@ -32,6 +33,9 @@ class SetAlarmViewController: UIViewController {
     var alarmIndex: Int?
     
     var selectedMelody = "Ambient Sea Waves"
+    
+    /// - Audio player used for previewing melodies
+    var audioPlayer: AVAudioPlayer?
     
     //A standard date picker. Not customizable. Need to be replaced with a custom widget.
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -82,6 +86,7 @@ class SetAlarmViewController: UIViewController {
             case .editExistingAlarm:
                 let alarm = alarms[alarmIndex!]
                 melodyLabel.text = alarm.melodyName
+                selectedMelody = alarm.melodyName
                 dayOfWeekPicker.selection = alarm.repeatOn
                 datePicker.date = alarm.date
                 snoozeSwitch.isOn = alarm.snoozeEnabled
@@ -93,6 +98,34 @@ class SetAlarmViewController: UIViewController {
         
     }
     
+    /// Starts or stops the melody preview.
+    @IBAction func playMelodyButtonPressed(_ sender: UIButton) {
+            
+        // If a melody is being previewed, stop the playback and return immediately
+        if audioPlayer != nil && audioPlayer!.isPlaying{
+            audioPlayer!.stop()
+            return
+        }
+        
+        // Play the selected melody
+        if let path = Bundle.main.path(forResource: selectedMelody + ".mp3", ofType: nil) {
+            
+            let url = URL(fileURLWithPath: path)
+            
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.play()
+            } catch {
+                print("Playing a melody failed. \"\(selectedMelody).mp3\"")
+            }
+            
+        } else {
+            
+            print("Couldn't preview a melody because the sound file was not found: \"\(selectedMelody).mp3\"")
+        
+        }
+    }
+
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         
         let alarm = Alarm(
