@@ -35,22 +35,45 @@ class SetAlarmViewController: UIViewController {
     
     //A standard date picker. Not customizable. Need to be replaced with a custom widget.
     @IBOutlet weak var datePicker: UIDatePicker!
+    
     @IBOutlet weak var saveButton: UIButton!
+    
     @IBOutlet weak var melodyLabel: UILabel!
+    
     @IBOutlet weak var playMelodyButton: UIButton!
+    
     @IBOutlet weak var setMelodyButton: UIButton!
+    
     @IBOutlet weak var dayOfWeekPicker: DayOfWeekPicker!
+    
     @IBOutlet weak var snoozeSwitch: UISwitch!
     
+    //MARK: - Initialization
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        // Clear the background that might have been set in the story board for debugging.
         playMelodyButton.backgroundColor = UIColor.clear
         setMelodyButton.backgroundColor = UIColor.clear
+        
+        // Setup a `UITapGestureRecognizer` for `melodyLabel`
+        // When `melodyLabel` is tapped, we want to transition to `SetMelodyViewController`
+        melodyLabel.isUserInteractionEnabled = true
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.addTarget(self, action: #selector(SetAlarmViewController.melodyLabelTapped(tapRecoginzer:)))
+        melodyLabel.addGestureRecognizer(tapGestureRecognizer)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
+        // Check if we've transitioned from `WakeUpViewController` or from `SetMelodyViewController`
+        // `isBeingPresented == true` means the former.
+        // `isBeingPresented == false` means the latter.
         if isBeingPresented {
             switch request {
             case .newAlarm:
@@ -67,9 +90,11 @@ class SetAlarmViewController: UIViewController {
         else {
             melodyLabel.text = selectedMelody
         }
+        
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
+        
         let alarm = Alarm(
             date: datePicker.date,
             repeatOn: dayOfWeekPicker.selection,
@@ -78,18 +103,23 @@ class SetAlarmViewController: UIViewController {
         )
         
         switch request {
+        
         case .newAlarm:
             newAlarm = alarm
         
         case .editExistingAlarm:
             alarms[alarmIndex!] = alarm
+        
         }
         
         performSegue(withIdentifier: "unwindSaveAlarmSegue", sender: self) 
+    
     }
     
     @IBAction func cancelPressed(_ sender: UIButton) {
+        
         performSegue(withIdentifier: "unwindCancel", sender: self)
+    
     }
     
     /*
@@ -102,10 +132,19 @@ class SetAlarmViewController: UIViewController {
     }
     */
     
+    /// Called when  `melodyLabel` is tapped.
+    @IBAction func melodyLabelTapped(tapRecoginzer: UITapGestureRecognizer) {
+       
+        performSegue(withIdentifier: "SetAlarmToSetMelody", sender: self)
+    
+    }
+    
     @IBAction func unwindSetMelody(_ unwindSegue: UIStoryboardSegue) {
+        
         let setMelodyViewController = unwindSegue.source as! SetMelodyViewController
         if setMelodyViewController.selectedMelody != nil {
             selectedMelody = setMelodyViewController.selectedMelody!
         }
+    
     }
 }
