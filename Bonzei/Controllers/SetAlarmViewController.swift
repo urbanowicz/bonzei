@@ -103,12 +103,7 @@ class SetAlarmViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        // If the audio is being played we need to stop it now.
-        
-        if let audioPlayer = self.audioPlayer {
-            audioPlayer.stop()
-        }
-        
+        stopPlayback()
     }
     
     // MARK: - Actions and Navigation
@@ -118,8 +113,7 @@ class SetAlarmViewController: UIViewController {
             
         // If a melody is being previewed, stop the playback and return immediately
         if audioPlayer != nil && audioPlayer!.isPlaying{
-            audioPlayer!.stop()
-            playMelodyButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            stopPlayback()
             return
         }
         
@@ -131,7 +125,7 @@ class SetAlarmViewController: UIViewController {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.play()
-                playMelodyButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                playMelodyButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
             } catch {
                 print("Playing a melody failed. \"\(selectedMelody).mp3\"")
             }
@@ -184,5 +178,17 @@ class SetAlarmViewController: UIViewController {
             selectedMelody = setMelodyViewController.selectedMelody!
         }
     
+    }
+    
+    //MARK: - Helper functions
+    
+    private func stopPlayback() {
+        
+        playMelodyButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        
+        if let audioPlayer = self.audioPlayer {
+            audioPlayer.stop()
+        }
+        
     }
 }

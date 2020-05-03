@@ -132,7 +132,7 @@ class MelodyCell: UITableViewCell {
     var isPlaying = false {
         didSet {
             if isPlaying {
-                playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                playButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
             } else {
                 playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             }
