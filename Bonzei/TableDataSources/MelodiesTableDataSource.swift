@@ -17,8 +17,8 @@ class MelodiesTableDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId)!
-        cell.textLabel!.text = melodies[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId) as! MelodyCell
+        cell.melodyNameLabel.text = melodies[indexPath.row]
         return cell
     }
     
