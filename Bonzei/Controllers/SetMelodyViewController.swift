@@ -14,6 +14,9 @@ class SetMelodyViewController: UIViewController {
     /// Data source for the `melodiesTable`
     var melodiesTableDataSource = MelodiesTableDataSource()
     
+    /// Delegate for the `melodiesTable`
+    var melodiesTableDelegate = MelodiesTableDelegate()
+    
     /// After a user has chosen a melody, the melodie's name will be stored here
     var selectedMelody:String?
     
@@ -43,7 +46,8 @@ class SetMelodyViewController: UIViewController {
         
         super.viewDidLoad()
         backButton.backgroundColor = UIColor.clear
-        melodiesTable.dataSource = melodiesTableDataSource 
+        melodiesTable.dataSource = melodiesTableDataSource
+        melodiesTable.delegate = melodiesTableDelegate
     
     }
     
@@ -129,6 +133,20 @@ class SetMelodyViewController: UIViewController {
 /// A custom `UITableViewCell` for the `melodiesTable`
 class MelodyCell: UITableViewCell {
     
+    /// Indicates whether a user has picked this melody by selecting a corresponding row in the table
+    var isPicked = false {
+        didSet {
+            if isPicked {
+                checkMarkLabel.text = "\u{2713}"
+                checkMarkLabel.isHidden = false
+            } else {
+                checkMarkLabel.isHidden = true
+            }
+            setNeedsDisplay()
+        }
+    }
+    
+    /// Indicates whether this melody is currently being previewed
     var isPlaying = false {
         didSet {
             if isPlaying {
@@ -142,10 +160,26 @@ class MelodyCell: UITableViewCell {
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var melodyNameLabel: UILabel!
+    @IBOutlet weak var checkMarkLabel: UILabel!
     
+    /// A name of the melody that is displayed in this cell
     var melodyName: String? {
         get {
             return melodyNameLabel.text
         }
+    }
+}
+
+/// A delegate for the table that displays names of melodies
+class MelodiesTableDelegate: NSObject, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! MelodyCell
+        cell.isPicked = true
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! MelodyCell
+        cell.isPicked = false
     }
 }
