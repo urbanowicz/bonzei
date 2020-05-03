@@ -12,6 +12,7 @@
 		F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */; };
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F15526C6244A0F4B00741E80 /* FileDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C5244A0F4B00741E80 /* FileDB.swift */; };
+		F15590FB245EEE1600928589 /* Forest Light Rays.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15590FA245EEE1600928589 /* Forest Light Rays.mp3 */; };
 		F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE22447089F008E9227 /* AppDelegate.swift */; };
 		F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE42447089F008E9227 /* SceneDelegate.swift */; };
 		F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE62447089F008E9227 /* WakeUpViewController.swift */; };
@@ -41,6 +42,7 @@
 		F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMelodyViewController.swift; sourceTree = "<group>"; };
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		F15526C5244A0F4B00741E80 /* FileDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDB.swift; sourceTree = "<group>"; };
+		F15590FA245EEE1600928589 /* Forest Light Rays.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Forest Light Rays.mp3"; sourceTree = "<group>"; };
 		F17ABEDF2447089F008E9227 /* Bonzei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bonzei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17ABEE22447089F008E9227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17ABEE42447089F008E9227 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F15590F7245EE3F400928589 /* SoundFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F15590FA245EEE1600928589 /* Forest Light Rays.mp3 */,
+			);
+			path = SoundFiles;
+			sourceTree = "<group>";
+		};
 		F17ABED62447089F008E9227 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +143,7 @@
 		F17ABEE12447089F008E9227 /* Bonzei */ = {
 			isa = PBXGroup;
 			children = (
+				F15590F7245EE3F400928589 /* SoundFiles */,
 				F1421C242454B6BF003D226A /* Controls */,
 				F11E3F1D244EFFE400CF6B4A /* TableDataSources */,
 				F11E3F1C244EFEF400CF6B4A /* Controllers */,
@@ -240,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F17ABEF4244708A2008E9227 /* LaunchScreen.storyboard in Resources */,
+				F15590FB245EEE1600928589 /* Forest Light Rays.mp3 in Resources */,
 				F17ABEF1244708A2008E9227 /* Assets.xcassets in Resources */,
 				F17ABEEC2447089F008E9227 /* Main.storyboard in Resources */,
 			);
