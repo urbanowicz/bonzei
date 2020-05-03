@@ -119,6 +119,7 @@ class SetAlarmViewController: UIViewController {
         // If a melody is being previewed, stop the playback and return immediately
         if audioPlayer != nil && audioPlayer!.isPlaying{
             audioPlayer!.stop()
+            playMelodyButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             return
         }
         
@@ -130,6 +131,7 @@ class SetAlarmViewController: UIViewController {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.play()
+                playMelodyButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             } catch {
                 print("Playing a melody failed. \"\(selectedMelody).mp3\"")
             }

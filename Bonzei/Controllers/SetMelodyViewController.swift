@@ -99,7 +99,6 @@ class SetMelodyViewController: UIViewController {
             }
         
         }
-        
 
         // Play the selected melody
         if let path = Bundle.main.path(forResource: selectedCell.melodyName! + ".mp3", ofType: nil) {
