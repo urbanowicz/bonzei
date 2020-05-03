@@ -80,8 +80,8 @@ class SetAlarmViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Check if we've transitioned from `WakeUpViewController` or from `SetMelodyViewController`
-        // `isBeingPresented == true` means the former.
-        // `isBeingPresented == false` means the latter.
+        // `isBeingPresented` equal to `true` means we've transitioned from `WakeUpViewController`.
+        // `isBeingPresented` equal to `false` means we've transitioned back from `SetMelodyViewController.
         if isBeingPresented {
             switch request {
             case .newAlarm:
@@ -99,10 +99,21 @@ class SetAlarmViewController: UIViewController {
         else {
             melodyLabel.text = selectedMelody
         }
+    
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        // If the audio is being played we need to stop it now.
+        
+        if let audioPlayer = self.audioPlayer {
+            audioPlayer.stop()
+        }
         
     }
     
-    /// Starts or stops the melody preview.
+    // MARK: - Actions and Navigation
+    
+    /// Starts or stops a melody preview.
     @IBAction func playMelodyButtonPressed(_ sender: UIButton) {
             
         // If a melody is being previewed, stop the playback and return immediately
@@ -158,16 +169,6 @@ class SetAlarmViewController: UIViewController {
         performSegue(withIdentifier: "unwindCancel", sender: self)
     
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     /// Called when  `melodyLabel` is tapped.
     @IBAction func melodyLabelTapped(tapRecoginzer: UITapGestureRecognizer) {
