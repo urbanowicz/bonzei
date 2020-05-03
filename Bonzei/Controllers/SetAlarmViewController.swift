@@ -32,12 +32,16 @@ class SetAlarmViewController: UIViewController {
     /// - Must be set by the presenting view controller.
     var alarmIndex: Int?
     
-    var selectedMelody = "Ambient Sea Waves"
+    /// A  name of a melody that is currently displayed in this scene
+    /// If a user presses the `saveButton` this is the melody that will be associated with the alarm.
+    ///
+    /// - See also: `Melody.swift`
+    var selectedMelody = melodies[0]
     
-    /// - Audio player used for previewing melodies
+    /// Audio player used for previewing melodies
     var audioPlayer: AVAudioPlayer?
     
-    //A standard date picker. Not customizable. Need to be replaced with a custom widget.
+    /// A standard date picker. Not customizable. Need to be replaced with a custom control.
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var saveButton: UIButton!

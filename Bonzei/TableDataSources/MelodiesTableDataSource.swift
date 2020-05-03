@@ -9,11 +9,6 @@
 import UIKit
 
 class MelodiesTableDataSource: NSObject, UITableViewDataSource {
-    var melodies = ["Ambient Sea Waves",
-                    "Emerald Mountains",
-                    "Endorphin Birds",
-                    "Forest Light Rays",
-                    "Midnight Moon"]
     
     let cellReuseId = "MelodiesTableCell"
     
@@ -26,4 +21,5 @@ class MelodiesTableDataSource: NSObject, UITableViewDataSource {
         cell.textLabel!.text = melodies[indexPath.row]
         return cell
     }
+    
 }
