@@ -135,9 +135,7 @@ class SetAlarmViewController: UIViewController {
             }
             
         } else {
-            
             print("Couldn't preview a melody because the sound file was not found: \"\(selectedMelody).mp3\"")
-        
         }
     }
 
