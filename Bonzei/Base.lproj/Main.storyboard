@@ -356,7 +356,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8g-SG-eb0" userLabel="Play">
                                                     <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Ww9-LA-Pwr"/>
                                                         <constraint firstAttribute="height" constant="45" id="vpL-VD-IVi"/>
@@ -378,6 +378,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rno-LY-Cym">
+                                                    <rect key="frame" x="0.0" y="47" width="374" height="2"/>
+                                                </progressView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="J2h-3e-BYQ" firstAttribute="centerY" secondItem="6eN-ux-au2" secondAttribute="centerY" id="7SD-Cv-Il7"/>
@@ -386,13 +389,17 @@
                                                 <constraint firstItem="6eN-ux-au2" firstAttribute="centerY" secondItem="a8g-SG-eb0" secondAttribute="centerY" id="Aiy-v4-GVV"/>
                                                 <constraint firstItem="a8g-SG-eb0" firstAttribute="top" secondItem="hnN-mh-Phh" secondAttribute="top" id="EgO-sj-mBz"/>
                                                 <constraint firstAttribute="trailing" secondItem="J2h-3e-BYQ" secondAttribute="trailing" id="Pyi-fV-MGo"/>
+                                                <constraint firstAttribute="trailing" secondItem="Rno-LY-Cym" secondAttribute="trailing" id="UWO-e7-y1S"/>
+                                                <constraint firstItem="Rno-LY-Cym" firstAttribute="leading" secondItem="hnN-mh-Phh" secondAttribute="leading" id="dOF-qe-VCK"/>
                                                 <constraint firstItem="6eN-ux-au2" firstAttribute="leading" secondItem="a8g-SG-eb0" secondAttribute="trailing" constant="10" id="g80-NX-heD"/>
+                                                <constraint firstItem="Rno-LY-Cym" firstAttribute="top" secondItem="a8g-SG-eb0" secondAttribute="bottom" constant="2" id="x0N-dK-fef"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="checkMarkLabel" destination="J2h-3e-BYQ" id="M5l-o9-GSY"/>
                                             <outlet property="melodyNameLabel" destination="6eN-ux-au2" id="UPl-st-NfS"/>
                                             <outlet property="playButton" destination="a8g-SG-eb0" id="GI6-i6-SVZ"/>
+                                            <outlet property="progressBar" destination="Rno-LY-Cym" id="0f7-4d-PrB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

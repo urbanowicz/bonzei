@@ -52,10 +52,7 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        indexOfCurrentlyPlayingCell = nil
-        if let audioPlayer = self.audioPlayer {
-            audioPlayer.stop()
-        }
+        stopCurrentlyPlayingCell()
     }
     
     // MARK: - Navigation
@@ -114,6 +111,7 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
             if let success = audioPlayer?.play() {
                 if success {
                     cell.play()
+                    startUpdatingProgressBarFor(cell: cell)
                 }
             }
             return
@@ -135,6 +133,7 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
                 audioPlayer?.play()
                 indexOfCurrentlyPlayingCell = melodiesTable.indexPath(for: cell)!.row
                 cell.play()
+                startUpdatingProgressBarFor(cell: cell)
             } catch {
                 print("Playing a melody failed. \"\(cell.melodyName!).mp3\"")
                 indexOfCurrentlyPlayingCell = nil
@@ -169,6 +168,25 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         }
         return nil
     }
+    
+    private func startUpdatingProgressBarFor(cell: MelodyCell) {
+        let queue = DispatchQueue(label: "PlaybackProgress", qos: .utility)
+        queue.async {
+            if let audioPlayer = self.audioPlayer {
+                while audioPlayer.isPlaying {
+                    let progress = Float(audioPlayer.currentTime / audioPlayer.duration)
+                    self.setProgress(progress, forCell: cell)
+                    Thread.sleep(forTimeInterval: 0.25)
+                }
+            }
+        }
+    }
+    
+    private func setProgress(_ progress: Float, forCell cell: MelodyCell) {
+        DispatchQueue.main.async {
+            cell.setProgress(progress)
+        }
+    }
 }
 
 /// A custom `UITableViewCell` for the `melodiesTable`
@@ -194,8 +212,12 @@ class MelodyCell: UITableViewCell {
     private(set) var isPaused = false
     
     @IBOutlet weak var playButton: UIButton!
+    
     @IBOutlet weak var melodyNameLabel: UILabel!
+    
     @IBOutlet weak var checkMarkLabel: UILabel!
+    
+    @IBOutlet weak var progressBar: UIProgressView!
     
     /// A name of the melody that is displayed in this cell
     var melodyName: String? {
@@ -232,9 +254,15 @@ class MelodyCell: UITableViewCell {
             return
         }
         playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        progressBar.setProgress(0, animated: true)
         isPlaying = false
         isPaused = false
         setNeedsDisplay()
+    }
+    
+    /// Updates the progress bar
+    func setProgress(_ progress: Float) {
+        progressBar.setProgress(progress, animated: true)
     }
 }
 
