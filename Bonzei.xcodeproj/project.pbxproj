@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
+		F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1329B172460912300E7F7A2 /* OvalButton.swift */; };
 		F1368DA0246063FA00BBFC39 /* Endorphin Birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1368D9D246063F900BBFC39 /* Endorphin Birds.mp3 */; };
 		F1368DA1246063FA00BBFC39 /* Midnight Moon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1368D9E246063F900BBFC39 /* Midnight Moon.mp3 */; };
 		F1368DA2246063FA00BBFC39 /* Ambient Sea Waves.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1368D9F246063F900BBFC39 /* Ambient Sea Waves.mp3 */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
+		F1329B172460912300E7F7A2 /* OvalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButton.swift; sourceTree = "<group>"; };
 		F1368D9D246063F900BBFC39 /* Endorphin Birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Endorphin Birds.mp3"; sourceTree = "<group>"; };
 		F1368D9E246063F900BBFC39 /* Midnight Moon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Midnight Moon.mp3"; sourceTree = "<group>"; };
 		F1368D9F246063F900BBFC39 /* Ambient Sea Waves.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ambient Sea Waves.mp3"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				F1421C252454B710003D226A /* DayOfWeekPicker.swift */,
+				F1329B172460912300E7F7A2 /* OvalButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */,
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F15526C4244A060300741E80 /* Alarm.swift in Sources */,
+				F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */,
 				F15526C6244A0F4B00741E80 /* FileDB.swift in Sources */,
 				F15590FD245EF27300928589 /* Melody.swift in Sources */,
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
