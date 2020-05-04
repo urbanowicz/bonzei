@@ -378,7 +378,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rno-LY-Cym">
+                                                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rno-LY-Cym">
                                                     <rect key="frame" x="0.0" y="47" width="374" height="2"/>
                                                 </progressView>
                                             </subviews>
