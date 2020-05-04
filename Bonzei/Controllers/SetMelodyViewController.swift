@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class SetMelodyViewController: UIViewController {
+class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     
     /// Data source for the `melodiesTable`
     var melodiesTableDataSource = MelodiesTableDataSource()
@@ -23,15 +23,15 @@ class SetMelodyViewController: UIViewController {
     /// Audio player used for previewing melodies
     var audioPlayer: AVAudioPlayer?
     
-    /// Table index of the melody that is currently being previewd by a user
+    /// Table index of the melody that is currently being previewed by a user
     ///
     /// If no melody is being previewed it set to `nil`
     /// If a melody is being previewed then below code will return the relevant `MelodyCell`:
     ///
-    ///     melodiesTable.cellForRow(at: IndexPath(row: indexOfCurrentlyPlayingMelody, section: 0))
+    ///     melodiesTable.cellForRow(at: IndexPath(row: indexOfCurrentlyPlayingCell, section: 0))
     ///
     ///
-    var indexOfCurrentlyPlayingMelody: Int?
+    var indexOfCurrentlyPlayingCell: Int?
     
     /// A back button. Initiates a transition back to `SetAlarmViewController`
     @IBOutlet weak var backButton: UIButton!
@@ -52,7 +52,7 @@ class SetMelodyViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        indexOfCurrentlyPlayingMelody = nil
+        indexOfCurrentlyPlayingCell = nil
         if let audioPlayer = self.audioPlayer {
             audioPlayer.stop()
         }
@@ -71,7 +71,7 @@ class SetMelodyViewController: UIViewController {
         
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     /// Start or stop a preview of a melody
     @IBAction func playButtonPressed(_ sender: UIButton) {
@@ -93,16 +93,23 @@ class SetMelodyViewController: UIViewController {
         play(cell: selectedCell)
     }
     
+    // MARK: - AVAudioPlayerDelegate
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        currentlyPlayingCell()?.stop()
+        indexOfCurrentlyPlayingCell = nil
+    }
+    
     // MARK: - Helper functions
     
     private func play(cell: MelodyCell) {
         
-        // If the cell is currently playing we don't have to do anything
+        // If the selected cell is currently playing we don't need to do anything
         if cell.isPlaying {
             return
         }
         
-        // If the cell is paused try resuming playback
+        // If the selected cell is paused, try resuming playback
         if cell.isPaused {
             if let success = audioPlayer?.play() {
                 if success {
@@ -114,7 +121,7 @@ class SetMelodyViewController: UIViewController {
         
         // If we got here, it means a user requested a new cell to play.
         // 1. If any other cell is playing, stop it.
-        if indexOfCurrentlyPlayingMelody != nil {
+        if indexOfCurrentlyPlayingCell != nil {
             stopCurrentlyPlayingCell()
         }
         
@@ -124,12 +131,13 @@ class SetMelodyViewController: UIViewController {
             
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.delegate = self
                 audioPlayer?.play()
-                indexOfCurrentlyPlayingMelody = melodiesTable.indexPath(for: cell)!.row
+                indexOfCurrentlyPlayingCell = melodiesTable.indexPath(for: cell)!.row
                 cell.play()
             } catch {
                 print("Playing a melody failed. \"\(cell.melodyName!).mp3\"")
-                indexOfCurrentlyPlayingMelody = nil
+                indexOfCurrentlyPlayingCell = nil
                 cell.stop()
             }
             
@@ -141,9 +149,9 @@ class SetMelodyViewController: UIViewController {
     
     /// Stops the audio and resets the variables so that they reflect the "nothing's playing" state
     private func stopCurrentlyPlayingCell() {
-        audioPlayer?.stop()
         currentlyPlayingCell()?.stop()
-        indexOfCurrentlyPlayingMelody = nil
+        indexOfCurrentlyPlayingCell = nil
+        audioPlayer?.stop()
     }
     
     /// Pauses the audio if it is currently playing.
@@ -156,7 +164,7 @@ class SetMelodyViewController: UIViewController {
     ///
     /// - Returns: a `MelodyCell` that is being previewed or `nil` if no melody is being previewed.
     private func currentlyPlayingCell() -> MelodyCell? {
-        if let i = indexOfCurrentlyPlayingMelody {
+        if let i = indexOfCurrentlyPlayingCell {
             return melodiesTable.cellForRow(at: IndexPath(row: i, section: 0)) as? MelodyCell
         }
         return nil
@@ -180,9 +188,10 @@ class MelodyCell: UITableViewCell {
     }
     
     /// Indicates whether this melody is currently being previewed
-    var isPlaying = false
+    private(set) var isPlaying = false
     
-    var isPaused = false
+    /// Indicates whether this melody is paused
+    private(set) var isPaused = false
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var melodyNameLabel: UILabel!
@@ -195,6 +204,7 @@ class MelodyCell: UITableViewCell {
         }
     }
     
+    /// Makes the cell enter the `Playing` state
     func play() {
         if isPlaying {
             return
@@ -205,6 +215,7 @@ class MelodyCell: UITableViewCell {
         setNeedsDisplay()
     }
     
+    /// Makes the cell enter the `Paused` state
     func pause() {
         if !isPlaying {
             return
@@ -215,6 +226,7 @@ class MelodyCell: UITableViewCell {
         setNeedsDisplay()
     }
     
+    /// Makes  the cell enter the `Stopped` state
     func stop() {
         if !isPlaying && !isPaused {
             return

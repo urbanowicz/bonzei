@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class SetAlarmViewController: UIViewController {
+class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     
     /// Used to indicate the kind of request the controller is requested to handle.
     /// - 'newAlarm' means a user wishes to set a new alarm.
@@ -40,6 +40,17 @@ class SetAlarmViewController: UIViewController {
     
     /// Audio player used for previewing melodies
     var audioPlayer: AVAudioPlayer?
+    
+    /// Indicates whether a user is previewing the selected melody
+    var isMelodyPlaying = false {
+        didSet {
+            if isMelodyPlaying {
+                playMelodyButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+            } else {
+                playMelodyButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            }
+        }
+    }
     
     /// A standard date picker. Not customizable. Need to be replaced with a custom control.
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -124,8 +135,9 @@ class SetAlarmViewController: UIViewController {
             
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.delegate = self
                 audioPlayer?.play()
-                playMelodyButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+                isMelodyPlaying = true
             } catch {
                 print("Playing a melody failed. \"\(selectedMelody).mp3\"")
             }
@@ -180,15 +192,18 @@ class SetAlarmViewController: UIViewController {
     
     }
     
+    //MARK: - AVAudioPlayerDelegate
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        isMelodyPlaying = false
+    }
+    
     //MARK: - Helper functions
     
     private func stopPlayback() {
-        
-        playMelodyButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        
+        isMelodyPlaying = false
         if let audioPlayer = self.audioPlayer {
             audioPlayer.stop()
         }
-        
     }
 }
