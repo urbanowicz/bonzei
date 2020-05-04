@@ -72,6 +72,7 @@ class SetMelodyViewController: UIViewController {
     }
     
     //MARK: - Actions
+    
     /// Start or stop a preview of a melody
     @IBAction func playButtonPressed(_ sender: UIButton) {
         
@@ -84,50 +85,82 @@ class SetMelodyViewController: UIViewController {
         // A table cell for the melody we need to preview
         let selectedCell = view as! MelodyCell
         
-        // An index for the melody we need to preview
-        let selectedMelodyIndex = melodiesTable.indexPath(for: selectedCell)!.row
-        
-        // Check if there is a melody being played now
-        if indexOfCurrentlyPlayingMelody != nil {
-            
-            audioPlayer!.stop()
-            
-            let currentlyPlayingCell =
-                melodiesTable.cellForRow(at: IndexPath(row: indexOfCurrentlyPlayingMelody!, section: 0)) as! MelodyCell
-            
-            currentlyPlayingCell.isPlaying = false
-            indexOfCurrentlyPlayingMelody = nil
-            
-            if selectedCell == currentlyPlayingCell {
-                return
-            }
-        
+        if (selectedCell.isPlaying) {
+            pauseCurrentlyPlayingCell()
+            return
         }
-
-        // Play the selected melody
-        if let path = Bundle.main.path(forResource: selectedCell.melodyName! + ".mp3", ofType: nil) {
-            
+        
+        play(cell: selectedCell)
+    }
+    
+    // MARK: - Helper functions
+    
+    private func play(cell: MelodyCell) {
+        
+        // If the cell is currently playing we don't have to do anything
+        if cell.isPlaying {
+            return
+        }
+        
+        // If the cell is paused try resuming playback
+        if cell.isPaused {
+            if let success = audioPlayer?.play() {
+                if success {
+                    cell.play()
+                }
+            }
+            return
+        }
+        
+        // If we got here, it means a user requested a new cell to play.
+        // 1. If any other cell is playing, stop it.
+        if indexOfCurrentlyPlayingMelody != nil {
+            stopCurrentlyPlayingCell()
+        }
+        
+        // 2. Play the newly selected cell
+        if let path = Bundle.main.path(forResource: cell.melodyName! + ".mp3", ofType: nil) {
             let url = URL(fileURLWithPath: path)
-            
-            indexOfCurrentlyPlayingMelody = selectedMelodyIndex
-            selectedCell.isPlaying = true
             
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.play()
-
+                indexOfCurrentlyPlayingMelody = melodiesTable.indexPath(for: cell)!.row
+                cell.play()
             } catch {
-                print("Playing a melody failed. \"\(selectedCell.melodyName!).mp3\"")
+                print("Playing a melody failed. \"\(cell.melodyName!).mp3\"")
                 indexOfCurrentlyPlayingMelody = nil
-                selectedCell.isPlaying = false
+                cell.stop()
             }
             
         } else {
-            print("Couldn't preview a melody because the sound file was not found: \"\(selectedCell.melodyName!).mp3\"")
+            print("Couldn't preview a melody because the sound file was not found: \"\(cell.melodyName!).mp3\"")
         }
         
     }
     
+    /// Stops the audio and resets the variables so that they reflect the "nothing's playing" state
+    private func stopCurrentlyPlayingCell() {
+        audioPlayer?.stop()
+        currentlyPlayingCell()?.stop()
+        indexOfCurrentlyPlayingMelody = nil
+    }
+    
+    /// Pauses the audio if it is currently playing.
+    private func pauseCurrentlyPlayingCell() {
+        audioPlayer?.pause()
+        currentlyPlayingCell()?.pause()
+    }
+    
+    /// Gets the `MelodyCell` which is currently being previewed.
+    ///
+    /// - Returns: a `MelodyCell` that is being previewed or `nil` if no melody is being previewed.
+    private func currentlyPlayingCell() -> MelodyCell? {
+        if let i = indexOfCurrentlyPlayingMelody {
+            return melodiesTable.cellForRow(at: IndexPath(row: i, section: 0)) as? MelodyCell
+        }
+        return nil
+    }
 }
 
 /// A custom `UITableViewCell` for the `melodiesTable`
@@ -147,16 +180,9 @@ class MelodyCell: UITableViewCell {
     }
     
     /// Indicates whether this melody is currently being previewed
-    var isPlaying = false {
-        didSet {
-            if isPlaying {
-                playButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
-            } else {
-                playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            }
-            setNeedsDisplay()
-        }
-    }
+    var isPlaying = false
+    
+    var isPaused = false
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var melodyNameLabel: UILabel!
@@ -167,6 +193,36 @@ class MelodyCell: UITableViewCell {
         get {
             return melodyNameLabel.text
         }
+    }
+    
+    func play() {
+        if isPlaying {
+            return
+        }
+        playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        isPlaying = true
+        isPaused = false
+        setNeedsDisplay()
+    }
+    
+    func pause() {
+        if !isPlaying {
+            return
+        }
+        playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        isPlaying = false
+        isPaused = true
+        setNeedsDisplay()
+    }
+    
+    func stop() {
+        if !isPlaying && !isPaused {
+            return
+        }
+        playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        isPlaying = false
+        isPaused = false
+        setNeedsDisplay()
     }
 }
 
