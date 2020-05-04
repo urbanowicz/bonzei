@@ -48,7 +48,13 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         backButton.backgroundColor = UIColor.clear
         melodiesTable.dataSource = melodiesTableDataSource
         melodiesTable.delegate = melodiesTableDelegate
+        
+    }
     
+    override func viewDidLayoutSubviews() {
+        if isBeingPresented {
+            selectRowFor(melody: selectedMelody!)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -186,6 +192,14 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         DispatchQueue.main.async {
             cell.setProgress(progress)
         }
+    }
+    
+    private func selectRowFor(melody: String) {
+        let indexOfSelectedMelody = melodies.firstIndex(of: melody)!
+        melodiesTable.selectRow(at: IndexPath(row: indexOfSelectedMelody, section: 0),
+                                animated: false,
+                                scrollPosition: .none)
+        melodiesTableDelegate.tableView(melodiesTable, didSelectRowAt: IndexPath(row: indexOfSelectedMelody, section: 0))
     }
 }
 

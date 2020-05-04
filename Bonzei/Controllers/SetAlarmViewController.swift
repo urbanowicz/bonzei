@@ -192,6 +192,13 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier! == "SetAlarmToSetMelody" {
+            let setMelodyViewController = segue.destination as! SetMelodyViewController
+            setMelodyViewController.selectedMelody = selectedMelody
+        }
+    }
+    
     //MARK: - AVAudioPlayerDelegate
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
