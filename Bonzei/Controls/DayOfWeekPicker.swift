@@ -76,8 +76,6 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
     }
     
     private func initSelectionLayer() {
-        selectionLayer.backgroundColor = UIColor.clear.cgColor
-        selectionLayer.fillColor = color.cgColor
         layer.addSublayer(selectionLayer)
     }
     
@@ -95,6 +93,8 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
     }
     
     private func layoutSelectionLayer() {
+        selectionLayer.backgroundColor = UIColor.clear.cgColor
+        selectionLayer.fillColor = color.cgColor
         selectionLayer.frame = CGRect(origin: self.bounds.origin, size: self.bounds.size)
     }
     

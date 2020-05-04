@@ -31,6 +31,14 @@
                                             <constraint firstAttribute="width" secondItem="fW0-bm-2EE" secondAttribute="height" multiplier="1:1" id="Vtk-no-uP9"/>
                                         </constraints>
                                         <state key="normal" image="plus" catalog="system"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                                <color key="value" red="0.92937999963760376" green="0.91708433628082275" blue="0.94444125890731812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
+                                                <color key="value" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="setAlarmButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="95V-wx-p4N"/>
                                         </connections>
@@ -197,6 +205,14 @@
                                                         <state key="normal" image="play.fill" catalog="system">
                                                             <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                                                <color key="value" red="0.92937999959999995" green="0.91708433629999997" blue="0.94444125889999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
+                                                                <color key="value" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="playMelodyButtonPressed:" destination="WKb-vj-sEy" eventType="touchUpInside" id="AgH-Ze-q7S"/>
                                                         </connections>
@@ -214,6 +230,7 @@
                                                             <constraint firstAttribute="width" constant="50" id="cRA-YG-Ktc"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <color key="tintColor" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="chevron.right" catalog="system">
                                                             <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -247,6 +264,9 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="radius">
                                                         <real key="value" value="17"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                        <color key="value" red="0.92937999959999995" green="0.91708433629999997" blue="0.94444125889999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
@@ -262,6 +282,8 @@
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJp-ET-CKq">
                                                 <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </switch>
                                         </subviews>
                                     </stackView>
@@ -335,6 +357,7 @@
                                     <constraint firstAttribute="width" constant="45" id="AtA-iF-fIB"/>
                                     <constraint firstAttribute="height" constant="45" id="S29-tp-8tC"/>
                                 </constraints>
+                                <color key="tintColor" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="chevron.left" catalog="system"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="471-3X-WLW" eventType="touchUpInside" id="dxI-3G-2gO"/>
@@ -365,6 +388,14 @@
                                                         <constraint firstAttribute="height" constant="50" id="vpL-VD-IVi"/>
                                                     </constraints>
                                                     <state key="normal" image="play.fill" catalog="system"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
+                                                            <color key="value" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                                            <color key="value" red="0.92937999959999995" green="0.91708433629999997" blue="0.94444125889999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="playButtonPressed:" destination="471-3X-WLW" eventType="touchUpInside" id="QKq-32-pIk"/>
                                                     </connections>
