@@ -12,7 +12,6 @@ import Foundation
 ///
 /// For every melody name in the array there must be a corresponding `.mp3` file the `SoundFiles` folder.
 let melodies = ["Ambient Sea Waves",
-                "Emerald Mountains",
                 "Endorphin Birds",
                 "Forest Light Rays",
                 "Midnight Moon"]
