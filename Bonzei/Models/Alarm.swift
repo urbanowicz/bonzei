@@ -48,7 +48,3 @@ struct Alarm {
         """
     }
 }
-
-/// An array that holds every alarm created by the user.
-/// It is shared by controllers.
-var alarms = [Alarm]()

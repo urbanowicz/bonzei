@@ -28,9 +28,9 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     var newAlarm: Alarm?
     
     /// - In case of 'RequestType.newAlarm' the variable is ignored.
-    /// - In case of 'RequestType.editExistingAlarm' the variable must be set to a valid index of the alarm that a user wishes to edit.
+    /// - In case of 'RequestType.editExistingAlarm' the variable must contain the alarm that a user wishes to edit.
     /// - Must be set by the presenting view controller.
-    var alarmIndex: Int?
+    var alarmToEdit: Alarm?
     
     /// A  name of a melody that is currently displayed in this scene
     /// If a user presses the `saveButton` this is the melody that will be associated with the alarm.
@@ -99,12 +99,11 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
                 melodyLabel.text = selectedMelody
                 
             case .editExistingAlarm:
-                let alarm = alarms[alarmIndex!]
-                melodyLabel.text = alarm.melodyName
-                selectedMelody = alarm.melodyName
-                dayOfWeekPicker.selection = alarm.repeatOn
-                datePicker.date = alarm.date
-                snoozeSwitch.isOn = alarm.snoozeEnabled
+                melodyLabel.text = alarmToEdit!.melodyName
+                selectedMelody = alarmToEdit!.melodyName
+                dayOfWeekPicker.selection = alarmToEdit!.repeatOn
+                datePicker.date = alarmToEdit!.date
+                snoozeSwitch.isOn = alarmToEdit!.snoozeEnabled
             }
         }
         else {
@@ -163,15 +162,15 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         case .editExistingAlarm:
             
             let alarm = Alarm(
-                id: alarms[alarmIndex!].id,
+                id: alarmToEdit!.id,
                 date: datePicker.date,
                 repeatOn: dayOfWeekPicker.selection,
                 melodyName: selectedMelody,
                 snoozeEnabled: snoozeSwitch.isOn,
-                isActive: alarms[alarmIndex!].isActive
+                isActive: alarmToEdit!.isActive
             )
             
-            alarms[alarmIndex!] = alarm
+            alarmToEdit = alarm
         
         }
         

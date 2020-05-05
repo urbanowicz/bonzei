@@ -18,8 +18,8 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     /// A data source for the alarms table.
     var alarmsTableDataSource = AlarmsTableDataSource()
     
-    /// Index of the alarm that a user last tapped or selected in the table.
-    var alarmIndex:Int?
+    /// Alarm table cell that a user last tapped or selected in the table.
+    var selectedCell: AlarmsTableCell?
     
     /// If  a new alarm has been created by the 'SetAlarmViewController' this variable will hold the new alarm.
     /// This is needed so that this controller can:
@@ -75,9 +75,8 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         
         // cell - the AlarmsTableCell that was toggled
         if let cell = v as? AlarmsTableCell {
-            let i = alarmsTable.indexPath(for: cell)!.row
-            alarms[i].isActive.toggle()
-            cell.alarm = alarms[i]
+            cell.alarm.isActive.toggle()
+            AlarmScheduler.sharedInstance.updateAlarm(withId: cell.alarm.id, using: cell.alarm)
         }
     }
     
@@ -93,8 +92,8 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     /// - 'SetAlarmViewController' handles the editing of the alarm.
     /// - When the user is done editing the alarm, 'WakeUpViewController' must update and display the relevant row in the 'AlarmsTable'
     @IBAction func alarmsTableTapped(recognizer: UITapGestureRecognizer) {
-        if let alarmIndex = alarmsTable.indexPathForRow(at: recognizer.location(in: alarmsTable))?.row {
-            self.alarmIndex = alarmIndex
+        if let selectedIndexPath = alarmsTable.indexPathForRow(at: recognizer.location(in: alarmsTable)) {
+            selectedCell = alarmsTable.cellForRow(at: selectedIndexPath) as? AlarmsTableCell
             performSegue(withIdentifier: "EditExistingAlarm", sender: self)
         }
     }
@@ -110,7 +109,7 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         if segue.identifier! == "EditExistingAlarm" {
             let setAlarmViewController = segue.destination as! SetAlarmViewController
             setAlarmViewController.request = .editExistingAlarm
-            setAlarmViewController.alarmIndex = alarmIndex
+            setAlarmViewController.alarmToEdit = selectedCell!.alarm
         }
     }
     
@@ -119,17 +118,14 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         switch setAlarmViewControler.request {
         case .newAlarm :
             self.newAlarm = setAlarmViewControler.newAlarm
-            alarms.insert(newAlarm!, at: 0)
             AlarmScheduler.sharedInstance.schedule(alarm: newAlarm!)
             AlarmScheduler.sharedInstance.dump()
         
         case .editExistingAlarm:
-            //alarmIndex contains the index of the alarm that was edited
-            let editedAlarm = alarms[alarmIndex!]
+            let editedAlarm = setAlarmViewControler.alarmToEdit!
+            selectedCell!.alarm = editedAlarm
             AlarmScheduler.sharedInstance.updateAlarm(withId: editedAlarm.id, using: editedAlarm)
             AlarmScheduler.sharedInstance.dump()
-            let editedCell = alarmsTable.cellForRow(at: IndexPath(row: alarmIndex!, section: 0)) as! AlarmsTableCell
-            editedCell.alarm = editedAlarm
         }
     }
     

@@ -30,7 +30,10 @@ class AlarmScheduler {
     
     // This is a singleton class, hence a private constructor
     private init() {
-        
+
+        if let savedAlarms = fileDbRead(fileName: "alarms.db") as? [Alarm] {
+            scheduledAlarms = savedAlarms
+        }
     }
     
     /// Schedules a given alarm.
@@ -113,7 +116,7 @@ class AlarmScheduler {
         if (!alarm.isActive || alarm.repeatOn.isEmpty) {
             print("Scheduler::Updated to inactive: \(id)")
         } else {
-            print("Scheduler::Updated: \(id)!)")
+            print("Scheduler::Updated: \(id)")
         }
     }
     
