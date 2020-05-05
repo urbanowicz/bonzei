@@ -57,11 +57,8 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
                 alarmsTable.endUpdates()
         }
         
-        // if new alarm was set:
-        // 1. persist it
-        // 2. display it
+        // if new alarm was set display it:
         if newAlarm != nil {
-            alarms.insert(newAlarm!, at: 0)
             insert(alarm: newAlarm!, into: alarmsTable)
             newAlarm = nil
         }
@@ -122,10 +119,15 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         switch setAlarmViewControler.request {
         case .newAlarm :
             self.newAlarm = setAlarmViewControler.newAlarm
+            alarms.insert(newAlarm!, at: 0)
+            AlarmScheduler.sharedInstance.schedule(alarm: newAlarm!)
         
         case .editExistingAlarm:
+            //alarmIndex contains the index of the alarm that was edited
+            let editedAlarm = alarms[alarmIndex!]
+            AlarmScheduler.sharedInstance.update(alarm: editedAlarm)
             let editedCell = alarmsTable.cellForRow(at: IndexPath(row: alarmIndex!, section: 0)) as! AlarmsTableCell
-            editedCell.alarm = alarms[alarmIndex!]
+            editedCell.alarm = editedAlarm
         }
     }
     

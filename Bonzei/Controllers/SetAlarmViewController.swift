@@ -149,19 +149,28 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
 
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         
-        let alarm = Alarm(
-            date: datePicker.date,
-            repeatOn: dayOfWeekPicker.selection,
-            melodyName: selectedMelody,
-            snoozeEnabled: snoozeSwitch.isOn
-        )
-        
         switch request {
         
         case .newAlarm:
-            newAlarm = alarm
+            
+             newAlarm = Alarm(
+                date: datePicker.date,
+                repeatOn: dayOfWeekPicker.selection,
+                melodyName: selectedMelody,
+                snoozeEnabled: snoozeSwitch.isOn
+            )
         
         case .editExistingAlarm:
+            
+            let alarm = Alarm(
+                id: alarms[alarmIndex!].id,
+                date: datePicker.date,
+                repeatOn: dayOfWeekPicker.selection,
+                melodyName: selectedMelody,
+                snoozeEnabled: snoozeSwitch.isOn,
+                isActive: alarms[alarmIndex!].isActive
+            )
+            
             alarms[alarmIndex!] = alarm
         
         }
