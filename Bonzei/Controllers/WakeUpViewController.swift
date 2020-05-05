@@ -11,8 +11,11 @@ import UIKit
 class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var setAlarmButton: UIButton!
+    
     @IBOutlet weak var setFirstAlarmButton: UIButton!
+    
     @IBOutlet weak var wakeUpLabel: UILabel!
+    
     @IBOutlet weak var alarmsTable: UITableView!
     
     /// A data source for the alarms table.
@@ -29,55 +32,36 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     var newAlarm: Alarm?
     
     // MARK: - Initialization
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+
+        alarmsTable.dataSource = alarmsTableDataSource
+        addTapGestureRecognizerToAlarmsTable()
         
-        func setupAlarmsTable() {
-            func addTapGestureRecognizerToAlarmsTable() {
-                let tapGestureRecognizer = UITapGestureRecognizer()
-                tapGestureRecognizer.delegate = self
-                tapGestureRecognizer.addTarget(self,action:#selector(WakeUpViewController.alarmsTableTapped(recognizer:)))
-                alarmsTable.addGestureRecognizer(tapGestureRecognizer)
-            }
-            
-            alarmsTable.dataSource = alarmsTableDataSource
-            addTapGestureRecognizerToAlarmsTable()
-        }
-        
-        setupAlarmsTable()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        /// Inserts an alarm into 'AlarmsTable'
-        func insert(alarm: Alarm?, into table:UITableView) {
-                alarmsTable.beginUpdates()
-                alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
-                                       with: UITableView.RowAnimation.top)
-                alarmsTable.endUpdates()
-        }
-        
-        // if new alarm was set display it:
+        // if new alarm was added, insert a row into alarmsTable
         if newAlarm != nil {
-            insert(alarm: newAlarm!, into: alarmsTable)
+            insertRowIntoAlarmsTable()
             newAlarm = nil
         }
+        
     }
 
     // MARK: - Actions
     
-    @IBAction func toggleAlarm(_ sender: UISwitch) {        
-        // One of the super views of the 'ui switch' must be an'AlarmsTableCell'. Find it.
-        var v = sender.superview
-        while ((v as? AlarmsTableCell) == nil && v != nil) {
-            v = v!.superview
-        }
+    @IBAction func toggleAlarm(_ alarmIsActiveSwitch: UISwitch) {
         
         // cell - the AlarmsTableCell that was toggled
-        if let cell = v as? AlarmsTableCell {
+        if let cell = findSuperviewThatIsAnAlarmsTableCell(for: alarmIsActiveSwitch) {
             cell.alarm.isActive.toggle()
             AlarmScheduler.sharedInstance.updateAlarm(withId: cell.alarm.id, using: cell.alarm)
         }
+    
     }
     
     @IBAction func setAlarmButtonPressed(_ sender: UIButton) {
@@ -133,6 +117,30 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         //nothing to do here.
     }
     
+    //MARK: - Helper functions
+    
+    private func addTapGestureRecognizerToAlarmsTable() {
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.delegate = self
+        tapGestureRecognizer.addTarget(self,action:#selector(WakeUpViewController.alarmsTableTapped(recognizer:)))
+        alarmsTable.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    /// Inserts a row into 'AlarmsTable'. Called after adding a new alarm to `AlarmScheduler`
+    private func insertRowIntoAlarmsTable() {
+        alarmsTable.beginUpdates()
+        alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
+                               with: UITableView.RowAnimation.top)
+        alarmsTable.endUpdates()
+    }
+    
+    private func findSuperviewThatIsAnAlarmsTableCell(for childView: UIView) -> AlarmsTableCell? {
+        var v = childView.superview
+        while ((v as? AlarmsTableCell) == nil && v != nil) {
+            v = v!.superview
+        }
+        return v as? AlarmsTableCell
+    }
 }
 
 /// A custom cell for the 'Alarms Table'
