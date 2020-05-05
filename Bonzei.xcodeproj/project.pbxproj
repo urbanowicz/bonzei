@@ -18,6 +18,7 @@
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F15526C6244A0F4B00741E80 /* FileDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C5244A0F4B00741E80 /* FileDB.swift */; };
 		F15590FD245EF27300928589 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15590FC245EF27300928589 /* Melody.swift */; };
+		F15C1ABA2461734A00F47CCC /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
 		F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE22447089F008E9227 /* AppDelegate.swift */; };
 		F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE42447089F008E9227 /* SceneDelegate.swift */; };
 		F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE62447089F008E9227 /* WakeUpViewController.swift */; };
@@ -53,6 +54,7 @@
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		F15526C5244A0F4B00741E80 /* FileDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDB.swift; sourceTree = "<group>"; };
 		F15590FC245EF27300928589 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
+		F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmScheduler.swift; sourceTree = "<group>"; };
 		F17ABEDF2447089F008E9227 /* Bonzei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bonzei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17ABEE22447089F008E9227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17ABEE42447089F008E9227 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,14 @@
 			path = SoundFiles;
 			sourceTree = "<group>";
 		};
+		F15C1AB82461731800F47CCC /* AlarmScheduler */ = {
+			isa = PBXGroup;
+			children = (
+				F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */,
+			);
+			path = AlarmScheduler;
+			sourceTree = "<group>";
+		};
 		F17ABED62447089F008E9227 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +168,7 @@
 		F17ABEE12447089F008E9227 /* Bonzei */ = {
 			isa = PBXGroup;
 			children = (
+				F15C1AB82461731800F47CCC /* AlarmScheduler */,
 				F15590F7245EE3F400928589 /* SoundFiles */,
 				F1421C242454B6BF003D226A /* Controls */,
 				F11E3F1D244EFFE400CF6B4A /* TableDataSources */,
@@ -289,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F15C1ABA2461734A00F47CCC /* AlarmScheduler.swift in Sources */,
 				F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */,
 				F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */,
 				F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */,
