@@ -35,6 +35,18 @@ struct Alarm {
     
     var isActive: Bool = true
     
+    func string() -> String {
+        return """
+        {
+        id: \(id)
+        date: \(dateString)
+        melody: \(melodyName)
+        repeat: \(repeatOn)
+        active: \(isActive)
+        snooze: \(snoozeEnabled)
+        }
+        """
+    }
 }
 
 /// An array that holds every alarm created by the user.

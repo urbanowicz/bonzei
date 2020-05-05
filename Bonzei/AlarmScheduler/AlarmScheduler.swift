@@ -25,8 +25,8 @@ class AlarmScheduler {
     /// Use it to access scheduler's API.
     static let sharedInstance = AlarmScheduler()
     
-    /// An array with ids of scheduled alarms.
-    private var scheduledAlarmsIds = [String]()
+    /// All scheduled alarms
+    private var scheduledAlarms = [Alarm]()
     
     // This is a singleton class, hence a private constructor
     private init() {
@@ -48,16 +48,16 @@ class AlarmScheduler {
     ///
     public func schedule(alarm: Alarm) {
         
-        guard !scheduledAlarmsIds.contains(alarm.id) else {
+        guard !isScheduledAlarm(withId: alarm.id) else {
             return
         }
         
-        scheduledAlarmsIds.append(alarm.id)
+        scheduledAlarms.insert(alarm, at: 0)
         
         if !alarm.isActive || alarm.repeatOn.isEmpty {
-            print("Scheduler::added inactive: \(alarm)")
+            print("Scheduler::added inactive: \(alarm.id)")
         } else {
-            print("Scheduler::added: \(alarm)")
+            print("Scheduler::added: \(alarm.id)")
         }
         
     }
@@ -69,52 +69,69 @@ class AlarmScheduler {
     ///
     /// - Parameter id: identifier of the alarm that you wish to unschedule
     ///
-    public func unscheduleAlarm(with id: String) {
+    public func unscheduleAlarm(withId id: String) {
         
-        guard scheduledAlarmsIds.contains(id) else {
-            return
-        }
+        scheduledAlarms = scheduledAlarms.filter({ $0.id != id })
         
         print("Scheduler::Removed: \(id)")
     }
     
-    /// Returns ids of scheduled alarms.
+    /// Returns all scheduled alarms .
     ///
-    /// - Returns: an array of `String` values that represent the ids of scheduled alarms.
+    /// - Returns: an array of `Alarm` values that represent scheduled alarms.
     ///
-    public func scheduledAlarms() -> [String] {
-        return scheduledAlarmsIds
+    public func allAlarms() -> [Alarm] {
+        return scheduledAlarms
     }
     
     /// Reschedules a given alarm.
     ///
     /// Once an alarm has been added to the scheduler using the `schedule()` method it can be rescheduled using the `reschedule()` method.
-    /// If an alarm with `alarm.id` is not in the scheduler, the request is ignored.
-    /// If `alarm.isActive` is false, the alarm will remain in the scheduler, but all related notifications will immediately canceled.
+    /// If an alarm with identifier`id` is not in the scheduler, the request is ignored.
+    /// If `alarm.isActive` is false, the alarm will remain in the scheduler, but all related notifications will be immediately canceled.
     /// The same is true if `alarm.repeatOn` is empty.
     ///
-    /// - Parameter alarm: an alarm to be rescheduled.
+    /// - Parameter id: unique identifier of the alarm you wish to reschedule.
+    /// - Parameter alarm: provides values that will be used to update the existing alarm.
     ///
-    public func update(alarm: Alarm) {
+    public func updateAlarm(withId id: String, using alarm: Alarm) {
         
-        guard scheduledAlarmsIds.contains(alarm.id) else {
+        let i = indexOfAlarm(withId: id)
+        
+        if i == nil {
             return
         }
         
+        scheduledAlarms[i!] = Alarm(id: id,
+                                    date: alarm.date,
+                                    repeatOn: alarm.repeatOn,
+                                    melodyName: alarm.melodyName,
+                                    snoozeEnabled: alarm.snoozeEnabled,
+                                    isActive: alarm.isActive)
+        
+        
         if (!alarm.isActive || alarm.repeatOn.isEmpty) {
-            print("Scheduler::Updated to inactive: \(alarm)")
+            print("Scheduler::Updated to inactive: \(id)")
         } else {
-            print("Scheduler::Updated: \(alarm)")
+            print("Scheduler::Updated: \(id)!)")
         }
     }
     
-    /// Tells whether an alarm is scheduled.
+    /// Indicates whether an alarm is scheduled.
     ///
     /// - Returns: a boolean value indicating whether the alarm is scheduled (`true`) or not (`false`)
     ///
-    public func isScheduled(alarmWith id: String) -> Bool {
-        
-        return  scheduledAlarmsIds.contains(id)
+    public func isScheduledAlarm(withId id: String) -> Bool {
+        return indexOfAlarm(withId: id) != nil
+    }
     
+    private func indexOfAlarm(withId id: String) -> Int? {
+        return scheduledAlarms.firstIndex(where: {$0.id == id})
+    }
+    
+    func dump() {
+        for alarm in scheduledAlarms {
+            print(alarm.string())
+        }
     }
 }

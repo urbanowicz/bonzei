@@ -121,11 +121,13 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
             self.newAlarm = setAlarmViewControler.newAlarm
             alarms.insert(newAlarm!, at: 0)
             AlarmScheduler.sharedInstance.schedule(alarm: newAlarm!)
+            AlarmScheduler.sharedInstance.dump()
         
         case .editExistingAlarm:
             //alarmIndex contains the index of the alarm that was edited
             let editedAlarm = alarms[alarmIndex!]
-            AlarmScheduler.sharedInstance.update(alarm: editedAlarm)
+            AlarmScheduler.sharedInstance.updateAlarm(withId: editedAlarm.id, using: editedAlarm)
+            AlarmScheduler.sharedInstance.dump()
             let editedCell = alarmsTable.cellForRow(at: IndexPath(row: alarmIndex!, section: 0)) as! AlarmsTableCell
             editedCell.alarm = editedAlarm
         }
