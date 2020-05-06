@@ -73,6 +73,14 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         
         super.viewDidLoad()
         
+        // So that we can play sound in silent mode:
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            
+        }
+        
         // Clear the background that might have been set in the story board for debugging.
         playMelodyButton.backgroundColor = UIColor.clear
         setMelodyButton.backgroundColor = UIColor.clear
