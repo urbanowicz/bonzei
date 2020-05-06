@@ -44,6 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         completionHandler([.alert, .badge, .sound,])
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+               didReceive response: UNNotificationResponse,
+               withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        print("Scheduler::DidReceive: \(response.notification.request.content.body)")
+    }
 
     // MARK: - Core Data stack
 
