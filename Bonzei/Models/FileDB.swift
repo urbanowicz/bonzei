@@ -17,7 +17,7 @@ func fileDbWrite(fileName: String, object: Any) -> Bool {
         try data.write(to: documentPathFor(fileName))
         return true
     } catch {
-        print("In fileDnWrite: \(error.localizedDescription)")
+        print("In fileDbWrite: \(error.localizedDescription)")
     }
     return false
 }
@@ -34,6 +34,14 @@ func fileDbRead(fileName: String) -> Any? {
         print("In fileDbRead: \(error.localizedDescription)")
     }
     return nil
+}
+
+func fileDbDelete(fileName: String) {
+    do {
+        try FileManager.default.removeItem(atPath: documentPathFor(fileName).path)
+    } catch let error {
+        print(error.localizedDescription)
+    }
 }
 
 fileprivate func documentPathFor(_ fileName: String) -> URL {

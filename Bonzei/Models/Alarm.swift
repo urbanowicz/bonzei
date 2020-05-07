@@ -31,10 +31,11 @@ struct Alarm {
     
     var melodyName: String
     
-    var snoozeEnabled = true
+    var snoozeEnabled: Bool = true
     
     var isActive: Bool = true
     
+    /// Creates a human readable representation of the alarm
     func string() -> String {
         return """
         {
@@ -47,4 +48,6 @@ struct Alarm {
         }
         """
     }
+    
+    
 }

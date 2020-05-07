@@ -31,12 +31,18 @@ class AlarmScheduler {
     /// Maps `alarmId` to all`requestNotificationId`identifiers associated with this alarm.
     private var notificationRequests = [String:[String]]()
     
+    private let alarmsPersistenceFile = "alarms.db"
+    
+    private let notificationsPersistenceFile = "notifications.db"
+    
     // This is a singleton class, hence a private constructor
     private init() {
-
-        if let savedAlarms = fileDbRead(fileName: "alarms.db") as? [Alarm] {
-            scheduledAlarms = savedAlarms
-        }
+        //fileDbDelete(fileName: alarmsPersistenceFile)
+        //fileDbDelete(fileName: notificationsPersistenceFile)
+        readAlarmsAndNotificationsFromDisk()
+        dump()
+        //cancelAllNotifications()
+        //dumpNotifications()
     }
     
     /// Schedules a given alarm.
@@ -73,7 +79,9 @@ class AlarmScheduler {
                 
             print("Scheduler::added: \(alarm.id)")
         }
-    
+        
+        persistAlarmsAndNotifications()
+        
     }
 
     /// Removes an alarm from the scheduler.
@@ -95,7 +103,9 @@ class AlarmScheduler {
         
         scheduledAlarms = scheduledAlarms.filter({ $0.id != id })
         
+        persistAlarmsAndNotifications()
         print("Scheduler::Removed: \(id)")
+        
     }
     
     /// Returns all scheduled alarms .
@@ -141,6 +151,9 @@ class AlarmScheduler {
             addNotification(forAlarm: updatedAlarm)
             print("Scheduler::Updated: \(id)")
         }
+        
+        persistAlarmsAndNotifications()
+        
     }
     
     /// Indicates whether an alarm is scheduled.
@@ -229,6 +242,28 @@ class AlarmScheduler {
         return scheduledAlarms.firstIndex(where: {$0.id == id})
     }
     
+    /// Writes all alarms and notifications to disk.
+    private func persistAlarmsAndNotifications() {
+        
+        let persistableAlarms = scheduledAlarms.map({ alarm in return PersistableAlarm(alarm: alarm) })
+        
+        _ = fileDbWrite(fileName: alarmsPersistenceFile, object: persistableAlarms)
+        
+        _ = fileDbWrite(fileName: notificationsPersistenceFile, object: notificationRequests)
+        
+    }
+    
+    private func readAlarmsAndNotificationsFromDisk() {
+        
+        if let persistableAlarms = fileDbRead(fileName: alarmsPersistenceFile) as? [PersistableAlarm] {
+            scheduledAlarms = persistableAlarms.map({ persistableAlarm in return persistableAlarm.alarm() })
+        }
+        
+        if let notificationRequests = fileDbRead(fileName: notificationsPersistenceFile) as? [String: [String]] {
+            self.notificationRequests = notificationRequests
+        }
+        
+    }
     
     func dump() {
         for alarm in scheduledAlarms {

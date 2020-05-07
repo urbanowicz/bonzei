@@ -14,6 +14,7 @@
 		F1368DA2246063FA00BBFC39 /* Ambient Sea Waves.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1368D9F246063F900BBFC39 /* Ambient Sea Waves.mp3 */; };
 		F1368DA4246065B200BBFC39 /* Forest Light Rays.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1368DA3246065B200BBFC39 /* Forest Light Rays.mp3 */; };
 		F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1421C252454B710003D226A /* DayOfWeekPicker.swift */; };
+		F14538A92464130100FED111 /* PersistableAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14538A82464130100FED111 /* PersistableAlarm.swift */; };
 		F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */; };
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F15526C6244A0F4B00741E80 /* FileDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C5244A0F4B00741E80 /* FileDB.swift */; };
@@ -50,6 +51,7 @@
 		F1368D9F246063F900BBFC39 /* Ambient Sea Waves.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ambient Sea Waves.mp3"; sourceTree = "<group>"; };
 		F1368DA3246065B200BBFC39 /* Forest Light Rays.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Forest Light Rays.mp3"; sourceTree = "<group>"; };
 		F1421C252454B710003D226A /* DayOfWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekPicker.swift; sourceTree = "<group>"; };
+		F14538A82464130100FED111 /* PersistableAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistableAlarm.swift; sourceTree = "<group>"; };
 		F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMelodyViewController.swift; sourceTree = "<group>"; };
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		F15526C5244A0F4B00741E80 /* FileDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDB.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				F15526C3244A060300741E80 /* Alarm.swift */,
+				F14538A82464130100FED111 /* PersistableAlarm.swift */,
 				F15526C5244A0F4B00741E80 /* FileDB.swift */,
 				F15590FC245EF27300928589 /* Melody.swift */,
 			);
@@ -312,6 +315,7 @@
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
 				F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */,
 				F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */,
+				F14538A92464130100FED111 /* PersistableAlarm.swift in Sources */,
 				F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */,
 				F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */,
 				F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */,
