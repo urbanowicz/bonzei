@@ -85,6 +85,9 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         playMelodyButton.backgroundColor = UIColor.clear
         setMelodyButton.backgroundColor = UIColor.clear
         
+        snoozeSwitch.thumbTintColor = UIColor(red: 0.11, green: 0.25, blue: 0.22, alpha: 1.00)
+        snoozeSwitch.onTintColor = UIColor(red: 0.93, green: 0.91, blue: 0.95, alpha: 1.00)
+        
         // Setup a `UITapGestureRecognizer` for `melodyLabel`
         // When `melodyLabel` is tapped, we want to transition to `SetMelodyViewController`
         melodyLabel.isUserInteractionEnabled = true
@@ -206,6 +209,14 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
             selectedMelody = setMelodyViewController.selectedMelody!
         }
     
+    }
+    
+    @IBAction func snoozeSwitchToggled(_ sender: UISwitch) {
+        if snoozeSwitch.isOn {
+            snoozeSwitch.thumbTintColor = UIColor(red: 0.11, green: 0.25, blue: 0.22, alpha: 1.00)
+        } else {
+            snoozeSwitch.thumbTintColor = UIColor.white
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

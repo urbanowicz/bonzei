@@ -36,7 +36,7 @@
                                                 <color key="value" red="0.92937999963760376" green="0.91708433628082275" blue="0.94444125890731812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
-                                                <color key="value" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -177,13 +177,13 @@
                                         </constraints>
                                     </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-Mh-4Ei">
-                                        <rect key="frame" x="0.0" y="183.5" width="374" height="140"/>
+                                        <rect key="frame" x="0.0" y="181.5" width="374" height="140"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="wRW-38-YJC"/>
                                         </constraints>
                                     </datePicker>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="erj-sZ-6wr" userLabel="VStack">
-                                        <rect key="frame" x="0.0" y="379" width="374" height="78"/>
+                                        <rect key="frame" x="0.0" y="375" width="374" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Melody" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLc-zD-nbu">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
@@ -211,7 +211,7 @@
                                                                 <color key="value" red="0.92937999959999995" green="0.91708433629999997" blue="0.94444125889999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
-                                                                <color key="value" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="value" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -231,7 +231,7 @@
                                                             <constraint firstAttribute="width" constant="50" id="cRA-YG-Ktc"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                        <color key="tintColor" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="chevron.right" catalog="system">
                                                             <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -244,7 +244,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VCc-3B-GUh" userLabel="VStack">
-                                        <rect key="frame" x="0.0" y="512" width="374" height="78"/>
+                                        <rect key="frame" x="0.0" y="507" width="374" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mg0-gv-yyA">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
@@ -273,7 +273,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSh-C6-7s3" userLabel="HStack">
-                                        <rect key="frame" x="0.0" y="645.5" width="374" height="31"/>
+                                        <rect key="frame" x="0.0" y="638.5" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snooze" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2a-np-g7B" userLabel="SnoozeLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -285,12 +285,18 @@
                                                 <rect key="frame" x="325" y="0.0" width="51" height="31"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="snoozeSwitchToggled:" destination="WKb-vj-sEy" eventType="valueChanged" id="lIN-gl-VMp"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pv-Ko-fib">
-                                        <rect key="frame" x="0.0" y="732" width="374" height="36"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="723" width="374" height="45"/>
+                                        <color key="backgroundColor" red="0.14139676094055176" green="0.2391318678855896" blue="0.21359971165657043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="1E8-hj-tCM"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Save"/>
@@ -307,7 +313,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="TQh-qZ-8BD"/>
                                     <constraint firstAttribute="height" constant="36" id="mEp-yL-fTd"/>
                                 </constraints>
-                                <color key="tintColor" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="xmark" catalog="system"/>
                                 <connections>
                                     <action selector="cancelPressed:" destination="WKb-vj-sEy" eventType="touchUpInside" id="DoA-ni-55I"/>
@@ -357,7 +363,7 @@
                                     <constraint firstAttribute="width" constant="45" id="AtA-iF-fIB"/>
                                     <constraint firstAttribute="height" constant="45" id="S29-tp-8tC"/>
                                 </constraints>
-                                <color key="tintColor" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="chevron.left" catalog="system"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="471-3X-WLW" eventType="touchUpInside" id="dxI-3G-2gO"/>
@@ -390,7 +396,7 @@
                                                     <state key="normal" image="play.fill" catalog="system"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
-                                                            <color key="value" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="value" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
                                                             <color key="value" red="0.92937999959999995" green="0.91708433629999997" blue="0.94444125889999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -414,6 +420,7 @@
                                                 </label>
                                                 <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rno-LY-Cym">
                                                     <rect key="frame" x="0.0" y="55" width="374" height="2"/>
+                                                    <color key="progressTintColor" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </progressView>
                                             </subviews>
                                             <constraints>
@@ -499,6 +506,8 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>

@@ -148,8 +148,12 @@ class AlarmsTableCell: UITableViewCell {
     @IBInspectable var disabledColor: UIColor = UIColor.systemGray
     @IBInspectable var kern: Float = 20.0
     
+    
     var alarm: Alarm! {
         didSet {
+
+            isActiveSwitch.onTintColor = UIColor(red: 0.93, green: 0.91, blue: 0.95, alpha: 1.00)
+            
             timeLabel.text = alarm.dateString
             melodyLabel.text = "\u{266A} " + alarm.melodyName
             let s = NSMutableAttributedString(string: "MTWTFSS")
@@ -157,6 +161,7 @@ class AlarmsTableCell: UITableViewCell {
             if self.alarm.isActive {
                 
                 isActiveSwitch.isOn = true
+                isActiveSwitch.thumbTintColor = UIColor(red: 0.11, green: 0.25, blue: 0.22, alpha: 1.00)
                 
                 //Set color for each day of the week depending on whether it was picked or not
                 for i in 0...6 {
@@ -171,7 +176,7 @@ class AlarmsTableCell: UITableViewCell {
                 melodyLabel.textColor = activeColor
 
             } else {
-                
+                isActiveSwitch.thumbTintColor = UIColor.white
                 isActiveSwitch.isOn = false
                 
                 s.addAttribute(.foregroundColor, value: disabledColor, range: NSRange(location:0, length: s.length))
