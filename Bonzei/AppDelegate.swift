@@ -12,13 +12,28 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         UNUserNotificationCenter.current().delegate = self
+        
         return true
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print("LifeCycle::Entering foreground")
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        print("LifeCycle:: Will Resign Active")
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("LifeCycle:: Will Terminate")
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("LifeCycle:: Did Become Active")
     }
 
     // MARK: UISceneSession Lifecycle

@@ -160,6 +160,18 @@ class AlarmScheduler {
         return indexOfAlarm(withId: id) != nil
     }
     
+    /// Cancels all pending notifications.
+    /// Then, for each active alarm requests a new notification to be scheduled.
+    public func rescheduleAllAlarms() {
+        
+        cancelAllNotifications()
+        
+        ifNotificationsAreAllowed {
+            let activeAlarms:[Alarm] = self.scheduledAlarms.filter({ $0.isActive })
+            activeAlarms.forEach({ alarm in self.addNotification(forAlarm: alarm) })
+        }
+    }
+    
     private func ifNotificationsAreAllowed(run: @escaping () -> Void) {
         UNUserNotificationCenter
             .current()
@@ -197,6 +209,7 @@ class AlarmScheduler {
             //2.Trigger
             var datePattern = Calendar.current.dateComponents([.hour, .minute, .timeZone], from: alarm.date)
             datePattern.weekday = (dayOfWeek + 1) % 7 + 1
+            
             let trigger = UNCalendarNotificationTrigger (dateMatching: datePattern, repeats: true)
             
             //3.Request
@@ -315,3 +328,4 @@ class AlarmScheduler {
         }
     }
 }
+
