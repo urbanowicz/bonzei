@@ -156,6 +156,8 @@ class AlarmsTableCell: UITableViewCell {
             s.addAttribute(.kern, value: kern, range: NSRange(location: 0, length: s.length))
             if self.alarm.isActive {
                 
+                isActiveSwitch.isOn = true
+                
                 //Set color for each day of the week depending on whether it was picked or not
                 for i in 0...6 {
                     if alarm.repeatOn.contains(i) {
@@ -169,10 +171,14 @@ class AlarmsTableCell: UITableViewCell {
                 melodyLabel.textColor = activeColor
 
             } else {
+                
+                isActiveSwitch.isOn = false
+                
                 s.addAttribute(.foregroundColor, value: disabledColor, range: NSRange(location:0, length: s.length))
                 repeatOnLabel.attributedText = s
                 timeLabel.textColor = disabledColor
                 melodyLabel.textColor = disabledColor
+                
             }
             self.setNeedsDisplay()
         }
@@ -181,5 +187,6 @@ class AlarmsTableCell: UITableViewCell {
     @IBOutlet weak var repeatOnLabel: UILabel!
     @IBOutlet weak var melodyLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var isActiveSwitch: UISwitch!
     
 }

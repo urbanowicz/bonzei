@@ -115,6 +115,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="isActiveSwitch" destination="dHv-wg-m6g" id="XH4-yv-hpz"/>
                                             <outlet property="melodyLabel" destination="R82-Pj-IU8" id="H8p-AE-u1r"/>
                                             <outlet property="repeatOnLabel" destination="1IJ-h7-Pff" id="16M-Ju-nwP"/>
                                             <outlet property="timeLabel" destination="Kii-g2-JUS" id="Uta-bq-rfY"/>

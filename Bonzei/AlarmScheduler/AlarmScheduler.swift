@@ -29,20 +29,19 @@ class AlarmScheduler {
     private var scheduledAlarms = [Alarm]()
     
     /// Maps `alarmId` to all`requestNotificationId`identifiers associated with this alarm.
-    private var notificationRequests = [String:[String]]()
+    private var notificationRequests = [ String: Set<String> ]()
     
     private let alarmsPersistenceFile = "alarms.db"
     
-    private let notificationsPersistenceFile = "notifications.db"
     
     // This is a singleton class, hence a private constructor
     private init() {
-        //fileDbDelete(fileName: alarmsPersistenceFile)
-        //fileDbDelete(fileName: notificationsPersistenceFile)
+        
+        //purge()
         readAlarmsAndNotificationsFromDisk()
         dump()
-        //cancelAllNotifications()
-        //dumpNotifications()
+        dumpNotifications()
+        
     }
     
     /// Schedules a given alarm.
@@ -68,6 +67,7 @@ class AlarmScheduler {
         
         if !alarm.isActive || alarm.repeatOn.isEmpty {
             print("Scheduler::added inactive: \(alarm.id)")
+            persistAlarmsAndNotifications()
         } else {
                 
             let notificationCenter = UNUserNotificationCenter.current()
@@ -80,7 +80,7 @@ class AlarmScheduler {
             print("Scheduler::added: \(alarm.id)")
         }
         
-        persistAlarmsAndNotifications()
+        
         
     }
 
@@ -147,12 +147,11 @@ class AlarmScheduler {
         
         if (!alarm.isActive || alarm.repeatOn.isEmpty) {
             print("Scheduler::Updated to inactive: \(id)")
+            persistAlarmsAndNotifications()
         } else {
             addNotification(forAlarm: updatedAlarm)
             print("Scheduler::Updated: \(id)")
         }
-        
-        persistAlarmsAndNotifications()
         
     }
     
@@ -173,7 +172,7 @@ class AlarmScheduler {
     private func addNotification(forAlarm alarm: Alarm) {
         
         if notificationRequests[alarm.id] == nil {
-            notificationRequests[alarm.id] = [String]()
+            notificationRequests[alarm.id] = Set<String>()
         }
         
         //1.Content
@@ -199,7 +198,8 @@ class AlarmScheduler {
                 .current()
                 .add(request) { error in
                     guard error == nil else { return }
-                    self.notificationRequests[alarm.id]!.append(request.identifier)
+                    self.notificationRequests[alarm.id]!.insert(request.identifier)
+                    self.persistAlarmsAndNotifications()
                     print("Scheduler::Notification added OK: \(datePattern.weekday!)")
             }
         }
@@ -218,11 +218,12 @@ class AlarmScheduler {
         
         UNUserNotificationCenter
             .current()
-            .removePendingNotificationRequests(withIdentifiers: notificationRequests[alarm.id]!)
+            .removePendingNotificationRequests(withIdentifiers: Array(notificationRequests[alarm.id]!))
         
         notificationRequests.removeValue(forKey: alarm.id)
         
         print("Scheduler::Canceled Notifications for: \(alarm.id)")
+        dumpNotifications()
     }
     
     /// cancel all pending notifications
@@ -245,43 +246,63 @@ class AlarmScheduler {
     /// Writes all alarms and notifications to disk.
     private func persistAlarmsAndNotifications() {
         
-        let persistableAlarms = scheduledAlarms.map({ alarm in return PersistableAlarm(alarm: alarm) })
+        let persistableAlarms:[PersistableAlarm] = scheduledAlarms.map({ alarm in
+            return PersistableAlarm(alarm: alarm, notificationRequests: self.notificationRequests[alarm.id])
+            
+        })
         
         _ = fileDbWrite(fileName: alarmsPersistenceFile, object: persistableAlarms)
-        
-        _ = fileDbWrite(fileName: notificationsPersistenceFile, object: notificationRequests)
         
     }
     
     private func readAlarmsAndNotificationsFromDisk() {
         
         if let persistableAlarms = fileDbRead(fileName: alarmsPersistenceFile) as? [PersistableAlarm] {
-            scheduledAlarms = persistableAlarms.map({ persistableAlarm in return persistableAlarm.alarm() })
-        }
-        
-        if let notificationRequests = fileDbRead(fileName: notificationsPersistenceFile) as? [String: [String]] {
-            self.notificationRequests = notificationRequests
+            notificationRequests = [String: Set<String>]()
+            scheduledAlarms = [Alarm]()
+            for persistableAlarm in persistableAlarms {
+                scheduledAlarms.append(persistableAlarm.alarm())
+                notificationRequests[persistableAlarm.alarm().id] = persistableAlarm.getNotificationRequests()
+            }
         }
         
     }
     
+    func purge() {
+        fileDbDelete(fileName: alarmsPersistenceFile)
+        cancelAllNotifications()
+    }
+    
     func dump() {
+        print("Scheduler::Alarms:")
         for alarm in scheduledAlarms {
+            print("{")
             print(alarm.string())
+            print("Notifications: [")
+            let requests = notificationRequests[alarm.id]
+            if requests != nil {
+                for notificationRequestId  in requests! {
+                    print("    \(notificationRequestId)")
+                }
+            }
+            print("    ]")
+            print("}")
         }
     }
     
     func dumpNotifications() {
+        print("Scheduler::Notifications:")
         UNUserNotificationCenter.current().getPendingNotificationRequests() {
             notificationRequests in
             
+            print("[")
             for req in notificationRequests {
-                print("{")
                 print(req.identifier)
                 print(req.content.body)
-                print("}")
+                
             }
-        
+            print("]")
+            
         }
     }
 }

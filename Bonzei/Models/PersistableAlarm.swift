@@ -24,7 +24,10 @@ class PersistableAlarm: NSObject, NSCoding {
     
     private var isActive: String
     
-    init(alarm: Alarm) {
+    private var notificationRequests: Set<String>
+    
+    init(alarm: Alarm, notificationRequests: Set<String>? ) {
+        
         id = alarm.id
         date = alarm.date
         repeatOn = alarm.repeatOn
@@ -32,17 +35,38 @@ class PersistableAlarm: NSObject, NSCoding {
         snoozeEnabled = alarm.snoozeEnabled.string
         isActive = alarm.isActive.string
         
+        if notificationRequests != nil {
+            self.notificationRequests = notificationRequests!
+        } else {
+            self.notificationRequests = Set<String>()
+        }
+        
         super.init()
+    
     }
     
     required init?(coder: NSCoder) {
+        
         snoozeEnabled = coder.decodeObject(forKey: "snoozeEnabled") as! String
         id = coder.decodeObject(forKey:"id") as! String
         date = coder.decodeObject(forKey:"date") as! Date
-        repeatOn = coder.decodeObject(forKey: "repeatOn") as! Set<Int>
+        
+        if let repeatOn = coder.decodeObject(forKey: "repeatOn") as? Set<Int> {
+            self.repeatOn = repeatOn
+        } else {
+            self.repeatOn = Set<Int>()
+        }
+        
         melodyName = coder.decodeObject(forKey: "melodyName") as! String
         snoozeEnabled = coder.decodeObject(forKey: "snoozeEnabled") as! String
         isActive = coder.decodeObject(forKey: "isActive") as! String
+        
+        if let notificationRequests = coder.decodeObject(forKey: "notificationRequests") as? Set<String> {
+            self.notificationRequests = notificationRequests
+        } else {
+            self.notificationRequests = Set<String>()
+        }
+    
     }
     
     func encode(with coder: NSCoder) {
@@ -52,6 +76,7 @@ class PersistableAlarm: NSObject, NSCoding {
         coder.encode(repeatOn, forKey: "repeatOn")
         coder.encode(melodyName, forKey: "melodyName")
         coder.encode(isActive, forKey: "isActive")
+        coder.encode(notificationRequests, forKey: "notificationRequests")
     }
     
     public func alarm() -> Alarm {
@@ -61,6 +86,10 @@ class PersistableAlarm: NSObject, NSCoding {
                      melodyName: melodyName,
                      snoozeEnabled: snoozeEnabled == "true",
                      isActive: isActive == "true")
+    }
+    
+    public func getNotificationRequests() -> Set<String> {
+        return notificationRequests
     }
     
 }

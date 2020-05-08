@@ -38,14 +38,12 @@ struct Alarm {
     /// Creates a human readable representation of the alarm
     func string() -> String {
         return """
-        {
         id: \(id)
         date: \(dateString)
         melody: \(melodyName)
         repeat: \(repeatOn)
         active: \(isActive)
         snooze: \(snoozeEnabled)
-        }
         """
     }
     
