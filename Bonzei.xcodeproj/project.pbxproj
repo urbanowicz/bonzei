@@ -31,6 +31,7 @@
 		F17ABEFF244708A2008E9227 /* BonzeiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEFE244708A2008E9227 /* BonzeiTests.swift */; };
 		F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */; };
 		F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */; };
+		F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB936D2465EFFD008FAA1D /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		F17ABF00244708A2008E9227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsTableDataSource.swift; sourceTree = "<group>"; };
 		F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodiesTableDataSource.swift; sourceTree = "<group>"; };
+		F1AB936D2465EFFD008FAA1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 		F17ABEE12447089F008E9227 /* Bonzei */ = {
 			isa = PBXGroup;
 			children = (
+				F1AB936C2465EFE1008FAA1D /* Constants */,
 				F15C1AB82461731800F47CCC /* AlarmScheduler */,
 				F15590F7245EE3F400928589 /* SoundFiles */,
 				F1421C242454B6BF003D226A /* Controls */,
@@ -196,6 +199,14 @@
 				F17ABF00244708A2008E9227 /* Info.plist */,
 			);
 			path = BonzeiTests;
+			sourceTree = "<group>";
+		};
+		F1AB936C2465EFE1008FAA1D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F1AB936D2465EFFD008FAA1D /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +325,7 @@
 				F15590FD245EF27300928589 /* Melody.swift in Sources */,
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
 				F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */,
+				F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */,
 				F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */,
 				F14538A92464130100FED111 /* PersistableAlarm.swift in Sources */,
 				F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */,
