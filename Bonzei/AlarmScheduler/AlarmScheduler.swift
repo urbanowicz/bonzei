@@ -68,20 +68,14 @@ class AlarmScheduler {
         if !alarm.isActive || alarm.repeatOn.isEmpty {
             print("Scheduler::added inactive: \(alarm.id)")
             persistAlarmsAndNotifications()
-        } else {
-                
-            let notificationCenter = UNUserNotificationCenter.current()
-            
-            notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-                guard granted == true && error == nil else { return }
-                self.addNotification(forAlarm: alarm)
-            }
-                
-            print("Scheduler::added: \(alarm.id)")
+            return
         }
         
-        
-        
+        ifNotificationsAreAllowed {
+            self.addNotification(forAlarm: alarm)
+            print("Scheduler::added: \(alarm.id)")
+        }
+    
     }
 
     /// Removes an alarm from the scheduler.
@@ -146,11 +140,14 @@ class AlarmScheduler {
         cancelNotification(forAlarm: updatedAlarm)
         
         if (!alarm.isActive || alarm.repeatOn.isEmpty) {
-            print("Scheduler::Updated to inactive: \(id)")
             persistAlarmsAndNotifications()
-        } else {
-            addNotification(forAlarm: updatedAlarm)
-            print("Scheduler::Updated: \(id)")
+            print("Scheduler::Alarm: \(id) updated to Inactive")
+            return
+        }
+        
+        ifNotificationsAreAllowed {
+            self.addNotification(forAlarm: updatedAlarm)
+            print("Scheduler::Updated alarm: \(id)")
         }
         
     }
@@ -161,6 +158,20 @@ class AlarmScheduler {
     ///
     public func isScheduledAlarm(withId id: String) -> Bool {
         return indexOfAlarm(withId: id) != nil
+    }
+    
+    private func ifNotificationsAreAllowed(run: @escaping () -> Void) {
+        UNUserNotificationCenter
+            .current()
+            .requestAuthorization(options: [.alert, .sound, .badge] ) { granted, error in
+            
+                guard granted == true && error == nil else {
+                    return
+                }
+                
+                run()
+                
+        }
     }
     
     //MARK: - Helper functions
@@ -200,7 +211,7 @@ class AlarmScheduler {
                     guard error == nil else { return }
                     self.notificationRequests[alarm.id]!.insert(request.identifier)
                     self.persistAlarmsAndNotifications()
-                    print("Scheduler::Notification added OK: \(datePattern.weekday!)")
+                    print("Scheduler::Added notification: \(datePattern.weekday!)")
             }
         }
     }
@@ -222,8 +233,8 @@ class AlarmScheduler {
         
         notificationRequests.removeValue(forKey: alarm.id)
         
-        print("Scheduler::Canceled Notifications for: \(alarm.id)")
-        dumpNotifications()
+        print("Scheduler::Canceled notifications for alarm: \(alarm.id)")
+
     }
     
     /// cancel all pending notifications
@@ -297,9 +308,7 @@ class AlarmScheduler {
             
             print("[")
             for req in notificationRequests {
-                print(req.identifier)
-                print(req.content.body)
-                
+                print("\(req.identifier) \(req.content.body)")
             }
             print("]")
             
