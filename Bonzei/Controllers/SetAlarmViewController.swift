@@ -86,7 +86,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         setMelodyButton.backgroundColor = UIColor.clear
         
         snoozeSwitch.thumbTintColor = BonzeiColors.green
-        snoozeSwitch.onTintColor = UIColor(red: 0.93, green: 0.91, blue: 0.95, alpha: 1.00)
+        snoozeSwitch.onTintColor = BonzeiColors.gray
         
         
         // Setup a `UITapGestureRecognizer` for `melodyLabel`
@@ -214,7 +214,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBAction func snoozeSwitchToggled(_ sender: UISwitch) {
         if snoozeSwitch.isOn {
-            snoozeSwitch.thumbTintColor = UIColor(red: 0.11, green: 0.25, blue: 0.22, alpha: 1.00)
+            snoozeSwitch.thumbTintColor = BonzeiColors.green
         } else {
             snoozeSwitch.thumbTintColor = UIColor.white
         }
