@@ -85,9 +85,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         playMelodyButton.backgroundColor = UIColor.clear
         setMelodyButton.backgroundColor = UIColor.clear
         
-        snoozeSwitch.thumbTintColor = BonzeiColors.green
         snoozeSwitch.onTintColor = BonzeiColors.gray
-        
         
         // Setup a `UITapGestureRecognizer` for `melodyLabel`
         // When `melodyLabel` is tapped, we want to transition to `SetMelodyViewController`
@@ -116,6 +114,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
                 dayOfWeekPicker.selection = alarmToEdit!.repeatOn
                 datePicker.date = alarmToEdit!.date
                 snoozeSwitch.isOn = alarmToEdit!.snoozeEnabled
+                setSnoozeSwitchThumbTintColor()
             }
         }
         else {
@@ -213,11 +212,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     @IBAction func snoozeSwitchToggled(_ sender: UISwitch) {
-        if snoozeSwitch.isOn {
-            snoozeSwitch.thumbTintColor = BonzeiColors.green
-        } else {
-            snoozeSwitch.thumbTintColor = UIColor.white
-        }
+        setSnoozeSwitchThumbTintColor()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -239,6 +234,14 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         isMelodyPlaying = false
         if let audioPlayer = self.audioPlayer {
             audioPlayer.stop()
+        }
+    }
+    
+    private func setSnoozeSwitchThumbTintColor() {
+        if snoozeSwitch.isOn {
+            snoozeSwitch.thumbTintColor = BonzeiColors.green
+        } else {
+            snoozeSwitch.thumbTintColor = UIColor.white
         }
     }
 }
