@@ -36,7 +36,7 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
         alarmsTable.dataSource = alarmsTableDataSource
         alarmsTable.backgroundColor = UIColor.white
         addTapGestureRecognizerToAlarmsTable()

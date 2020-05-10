@@ -8,6 +8,7 @@
 
 import Foundation
 import UserNotifications
+import AVFoundation
 
 /// An alarm scheduler.
 ///
@@ -35,6 +36,7 @@ class AlarmScheduler {
     
     private let alarmsPersistenceFile = "alarms.db"
     
+    var audioPlayer: AVAudioPlayer?
     
     // This is a singleton class, hence a private constructor
     private init() {
@@ -204,8 +206,9 @@ class AlarmScheduler {
             if (triggerDate.hour == now.hour && triggerDate.minute == now.minute && now.second! < 15) {
                 print("{")
                 print("Triggering alarm:  \(alarm.string())")
-                lastTriggerDates[alarm.id] = Date()
                 print("}")
+                lastTriggerDates[alarm.id] = Date()
+                playAlarm(alarm)
             }
         }
     }
@@ -338,6 +341,38 @@ class AlarmScheduler {
             
         }
         
+    }
+    
+    private func playAlarm(_ alarm: Alarm) {
+ 
+        if audioPlayer != nil && audioPlayer!.isPlaying{
+            return
+        }
+        
+        // Play the selected melody
+        let path = Bundle.main.path(forResource: alarm.melodyName + ".mp3", ofType: nil)
+            
+        let url = URL(fileURLWithPath: path!)
+        
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("activating session failed")
+        }
+            
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print("Playing a melody failed. \"\(alarm.melodyName).mp3\"")
+        }
+    }
+    
+    public func stopAlarm() {
+        if audioPlayer != nil && audioPlayer!.isPlaying{
+            audioPlayer!.stop()
+            audioPlayer = nil
+        }
     }
     
     func purge() {
