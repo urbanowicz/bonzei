@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
+		F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127AC542468265B007F9734 /* HeartBeatService.swift */; };
 		F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1329B172460912300E7F7A2 /* OvalButton.swift */; };
 		F1368DA0246063FA00BBFC39 /* Endorphin Birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1368D9D246063F900BBFC39 /* Endorphin Birds.mp3 */; };
 		F1368DA1246063FA00BBFC39 /* Midnight Moon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1368D9E246063F900BBFC39 /* Midnight Moon.mp3 */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
+		F127AC542468265B007F9734 /* HeartBeatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatService.swift; sourceTree = "<group>"; };
 		F1329B172460912300E7F7A2 /* OvalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButton.swift; sourceTree = "<group>"; };
 		F1368D9D246063F900BBFC39 /* Endorphin Birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Endorphin Birds.mp3"; sourceTree = "<group>"; };
 		F1368D9E246063F900BBFC39 /* Midnight Moon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Midnight Moon.mp3"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */,
+				F127AC542468265B007F9734 /* HeartBeatService.swift */,
 			);
 			path = AlarmScheduler;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */,
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F15526C4244A060300741E80 /* Alarm.swift in Sources */,
+				F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */,
 				F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */,
 				F15526C6244A0F4B00741E80 /* FileDB.swift in Sources */,
 				F15590FD245EF27300928589 /* Melody.swift in Sources */,
@@ -491,6 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -509,6 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
