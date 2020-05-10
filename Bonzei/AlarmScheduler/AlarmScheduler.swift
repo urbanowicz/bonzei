@@ -31,6 +31,8 @@ class AlarmScheduler {
     /// Maps `alarmId` to all`requestNotificationId`identifiers associated with this alarm.
     private var notificationRequests = [ String: Set<String> ]()
     
+    private var lastTriggerDates = [String: Date]()
+    
     private let alarmsPersistenceFile = "alarms.db"
     
     
@@ -137,6 +139,8 @@ class AlarmScheduler {
         
         scheduledAlarms[i!] = updatedAlarm
         
+        lastTriggerDates[updatedAlarm.id] = nil
+        
         cancelNotification(forAlarm: updatedAlarm)
         
         if (!alarm.isActive || alarm.repeatOn.isEmpty) {
@@ -172,6 +176,40 @@ class AlarmScheduler {
         }
     }
     
+    public func checkAndRunAlarms() {
+        let nowDate = Date()
+        let now = Calendar.current.dateComponents([.weekday, .hour, .minute, .second], from: nowDate)
+        
+        //Only active alarms
+        var alarms: [Alarm] = scheduledAlarms.filter({ alarm in alarm.isActive})
+        
+        //Only alarms that have the right weekday
+        alarms = alarms.filter({ alarm in
+            let repeatOn = alarm.repeatOn.map({ dayOfWeek in return (dayOfWeek + 1) % 7 + 1})
+            return repeatOn.contains(now.weekday!)
+        })
+        
+        //Only alarms that haven't been triggered today
+        alarms = alarms.filter({alarm in
+            let lastTriggerDate = lastTriggerDates[alarm.id]
+            if lastTriggerDate == nil {
+                return true
+            }
+            let result = Calendar.current.compare(nowDate, to: lastTriggerDate!, toGranularity: .day)
+            return result != .orderedSame
+        })
+        
+        for alarm in alarms {
+            let triggerDate = Calendar.current.dateComponents([.hour, .minute], from: alarm.date)
+            if (triggerDate.hour == now.hour && triggerDate.minute == now.minute && now.second! < 15) {
+                print("{")
+                print("Triggering alarm:  \(alarm.string())")
+                lastTriggerDates[alarm.id] = Date()
+                print("}")
+            }
+        }
+    }
+    
     private func ifNotificationsAreAllowed(run: @escaping () -> Void) {
         UNUserNotificationCenter
             .current()
@@ -203,7 +241,7 @@ class AlarmScheduler {
         content.title = "Wake up"
         content.body = alarm.melodyName
         content.categoryIdentifier = "alarm"
-        content.sound = UNNotificationSound(named: UNNotificationSoundName(alarm.melodyName+".mp3"))
+        content.sound = .none //UNNotificationSound(named: UNNotificationSoundName(alarm.melodyName+".mp3"))
 
         for dayOfWeek in alarm.repeatOn {
             //2.Trigger

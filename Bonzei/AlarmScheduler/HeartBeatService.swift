@@ -69,6 +69,7 @@ class HeartBeatService {
     
     @objc func heartBeat() {
         print("Heart Beat: \(counter)")
+        AlarmScheduler.sharedInstance.checkAndRunAlarms()
         counter += 1
     }
     
