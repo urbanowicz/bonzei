@@ -309,7 +309,11 @@ class AlarmScheduler {
     private func persistAlarmsAndNotifications() {
         
         let persistableAlarms:[PersistableAlarm] = scheduledAlarms.map({ alarm in
-            return PersistableAlarm(alarm: alarm, notificationRequests: self.notificationRequests[alarm.id])
+            return PersistableAlarm(
+                alarm: alarm,
+                notificationRequests: self.notificationRequests[alarm.id],
+                lastTriggerDate: lastTriggerDates[alarm.id]
+            )
             
         })
         
@@ -320,12 +324,18 @@ class AlarmScheduler {
     private func readAlarmsAndNotificationsFromDisk() {
         
         if let persistableAlarms = fileDbRead(fileName: alarmsPersistenceFile) as? [PersistableAlarm] {
+            
             notificationRequests = [String: Set<String>]()
             scheduledAlarms = [Alarm]()
+            lastTriggerDates = [String: Date]()
+            
             for persistableAlarm in persistableAlarms {
-                scheduledAlarms.append(persistableAlarm.alarm())
-                notificationRequests[persistableAlarm.alarm().id] = persistableAlarm.getNotificationRequests()
+                let alarm = persistableAlarm.alarm()
+                scheduledAlarms.append(alarm)
+                notificationRequests[alarm.id] = persistableAlarm.getNotificationRequests()
+                lastTriggerDates[alarm.id] = persistableAlarm.getLastTriggerDate()
             }
+            
         }
         
     }

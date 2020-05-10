@@ -26,7 +26,9 @@ class PersistableAlarm: NSObject, NSCoding {
     
     private var notificationRequests: Set<String>
     
-    init(alarm: Alarm, notificationRequests: Set<String>? ) {
+    private var lastTriggerDate: Date?
+    
+    init(alarm: Alarm, notificationRequests: Set<String>?, lastTriggerDate: Date? ) {
         
         id = alarm.id
         date = alarm.date
@@ -34,6 +36,7 @@ class PersistableAlarm: NSObject, NSCoding {
         melodyName = alarm.melodyName
         snoozeEnabled = alarm.snoozeEnabled.string
         isActive = alarm.isActive.string
+        self.lastTriggerDate = lastTriggerDate
         
         if notificationRequests != nil {
             self.notificationRequests = notificationRequests!
@@ -66,7 +69,8 @@ class PersistableAlarm: NSObject, NSCoding {
         } else {
             self.notificationRequests = Set<String>()
         }
-    
+        
+        lastTriggerDate = coder.decodeObject(forKey: "lastTriggerDate") as? Date
     }
     
     func encode(with coder: NSCoder) {
@@ -77,6 +81,7 @@ class PersistableAlarm: NSObject, NSCoding {
         coder.encode(melodyName, forKey: "melodyName")
         coder.encode(isActive, forKey: "isActive")
         coder.encode(notificationRequests, forKey: "notificationRequests")
+        coder.encode(lastTriggerDate, forKey: "lastTriggerDate")
     }
     
     public func alarm() -> Alarm {
@@ -92,6 +97,9 @@ class PersistableAlarm: NSObject, NSCoding {
         return notificationRequests
     }
     
+    public func getLastTriggerDate() -> Date? {
+        return lastTriggerDate
+    }
 }
 
 fileprivate extension Bool {
