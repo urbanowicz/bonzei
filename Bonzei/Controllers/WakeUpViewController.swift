@@ -103,12 +103,14 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         switch setAlarmViewControler.request {
         case .newAlarm :
             self.newAlarm = setAlarmViewControler.newAlarm
-            AlarmScheduler.sharedInstance.schedule(alarm: newAlarm!)
-        
+            //AlarmScheduler.sharedInstance.schedule(alarm: newAlarm!)
+            HeartBeatService.sharedInstance.start()
+            
         case .editExistingAlarm:
             let editedAlarm = setAlarmViewControler.alarmToEdit!
             selectedCell!.alarm = editedAlarm
-            AlarmScheduler.sharedInstance.updateAlarm(withId: editedAlarm.id, using: editedAlarm)
+            HeartBeatService.sharedInstance.start()
+            //AlarmScheduler.sharedInstance.updateAlarm(withId: editedAlarm.id, using: editedAlarm)
         }
     }
     

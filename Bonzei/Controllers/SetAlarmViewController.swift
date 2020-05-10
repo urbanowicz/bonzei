@@ -76,7 +76,6 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         // So that we can play sound in silent mode:
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-            try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             
         }
@@ -143,6 +142,12 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
             
             let url = URL(fileURLWithPath: path)
             
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                print("activating session failed")
+            }
+                
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.delegate = self
