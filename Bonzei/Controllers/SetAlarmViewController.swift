@@ -106,6 +106,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
             switch request {
             case .newAlarm:
                 melodyLabel.text = selectedMelody
+                setSnoozeSwitchThumbTintColor()
                 
             case .editExistingAlarm:
                 melodyLabel.text = alarmToEdit!.melodyName
