@@ -54,7 +54,6 @@ class HeartBeatService {
         
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
-            print(audioPlayer!.currentTime)
             audioPlayer!.play()
             audioPlayer!.numberOfLoops = 10000
             audioPlayer!.volume = 0.0

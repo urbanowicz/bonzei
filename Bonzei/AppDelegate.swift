@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    func applicationWillEnterForeground(_ application: UIApplication) {
+    @objc func applicationWillEnterForeground(_ application: UIApplication) {
         print("LifeCycle::Entering foreground")
     }
     
-    func applicationWillResignActive(_ application: UIApplication) {
+    @objc func applicationWillResignActive(_ application: UIApplication) {
         print("LifeCycle:: Will Resign Active")
     }
     
@@ -32,9 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print("LifeCycle:: Will Terminate")
     }
     
-    func applicationDidBecomeActive(_ application: UIApplication) {
+    @objc func applicationDidBecomeActive(_ application: UIApplication) {
         print("LifeCycle:: Did Become Active")
     }
+    
 
     // MARK: UISceneSession Lifecycle
 

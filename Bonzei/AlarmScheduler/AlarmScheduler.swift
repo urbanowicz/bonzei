@@ -362,6 +362,7 @@ class AlarmScheduler {
             
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.setVolume(1.0, fadeDuration: 1)
             audioPlayer?.play()
         } catch {
             print("Playing a melody failed. \"\(alarm.melodyName).mp3\"")
@@ -411,4 +412,3 @@ class AlarmScheduler {
         }
     }
 }
-
