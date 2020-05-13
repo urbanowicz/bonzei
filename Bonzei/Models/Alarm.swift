@@ -35,6 +35,8 @@ struct Alarm {
     
     var isActive: Bool = true
     
+    var lastTriggerDate: Date?
+    
     /// Creates a human readable representation of the alarm
     func string() -> String {
         return """
@@ -46,6 +48,4 @@ struct Alarm {
         snooze: \(snoozeEnabled)
         """
     }
-    
-    
 }

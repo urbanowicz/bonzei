@@ -28,7 +28,7 @@ class PersistableAlarm: NSObject, NSCoding {
     
     private var lastTriggerDate: Date?
     
-    init(alarm: Alarm, notificationRequests: Set<String>?, lastTriggerDate: Date? ) {
+    init(alarm: Alarm, notificationRequests: Set<String>? ) {
         
         id = alarm.id
         date = alarm.date
@@ -36,7 +36,7 @@ class PersistableAlarm: NSObject, NSCoding {
         melodyName = alarm.melodyName
         snoozeEnabled = alarm.snoozeEnabled.string
         isActive = alarm.isActive.string
-        self.lastTriggerDate = lastTriggerDate
+        self.lastTriggerDate = alarm.lastTriggerDate
         
         if notificationRequests != nil {
             self.notificationRequests = notificationRequests!
@@ -90,15 +90,12 @@ class PersistableAlarm: NSObject, NSCoding {
                      repeatOn: repeatOn,
                      melodyName: melodyName,
                      snoozeEnabled: snoozeEnabled == "true",
-                     isActive: isActive == "true")
+                     isActive: isActive == "true",
+                     lastTriggerDate: lastTriggerDate)
     }
     
     public func getNotificationRequests() -> Set<String> {
         return notificationRequests
-    }
-    
-    public func getLastTriggerDate() -> Date? {
-        return lastTriggerDate
     }
 }
 

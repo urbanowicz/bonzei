@@ -32,8 +32,6 @@ class AlarmScheduler {
     /// Maps `alarmId` to all`requestNotificationId`identifiers associated with this alarm.
     private var notificationRequests = [ String: Set<String> ]()
     
-    private var lastTriggerDates = [String: Date]()
-    
     private let alarmsPersistenceFile = "alarms.db"
     
     var audioPlayer: AVAudioPlayer?
@@ -68,10 +66,11 @@ class AlarmScheduler {
         }
         
         scheduledAlarms.insert(alarm, at: 0)
+        AlarmPersistenceService.sharedInstance.create(alarm: alarm)
         
         if !alarm.isActive || alarm.repeatOn.isEmpty {
-            print("Scheduler::added inactive: \(alarm.id)")
             persistAlarmsAndNotifications()
+            print("Scheduler::added inactive: \(alarm.id)")
             return
         }
         
@@ -133,17 +132,22 @@ class AlarmScheduler {
         }
         
         let updatedAlarm = Alarm(id: id,
-                      date: alarm.date,
-                      repeatOn: alarm.repeatOn,
-                      melodyName: alarm.melodyName,
-                      snoozeEnabled: alarm.snoozeEnabled,
-                      isActive: alarm.isActive)
+                                 date: alarm.date,
+                                 repeatOn: alarm.repeatOn,
+                                 melodyName: alarm.melodyName,
+                                 snoozeEnabled: alarm.snoozeEnabled,
+                                 isActive: alarm.isActive,
+                                 lastTriggerDate: nil)
         
         scheduledAlarms[i!] = updatedAlarm
-        
-        lastTriggerDates[updatedAlarm.id] = nil
+        AlarmPersistenceService
+            .sharedInstance
+            .updateAlarm(withId: updatedAlarm.id, using: updatedAlarm)
         
         cancelNotification(forAlarm: updatedAlarm)
+        AlarmPersistenceService
+            .sharedInstance
+            .deleteNotificationRequestsForAlarm(withId: updatedAlarm.id)
         
         if (!alarm.isActive || alarm.repeatOn.isEmpty) {
             persistAlarmsAndNotifications()
@@ -193,21 +197,27 @@ class AlarmScheduler {
         
         //Only alarms that haven't been triggered today
         alarms = alarms.filter({alarm in
-            let lastTriggerDate = lastTriggerDates[alarm.id]
-            if lastTriggerDate == nil {
+            if alarm.lastTriggerDate == nil {
                 return true
             }
-            let result = Calendar.current.compare(nowDate, to: lastTriggerDate!, toGranularity: .day)
+            let result = Calendar
+                .current
+                .compare(nowDate, to: alarm.lastTriggerDate!, toGranularity: .day)
             return result != .orderedSame
         })
         
         for alarm in alarms {
-            let triggerDate = Calendar.current.dateComponents([.hour, .minute], from: alarm.date)
+            let triggerDate = Calendar
+                .current
+                .dateComponents([.hour, .minute], from: alarm.date)
             if (triggerDate.hour == now.hour && triggerDate.minute == now.minute && now.second! < 15) {
                 print("{")
                 print("Triggering alarm:  \(alarm.string())")
                 print("}")
-                lastTriggerDates[alarm.id] = Date()
+                scheduledAlarms[indexOfAlarm(withId: alarm.id)!].lastTriggerDate = Date()
+//                AlarmPersistenceService
+//                    .sharedInstance
+//                    .updateAlarm(withId: alarm.id, using: scheduledAlarms[i])
                 playAlarm(alarm)
             }
         }
@@ -244,7 +254,7 @@ class AlarmScheduler {
         content.title = "Wake up"
         content.body = alarm.melodyName
         content.categoryIdentifier = "alarm"
-        content.sound = .none //UNNotificationSound(named: UNNotificationSoundName(alarm.melodyName+".mp3"))
+        content.sound = .none
 
         for dayOfWeek in alarm.repeatOn {
             //2.Trigger
@@ -264,6 +274,10 @@ class AlarmScheduler {
                 .add(request) { error in
                     guard error == nil else { return }
                     self.notificationRequests[alarm.id]!.insert(request.identifier)
+                    AlarmPersistenceService.sharedInstance.createNotificationRequestForAlarm(
+                        withId: alarm.id,
+                        notificationRequest: NotificationRequest(identifier:request.identifier))
+                    
                     self.persistAlarmsAndNotifications()
                     print("Scheduler::Added notification: \(datePattern.weekday!)")
             }
@@ -314,8 +328,7 @@ class AlarmScheduler {
         let persistableAlarms:[PersistableAlarm] = scheduledAlarms.map({ alarm in
             return PersistableAlarm(
                 alarm: alarm,
-                notificationRequests: self.notificationRequests[alarm.id],
-                lastTriggerDate: lastTriggerDates[alarm.id]
+                notificationRequests: self.notificationRequests[alarm.id]
             )
             
         })
@@ -330,13 +343,11 @@ class AlarmScheduler {
             
             notificationRequests = [String: Set<String>]()
             scheduledAlarms = [Alarm]()
-            lastTriggerDates = [String: Date]()
             
             for persistableAlarm in persistableAlarms {
                 let alarm = persistableAlarm.alarm()
                 scheduledAlarms.append(alarm)
                 notificationRequests[alarm.id] = persistableAlarm.getNotificationRequests()
-                lastTriggerDates[alarm.id] = persistableAlarm.getLastTriggerDate()
             }
             
         }
