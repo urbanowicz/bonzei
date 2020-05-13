@@ -274,9 +274,11 @@ class AlarmScheduler {
                 .add(request) { error in
                     guard error == nil else { return }
                     self.notificationRequests[alarm.id]!.insert(request.identifier)
-                    AlarmPersistenceService.sharedInstance.createNotificationRequestForAlarm(
-                        withId: alarm.id,
-                        notificationRequest: NotificationRequest(identifier:request.identifier))
+                    AlarmPersistenceService.sharedInstance.createNotificationRequest(
+                        notificationRequest: NotificationRequest(
+                            identifier: request.identifier,
+                            alarmId: alarm.id
+                    ))
                     
                     self.persistAlarmsAndNotifications()
                     print("Scheduler::Added notification: \(datePattern.weekday!)")

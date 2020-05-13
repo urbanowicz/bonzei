@@ -12,7 +12,7 @@ import UIKit
 
 struct NotificationRequest {
     var identifier: String
-    var alarmId: String?
+    var alarmId: String
 }
 
 enum Entities: String {
@@ -73,8 +73,8 @@ class AlarmPersistenceService {
         commit()
     }
     
-    func createNotificationRequestForAlarm(withId id: String, notificationRequest: NotificationRequest) {
-        newManagedNotificationRequest(notificationRequest, forAlarmId: id)
+    func createNotificationRequest(notificationRequest: NotificationRequest) {
+        newManagedNotificationRequest(notificationRequest)
         commit()
     }
     
@@ -142,8 +142,8 @@ class AlarmPersistenceService {
         setValuesForManagedAlarm(managedAlarm, using: alarm)
     }
     
-    private func newManagedNotificationRequest(_ notificationRequest: NotificationRequest, forAlarmId alarmId: String) {
-        guard let managedAlarm = fetchManagedAlarm(withId: alarmId) else { return }
+    private func newManagedNotificationRequest(_ notificationRequest: NotificationRequest) {
+        guard let managedAlarm = fetchManagedAlarm(withId: notificationRequest.alarmId) else { return }
         
         let managedRequest = ManagedNotificationRequest(context: viewContext)
         managedRequest.identifier = notificationRequest.identifier
