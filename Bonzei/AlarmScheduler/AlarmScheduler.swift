@@ -34,16 +34,14 @@ class AlarmScheduler {
     
     private let alarmsPersistenceFile = "alarms.db"
     
+    /// When an alarm is triggerd,  a melody is played by the audio player
     var audioPlayer: AVAudioPlayer?
     
     // This is a singleton class, hence a private constructor
     private init() {
-        
-        //purge()
         readAlarmsAndNotificationsFromDisk()
         dump()
         dumpNotifications()
-        
     }
     
     /// Schedules a given alarm.
@@ -60,7 +58,6 @@ class AlarmScheduler {
     /// - Parameter alarm : an Alarm to be scheduled.
     ///
     public func schedule(alarm: Alarm) {
-        
         guard !isScheduledAlarm(withId: alarm.id) else {
             return
         }
@@ -69,16 +66,14 @@ class AlarmScheduler {
         AlarmPersistenceService.sharedInstance.create(alarm: alarm)
         
         if !alarm.isActive || alarm.repeatOn.isEmpty {
-            persistAlarmsAndNotifications()
-            print("Scheduler::added inactive: \(alarm.id)")
+            print("Scheduler: added an inactive alarm: \(alarm.id)")
             return
         }
         
         ifNotificationsAreAllowed {
             self.addNotification(forAlarm: alarm)
-            print("Scheduler::added: \(alarm.id)")
+            print("Scheduler: added alarm: \(alarm.id)")
         }
-    
     }
 
     /// Removes an alarm from the scheduler.
@@ -88,26 +83,21 @@ class AlarmScheduler {
     ///
     /// - Parameter id: identifier of the alarm that you wish to unschedule
     ///
-    public func unscheduleAlarm(withId id: String) {
+    public func unscheduleAlarm(withId alarmId: String) {
+        guard indexOfAlarm(withId: alarmId) != nil else { return }
         
-        let i = indexOfAlarm(withId: id)
+        cancelNotificationsForAlarm(withId: alarmId)
+    
+        scheduledAlarms = scheduledAlarms.filter({ $0.id != alarmId })
+    
+        AlarmPersistenceService.sharedInstance.deleteAlarm(withId: alarmId)
         
-        if i == nil {
-            return
-        }
-        
-        cancelNotification(forAlarm: scheduledAlarms[i!])
-        
-        scheduledAlarms = scheduledAlarms.filter({ $0.id != id })
-        
-        persistAlarmsAndNotifications()
-        print("Scheduler::Removed: \(id)")
-        
+        print("Scheduler: removed alarm: \(alarmId)")
     }
     
     /// Returns all scheduled alarms .
     ///
-    /// - Returns: an array of `Alarm` values that represent scheduled alarms.
+    /// - Returns: an array of `Alarm` objects that represent scheduled alarms.
     ///
     public func allAlarms() -> [Alarm] {
         return scheduledAlarms
@@ -123,15 +113,11 @@ class AlarmScheduler {
     /// - Parameter id: unique identifier of the alarm you wish to reschedule.
     /// - Parameter alarm: provides values that will be used to update the existing alarm.
     ///
-    public func updateAlarm(withId id: String, using alarm: Alarm) {
+    public func updateAlarm(withId alarmId: String, using alarm: Alarm) {
         
-        let i = indexOfAlarm(withId: id)
+        guard let i = indexOfAlarm(withId: alarmId) else { return }
         
-        if i == nil {
-            return
-        }
-        
-        let updatedAlarm = Alarm(id: id,
+        let updatedAlarm = Alarm(id: alarmId,
                                  date: alarm.date,
                                  repeatOn: alarm.repeatOn,
                                  melodyName: alarm.melodyName,
@@ -139,25 +125,22 @@ class AlarmScheduler {
                                  isActive: alarm.isActive,
                                  lastTriggerDate: nil)
         
-        scheduledAlarms[i!] = updatedAlarm
-        AlarmPersistenceService
-            .sharedInstance
-            .updateAlarm(withId: updatedAlarm.id, using: updatedAlarm)
+        let dao = AlarmPersistenceService.sharedInstance
         
-        cancelNotification(forAlarm: updatedAlarm)
-        AlarmPersistenceService
-            .sharedInstance
-            .deleteNotificationRequestsForAlarm(withId: updatedAlarm.id)
+        scheduledAlarms[i] = updatedAlarm
+        dao.updateAlarm(withId: alarmId, using: updatedAlarm)
+        
+        cancelNotificationsForAlarm(withId: alarmId)
+        dao.deleteNotificationRequestsForAlarm(withId: updatedAlarm.id)
         
         if (!alarm.isActive || alarm.repeatOn.isEmpty) {
-            persistAlarmsAndNotifications()
-            print("Scheduler::Alarm: \(id) updated to Inactive")
+            print("Scheduler: Alarm: \(alarmId) updated to inactive")
             return
         }
         
         ifNotificationsAreAllowed {
             self.addNotification(forAlarm: updatedAlarm)
-            print("Scheduler::Updated alarm: \(id)")
+            print("Scheduler: updated alarm: \(alarmId)")
         }
         
     }
@@ -173,8 +156,8 @@ class AlarmScheduler {
     /// Cancels all pending notifications.
     /// Then, for each active alarm requests a new notification to be scheduled.
     public func rescheduleAllAlarms() {
-        
         cancelAllNotifications()
+        AlarmPersistenceService.sharedInstance.deleteAllNotificationRequests()
         
         ifNotificationsAreAllowed {
             let activeAlarms:[Alarm] = self.scheduledAlarms.filter({ $0.isActive })
@@ -214,30 +197,30 @@ class AlarmScheduler {
                 print("{")
                 print("Triggering alarm:  \(alarm.string())")
                 print("}")
-                scheduledAlarms[indexOfAlarm(withId: alarm.id)!].lastTriggerDate = Date()
-//                AlarmPersistenceService
-//                    .sharedInstance
-//                    .updateAlarm(withId: alarm.id, using: scheduledAlarms[i])
+                let i = indexOfAlarm(withId: alarm.id)!
+                scheduledAlarms[i].lastTriggerDate = Date()
+                
+                AlarmPersistenceService
+                    .sharedInstance
+                    .updateAlarm(withId: alarm.id, using: scheduledAlarms[i])
+                
                 playAlarm(alarm)
             }
         }
     }
     
+    //MARK: - Helper functions
     private func ifNotificationsAreAllowed(run: @escaping () -> Void) {
         UNUserNotificationCenter
             .current()
             .requestAuthorization(options: [.alert, .sound, .badge] ) { granted, error in
-            
                 guard granted == true && error == nil else {
                     return
                 }
                 
                 run()
-                
         }
     }
-    
-    //MARK: - Helper functions
     
     /// Schedule necessary notifications for a given alarm
     ///
@@ -245,11 +228,18 @@ class AlarmScheduler {
     ///
     private func addNotification(forAlarm alarm: Alarm) {
         
+        // We will store ids of notifications requests in the set
         if notificationRequests[alarm.id] == nil {
             notificationRequests[alarm.id] = Set<String>()
         }
         
-        //1.Content
+        // A short name for the notification center
+        let center = UNUserNotificationCenter.current()
+        
+        // A short name for the alarm persistence service
+        let dao = AlarmPersistenceService.sharedInstance
+        
+        // 1. Content
         let content = UNMutableNotificationContent()
         content.title = "Wake up"
         content.body = alarm.melodyName
@@ -257,65 +247,61 @@ class AlarmScheduler {
         content.sound = .none
 
         for dayOfWeek in alarm.repeatOn {
-            //2.Trigger
+            //2. Trigger
             var datePattern = Calendar.current.dateComponents([.hour, .minute, .timeZone], from: alarm.date)
             datePattern.weekday = (dayOfWeek + 1) % 7 + 1
             
             let trigger = UNCalendarNotificationTrigger (dateMatching: datePattern, repeats: true)
             
-            //3.Request
+            //3. Request
             let request = UNNotificationRequest(
                 identifier: UUID().uuidString,
                 content: content,
                 trigger: trigger)
             
-            UNUserNotificationCenter
-                .current()
-                .add(request) { error in
-                    guard error == nil else { return }
-                    self.notificationRequests[alarm.id]!.insert(request.identifier)
-                    AlarmPersistenceService.sharedInstance.createNotificationRequest(
-                        notificationRequest: NotificationRequest(
-                            identifier: request.identifier,
-                            alarmId: alarm.id
-                    ))
+            center.add(request) { error in
+                guard error == nil else { return }
                     
-                    self.persistAlarmsAndNotifications()
-                    print("Scheduler::Added notification: \(datePattern.weekday!)")
+                self.notificationRequests[alarm.id]!.insert(request.identifier)
+                
+                let notificationRequest = NotificationRequest(
+                        identifier: request.identifier,
+                        alarmId: alarm.id
+                )
+                
+                dao.createNotificationRequest(notificationRequest)
+                    
+                print("Scheduler: added notification for the weekday: \(datePattern.weekday!)")
             }
         }
     }
     
     /// Cancel  pending notifications for a given alarm.
-    private func cancelNotification(forAlarm alarm: Alarm) {
-        
-        guard notificationRequests[alarm.id] != nil else {
+    private func cancelNotificationsForAlarm(withId alarmId: String) {
+        guard notificationRequests[alarmId] != nil else {
             return
         }
         
-        guard notificationRequests[alarm.id]!.count > 0 else {
+        guard notificationRequests[alarmId]!.count > 0 else {
             return
         }
         
         UNUserNotificationCenter
             .current()
-            .removePendingNotificationRequests(withIdentifiers: Array(notificationRequests[alarm.id]!))
+            .removePendingNotificationRequests(withIdentifiers: Array(notificationRequests[alarmId]!))
         
-        notificationRequests.removeValue(forKey: alarm.id)
+        notificationRequests.removeValue(forKey: alarmId)
         
-        print("Scheduler::Canceled notifications for alarm: \(alarm.id)")
-
+        print("Scheduler: canceled notifications for alarm: \(alarmId)")
     }
     
     /// cancel all pending notifications
     private func cancelAllNotifications() {
-        
         UNUserNotificationCenter
             .current()
             .removeAllPendingNotificationRequests()
         
         notificationRequests.removeAll()
-        
     }
     
     /// Finds an alarm given by `id` in the internal `scheduledAlarms` array.
@@ -324,40 +310,32 @@ class AlarmScheduler {
         return scheduledAlarms.firstIndex(where: {$0.id == id})
     }
     
-    /// Writes all alarms and notifications to disk.
-    private func persistAlarmsAndNotifications() {
-        
-        let persistableAlarms:[PersistableAlarm] = scheduledAlarms.map({ alarm in
-            return PersistableAlarm(
-                alarm: alarm,
-                notificationRequests: self.notificationRequests[alarm.id]
-            )
-            
-        })
-        
-        _ = fileDbWrite(fileName: alarmsPersistenceFile, object: persistableAlarms)
-        
-    }
-    
+    /// Loads alarms, and notification requests into memory
     private func readAlarmsAndNotificationsFromDisk() {
+        scheduledAlarms = [Alarm]()
         
-        if let persistableAlarms = fileDbRead(fileName: alarmsPersistenceFile) as? [PersistableAlarm] {
+        notificationRequests = [String: Set<String>]()
+        
+        let dao = AlarmPersistenceService.sharedInstance
+        
+        guard let persistedAlarms = dao.readAllAlarms() else { return }
+        
+        scheduledAlarms = persistedAlarms
+        
+        guard let persistedNotificationRequests = dao.readAllNotificationRequests() else { return }
+        
+        persistedNotificationRequests.forEach({notificationRequest in
+            let alarmId = notificationRequest.alarmId
             
-            notificationRequests = [String: Set<String>]()
-            scheduledAlarms = [Alarm]()
-            
-            for persistableAlarm in persistableAlarms {
-                let alarm = persistableAlarm.alarm()
-                scheduledAlarms.append(alarm)
-                notificationRequests[alarm.id] = persistableAlarm.getNotificationRequests()
+            if notificationRequests[alarmId] == nil {
+                notificationRequests[alarmId] = Set<String>()
             }
             
-        }
-        
+            notificationRequests[alarmId]?.insert(notificationRequest.identifier)
+        })
     }
     
     private func playAlarm(_ alarm: Alarm) {
- 
         if audioPlayer != nil && audioPlayer!.isPlaying{
             return
         }
@@ -390,12 +368,12 @@ class AlarmScheduler {
     }
     
     func purge() {
-        fileDbDelete(fileName: alarmsPersistenceFile)
         cancelAllNotifications()
+        AlarmPersistenceService.sharedInstance.deleteAllAlarms() //Deletes all notification requests as well through 'cascade' rule.
     }
     
     func dump() {
-        print("Scheduler::Alarms:")
+        print("Scheduler: Alarms:")
         for alarm in scheduledAlarms {
             print("{")
             print(alarm.string())
@@ -412,7 +390,7 @@ class AlarmScheduler {
     }
     
     func dumpNotifications() {
-        print("Scheduler::Notifications:")
+        print("Scheduler: Notifications:")
         UNUserNotificationCenter.current().getPendingNotificationRequests() {
             notificationRequests in
             

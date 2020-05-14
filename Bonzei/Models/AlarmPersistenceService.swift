@@ -73,7 +73,7 @@ class AlarmPersistenceService {
         commit()
     }
     
-    func createNotificationRequest(notificationRequest: NotificationRequest) {
+    func createNotificationRequest(_ notificationRequest: NotificationRequest) {
         newManagedNotificationRequest(notificationRequest)
         commit()
     }
