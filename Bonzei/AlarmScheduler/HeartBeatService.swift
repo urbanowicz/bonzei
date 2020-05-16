@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import os.log
 
 class HeartBeatService {
     
@@ -16,8 +17,6 @@ class HeartBeatService {
     private var audioPlayer: AVAudioPlayer?
     
     private var timer = Timer()
-    
-    private var counter = 0
     
     private init() {
         //register for notifications about interruptions
@@ -61,15 +60,13 @@ class HeartBeatService {
             print("Starting the audio player failed")
         }
         
-        counter = 0
         timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(HeartBeatService.heartBeat),
         userInfo: nil, repeats: true)
     }
     
     @objc func heartBeat() {
-        print("Heart Beat: \(counter)")
+        os_log("Heart Beat", log: OSLog.default, type: .info)
         AlarmScheduler.sharedInstance.checkAndRunAlarms()
-        counter += 1
     }
     
     @objc func handleInterruption(notification: Notification) {
