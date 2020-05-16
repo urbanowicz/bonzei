@@ -37,11 +37,15 @@ struct Alarm {
     
     var lastTriggerDate: Date?
     
+    var lastUpdateDate: Date?
+    
     /// Creates a human readable representation of the alarm
     func string() -> String {
         return """
         id: \(id)
         date: \(dateString)
+        lastTriggerDate: \(lastTriggerDate?.description ?? "nil")
+        lastUpdateDate: \(lastUpdateDate?.description ?? "nil")
         melody: \(melodyName)
         repeat: \(repeatOn)
         active: \(isActive)

@@ -180,7 +180,8 @@ class AlarmPersistenceService {
             melodyName: managedAlarm.melodyName!,
             snoozeEnabled: managedAlarm.snoozeEnabled,
             isActive: managedAlarm.isActive,
-            lastTriggerDate: managedAlarm.lastTriggerDate)
+            lastTriggerDate: managedAlarm.lastTriggerDate,
+            lastUpdateDate: managedAlarm.lastUpdateDate)
 
         let repeatOnString = managedAlarm.repeatOn!
 
@@ -252,6 +253,7 @@ class AlarmPersistenceService {
         managedAlarm.date = alarm.date;
         managedAlarm.isActive = alarm.isActive
         managedAlarm.lastTriggerDate = alarm.lastTriggerDate
+        managedAlarm.lastUpdateDate = alarm.lastUpdateDate
         managedAlarm.snoozeEnabled = alarm.snoozeEnabled
         
         let repeatOnStr = alarm.repeatOn

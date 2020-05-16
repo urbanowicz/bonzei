@@ -5,6 +5,7 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lastTriggerDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastUpdateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="melodyName" optional="YES" attributeType="String"/>
         <attribute name="repeatOn" optional="YES" attributeType="String"/>
         <attribute name="snoozeEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -15,7 +16,7 @@
         <relationship name="alarm" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedAlarm" inverseName="notificationRequests" inverseEntity="ManagedAlarm"/>
     </entity>
     <elements>
-        <element name="ManagedAlarm" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="ManagedAlarm" positionX="-63" positionY="-18" width="128" height="178"/>
         <element name="ManagedNotificationRequest" positionX="-54" positionY="36" width="128" height="73"/>
     </elements>
 </model>

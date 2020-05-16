@@ -32,8 +32,6 @@ class AlarmScheduler {
     /// Maps `alarmId` to all`requestNotificationId`identifiers associated with this alarm.
     private var notificationRequests = [ String: Set<String> ]()
     
-    private let alarmsPersistenceFile = "alarms.db"
-    
     /// When an alarm is triggerd,  a melody is played by the audio player
     var audioPlayer: AVAudioPlayer?
     
@@ -62,17 +60,20 @@ class AlarmScheduler {
             return
         }
         
-        scheduledAlarms.insert(alarm, at: 0)
-        AlarmPersistenceService.sharedInstance.create(alarm: alarm)
+        var newAlarm = alarm
+        newAlarm.lastUpdateDate = Date()
         
-        if !alarm.isActive || alarm.repeatOn.isEmpty {
-            print("Scheduler: added an inactive alarm: \(alarm.id)")
+        scheduledAlarms.insert(newAlarm, at: 0)
+        AlarmPersistenceService.sharedInstance.create(alarm: newAlarm)
+        
+        if !newAlarm.isActive || newAlarm.repeatOn.isEmpty {
+            print("Scheduler: added an inactive alarm: \(newAlarm.id)")
             return
         }
         
         ifNotificationsAreAllowed {
-            self.addNotification(forAlarm: alarm)
-            print("Scheduler: added alarm: \(alarm.id)")
+            self.addNotification(forAlarm: newAlarm)
+            print("Scheduler: added alarm: \(newAlarm.id)")
         }
     }
 
@@ -123,7 +124,8 @@ class AlarmScheduler {
                                  melodyName: alarm.melodyName,
                                  snoozeEnabled: alarm.snoozeEnabled,
                                  isActive: alarm.isActive,
-                                 lastTriggerDate: nil)
+                                 lastTriggerDate: nil,
+                                 lastUpdateDate: Date())
         
         let dao = AlarmPersistenceService.sharedInstance
         
