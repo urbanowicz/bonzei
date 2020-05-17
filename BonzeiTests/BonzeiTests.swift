@@ -49,4 +49,8 @@ class BonzeiTests: XCTestCase {
         XCTAssertEqual(triggerDate.minute, 15)
         XCTAssertEqual(triggerDate.second, 0)
     }
+    
+    func testAlarmScheduler1() {
+        let scheduler = AlarmScheduler.sharedInstance
+    }
 }

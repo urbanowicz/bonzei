@@ -13,7 +13,7 @@ import AVFoundation
 /// An alarm scheduler.
 ///
 /// Provides a convenient API for scheduling of recurring alarms.
-/// Under the hood, it relies on services provided by the`UNUserNotificationCenter`
+/// Rrelies on services provided by the`UNUserNotificationCenter`
 /// To schedule an alarm, client code must create an instance of the `Alarm` class and pass it to the scheduler
 /// There is one, shared instance of the scheduler in the application. It can be accessed like so:
 ///
@@ -171,16 +171,18 @@ class AlarmScheduler {
         let nowDate = Date()
         let now = Calendar.current.dateComponents([.weekday, .hour, .minute, .second], from: nowDate)
         
-        //Only active alarms
+        // Only active alarms
         var alarms: [Alarm] = scheduledAlarms.filter({ alarm in alarm.isActive})
         
-        //Only alarms that have the right weekday
+        // Only alarms:
+        // a) that have the right weekday
+        // b) or are 'one time'
         alarms = alarms.filter({ alarm in
             let repeatOn = alarm.repeatOn.map({ dayOfWeek in return (dayOfWeek + 1) % 7 + 1})
-            return repeatOn.contains(now.weekday!)
+            return repeatOn.contains(now.weekday!) || !alarm.isRecurring
         })
         
-        //Only alarms that haven't been triggered today
+        // Only alarms that haven't been triggered today
         alarms = alarms.filter({alarm in
             if alarm.lastTriggerDate == nil {
                 return true
@@ -192,10 +194,7 @@ class AlarmScheduler {
         })
         
         for alarm in alarms {
-            let triggerDate = Calendar
-                .current
-                .dateComponents([.hour, .minute], from: alarm.date)
-            if (triggerDate.hour == now.hour && triggerDate.minute == now.minute && now.second! < 15) {
+            if (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15) {
                 print("{")
                 print("Triggering alarm:  \(alarm.string())")
                 print("}")
@@ -226,9 +225,9 @@ class AlarmScheduler {
     
     private func setupNotificationsForAlarm(_ alarm: Alarm) {
         if alarm.isRecurring {
-            requestRecurringNotificationsForAlarm(alarm)
+            setupRecurringNotificationsForAlarm(alarm)
         } else {
-            requestOneTimeNotificationForAlarm(alarm)
+            setupOneTimeNotificationForAlarm(alarm)
         }
     }
     
@@ -236,7 +235,7 @@ class AlarmScheduler {
     ///
     /// - Parameter alarm: an alarm for which you want to request a notification.
     ///
-    private func requestOneTimeNotificationForAlarm(_ alarm: Alarm) {
+    private func setupOneTimeNotificationForAlarm(_ alarm: Alarm) {
         // We will store ids of notifications requests in the set
         if notificationRequests[alarm.id] == nil {
             notificationRequests[alarm.id] = Set<String>()
@@ -246,6 +245,12 @@ class AlarmScheduler {
         
         let trigger = prepareNotificationTriggerForOneTimeAlarm(alarm)
         
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: trigger)
+        
+        requestNotificationForAlarm(alarm, request: request)
         
     }
     
@@ -253,7 +258,7 @@ class AlarmScheduler {
     ///
     /// - Parameter alarm: an alarm for which notifications need to be added.
     ///
-    private func requestRecurringNotificationsForAlarm(_ alarm: Alarm) {
+    private func setupRecurringNotificationsForAlarm(_ alarm: Alarm) {
         
         // We will store ids of notifications requests in the set
         if notificationRequests[alarm.id] == nil {
@@ -294,8 +299,24 @@ class AlarmScheduler {
                 
                 dao.createNotificationRequest(notificationRequest)
                     
-                print("Scheduler: added notification for the weekday: \(datePattern.weekday!)")
+                print("Scheduler: added a notification for weekday: \(datePattern.weekday!)")
             }
+        }
+    }
+    
+    private func requestNotificationForAlarm(_ alarm: Alarm, request: UNNotificationRequest) {
+        let notificationCenter = UNUserNotificationCenter.current()
+        
+        let dao = AlarmPersistenceService.sharedInstance
+        
+        notificationCenter.add(request) { error in
+            guard error == nil else { return }
+            
+            self.notificationRequests[alarm.id]!.insert(request.identifier)
+            
+            dao.createNotificationRequest(NotificationRequest(identifier: request.identifier, alarmId: alarm.id))
+            
+            print("Scheduler: added a notification request")
         }
     }
     
