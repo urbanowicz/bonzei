@@ -66,13 +66,13 @@ class AlarmScheduler {
         scheduledAlarms.insert(newAlarm, at: 0)
         AlarmPersistenceService.sharedInstance.create(alarm: newAlarm)
         
-        if !newAlarm.isActive || newAlarm.repeatOn.isEmpty {
+        if !newAlarm.isActive {
             print("Scheduler: added an inactive alarm: \(newAlarm.id)")
             return
         }
         
         ifNotificationsAreAllowed {
-            self.addNotification(forAlarm: newAlarm)
+            self.setupNotificationsForAlarm(newAlarm)
             print("Scheduler: added alarm: \(newAlarm.id)")
         }
     }
@@ -135,13 +135,13 @@ class AlarmScheduler {
         cancelNotificationsForAlarm(withId: alarmId)
         dao.deleteNotificationRequestsForAlarm(withId: updatedAlarm.id)
         
-        if (!alarm.isActive || alarm.repeatOn.isEmpty) {
+        if (!alarm.isActive) {
             print("Scheduler: Alarm: \(alarmId) updated to inactive")
             return
         }
         
         ifNotificationsAreAllowed {
-            self.addNotification(forAlarm: updatedAlarm)
+            self.setupNotificationsForAlarm(updatedAlarm)
             print("Scheduler: updated alarm: \(alarmId)")
         }
         
@@ -163,7 +163,7 @@ class AlarmScheduler {
         
         ifNotificationsAreAllowed {
             let activeAlarms:[Alarm] = self.scheduledAlarms.filter({ $0.isActive })
-            activeAlarms.forEach({ alarm in self.addNotification(forAlarm: alarm) })
+            activeAlarms.forEach({ alarm in self.setupNotificationsForAlarm(alarm) })
         }
     }
     
@@ -224,11 +224,23 @@ class AlarmScheduler {
         }
     }
     
-    /// Schedule necessary notifications for a given alarm
+    private func setupNotificationsForAlarm(_ alarm: Alarm) {
+        if alarm.isRecurring {
+            requestRecurringNotificationsForAlarm(alarm)
+        } else {
+            requestOneTimeNotificationForAlarm(alarm)
+        }
+    }
+    
+    private func requestOneTimeNotificationForAlarm(_ alarm: Alarm) {
+        
+    }
+    
+    /// Schedule recurring notifications for a given alarm
     ///
     /// - Parameter alarm: an alarm for which notifications need to be added.
     ///
-    private func addNotification(forAlarm alarm: Alarm) {
+    private func requestRecurringNotificationsForAlarm(_ alarm: Alarm) {
         
         // We will store ids of notifications requests in the set
         if notificationRequests[alarm.id] == nil {
