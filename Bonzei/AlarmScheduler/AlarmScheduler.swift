@@ -232,11 +232,24 @@ class AlarmScheduler {
         }
     }
     
+    /// Setup one time notification request for a given alarm
+    ///
+    /// - Parameter alarm: an alarm for which you want to request a notification.
+    ///
     private func requestOneTimeNotificationForAlarm(_ alarm: Alarm) {
+        // We will store ids of notifications requests in the set
+        if notificationRequests[alarm.id] == nil {
+            notificationRequests[alarm.id] = Set<String>()
+        }
+        
+        let content = prepareNotificationContentForAlarm(alarm)
+        
+        let trigger = prepareNotificationTriggerForOneTimeAlarm(alarm)
+        
         
     }
     
-    /// Schedule recurring notifications for a given alarm
+    /// Setup  recurring notifications for a given alarm
     ///
     /// - Parameter alarm: an alarm for which notifications need to be added.
     ///
@@ -254,11 +267,7 @@ class AlarmScheduler {
         let dao = AlarmPersistenceService.sharedInstance
         
         // 1. Content
-        let content = UNMutableNotificationContent()
-        content.title = "Wake up"
-        content.body = alarm.melodyName
-        content.categoryIdentifier = "alarm"
-        content.sound = .none
+        let content = prepareNotificationContentForAlarm(alarm)
 
         for dayOfWeek in alarm.repeatOn {
             //2. Trigger
@@ -316,6 +325,33 @@ class AlarmScheduler {
             .removeAllPendingNotificationRequests()
         
         notificationRequests.removeAll()
+    }
+    
+    private func prepareNotificationContentForAlarm(_ alarm: Alarm) -> UNMutableNotificationContent {
+        let content = UNMutableNotificationContent()
+        content.title = "Wake up"
+        content.body = alarm.melodyName
+        content.categoryIdentifier = "alarm"
+        content.sound = .none
+        return content
+    }
+    
+    private func prepareNotificationTriggerForOneTimeAlarm(_ alarm: Alarm) -> UNCalendarNotificationTrigger {
+        let now = Date()
+        
+        var triggerDate = now
+            .new(bySetting: .hour, to: alarm.hour)
+            .new(bySetting: .minute, to: alarm.minute)
+            .new(bySetting: .second, to: 0)
+
+        if now.hour > alarm.hour ||
+           (now.hour == alarm.hour && now.minute >= alarm.minute) {
+            triggerDate = triggerDate.new(byAdding: .day, value: 1)
+        }
+        
+        let triggerDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: triggerDate)
+        
+        return UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
     }
     
     /// Finds an alarm given by `id` in the internal `scheduledAlarms` array.
