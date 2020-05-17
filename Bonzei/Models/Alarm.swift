@@ -52,6 +52,12 @@ struct Alarm {
     
     var lastUpdateDate: Date?
     
+    var isRecurring: Bool {
+        get {
+            return repeatOn.count > 0
+        }
+    }
+    
     /// Creates a human readable representation of the alarm
     func string() -> String {
         return """
