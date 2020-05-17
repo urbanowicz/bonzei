@@ -52,10 +52,45 @@ extension Date {
         }
     }
     
-    /// Convienience method for getting basic components of a date.
-    /// - Returns: year, day of month, weekday, hour, minute, second, time zone components using the current calendar
+    var timeZone: TimeZone {
+        get {
+            return Calendar
+                .current
+                .dateComponents([.timeZone], from: self).timeZone!
+        }
+    }
+    
+    /// Convienience method for getting basic components of a date in the current time zone
+    /// - Returns: date components in the current time zone
     func components() -> DateComponents {
+        return Calendar
+            .current
+            .dateComponents(in: TimeZone.current, from: self)
+    }
+    
+    /// - Returns: date components of this date using a specified time zone
+    func components(in timeZone: TimeZone) -> DateComponents {
+        return Calendar
+            .current
+            .dateComponents(in: timeZone, from: self)
+    }
+    
+    /// - Returns: date components of this date using the time zone in which the date was originally created
+    func componentsInOriginalTimeZone() -> DateComponents {
+        return components(in: self.timeZone)
+    }
+    
+    func new(byAdding: Calendar.Component, value: Int) -> Date {
+        return Calendar.current.date(byAdding: byAdding, value: value, to: self)!
+    }
+    
+    func new(bySetting: Calendar.Component, to value: Int) -> Date {
         let calendar = Calendar.current
-        return calendar.dateComponents([.year, .month, .day, .weekday, .hour, .minute, .second, .timeZone], from: self)
+        
+        var dateComponents = calendar.dateComponents(in: TimeZone.current, from: self)
+        
+        dateComponents.setValue(value, for: bySetting)
+        
+        return calendar.date(from: dateComponents)!
     }
 }

@@ -19,16 +19,34 @@ class BonzeiTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAlarm1() {
+        let now = Date()
+        
+        let alarm = Alarm(
+            id: "A1",
+            date: now,
+            repeatOn: [],
+            melodyName: "melody",
+            snoozeEnabled: true,
+            isActive: true,
+            lastTriggerDate: nil,
+            lastUpdateDate: nil)
+        
+        XCTAssertEqual(alarm.hour, now.hour)
+        XCTAssertEqual(alarm.minute, now.minute)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testDateExtension1() {
+        let now = Date()
+        
+        let triggerDate = now
+            .new(bySetting: .hour, to: 10)
+            .new(bySetting: .minute, to: 15)
+            .new(bySetting: .second, to: 0)
+    
+        
+        XCTAssertEqual(triggerDate.hour, 10)
+        XCTAssertEqual(triggerDate.minute, 15)
+        XCTAssertEqual(triggerDate.second, 0)
     }
-
 }

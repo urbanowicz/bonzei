@@ -20,11 +20,24 @@ struct Alarm {
     
     var dateString: String {
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = date.timeZone
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .medium
         dateFormatter.setLocalizedDateFormatFromTemplate("hh:mm")
         dateFormatter.locale = Locale(identifier: "en_US")
         return dateFormatter.string(from: date)
+    }
+    
+    var hour: Int {
+        get {
+            return date.components(in: date.timeZone).hour!
+        }
+    }
+    
+    var minute: Int {
+        get {
+            return date.components(in: date.timeZone).minute!
+        }
     }
     
     var repeatOn = Set<Int>([0])
