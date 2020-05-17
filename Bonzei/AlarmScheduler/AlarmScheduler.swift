@@ -171,26 +171,23 @@ class AlarmScheduler {
         let nowDate = Date()
         let now = Calendar.current.dateComponents([.weekday, .hour, .minute, .second], from: nowDate)
         
-        // Only active alarms
-        var alarms: [Alarm] = scheduledAlarms.filter({ alarm in alarm.isActive})
-        
-        // Only alarms:
-        // a) that have the right weekday
-        // b) or are 'one time'
-        alarms = alarms.filter({ alarm in
+        let alarms: [Alarm] = scheduledAlarms.filter({ alarm in
+            
             let repeatOn = alarm.repeatOn.map({ dayOfWeek in return (dayOfWeek + 1) % 7 + 1})
-            return repeatOn.contains(now.weekday!) || !alarm.isRecurring
-        })
-        
-        // Only alarms that haven't been triggered today
-        alarms = alarms.filter({alarm in
+            let hasCorrectWeekday = repeatOn.contains(now.weekday!) || !alarm.isRecurring
+            
+            var hasNotTriggerdAlready = false
             if alarm.lastTriggerDate == nil {
-                return true
+                hasNotTriggerdAlready = true
+            } else {
+                let result = Calendar
+                    .current
+                    .compare(nowDate, to: alarm.lastTriggerDate!, toGranularity: .day)
+                hasNotTriggerdAlready = result != .orderedSame
             }
-            let result = Calendar
-                .current
-                .compare(nowDate, to: alarm.lastTriggerDate!, toGranularity: .day)
-            return result != .orderedSame
+            
+            return alarm.isActive && hasCorrectWeekday && hasNotTriggerdAlready
+            
         })
         
         for alarm in alarms {
