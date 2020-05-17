@@ -267,9 +267,12 @@ class AlarmScheduler {
         let content = prepareNotificationContentForAlarm(alarm)
 
         for dayOfWeek in alarm.repeatOn {
-
-            var datePattern = Calendar.current.dateComponents([.hour, .minute, .timeZone], from: alarm.date)
-            datePattern.weekday = (dayOfWeek + 1) % 7 + 1
+            
+            let datePattern = DateComponents(
+                timeZone: .current,
+                hour: alarm.hour,
+                minute: alarm.minute,
+                weekday: (dayOfWeek + 1) % 7 + 1)
             
             let trigger = UNCalendarNotificationTrigger (dateMatching: datePattern, repeats: true)
             
