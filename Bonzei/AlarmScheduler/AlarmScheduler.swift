@@ -260,47 +260,25 @@ class AlarmScheduler {
     ///
     private func setupRecurringNotificationsForAlarm(_ alarm: Alarm) {
         
-        // We will store ids of notifications requests in the set
         if notificationRequests[alarm.id] == nil {
             notificationRequests[alarm.id] = Set<String>()
         }
         
-        // A short name for the notification center
-        let center = UNUserNotificationCenter.current()
-        
-        // A short name for the alarm persistence service
-        let dao = AlarmPersistenceService.sharedInstance
-        
-        // 1. Content
         let content = prepareNotificationContentForAlarm(alarm)
 
         for dayOfWeek in alarm.repeatOn {
-            //2. Trigger
+
             var datePattern = Calendar.current.dateComponents([.hour, .minute, .timeZone], from: alarm.date)
             datePattern.weekday = (dayOfWeek + 1) % 7 + 1
             
             let trigger = UNCalendarNotificationTrigger (dateMatching: datePattern, repeats: true)
             
-            //3. Request
             let request = UNNotificationRequest(
                 identifier: UUID().uuidString,
                 content: content,
                 trigger: trigger)
             
-            center.add(request) { error in
-                guard error == nil else { return }
-                    
-                self.notificationRequests[alarm.id]!.insert(request.identifier)
-                
-                let notificationRequest = NotificationRequest(
-                        identifier: request.identifier,
-                        alarmId: alarm.id
-                )
-                
-                dao.createNotificationRequest(notificationRequest)
-                    
-                print("Scheduler: added a notification for weekday: \(datePattern.weekday!)")
-            }
+            requestNotificationForAlarm(alarm, request: request)
         }
     }
     
