@@ -9,6 +9,7 @@
 import Foundation
 import UserNotifications
 import AVFoundation
+import os.log
 
 /// An alarm scheduler.
 ///
@@ -31,6 +32,8 @@ class AlarmScheduler {
     
     /// Maps `alarmId` to all`requestNotificationId`identifiers associated with this alarm.
     private var notificationRequests = [ String: Set<String> ]()
+    
+    private var log = OSLog(subsystem: "Alarm", category: "AlarmScheduler")
     
     /// When an alarm is triggerd,  a melody is played by the audio player
     var audioPlayer: AVAudioPlayer?
@@ -192,10 +195,10 @@ class AlarmScheduler {
         
         for alarm in alarms {
             if (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15) {
-                print("{")
-                print("Triggering alarm:  \(alarm.string())")
-                print("}")
+                os_log("Triggering alarm:\n{\n%s\n}\n", log: log, type: .info, alarm.string())
+                
                 let i = indexOfAlarm(withId: alarm.id)!
+                
                 scheduledAlarms[i].lastTriggerDate = Date()
                 
                 AlarmPersistenceService
