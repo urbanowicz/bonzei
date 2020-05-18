@@ -10,7 +10,7 @@
         <!--Wake up-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController title="Wake up" id="9pv-A4-QxB" customClass="WakeUpViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Wake up" definesPresentationContext="YES" id="9pv-A4-QxB" customClass="WakeUpViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,8 +153,8 @@
                         <outlet property="alarmsTable" destination="VAZ-Yu-6ic" id="Cin-uv-sf2"/>
                         <outlet property="setAlarmButton" destination="fW0-bm-2EE" id="LyW-3b-taz"/>
                         <outlet property="wakeUpLabel" destination="du5-cL-cDe" id="eha-DO-j7n"/>
-                        <segue destination="WKb-vj-sEy" kind="presentation" identifier="NewAlarm" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="Qew-y1-UeD"/>
-                        <segue destination="WKb-vj-sEy" kind="presentation" identifier="EditExistingAlarm" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="6e3-ZK-DPt"/>
+                        <segue destination="WKb-vj-sEy" kind="presentation" identifier="NewAlarm" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="Qew-y1-UeD"/>
+                        <segue destination="WKb-vj-sEy" kind="presentation" identifier="EditExistingAlarm" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="6e3-ZK-DPt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -277,7 +277,7 @@
                                                             <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="471-3X-WLW" kind="presentation" identifier="SetAlarmToSetMelody" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="D8i-Lf-rxi"/>
+                                                            <segue destination="471-3X-WLW" kind="presentation" identifier="SetAlarmToSetMelody" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="D8i-Lf-rxi"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -514,7 +514,7 @@
         <!--Learn-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -542,7 +542,7 @@
         <!--Root View View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" customClass="RootViewViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="49e-Tb-3d3" customClass="RootViewViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -553,7 +553,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="NXM-oz-kLD" kind="presentation" identifier="PresentDismissAlarm" modalPresentationStyle="fullScreen" id="5Tj-mw-woY"/>
+                        <segue destination="NXM-oz-kLD" kind="presentation" identifier="PresentDismissAlarm" modalPresentationStyle="overCurrentContext" id="5Tj-mw-woY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -571,6 +571,6 @@
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6e3-ZK-DPt"/>
+        <segue reference="Qew-y1-UeD"/>
     </inferredMetricsTieBreakers>
 </document>
