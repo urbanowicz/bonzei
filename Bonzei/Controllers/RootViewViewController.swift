@@ -17,10 +17,11 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-         if AlarmScheduler.sharedInstance.isAlarmPlaying {
-             performSegue(withIdentifier: "PresentDismissAlarm", sender: self)
-             return
-         }
+        super.viewDidAppear(animated)
+        
+        if AlarmScheduler.sharedInstance.isAlarmPlaying {
+         performSegue(withIdentifier: "PresentDismissAlarm", sender: self)
+        }
     }
     
     /// Called when an alarm is playing and a user has just dismissed it
