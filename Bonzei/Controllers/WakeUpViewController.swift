@@ -43,6 +43,11 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         // if new alarm was added, insert a row into alarmsTable
+        if AlarmScheduler.sharedInstance.isAlarmPlaying {
+            performSegue(withIdentifier: "WakeUpToDismissAlarm", sender: self)
+            return
+        }
+        
         if newAlarm != nil {
             insertRowIntoAlarmsTable()
             newAlarm = nil

@@ -30,10 +30,16 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// - `waiting`. No alarm is being played. The scheduler is waiting for the appropriate time to trigger an alarm. Can transition to `alarmPlaying`.
     /// - `alarmPlaying`. An alarm has been triggered and the melody associated with its being played. Can transition to `waiting` or `alarmSnoozed`.
     /// - `alarmSnoozed`. An alarm has been snoozed. This state is similar to waiting. Can transitio to `alarmPlaying` or `waiting`.
-    private(set) var state:AlarmSchedulerState = .waiting
+    private(set) var state: AlarmSchedulerState = .waiting
     
     /// After an alarm has been triggered and the scheduler has entered the `alarmPlaying` state this variable will hold the relevant alarm.
     private(set) var currentlyPlayingAlarm: Alarm?
+    
+    var isAlarmPlaying: Bool {
+        get {
+            return state == .alarmPlaying
+        }
+    }
     
     /// All scheduled alarms
     private var scheduledAlarms = [Alarm]()
@@ -440,6 +446,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.delegate = self
+            audioPlayer?.numberOfLoops = 5
             audioPlayer?.setVolume(1.0, fadeDuration: 1)
             audioPlayer?.play()
         } catch let error as NSError {
