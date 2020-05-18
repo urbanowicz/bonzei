@@ -195,7 +195,7 @@ class AlarmScheduler {
         
         for alarm in alarms {
             if (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15) {
-                os_log("Triggering alarm:\n{\n%s\n}\n", log: log, type: .info, alarm.string())
+                os_log("Triggering alarm:\n{\n%{public}s\n}", log: log, type: .info, alarm.string())
                 
                 let i = indexOfAlarm(withId: alarm.id)!
                 
