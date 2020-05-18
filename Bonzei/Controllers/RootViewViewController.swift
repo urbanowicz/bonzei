@@ -8,12 +8,12 @@
 
 import UIKit
 
-class RootViewViewController: UITabBarController {
+class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        AlarmScheduler.sharedInstance.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -25,7 +25,15 @@ class RootViewViewController: UITabBarController {
     
     /// Called when an alarm is playing and a user has just dismissed it
     @IBAction func unwindDismissAlarm(_ unwindSegue: UIStoryboardSegue) {
-        print("Hellloooo")
         // Nothing to do here.
+    }
+    
+    // MARK: - AlarmSchedulerDelegate
+    
+    func didTriggerAlarm(_ alarm: Alarm) {
+        // if the view is loaded and alarm has been triggered, present the `DismissAlarmViewController` 
+        if self.isViewLoaded {
+            performSegue(withIdentifier: "PresentDismissAlarm", sender: self)
+        }
     }
 }

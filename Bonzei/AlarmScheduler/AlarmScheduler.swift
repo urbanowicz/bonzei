@@ -26,6 +26,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// Use it to access scheduler's API.
     static let sharedInstance = AlarmScheduler()
     
+    /// A delegate for the scheduler
+    var delegate: AlarmSchedulerDelegate?
+    
     /// State of the scheduler. There are three states:
     /// - `waiting`. No alarm is being played. The scheduler is waiting for the appropriate time to trigger an alarm. Can transition to `alarmPlaying`.
     /// - `alarmPlaying`. An alarm has been triggered and the melody associated with its being played. Can transition to `waiting` or `alarmSnoozed`.
@@ -222,6 +225,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                     .updateAlarm(withId: alarm.id, using: scheduledAlarms[i])
                 
                 playAlarm(alarm)
+                
+                delegate?.didTriggerAlarm(alarm)
             }
         }
     }

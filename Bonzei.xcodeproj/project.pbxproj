@@ -37,6 +37,7 @@
 		F1A608BE24716416008A45EF /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
 		F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB936D2465EFFD008FAA1D /* Constants.swift */; };
 		F1F83E1E2472F7490072630A /* RootViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E1D2472F7490072630A /* RootViewViewController.swift */; };
+		F1F83E222472FD0C0072630A /* AlarmSchedulerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */; };
 		F1FF6CE72469B26C00B07237 /* AlarmPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAlarmViewController.swift; sourceTree = "<group>"; };
 		F1AB936D2465EFFD008FAA1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F1F83E1D2472F7490072630A /* RootViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewViewController.swift; sourceTree = "<group>"; };
+		F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSchedulerDelegate.swift; sourceTree = "<group>"; };
 		F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPersistenceService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +169,7 @@
 			children = (
 				F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */,
 				F127AC542468265B007F9734 /* HeartBeatService.swift */,
+				F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */,
 			);
 			path = AlarmScheduler;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				F15526C4244A060300741E80 /* Alarm.swift in Sources */,
 				F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */,
 				F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */,
+				F1F83E222472FD0C0072630A /* AlarmSchedulerDelegate.swift in Sources */,
 				F15590FD245EF27300928589 /* Melody.swift in Sources */,
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
 				F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */,
