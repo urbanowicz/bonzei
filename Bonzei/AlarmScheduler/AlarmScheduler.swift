@@ -20,12 +20,20 @@ import os.log
 ///
 ///     let scheduler = AlarmScheduler.sharedInstance
 ///
-///
-class AlarmScheduler {
+class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     /// A single, shared instance of the scheduler.
     /// Use it to access scheduler's API.
     static let sharedInstance = AlarmScheduler()
+    
+    /// State of the scheduler. There are three states:
+    /// - `waiting`. No alarm is being played. The scheduler is waiting for the appropriate time to trigger an alarm. Can transition to `alarmPlaying`.
+    /// - `alarmPlaying`. An alarm has been triggered and the melody associated with its being played. Can transition to `waiting` or `alarmSnoozed`.
+    /// - `alarmSnoozed`. An alarm has been snoozed. This state is similar to waiting. Can transitio to `alarmPlaying` or `waiting`.
+    private(set) var state:AlarmSchedulerState = .waiting
+    
+    /// After an alarm has been triggered and the scheduler has entered the `alarmPlaying` state this variable will hold the relevant alarm.
+    private(set) var currentlyPlayingAlarm: Alarm?
     
     /// All scheduled alarms
     private var scheduledAlarms = [Alarm]()
@@ -39,7 +47,9 @@ class AlarmScheduler {
     var audioPlayer: AVAudioPlayer?
     
     // This is a singleton class, hence a private constructor
-    private init() {
+    private override init() {
+        super.init()
+        
         readAlarmsAndNotificationsFromDisk()
         dump()
         dumpNotifications()
@@ -170,7 +180,7 @@ class AlarmScheduler {
         }
     }
     
-    public func checkAndRunAlarms() {
+    internal func checkAndRunAlarms() {
         let nowDate = Date()
         let now = Calendar.current.dateComponents([.weekday, .hour, .minute, .second], from: nowDate)
         
@@ -210,7 +220,27 @@ class AlarmScheduler {
         }
     }
     
-    //MARK: - Helper functions
+    public func dismissAlarm() {
+        state = .waiting
+        currentlyPlayingAlarm = nil
+        
+        if audioPlayer != nil && audioPlayer!.isPlaying{
+            audioPlayer!.stop()
+            audioPlayer = nil
+        }
+        
+        os_log("Alarm dismissed.", log: log, type: .info)
+    }
+    
+    // MARK: - AVAudioPlayerDelegate
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        os_log("Finished playing a melody for an alarm. Alarm will be dismissed", log: log, type: .info)
+        dismissAlarm()
+    }
+    
+    // MARK: - Helper functions
+    
     private func ifNotificationsAreAllowed(run: @escaping () -> Void) {
         UNUserNotificationCenter
             .current()
@@ -388,10 +418,14 @@ class AlarmScheduler {
     }
     
     private func playAlarm(_ alarm: Alarm) {
+        os_log("Alarm has been triggered. Will play melody now.", log: log, type: .info)
         if audioPlayer != nil && audioPlayer!.isPlaying{
             return
         }
         
+        state = .alarmPlaying
+        currentlyPlayingAlarm = alarm
+                
         // Play the selected melody
         let path = Bundle.main.path(forResource: alarm.melodyName + ".mp3", ofType: nil)
             
@@ -399,23 +433,20 @@ class AlarmScheduler {
         
         do {
             try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print("activating session failed")
+        } catch let error as NSError {
+            os_log("Activating session failed: %{public}s", log: log, type: .error, error.localizedDescription)
         }
             
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.delegate = self
             audioPlayer?.setVolume(1.0, fadeDuration: 1)
             audioPlayer?.play()
-        } catch {
-            print("Playing a melody failed. \"\(alarm.melodyName).mp3\"")
-        }
-    }
-    
-    public func stopAlarm() {
-        if audioPlayer != nil && audioPlayer!.isPlaying{
-            audioPlayer!.stop()
-            audioPlayer = nil
+        } catch let error as NSError {
+            os_log("Playing melody for alarm %{public}s failed: %{public}s", log: log, type: .error, error.localizedDescription)
+            
+            state = .waiting
+            currentlyPlayingAlarm = nil
         }
     }
     
@@ -454,4 +485,12 @@ class AlarmScheduler {
             
         }
     }
+}
+
+enum AlarmSchedulerState {
+    case waiting
+    
+    case alarmPlaying
+    
+    case alarmSnoozed
 }
