@@ -43,10 +43,6 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         // if new alarm was added, insert a row into alarmsTable
-        if AlarmScheduler.sharedInstance.isAlarmPlaying {
-            performSegue(withIdentifier: "WakeUpToDismissAlarm", sender: self)
-            return
-        }
         
         if newAlarm != nil {
             insertRowIntoAlarmsTable()
@@ -119,11 +115,6 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     /// Called when a user cancels editing in 'SetAlarmView'
     @IBAction func unwindCancel(_ unwindSegue: UIStoryboardSegue) {
         //nothing to do here.
-    }
-    
-    /// Called when an alarm is playing and a user has just dismissed it
-    @IBAction func unwindDismissAlarm(_ unwindSegue: UIStoryboardSegue) {
-        
     }
     
     //MARK: - Helper functions

@@ -36,6 +36,7 @@
 		F1A608BD24713C00008A45EF /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F1A608BE24716416008A45EF /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
 		F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB936D2465EFFD008FAA1D /* Constants.swift */; };
+		F1F83E1E2472F7490072630A /* RootViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E1D2472F7490072630A /* RootViewViewController.swift */; };
 		F1FF6CE72469B26C00B07237 /* AlarmPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodiesTableDataSource.swift; sourceTree = "<group>"; };
 		F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAlarmViewController.swift; sourceTree = "<group>"; };
 		F1AB936D2465EFFD008FAA1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F1F83E1D2472F7490072630A /* RootViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewViewController.swift; sourceTree = "<group>"; };
 		F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPersistenceService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 				F118BED324478FAD00C38981 /* SetAlarmViewController.swift */,
 				F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */,
 				F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */,
+				F1F83E1D2472F7490072630A /* RootViewViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				F15590FD245EF27300928589 /* Melody.swift in Sources */,
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
 				F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */,
+				F1F83E1E2472F7490072630A /* RootViewViewController.swift in Sources */,
 				F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */,
 				F142BDE424704CF200B5857C /* DateExtension.swift in Sources */,
 				F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */,

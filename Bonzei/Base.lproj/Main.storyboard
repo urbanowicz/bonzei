@@ -155,7 +155,6 @@
                         <outlet property="wakeUpLabel" destination="du5-cL-cDe" id="eha-DO-j7n"/>
                         <segue destination="WKb-vj-sEy" kind="presentation" identifier="NewAlarm" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="Qew-y1-UeD"/>
                         <segue destination="WKb-vj-sEy" kind="presentation" identifier="EditExistingAlarm" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="6e3-ZK-DPt"/>
-                        <segue destination="NXM-oz-kLD" kind="presentation" identifier="WakeUpToDismissAlarm" modalPresentationStyle="fullScreen" id="T6Y-pn-ljd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -192,13 +191,13 @@
                         <viewLayoutGuide key="safeArea" id="Spu-WM-Qhc"/>
                     </view>
                     <connections>
-                        <segue destination="lj1-Db-3VQ" kind="unwind" identifier="UnwindDismissAlarm" unwindAction="unwindDismissAlarm:" id="845-98-d7U"/>
+                        <segue destination="lj1-Db-3VQ" kind="unwind" identifier="UnwindDismissAlarm" unwindAction="unwindDismissAlarm:" id="zWA-yj-87p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoK-Ru-mfq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="lj1-Db-3VQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="767" y="1"/>
+            <point key="canvasLocation" x="767" y="-1503"/>
         </scene>
         <!--Set Alarm-->
         <scene sceneID="Caj-vz-Vp0">
@@ -540,10 +539,10 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="1068"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Root View View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="RootViewViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -554,6 +553,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="NXM-oz-kLD" kind="presentation" identifier="PresentDismissAlarm" modalPresentationStyle="fullScreen" id="5Tj-mw-woY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
