@@ -155,11 +155,50 @@
                         <outlet property="wakeUpLabel" destination="du5-cL-cDe" id="eha-DO-j7n"/>
                         <segue destination="WKb-vj-sEy" kind="presentation" identifier="NewAlarm" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="Qew-y1-UeD"/>
                         <segue destination="WKb-vj-sEy" kind="presentation" identifier="EditExistingAlarm" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="6e3-ZK-DPt"/>
+                        <segue destination="NXM-oz-kLD" kind="presentation" identifier="WakeUpToDismissAlarm" modalPresentationStyle="fullScreen" id="T6Y-pn-ljd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="768" y="-727"/>
+        </scene>
+        <!--Dismiss Alarm-->
+        <scene sceneID="A1h-u0-jxu">
+            <objects>
+                <viewController id="NXM-oz-kLD" userLabel="Dismiss Alarm" customClass="DismissAlarmViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I72-lU-JZx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWe-8A-y3z">
+                                <rect key="frame" x="20" y="792" width="374" height="45"/>
+                                <color key="backgroundColor" red="0.89922862059999997" green="0.89371707209999995" blue="0.92231123100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="YAi-IA-riC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <state key="normal" title="I am awake"/>
+                                <connections>
+                                    <action selector="dismissAlarmButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="H6y-pg-xh7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qWe-8A-y3z" firstAttribute="leading" secondItem="Spu-WM-Qhc" secondAttribute="leading" constant="20" id="L18-pN-T4O"/>
+                            <constraint firstItem="Spu-WM-Qhc" firstAttribute="bottom" secondItem="qWe-8A-y3z" secondAttribute="bottom" constant="25" id="NKR-Sn-IUG"/>
+                            <constraint firstItem="Spu-WM-Qhc" firstAttribute="trailing" secondItem="qWe-8A-y3z" secondAttribute="trailing" constant="20" id="SQF-Gr-T0e"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Spu-WM-Qhc"/>
+                    </view>
+                    <connections>
+                        <segue destination="lj1-Db-3VQ" kind="unwind" identifier="UnwindDismissAlarm" unwindAction="unwindDismissAlarm:" id="845-98-d7U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hoK-Ru-mfq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="lj1-Db-3VQ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="767" y="1"/>
         </scene>
         <!--Set Alarm-->
         <scene sceneID="Caj-vz-Vp0">
@@ -349,7 +388,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgF-Jv-OLy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="5Gm-9t-4jN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1524.6376811594205" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="1641" y="-727"/>
         </scene>
         <!--Set Melody-->
         <scene sceneID="DCG-mP-h5R">
@@ -471,7 +510,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbB-UX-Tma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="DdJ-FN-jBh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2362.3188405797105" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="2541" y="-727"/>
         </scene>
         <!--Learn-->
         <scene sceneID="wg7-f3-ORb">
@@ -499,7 +538,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="0.0" y="1068"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -519,7 +558,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-1152" y="-333"/>
         </scene>
     </scenes>
     <resources>

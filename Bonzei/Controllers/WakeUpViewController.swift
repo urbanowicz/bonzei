@@ -34,37 +34,33 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Initialization
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         alarmsTable.dataSource = alarmsTableDataSource
         alarmsTable.backgroundColor = UIColor.white
         addTapGestureRecognizerToAlarmsTable()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         // if new alarm was added, insert a row into alarmsTable
         if newAlarm != nil {
             insertRowIntoAlarmsTable()
             newAlarm = nil
         }
-        
     }
 
     // MARK: - Actions
     
+    /// Called when a user activates or deactivates an alarm with a ui switch
     @IBAction func toggleAlarm(_ alarmIsActiveSwitch: UISwitch) {
-        
         // cell - the AlarmsTableCell that was toggled
         if let cell = findSuperviewThatIsAnAlarmsTableCell(for: alarmIsActiveSwitch) {
             cell.alarm.isActive.toggle()
             AlarmScheduler.sharedInstance.updateAlarm(withId: cell.alarm.id, using: cell.alarm)
         }
-    
     }
     
+    /// Called when a user presses the '+' button to add a new alarm
     @IBAction func setAlarmButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "NewAlarm", sender: self)
     }
@@ -98,6 +94,7 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    /// Called when a user saves an alarm in 'SetAlarmView'.
     @IBAction func unwindSaveAlarm(_ unwindSegue: UIStoryboardSegue) {
         let setAlarmViewControler = unwindSegue.source as! SetAlarmViewController
         switch setAlarmViewControler.request {
@@ -114,8 +111,14 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    /// Called when a user cancels editing in 'SetAlarmView'
     @IBAction func unwindCancel(_ unwindSegue: UIStoryboardSegue) {
         //nothing to do here.
+    }
+    
+    /// Called when an alarm is playing and a user has just dismissed it
+    @IBAction func unwindDismissAlarm(_ unwindSegue: UIStoryboardSegue) {
+        
     }
     
     //MARK: - Helper functions
