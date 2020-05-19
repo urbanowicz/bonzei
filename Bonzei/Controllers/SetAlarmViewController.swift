@@ -70,7 +70,6 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     //MARK: - Initialization
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         // So that we can play sound in silent mode:
@@ -82,6 +81,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         
         // Clear the background that might have been set in the story board for debugging.
         playMelodyButton.backgroundColor = UIColor.clear
+        
         setMelodyButton.backgroundColor = UIColor.clear
         
         snoozeSwitch.onTintColor = BonzeiColors.gray
@@ -92,39 +92,27 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.addTarget(self, action: #selector(SetAlarmViewController.melodyLabelTapped(tapRecoginzer:)))
         melodyLabel.addGestureRecognizer(tapGestureRecognizer)
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    func prepareTofulfillRequest(withType requestType: RequestType, forAlarm alarm: Alarm?) {
+        loadViewIfNeeded()
         
-        super.viewWillAppear(animated)
+        request = requestType
         
-        // Check if we've transitioned from `WakeUpViewController` or from `SetMelodyViewController`
-        // `isBeingPresented` equal to `true` means we've transitioned from `WakeUpViewController`.
-        // `isBeingPresented` equal to `false` means we've transitioned back from `SetMelodyViewController.
-        if isBeingPresented {
-            switch request {
-            case .newAlarm:
-                melodyLabel.text = selectedMelody
-                setSnoozeSwitchThumbTintColor()
-                
-            case .editExistingAlarm:
-                melodyLabel.text = alarmToEdit!.melodyName
-                selectedMelody = alarmToEdit!.melodyName
-                dayOfWeekPicker.selection = alarmToEdit!.repeatOn
-                datePicker.date = alarmToEdit!.date
-                snoozeSwitch.isOn = alarmToEdit!.snoozeEnabled
-                setSnoozeSwitchThumbTintColor()
-            }
-        }
-        else {
+        switch request {
+        case .newAlarm:
             melodyLabel.text = selectedMelody
+            
+        case .editExistingAlarm:
+            alarmToEdit = alarm
+            melodyLabel.text = alarmToEdit!.melodyName
+            selectedMelody = alarmToEdit!.melodyName
+            dayOfWeekPicker.selection = alarmToEdit!.repeatOn
+            datePicker.date = alarmToEdit!.date
+            snoozeSwitch.isOn = alarmToEdit!.snoozeEnabled
         }
-    
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        stopPlayback()
+        
+        setSnoozeSwitchThumbTintColor()
     }
     
     // MARK: - Actions and Navigation
@@ -164,11 +152,8 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     }
 
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        
         switch request {
-        
         case .newAlarm:
-            
              newAlarm = Alarm(
                 date: datePicker.date,
                 repeatOn: dayOfWeekPicker.selection,
@@ -177,7 +162,6 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
             )
         
         case .editExistingAlarm:
-            
             let alarm = Alarm(
                 id: alarmToEdit!.id,
                 date: datePicker.date,
@@ -188,33 +172,27 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
             )
             
             alarmToEdit = alarm
-        
         }
         
-        performSegue(withIdentifier: "unwindSaveAlarmSegue", sender: self) 
-    
+        performSegue(withIdentifier: "unwindSaveAlarmSegue", sender: self)
     }
     
     @IBAction func cancelPressed(_ sender: UIButton) {
-        
         performSegue(withIdentifier: "unwindCancel", sender: self)
-    
     }
     
     /// Called when  `melodyLabel` is tapped.
     @IBAction func melodyLabelTapped(tapRecoginzer: UITapGestureRecognizer) {
-       
         performSegue(withIdentifier: "SetAlarmToSetMelody", sender: self)
-    
     }
     
     @IBAction func unwindSetMelody(_ unwindSegue: UIStoryboardSegue) {
-        
         let setMelodyViewController = unwindSegue.source as! SetMelodyViewController
+        
         if setMelodyViewController.selectedMelody != nil {
             selectedMelody = setMelodyViewController.selectedMelody!
+            melodyLabel.text = selectedMelody
         }
-    
     }
     
     @IBAction func snoozeSwitchToggled(_ sender: UISwitch) {
@@ -222,6 +200,8 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        stopPlayback()
+        
         if segue.identifier! == "SetAlarmToSetMelody" {
             let setMelodyViewController = segue.destination as! SetMelodyViewController
             setMelodyViewController.selectedMelody = selectedMelody

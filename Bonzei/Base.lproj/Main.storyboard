@@ -153,8 +153,8 @@
                         <outlet property="alarmsTable" destination="VAZ-Yu-6ic" id="Cin-uv-sf2"/>
                         <outlet property="setAlarmButton" destination="fW0-bm-2EE" id="LyW-3b-taz"/>
                         <outlet property="wakeUpLabel" destination="du5-cL-cDe" id="eha-DO-j7n"/>
-                        <segue destination="WKb-vj-sEy" kind="presentation" identifier="NewAlarm" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="Qew-y1-UeD"/>
-                        <segue destination="WKb-vj-sEy" kind="presentation" identifier="EditExistingAlarm" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="6e3-ZK-DPt"/>
+                        <segue destination="WKb-vj-sEy" kind="presentation" identifier="NewAlarm" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="Qew-y1-UeD"/>
+                        <segue destination="WKb-vj-sEy" kind="presentation" identifier="EditExistingAlarm" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="6e3-ZK-DPt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -164,7 +164,7 @@
         <!--Dismiss Alarm-->
         <scene sceneID="A1h-u0-jxu">
             <objects>
-                <viewController id="NXM-oz-kLD" userLabel="Dismiss Alarm" customClass="DismissAlarmViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DismissAlarmViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NXM-oz-kLD" userLabel="Dismiss Alarm" customClass="DismissAlarmViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I72-lU-JZx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,12 +190,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Spu-WM-Qhc"/>
                     </view>
-                    <connections>
-                        <segue destination="lj1-Db-3VQ" kind="unwind" identifier="UnwindDismissAlarm" unwindAction="unwindDismissAlarm:" id="zWA-yj-87p"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoK-Ru-mfq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="lj1-Db-3VQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="767" y="-1503"/>
         </scene>
@@ -277,7 +273,7 @@
                                                             <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="471-3X-WLW" kind="presentation" identifier="SetAlarmToSetMelody" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="D8i-Lf-rxi"/>
+                                                            <segue destination="471-3X-WLW" kind="presentation" identifier="SetAlarmToSetMelody" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="D8i-Lf-rxi"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -553,7 +549,6 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="NXM-oz-kLD" kind="presentation" identifier="PresentDismissAlarm" modalPresentationStyle="overCurrentContext" id="5Tj-mw-woY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -571,6 +566,6 @@
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qew-y1-UeD"/>
+        <segue reference="6e3-ZK-DPt"/>
     </inferredMetricsTieBreakers>
 </document>

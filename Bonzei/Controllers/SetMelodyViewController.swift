@@ -43,12 +43,13 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     // MARK: - Initialization
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        backButton.backgroundColor = UIColor.clear
-        melodiesTable.dataSource = melodiesTableDataSource
-        melodiesTable.delegate = melodiesTableDelegate
         
+        backButton.backgroundColor = UIColor.clear
+        
+        melodiesTable.dataSource = melodiesTableDataSource
+        
+        melodiesTable.delegate = melodiesTableDelegate
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,28 +58,23 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        stopCurrentlyPlayingCell()
-    }
-    
     // MARK: - Navigation
 
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        
         if let selectedRowIndex = melodiesTable.indexPathForSelectedRow {
             let selectedCell = melodiesTable.cellForRow(at: selectedRowIndex) as! MelodyCell
             selectedMelody = selectedCell.melodyName
         }
         
-        performSegue(withIdentifier: "UnwindSetMelody", sender: self)
+        stopCurrentlyPlayingCell()
         
+        performSegue(withIdentifier: "UnwindSetMelody", sender: self)
     }
     
     // MARK: - Actions
     
     /// Start or stop a preview of a melody
     @IBAction func playButtonPressed(_ sender: UIButton) {
-        
         // Find the table cell for the melody we need to preview
         var view = sender.superview
         while view as? MelodyCell == nil {
@@ -106,7 +102,6 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     // MARK: - Helper functions
     
     private func play(cell: MelodyCell) {
-        
         // If the selected cell is currently playing we don't need to do anything
         if cell.isPlaying {
             return
@@ -149,7 +144,6 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         } else {
             print("Couldn't preview a melody because the sound file was not found: \"\(cell.melodyName!).mp3\"")
         }
-        
     }
     
     /// Stops the audio and resets the variables so that they reflect the "nothing's playing" state

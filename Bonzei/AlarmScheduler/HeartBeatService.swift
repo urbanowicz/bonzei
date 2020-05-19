@@ -65,7 +65,7 @@ class HeartBeatService {
     }
     
     @objc func heartBeat() {
-        os_log("Heart Beat", log: OSLog.default, type: .info)
+        // os_log("Heart Beat", log: OSLog.default, type: .info)
         AlarmScheduler.sharedInstance.checkAndRunAlarms()
     }
     

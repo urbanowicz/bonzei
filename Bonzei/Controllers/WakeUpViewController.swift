@@ -24,13 +24,6 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     /// Alarm table cell that a user last tapped or selected in the table.
     var selectedCell: AlarmsTableCell?
     
-    /// If  a new alarm has been created by the 'SetAlarmViewController' this variable will hold the new alarm.
-    /// This is needed so that this controller can:
-    /// - insert the alarm into 'UIViewTable',
-    /// - store the alarm in the model,
-    /// - persist the alarm in 'FileDb'.
-    var newAlarm: Alarm?
-    
     // MARK: - Initialization
     
     override func viewDidLoad() {
@@ -41,15 +34,6 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         addTapGestureRecognizerToAlarmsTable()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        // if new alarm was added, insert a row into alarmsTable
-        
-        if newAlarm != nil {
-            insertRowIntoAlarmsTable()
-            newAlarm = nil
-        }
-    }
-
     // MARK: - Actions
     
     /// Called when a user activates or deactivates an alarm with a ui switch
@@ -85,30 +69,39 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier! == "NewAlarm" {
             let setAlarmViewController = segue.destination as! SetAlarmViewController
-            setAlarmViewController.request = .newAlarm
+            
+            setAlarmViewController.prepareTofulfillRequest(
+                withType: .newAlarm,
+                forAlarm: nil
+            )
         }
         
         if segue.identifier! == "EditExistingAlarm" {
             let setAlarmViewController = segue.destination as! SetAlarmViewController
-            setAlarmViewController.request = .editExistingAlarm
-            setAlarmViewController.alarmToEdit = selectedCell!.alarm
+            
+            setAlarmViewController.prepareTofulfillRequest(
+                withType: .editExistingAlarm,
+                forAlarm: selectedCell!.alarm
+            )
         }
     }
     
     /// Called when a user saves an alarm in 'SetAlarmView'.
     @IBAction func unwindSaveAlarm(_ unwindSegue: UIStoryboardSegue) {
         let setAlarmViewControler = unwindSegue.source as! SetAlarmViewController
+        
         switch setAlarmViewControler.request {
         case .newAlarm :
-            self.newAlarm = setAlarmViewControler.newAlarm
+            let newAlarm = setAlarmViewControler.newAlarm
             AlarmScheduler.sharedInstance.schedule(alarm: newAlarm!)
             HeartBeatService.sharedInstance.start()
+            insertRowIntoAlarmsTable()
             
         case .editExistingAlarm:
             let editedAlarm = setAlarmViewControler.alarmToEdit!
             selectedCell!.alarm = editedAlarm
-            HeartBeatService.sharedInstance.start()
             AlarmScheduler.sharedInstance.updateAlarm(withId: editedAlarm.id, using: editedAlarm)
+            HeartBeatService.sharedInstance.start()
         }
     }
     

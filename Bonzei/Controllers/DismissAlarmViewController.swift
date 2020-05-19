@@ -16,7 +16,7 @@ class DismissAlarmViewController: UIViewController {
     
     @IBAction func dismissAlarmButtonPressed(_ sender: UIButton) {
         AlarmScheduler.sharedInstance.dismissAlarm()
-        performSegue(withIdentifier: "UnwindDismissAlarm", sender: self)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
 }

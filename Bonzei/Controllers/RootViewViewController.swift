@@ -14,27 +14,48 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         super.viewDidLoad()
         
         AlarmScheduler.sharedInstance.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        if AlarmScheduler.sharedInstance.isAlarmPlaying {
-         performSegue(withIdentifier: "PresentDismissAlarm", sender: self)
-        }
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(RootViewViewController.sceneDidBecomeActive),
+                                               name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
-    /// Called when an alarm is playing and a user has just dismissed it
-    @IBAction func unwindDismissAlarm(_ unwindSegue: UIStoryboardSegue) {
-        // Nothing to do here.
+    /// Called  after application has been launched or has moved to foreground
+    @objc func sceneDidBecomeActive(notification: Notification) {
+        if AlarmScheduler.sharedInstance.isAlarmPlaying {
+            presentDismissAlarmViewController()
+        }
     }
     
     // MARK: - AlarmSchedulerDelegate
     
+    /// Called by the AlarmScheduler when an alarm has been triggerred.
     func didTriggerAlarm(_ alarm: Alarm) {
-        // if the view is loaded and alarm has been triggered, present the `DismissAlarmViewController` 
+        // if the app is open and alarm has been triggered present `DismissAlarmViewController`
         if self.isViewLoaded {
-            performSegue(withIdentifier: "PresentDismissAlarm", sender: self)
+            presentDismissAlarmViewController()
         }
+    }
+    
+    private func presentDismissAlarmViewController() {
+        guard let currentVC = getCurrentlyPresentedViewController() else { return }
+            
+        let dismissAlarmVC = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "DismissAlarmViewController")
+        dismissAlarmVC.modalPresentationStyle = .overFullScreen
+            
+        currentVC.present(dismissAlarmVC, animated: true, completion: nil)
+    }
+    
+    private func getCurrentlyPresentedViewController() -> UIViewController? {
+        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        
+        guard var currentViewController = keyWindow?.rootViewController else { return nil }
+        
+        while let presentedViewController = currentViewController.presentedViewController {
+            currentViewController = presentedViewController
+        }
+        
+        return currentViewController
     }
 }
