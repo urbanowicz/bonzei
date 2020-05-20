@@ -32,14 +32,15 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
     /// Called by the AlarmScheduler when an alarm has been triggerred.
     func didTriggerAlarm(_ alarm: Alarm) {
         // if the app is open and alarm has been triggered present `DismissAlarmViewController`
-        if self.isViewLoaded {
+        let state = UIApplication.shared.applicationState
+        
+        if self.isViewLoaded && state == .active {
             presentDismissAlarmViewController()
         }
     }
     
     private func presentDismissAlarmViewController() {
         guard let currentVC = getCurrentlyPresentedViewController() else { return }
-            
         let dismissAlarmVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "DismissAlarmViewController")
         dismissAlarmVC.modalPresentationStyle = .overFullScreen

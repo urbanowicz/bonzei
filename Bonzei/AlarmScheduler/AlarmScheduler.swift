@@ -224,9 +224,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                     .sharedInstance
                     .updateAlarm(withId: alarm.id, using: scheduledAlarms[i])
                 
-                playAlarm(alarm)
-                
                 delegate?.didTriggerAlarm(alarm)
+                
+                playAlarm(alarm)
             }
         }
     }
