@@ -220,6 +220,16 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                 
                 scheduledAlarms[i].lastTriggerDate = Date()
                 
+                if !alarm.isRecurring {
+                    scheduledAlarms[i].isActive = false
+                    
+                    notificationRequests.removeValue(forKey: alarm.id)
+                    
+                    AlarmPersistenceService
+                        .sharedInstance
+                        .deleteNotificationRequestsForAlarm(withId: alarm.id)
+                }
+                
                 AlarmPersistenceService
                     .sharedInstance
                     .updateAlarm(withId: alarm.id, using: scheduledAlarms[i])
