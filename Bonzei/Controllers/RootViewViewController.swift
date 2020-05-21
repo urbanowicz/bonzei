@@ -41,10 +41,14 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
     
     private func presentDismissAlarmViewController() {
         guard let currentVC = getCurrentlyPresentedViewController() else { return }
+        
         let dismissAlarmVC = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "DismissAlarmViewController")
+            .instantiateViewController(withIdentifier: "DismissAlarmViewController") as! DismissAlarmViewController
+        
         dismissAlarmVC.modalPresentationStyle = .overFullScreen
-            
+        
+        dismissAlarmVC.prepareToDismissAlarm(AlarmScheduler.sharedInstance.currentlyTriggeredAlarm)
+        
         currentVC.present(dismissAlarmVC, animated: true, completion: nil)
     }
     

@@ -181,19 +181,35 @@
                                     <action selector="dismissAlarmButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="H6y-pg-xh7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtw-4h-hsz">
+                                <rect key="frame" x="20" y="430.5" width="374" height="45"/>
+                                <color key="backgroundColor" red="0.89922862059999997" green="0.89371707209999995" blue="0.92231123100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <state key="normal" title="Snooze"/>
+                                <connections>
+                                    <action selector="snoozeButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="Qw5-VC-w0e"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qWe-8A-y3z" firstAttribute="leading" secondItem="Spu-WM-Qhc" secondAttribute="leading" constant="20" id="L18-pN-T4O"/>
                             <constraint firstItem="Spu-WM-Qhc" firstAttribute="bottom" secondItem="qWe-8A-y3z" secondAttribute="bottom" constant="25" id="NKR-Sn-IUG"/>
                             <constraint firstItem="Spu-WM-Qhc" firstAttribute="trailing" secondItem="qWe-8A-y3z" secondAttribute="trailing" constant="20" id="SQF-Gr-T0e"/>
+                            <constraint firstItem="xtw-4h-hsz" firstAttribute="leading" secondItem="Spu-WM-Qhc" secondAttribute="leading" constant="20" id="i6j-lC-zfv"/>
+                            <constraint firstItem="xtw-4h-hsz" firstAttribute="height" secondItem="qWe-8A-y3z" secondAttribute="height" id="m6K-tJ-QOC"/>
+                            <constraint firstItem="xtw-4h-hsz" firstAttribute="centerY" secondItem="Spu-WM-Qhc" secondAttribute="centerY" id="yJ4-yA-FrL"/>
+                            <constraint firstItem="Spu-WM-Qhc" firstAttribute="trailing" secondItem="xtw-4h-hsz" secondAttribute="trailing" constant="20" id="yc5-0f-h1u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Spu-WM-Qhc"/>
                     </view>
+                    <connections>
+                        <outlet property="snoozeButton" destination="xtw-4h-hsz" id="b2Y-fo-1Ar"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoK-Ru-mfq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="-1503"/>
+            <point key="canvasLocation" x="766.66666666666674" y="-1503.3482142857142"/>
         </scene>
         <!--Set Alarm-->
         <scene sceneID="Caj-vz-Vp0">

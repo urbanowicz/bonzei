@@ -30,17 +30,17 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     var delegate: AlarmSchedulerDelegate?
     
     /// State of the scheduler. There are three states:
-    /// - `waiting`. No alarm is being played. The scheduler is waiting for the appropriate time to trigger an alarm. Can transition to `alarmPlaying`.
-    /// - `alarmPlaying`. An alarm has been triggered and the melody associated with its being played. Can transition to `waiting` or `alarmSnoozed`.
-    /// - `alarmSnoozed`. An alarm has been snoozed. This state is similar to waiting. Can transitio to `alarmPlaying` or `waiting`.
+    /// - `waiting`. No alarm is being played. The scheduler is waiting for the appropriate time to trigger an alarm. Can transition to `alarmTriggered`.
+    /// - `alarmTriggered`. An alarm has been triggered and the melody associated with it is playing. Can transition to `waiting` or `alarmSnoozed`.
+    /// - `alarmSnoozed`. An alarm has been snoozed. This state is similar to waiting. Can transitio to `alarmTriggered` or `waiting`.
     private(set) var state: AlarmSchedulerState = .waiting
     
     /// After an alarm has been triggered and the scheduler has entered the `alarmPlaying` state this variable will hold the relevant alarm.
-    private(set) var currentlyPlayingAlarm: Alarm?
+    private(set) var currentlyTriggeredAlarm: Alarm?
     
     var isAlarmPlaying: Bool {
         get {
-            return state == .alarmPlaying
+            return state == .alarmTriggered
         }
     }
     
@@ -216,6 +216,10 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             if (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15) {
                 os_log("Triggering alarm:\n{\n%{public}s\n}", log: log, type: .info, alarm.string())
                 
+                state = .alarmTriggered
+                
+                self.currentlyTriggeredAlarm = alarm
+                
                 let i = indexOfAlarm(withId: alarm.id)!
                 
                 scheduledAlarms[i].lastTriggerDate = Date()
@@ -247,7 +251,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     public func dismissAlarm() {
         state = .waiting
-        currentlyPlayingAlarm = nil
+        currentlyTriggeredAlarm = nil
         
         if audioPlayer != nil && audioPlayer!.isPlaying{
             audioPlayer!.stop()
@@ -443,14 +447,14 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     }
     
     private func playAlarm(_ alarm: Alarm) {
-        os_log("Alarm has been triggered. Will play melody now.", log: log, type: .info)
+        
         if audioPlayer != nil && audioPlayer!.isPlaying{
+            os_log("Will not play melody for the current alarm. A previous alarm is still playing.", log: log, type: .info)
             return
         }
         
-        state = .alarmPlaying
-        currentlyPlayingAlarm = alarm
-                
+        os_log("Will play melody now.", log: log, type: .info)
+        
         // Play the selected melody
         let path = Bundle.main.path(forResource: alarm.melodyName + ".mp3", ofType: nil)
             
@@ -471,8 +475,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         } catch let error as NSError {
             os_log("Playing melody for alarm %{public}s failed: %{public}s", log: log, type: .error, error.localizedDescription)
             
-            state = .waiting
-            currentlyPlayingAlarm = nil
         }
     }
     
@@ -516,7 +518,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
 enum AlarmSchedulerState {
     case waiting
     
-    case alarmPlaying
+    case alarmTriggered
     
     case alarmSnoozed
 }
