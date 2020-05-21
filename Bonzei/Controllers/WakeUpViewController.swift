@@ -32,6 +32,12 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         alarmsTable.dataSource = alarmsTableDataSource
         alarmsTable.backgroundColor = UIColor.white
         addTapGestureRecognizerToAlarmsTable()
+        
+        registerForAlarmTriggeredNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        stopReceivingAlarmTriggeredNotification()
     }
     
     // MARK: - Actions
@@ -48,6 +54,18 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
     /// Called when a user presses the '+' button to add a new alarm
     @IBAction func setAlarmButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "NewAlarm", sender: self)
+    }
+    
+    @objc func didTriggerAlarm(_ notification: Notification) {
+        let userInfo = notification.userInfo as! [String: Any]
+        let alarm = userInfo["alarm"] as! Alarm
+       
+        // If it is a 'one time' alarm that has triggered, AlarmScheduler has changed its state to inactive.
+        // This is because we don't want a 'one time' alarm to go off the next day.
+        // To reflect the change from active to inactive in the UI we need to refresh the alarmsTable
+        if  !alarm.isRecurring {
+            alarmsTable.reloadData()
+        }
     }
     
     //MARK: - Gestures
@@ -117,6 +135,21 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         tapGestureRecognizer.delegate = self
         tapGestureRecognizer.addTarget(self,action:#selector(WakeUpViewController.alarmsTableTapped(recognizer:)))
         alarmsTable.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    private func registerForAlarmTriggeredNotification() {
+        NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(WakeUpViewController.didTriggerAlarm(_:)),
+                name: Notification.Name.didTriggerAlarm,
+                object: nil)
+    }
+    
+    private func stopReceivingAlarmTriggeredNotification() {
+        NotificationCenter.default.removeObserver(
+             self,
+             name: .didTriggerAlarm,
+             object: nil)
     }
     
     /// Inserts a row into 'AlarmsTable'. Called after adding a new alarm to `AlarmScheduler`

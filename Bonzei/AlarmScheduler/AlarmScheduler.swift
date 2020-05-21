@@ -220,6 +220,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                 
                 scheduledAlarms[i].lastTriggerDate = Date()
                 
+                // if this is a one time alarm, make sure we change it to inactive and remove related notification requests.
                 if !alarm.isRecurring {
                     scheduledAlarms[i].isActive = false
                     
@@ -235,6 +236,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                     .updateAlarm(withId: alarm.id, using: scheduledAlarms[i])
                 
                 delegate?.didTriggerAlarm(alarm)
+                
+                // post didTriggerAlarm notification
+                NotificationCenter.default.post(name: .didTriggerAlarm, object: self, userInfo: ["alarm": alarm])
                 
                 playAlarm(alarm)
             }
