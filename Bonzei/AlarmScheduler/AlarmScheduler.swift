@@ -29,10 +29,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// A delegate for the scheduler
     var delegate: AlarmSchedulerDelegate?
     
-    /// State of the scheduler. There are three states:
-    /// - `waiting`. No alarm is being played. The scheduler is waiting for the appropriate time to trigger an alarm. Can transition to `alarmTriggered`.
-    /// - `alarmTriggered`. An alarm has been triggered and the melody associated with it is playing. Can transition to `waiting` or `alarmSnoozed`.
-    /// - `alarmSnoozed`. An alarm has been snoozed. This state is similar to waiting. Can transitio to `alarmTriggered` or `waiting`.
+    /// State of the scheduler. There are two states:
+    /// - `waiting`. No alarm is being played. The scheduler is waiting for an alarm to be triggered.
+    /// - `alarmTriggered`. An alarm has been triggered and a melody associated with it is playing.
     private(set) var state: AlarmSchedulerState = .waiting
     
     /// After an alarm has been triggered and the scheduler has entered the `alarmPlaying` state this variable will hold the relevant alarm.
@@ -189,7 +188,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    internal func checkAndRunAlarms() {
+    internal func checkAndTriggerAlarms() {
         let nowDate = Date()
         let now = Calendar.current.dateComponents([.weekday, .hour, .minute, .second], from: nowDate)
         
@@ -208,13 +207,20 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                 hasNotTriggerdAlready = result != .orderedSame
             }
             
-            return alarm.isActive && hasCorrectWeekday && hasNotTriggerdAlready
+            return ( alarm.isActive && hasCorrectWeekday && hasNotTriggerdAlready ) || alarm.isSnoozed
             
         })
         
         for alarm in alarms {
-            if (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15) {
-                os_log("Triggering alarm:\n{\n%{public}s\n}", log: log, type: .info, alarm.string())
+            let snoozeExpired = shouldTriggerSnoozedAlarm(alarm, now: nowDate)
+            
+            if snoozeExpired || (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15) {
+                
+                if snoozeExpired {
+                    os_log("Triggering snoozed alarm:\n{\n%{public}s\n}", log: log, type: .info, alarm.string())
+                } else {
+                    os_log("Triggering alarm:\n{\n%{public}s\n}", log: log, type: .info, alarm.string())
+                }
                 
                 state = .alarmTriggered
                 
@@ -223,6 +229,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                 let i = indexOfAlarm(withId: alarm.id)!
                 
                 scheduledAlarms[i].lastTriggerDate = Date()
+                
+                scheduledAlarms[i].snoozeDate = nil
                 
                 // if this is a one time alarm, make sure we change it to inactive and remove related notification requests.
                 if !alarm.isRecurring {
@@ -478,6 +486,12 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
+    private func shouldTriggerSnoozedAlarm(_ alarm: Alarm, now: Date) -> Bool {
+        guard let snoozeDate = alarm.snoozeDate else { return false }
+        
+        return now.equals(snoozeDate, toGranularity: .minute)
+    }
+    
     func purge() {
         cancelAllNotifications()
         AlarmPersistenceService.sharedInstance.deleteAllAlarms() //Deletes all notification requests as well through 'cascade' rule.
@@ -519,6 +533,4 @@ enum AlarmSchedulerState {
     case waiting
     
     case alarmTriggered
-    
-    case alarmSnoozed
 }

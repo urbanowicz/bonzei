@@ -18,6 +18,8 @@ struct Alarm {
     
     var date: Date
     
+    var snoozeDate: Date?
+    
     var dateString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = date.timeZone
@@ -58,11 +60,18 @@ struct Alarm {
         }
     }
     
+    var isSnoozed: Bool {
+        get {
+            return snoozeDate != nil 
+        }
+    }
+    
     /// Creates a human readable representation of the alarm
     func string() -> String {
         return """
         id: \(id)
         date: \(dateString)
+        snoozeDate: \(snoozeDate?.description ?? "nil")
         lastTriggerDate: \(lastTriggerDate?.description ?? "nil")
         lastUpdateDate: \(lastUpdateDate?.description ?? "nil")
         melody: \(melodyName)

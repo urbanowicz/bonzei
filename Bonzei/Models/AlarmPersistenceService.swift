@@ -177,6 +177,7 @@ class AlarmPersistenceService {
         var alarm = Alarm(
             id: managedAlarm.id!,
             date: managedAlarm.date!,
+            snoozeDate: managedAlarm.snoozeDate,
             melodyName: managedAlarm.melodyName!,
             snoozeEnabled: managedAlarm.snoozeEnabled,
             isActive: managedAlarm.isActive,
@@ -250,7 +251,8 @@ class AlarmPersistenceService {
     
     private func setValuesForManagedAlarm(_ managedAlarm: ManagedAlarm, using alarm: Alarm) {
         managedAlarm.melodyName = alarm.melodyName
-        managedAlarm.date = alarm.date;
+        managedAlarm.date = alarm.date
+        managedAlarm.snoozeDate = alarm.snoozeDate
         managedAlarm.isActive = alarm.isActive
         managedAlarm.lastTriggerDate = alarm.lastTriggerDate
         managedAlarm.lastUpdateDate = alarm.lastUpdateDate

@@ -60,6 +60,14 @@ extension Date {
         }
     }
     
+    func equals(_ otherDate: Date, toGranularity granularity: Calendar.Component) -> Bool {
+        let result = Calendar
+            .current
+            .compare(self, to: otherDate, toGranularity: granularity)
+        
+        return result == .orderedSame
+    }
+    
     /// Convienience method for getting basic components of a date in the current time zone
     /// - Returns: date components in the current time zone
     func components() -> DateComponents {
