@@ -557,7 +557,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     func dump() {
         print("")
-        print("Scheduler:: Alarms:")
+        print("--------------------ALARMS--------------------")
         for alarm in scheduledAlarms {
             
             let notificationRequests = getNotificationRequestsForAlarm(withId: alarm.id)!
@@ -579,13 +579,14 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     func dumpNotifications() {
         print("")
-        print("Scheduler:: Notifications:")
+        print("--------------------Notification Requests --------------------")
         UNUserNotificationCenter.current().getPendingNotificationRequests() {
             notificationRequests in
             
             print("[")
             for req in notificationRequests {
-                print("    \(req.identifier) \(req.content.body)")
+                let trigger = req.trigger as! UNCalendarNotificationTrigger
+                print("    \(req.identifier) \(trigger.nextTriggerDate()) \(req.content.body)")
             }
             print("]")
             
