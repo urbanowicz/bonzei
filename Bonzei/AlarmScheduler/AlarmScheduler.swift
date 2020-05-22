@@ -568,41 +568,47 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         AlarmPersistenceService.sharedInstance.deleteAllAlarms() //Deletes all notification requests as well through 'cascade' rule.
     }
     
+    func dbg_log(_ msg: String) {
+        os_log("%{public}s\n", log: log, type: .info, msg)
+    }
+    
     func dump() {
-        print("")
-        print("--------------------ALARMS--------------------")
+        var s = "\n"
+        s+="--------------------ALARMS--------------------\n"
         for alarm in scheduledAlarms {
             
             let notificationRequests = getNotificationRequestsForAlarm(withId: alarm.id)!
             
             let requests:[String] = notificationRequests.map({ return $0.identifier })
             
-            print("{")
-            print("    \(alarm.dateString)")
-            print("    \(alarm.melodyName)")
-            print("    Notifications:")
-            print("    [")
+            s+="{\n"
+            s+="    \(alarm.dateString)\n"
+            s+="    \(alarm.melodyName)\n"
+            s+="    Notifications:\n"
+            s+="    [\n"
             for notificationRequestId  in requests {
-                print("        \(notificationRequestId)")
+                s+="        \(notificationRequestId)\n"
             }
-            print("    ]")
-            print("}")
+            s+="    ]\n"
+            s+="}\n"
         }
+        dbg_log(s)
     }
     
     func dumpNotifications() {
-        print("")
-        print("--------------------Notification Requests --------------------")
+        var s = "\n"
+        s+="--------------------Notification Requests --------------------\n"
         UNUserNotificationCenter.current().getPendingNotificationRequests() {
             notificationRequests in
             
-            print("[")
+            s+="[\n"
             for req in notificationRequests {
                 let trigger = req.trigger as! UNCalendarNotificationTrigger
-                print("    \(req.identifier) \(trigger.nextTriggerDate()) \(req.content.body)")
+                s+="    \(req.identifier) \(trigger.nextTriggerDate()!) \(req.content.body)\n"
             }
-            print("]")
+            s+="]\n"
             
+            self.dbg_log(s)
         }
     }
 }
