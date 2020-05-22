@@ -259,17 +259,29 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     }
     
     public func dismissAlarm() {
+        os_log("Will dismiss currently triggered alarm", log: log, type: .info)
+        
+        guard state == .alarmTriggered else {
+            os_log("There's no alarm to dismiss. No alarm is currently triggered")
+            return
+        }
+        
         state = .waiting
         currentlyTriggeredAlarm = nil
         
         stopAudioPlayer()
         
-        os_log("Alarm dismissed.", log: log, type: .info)
+        os_log("Alarm dismissed", log: log, type: .info)
     }
     
     /// Snooze currently triggered alarm
     public func snooze() {
-        guard state == .alarmTriggered && currentlyTriggeredAlarm != nil else { return }
+        os_log("Will snooze currently triggered alarm", log: log, type: .info)
+        
+        guard state == .alarmTriggered && currentlyTriggeredAlarm != nil else {
+            os_log("There's no alarm to snooze. No alarm is currently triggered")
+            return
+        }
         
         let i = indexOfAlarm(withId: currentlyTriggeredAlarm!.id)!
         
@@ -298,11 +310,16 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
 //
 //        }
         NotificationCenter.default.post(name: .didSnoozeAlarm, object: self, userInfo: ["alarm": alarmToSnooze])
-        print("Scheduler: snoozed alarm: \(alarmToSnooze.id)")
+       
+        os_log("Alarm snoozed", log: log, type: .info)
     }
     
     /// Cancels snooze for every snoozed alarm. It has no effect if no alarm is snoozed.
     public func cancelSnooze() {
+        os_log("Will cancel all snoozed alarms", log: log, type: .info)
+        
+        var countSnoozedAlarms = 0
+        
         for i in 0..<scheduledAlarms.count {
             let alarm = scheduledAlarms[i]
             
@@ -322,14 +339,22 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                 AlarmPersistenceService
                     .sharedInstance
                     .updateAlarm(withId: alarm.id, using: scheduledAlarms[i])
+                
+                countSnoozedAlarms += 1
             }
+        }
+        
+        if countSnoozedAlarms > 0 {
+            os_log("Did cancel snoozed alarms. Number of snoozes canceled: %{public}d", log: log, type: .info, countSnoozedAlarms)
+        } else {
+            os_log("There weren't any snoozed alarms.")
         }
     }
     
     // MARK: - AVAudioPlayerDelegate
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        os_log("Finished playing a melody for an alarm. Alarm will be dismissed", log: log, type: .info)
+        os_log("Finished playing a melody for an alarm", log: log, type: .info)
         dismissAlarm()
     }
     

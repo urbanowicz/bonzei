@@ -8,32 +8,43 @@
 
 import UIKit
 import CoreData
+import os.log
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-
+    
+    private var lifeCycleLog = OSLog(subsystem: "App", category: "LifeCycle")
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // 1. Get notified when iOS delivers notifications you have scheduled
         UNUserNotificationCenter.current().delegate = self
+        
         
         return true
     }
     
     @objc func applicationWillEnterForeground(_ application: UIApplication) {
-        print("LifeCycle::Entering foreground")
+    
     }
     
     @objc func applicationWillResignActive(_ application: UIApplication) {
-        print("LifeCycle:: Will Resign Active")
+        
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        print("LifeCycle:: Will Terminate")
+        os_log("Application will terminate", log: lifeCycleLog, type: .info)
+        
+        // 1. If a user has snoozed an alarm and then has closed the application then we want to cancel all snoozed alarms.
+        // An alternative would be to clean expired snoozes that haven't triggered because app was closed
+        // in 'application did finish launching with options'.
+        // Canceling all snoozes here is simpler.
+        AlarmScheduler.sharedInstance.cancelSnooze()
     }
     
     @objc func applicationDidBecomeActive(_ application: UIApplication) {
-        print("LifeCycle:: Did Become Active")
+    
     }
     
 
