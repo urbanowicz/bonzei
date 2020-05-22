@@ -46,9 +46,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// All scheduled alarms
     private var scheduledAlarms = [Alarm]()
     
-    /// Maps `alarmId` to all`requestNotificationId`identifiers associated with this alarm.
-    private var notificationRequests = [ String: Set<String> ]()
-    
     private var log = OSLog(subsystem: "Alarm", category: "AlarmScheduler")
     
     /// When an alarm is triggerd,  a melody is played by the audio player
@@ -60,7 +57,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         readAlarmsAndNotificationsFromDisk()
         dump()
-        //dumpNotifications()
+        dumpNotifications()
     }
     
     /// Schedules a given alarm.
@@ -237,8 +234,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                 if !alarm.isRecurring {
                     scheduledAlarms[i].isActive = false
                     
-                    notificationRequests.removeValue(forKey: alarm.id)
-                    
                     AlarmPersistenceService
                         .sharedInstance
                         .deleteNotificationRequestsForAlarm(withId: alarm.id)
@@ -347,7 +342,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         if countSnoozedAlarms > 0 {
             os_log("Did cancel snoozed alarms. Number of snoozes canceled: %{public}d", log: log, type: .info, countSnoozedAlarms)
         } else {
-            os_log("There weren't any snoozed alarms.")
+            os_log("There aren't any snoozed alarms.")
         }
     }
     
@@ -385,11 +380,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// - Parameter alarm: an alarm for which you want to request a notification.
     ///
     private func setupOneTimeNotificationForAlarm(_ alarm: Alarm) {
-        // We will store ids of notifications requests in the set
-        if notificationRequests[alarm.id] == nil {
-            notificationRequests[alarm.id] = Set<String>()
-        }
-        
         let content = prepareNotificationContentForAlarm(alarm)
         
         let trigger = prepareNotificationTriggerForOneTimeAlarm(alarm)
@@ -400,7 +390,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             trigger: trigger)
         
         requestNotificationForAlarm(alarm, request: request)
-        
     }
     
     /// Setup  recurring notifications for a given alarm
@@ -408,11 +397,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// - Parameter alarm: an alarm for which notifications need to be added.
     ///
     private func setupRecurringNotificationsForAlarm(_ alarm: Alarm) {
-        
-        if notificationRequests[alarm.id] == nil {
-            notificationRequests[alarm.id] = Set<String>()
-        }
-        
         let content = prepareNotificationContentForAlarm(alarm)
 
         for dayOfWeek in alarm.repeatOn {
@@ -442,8 +426,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         notificationCenter.add(request) { error in
             guard error == nil else { return }
             
-            self.notificationRequests[alarm.id]!.insert(request.identifier)
-            
             dao.createNotificationRequest(NotificationRequest(identifier: request.identifier, alarmId: alarm.id))
             
             print("Scheduler: added a notification request")
@@ -452,19 +434,15 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     /// Cancel  pending notifications for a given alarm.
     private func cancelNotificationsForAlarm(withId alarmId: String) {
-        guard notificationRequests[alarmId] != nil else {
+        guard let notificationRequests = getNotificationRequestsForAlarm(withId: alarmId) else  {
             return
         }
         
-        guard notificationRequests[alarmId]!.count > 0 else {
-            return
-        }
+        let notificationRequestIds:[String] = notificationRequests.map({ return $0.identifier })
         
         UNUserNotificationCenter
             .current()
-            .removePendingNotificationRequests(withIdentifiers: Array(notificationRequests[alarmId]!))
-        
-        notificationRequests.removeValue(forKey: alarmId)
+            .removePendingNotificationRequests(withIdentifiers: notificationRequestIds)
         
         print("Scheduler: canceled notifications for alarm: \(alarmId)")
     }
@@ -475,7 +453,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             .current()
             .removeAllPendingNotificationRequests()
         
-        notificationRequests.removeAll()
+        AlarmPersistenceService.sharedInstance.deleteAllNotificationRequests()
     }
     
     private func prepareNotificationContentForAlarm(_ alarm: Alarm) -> UNMutableNotificationContent {
@@ -521,25 +499,27 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     private func readAlarmsAndNotificationsFromDisk() {
         scheduledAlarms = [Alarm]()
         
-        notificationRequests = [String: Set<String>]()
-        
         let dao = AlarmPersistenceService.sharedInstance
         
         guard let persistedAlarms = dao.readAllAlarms() else { return }
         
         scheduledAlarms = persistedAlarms
+    }
+    
+    private func getNotificationRequestsForAlarm(withId alarmId: String) -> [NotificationRequest]? {
+        let dao = AlarmPersistenceService.sharedInstance
         
-        guard let persistedNotificationRequests = dao.readAllNotificationRequests() else { return }
+        guard let persistedNotificationRequests = dao.readNotificationRequestsForAlarm(withId: alarmId) else {
+            return nil
+        }
+        
+        var notificationRequests = [NotificationRequest]()
         
         persistedNotificationRequests.forEach({notificationRequest in
-            let alarmId = notificationRequest.alarmId
-            
-            if notificationRequests[alarmId] == nil {
-                notificationRequests[alarmId] = Set<String>()
-            }
-            
-            notificationRequests[alarmId]?.insert(notificationRequest.identifier)
+            notificationRequests.append(notificationRequest)
         })
+        
+        return notificationRequests
     }
     
     private func playAlarm(_ alarm: Alarm) {
@@ -593,16 +573,21 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     }
     
     func dump() {
-        print("Scheduler: Alarms:")
+        print("")
+        print("Scheduler:: Alarms:")
         for alarm in scheduledAlarms {
+            
+            let notificationRequests = getNotificationRequestsForAlarm(withId: alarm.id)!
+            
+            let requests:[String] = notificationRequests.map({ return $0.identifier })
+            
             print("{")
-            print(alarm.string())
-            print("Notifications: [")
-            let requests = notificationRequests[alarm.id]
-            if requests != nil {
-                for notificationRequestId  in requests! {
-                    print("    \(notificationRequestId)")
-                }
+            print("    \(alarm.dateString)")
+            print("    \(alarm.melodyName)")
+            print("    Notifications:")
+            print("    [")
+            for notificationRequestId  in requests {
+                print("        \(notificationRequestId)")
             }
             print("    ]")
             print("}")
@@ -610,13 +595,14 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     }
     
     func dumpNotifications() {
-        print("Scheduler: Notifications:")
+        print("")
+        print("Scheduler:: Notifications:")
         UNUserNotificationCenter.current().getPendingNotificationRequests() {
             notificationRequests in
             
             print("[")
             for req in notificationRequests {
-                print("\(req.identifier) \(req.content.body)")
+                print("    \(req.identifier) \(req.content.body)")
             }
             print("]")
             
