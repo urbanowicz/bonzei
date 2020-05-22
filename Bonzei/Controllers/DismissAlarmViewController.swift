@@ -27,6 +27,8 @@ class DismissAlarmViewController: UIViewController {
     }
     
     @IBAction func snoozeButtonPressed(_ sender: Any) {
+        AlarmScheduler.sharedInstance.snooze()
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func dismissAlarmButtonPressed(_ sender: UIButton) {

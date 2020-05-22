@@ -60,7 +60,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         readAlarmsAndNotificationsFromDisk()
         dump()
-        dumpNotifications()
+        //dumpNotifications()
     }
     
     /// Schedules a given alarm.
@@ -141,6 +141,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         let updatedAlarm = Alarm(id: alarmId,
                                  date: alarm.date,
+                                 snoozeDate: nil,
                                  repeatOn: alarm.repeatOn,
                                  melodyName: alarm.melodyName,
                                  snoozeEnabled: alarm.snoozeEnabled,
@@ -214,7 +215,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         for alarm in alarms {
             let snoozeExpired = shouldTriggerSnoozedAlarm(alarm, now: nowDate)
             
-            if snoozeExpired || (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15) {
+            if snoozeExpired || (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15 && !alarm.isSnoozed) {
                 
                 if snoozeExpired {
                     os_log("Triggering snoozed alarm:\n{\n%{public}s\n}", log: log, type: .info, alarm.string())
@@ -261,12 +262,68 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         state = .waiting
         currentlyTriggeredAlarm = nil
         
-        if audioPlayer != nil && audioPlayer!.isPlaying{
-            audioPlayer!.stop()
-            audioPlayer = nil
-        }
+        stopAudioPlayer()
         
         os_log("Alarm dismissed.", log: log, type: .info)
+    }
+    
+    /// Snooze currently triggered alarm
+    public func snooze() {
+        guard state == .alarmTriggered && currentlyTriggeredAlarm != nil else { return }
+        
+        let i = indexOfAlarm(withId: currentlyTriggeredAlarm!.id)!
+        
+        scheduledAlarms[i].snoozeDate = Date().new(byAdding: .minute, value: 2)
+        
+        let alarmToSnooze = scheduledAlarms[i]
+        
+        AlarmPersistenceService.sharedInstance.updateAlarm(withId: alarmToSnooze.id, using: alarmToSnooze)
+        
+        state = .waiting
+        currentlyTriggeredAlarm = nil
+        
+        stopAudioPlayer()
+        
+//        ifNotificationsAreAllowed {
+//            let content = self.prepareNotificationContentForAlarm(alarmToSnooze)
+//
+//            let trigger = self.prepareNotificationTriggerForSnooze(alarmToSnooze)
+//
+//            let request = UNNotificationRequest(
+//                identifier: UUID().uuidString,
+//                content: content,
+//                trigger: trigger)
+//
+//            self.requestNotificationForAlarm(alarmToSnooze, request: request)
+//
+//        }
+        NotificationCenter.default.post(name: .didSnoozeAlarm, object: self, userInfo: ["alarm": alarmToSnooze])
+        print("Scheduler: snoozed alarm: \(alarmToSnooze.id)")
+    }
+    
+    /// Cancels snooze for every snoozed alarm. It has no effect if no alarm is snoozed.
+    public func cancelSnooze() {
+        for i in 0..<scheduledAlarms.count {
+            let alarm = scheduledAlarms[i]
+            
+            if alarm.snoozeDate != nil {
+                scheduledAlarms[i].snoozeDate = nil
+                
+                if !alarm.isRecurring {
+                    scheduledAlarms[i].isActive = false
+                    
+//                    notificationRequests.removeValue(forKey: alarm.id)
+//
+//                    AlarmPersistenceService
+//                        .sharedInstance
+//                        .deleteNotificationRequestsForAlarm(withId: alarm.id)
+                }
+                
+                AlarmPersistenceService
+                    .sharedInstance
+                    .updateAlarm(withId: alarm.id, using: scheduledAlarms[i])
+            }
+        }
     }
     
     // MARK: - AVAudioPlayerDelegate
@@ -423,6 +480,12 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         return UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
     }
     
+    private func prepareNotificationTriggerForSnooze(_ alarm: Alarm) -> UNCalendarNotificationTrigger {
+        let triggerDateComponents = alarm.snoozeDate!.components()
+        
+        return UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
+    }
+    
     /// Finds an alarm given by `id` in the internal `scheduledAlarms` array.
     ///
     private func indexOfAlarm(withId id: String) -> Int? {
@@ -490,6 +553,13 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         guard let snoozeDate = alarm.snoozeDate else { return false }
         
         return now.equals(snoozeDate, toGranularity: .minute)
+    }
+    
+    private func stopAudioPlayer() {
+        if audioPlayer != nil && audioPlayer!.isPlaying {
+            audioPlayer!.stop()
+            audioPlayer = nil
+        }
     }
     
     func purge() {

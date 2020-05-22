@@ -11,4 +11,5 @@ import Foundation
 extension Notification.Name {
     static let didTriggerAlarm = Notification.Name("didTriggerAlarm")
     static let didDismissAlarm = Notification.Name("didDismissAlarm")
+    static let didSnoozeAlarm = Notification.Name("didSnoozeAlarm")
 }
