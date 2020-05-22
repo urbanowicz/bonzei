@@ -150,7 +150,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                                  lastUpdateDate: Date())
         
         
-        refreshAlarm(updatedAlarm)
+        refreshAlarmAndNotificationRequests(updatedAlarm)
         
         if (!alarm.isActive) {
             os_log("Updated an alarm. The alarm is inactive.", log: log, type: .info)
@@ -175,7 +175,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         let alarms: [Alarm] = scheduledAlarms.filter({ alarm in
             
             let repeatOn = alarm.repeatOn.map({ dayOfWeek in return (dayOfWeek + 1) % 7 + 1})
-            let hasCorrectWeekday = repeatOn.contains(now.weekday!) || !alarm.isRecurring
+            let hasCorrectWeekday = repeatOn.contains(now.weekday!) || alarm.isOneTime
             
             var hasNotTriggerdAlready = false
             if alarm.lastTriggerDate == nil {
@@ -209,11 +209,15 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                 alarm.snoozeDate = nil
                 
                 // if this is a one time alarm, make sure we change it to inactive and remove related notification requests.
-                if !alarm.isRecurring {
+                if alarm.isOneTime {
                     alarm.isActive = false
                 }
                 
-                refreshAlarm(alarm)
+                if alarm.isOneTime || snoozeExpired {
+                    refreshAlarmAndNotificationRequests(alarm)
+                } else {
+                    refreshAlarmOnly(alarm)
+                }
                 
                 self.currentlyTriggeredAlarm = alarm
                 
@@ -297,7 +301,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                     alarm.isActive = false
                 }
                 
-                refreshAlarm(alarm)
+                refreshAlarmAndNotificationRequests(alarm)
                 
                 countSnoozedAlarms += 1
             }
@@ -394,7 +398,16 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    private func refreshAlarm(_ alarm: Alarm) {
+    private func refreshAlarmOnly(_ alarm: Alarm) {
+        AlarmPersistenceService
+            .sharedInstance
+            .updateAlarm(withId: alarm.id, using: alarm)
+        
+        let i = indexOfAlarm(withId: alarm.id)!
+        scheduledAlarms[i] = alarm
+    }
+    
+    private func refreshAlarmAndNotificationRequests(_ alarm: Alarm) {
         let dao = AlarmPersistenceService.sharedInstance
         
         // 1. Update the alarm in the database

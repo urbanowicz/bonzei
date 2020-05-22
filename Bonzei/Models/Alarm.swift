@@ -60,6 +60,12 @@ struct Alarm {
         }
     }
     
+    var isOneTime: Bool {
+        get {
+            return repeatOn.count == 0
+        }
+    }
+    
     var isSnoozed: Bool {
         get {
             return snoozeDate != nil 

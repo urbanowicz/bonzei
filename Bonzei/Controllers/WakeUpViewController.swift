@@ -51,6 +51,10 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    @IBAction func dumpRequested(_ sender: Any) {
+        AlarmScheduler.sharedInstance.dump()
+        AlarmScheduler.sharedInstance.dumpNotifications()
+    }
     /// Called when a user presses the '+' button to add a new alarm
     @IBAction func setAlarmButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "NewAlarm", sender: self)
@@ -160,6 +164,7 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         alarmsTable.endUpdates()
     }
     
+ 
     private func findSuperviewThatIsAnAlarmsTableCell(for childView: UIView) -> AlarmsTableCell? {
         var v = childView.superview
         while ((v as? AlarmsTableCell) == nil && v != nil) {
