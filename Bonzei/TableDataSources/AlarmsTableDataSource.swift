@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlarmsTableDataSource: NSObject, UITableViewDataSource {
+class AlarmsTableDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     let cellReuseId = "alarmsTableCell"
     

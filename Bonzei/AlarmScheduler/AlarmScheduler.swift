@@ -119,7 +119,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
         AlarmPersistenceService.sharedInstance.deleteAlarm(withId: alarmId)
         
-        print("Scheduler: removed alarm: \(alarmId)")
+        os_log("Unscheduled an alarm.", log: log, type: .info)
     }
     
     /// Returns all scheduled alarms .

@@ -24,8 +24,8 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpi-e2-9ir">
-                                        <rect key="frame" x="178.5" y="0.0" width="44" height="50"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpi-e2-9ir">
+                                        <rect key="frame" x="114" y="0.0" width="0.0" height="50"/>
                                         <state key="normal" title="DUMP"/>
                                         <connections>
                                             <action selector="dumpRequested:" destination="9pv-A4-QxB" eventType="touchUpInside" id="WcC-9B-P9M"/>

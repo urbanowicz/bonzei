@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
+class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate {
     
     @IBOutlet weak var setAlarmButton: UIButton!
     
@@ -30,6 +30,7 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         
         alarmsTable.dataSource = alarmsTableDataSource
+        alarmsTable.delegate = self 
         alarmsTable.backgroundColor = UIColor.white
         addTapGestureRecognizerToAlarmsTable()
         
@@ -72,7 +73,29 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    //MARK: - Gestures
+    // MARK: - Alarms Table Delegate
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, complete in
+            let alarmCell = tableView.cellForRow(at: indexPath) as! AlarmsTableCell
+            
+            AlarmScheduler.sharedInstance.unscheduleAlarm(withId: alarmCell.alarm.id)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            complete(true)
+        }
+        
+        deleteAction.backgroundColor = BonzeiColors.gray
+        deleteAction.title = nil
+        deleteAction.image = UIImage(systemName: "bin.xmark")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
+    }
+    
+    // MARK: - Gestures
     
     /// Handles tap gestures on the 'AlarmsTable'.
     /// - A user will tap on a row in the 'AlarmsTable' to edit an alarm.
