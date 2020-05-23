@@ -168,7 +168,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
                 repeatOn: dayOfWeekPicker.selection,
                 melodyName: selectedMelody,
                 snoozeEnabled: snoozeSwitch.isOn,
-                isActive: alarmToEdit!.isActive
+                isActive: true
             )
             
             alarmToEdit = alarm
