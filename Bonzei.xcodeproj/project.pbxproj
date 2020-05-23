@@ -33,6 +33,7 @@
 		F17ABEFF244708A2008E9227 /* BonzeiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEFE244708A2008E9227 /* BonzeiTests.swift */; };
 		F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */; };
 		F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */; };
+		F18A86EB247949C000C5597C /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F18A86EA247949C000C5597C /* alarm.mp3 */; };
 		F1A26FA6247284A300A13B3C /* DismissAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */; };
 		F1A608BD24713C00008A45EF /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F1A608BE24716416008A45EF /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
@@ -82,6 +83,7 @@
 		F17ABF00244708A2008E9227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsTableDataSource.swift; sourceTree = "<group>"; };
 		F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodiesTableDataSource.swift; sourceTree = "<group>"; };
+		F18A86EA247949C000C5597C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAlarmViewController.swift; sourceTree = "<group>"; };
 		F1AB936D2465EFFD008FAA1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F1F83E1D2472F7490072630A /* RootViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		F15590F7245EE3F400928589 /* SoundFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F18A86EA247949C000C5597C /* alarm.mp3 */,
 				F1368DA3246065B200BBFC39 /* Forest Light Rays.mp3 */,
 				F1368D9F246063F900BBFC39 /* Ambient Sea Waves.mp3 */,
 				F1368D9D246063F900BBFC39 /* Endorphin Birds.mp3 */,
@@ -320,6 +323,7 @@
 				F1368DA4246065B200BBFC39 /* Forest Light Rays.mp3 in Resources */,
 				F1368DA0246063FA00BBFC39 /* Endorphin Birds.mp3 in Resources */,
 				F1368DA2246063FA00BBFC39 /* Ambient Sea Waves.mp3 in Resources */,
+				F18A86EB247949C000C5597C /* alarm.mp3 in Resources */,
 				F17ABEF1244708A2008E9227 /* Assets.xcassets in Resources */,
 				F1368DA1246063FA00BBFC39 /* Midnight Moon.mp3 in Resources */,
 				F17ABEEC2447089F008E9227 /* Main.storyboard in Resources */,

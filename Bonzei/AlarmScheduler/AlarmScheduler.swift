@@ -29,6 +29,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// A delegate for the scheduler
     var delegate: AlarmSchedulerDelegate?
     
+    /// Name of the file with the loud alarm. It will be played if the soft alarm is not dismissed.
+    var loudAlarmFileName: String = "alarm.mp3"
+    
     /// State of the scheduler. There are two states:
     /// - `waiting`. No alarm is being played. The scheduler is waiting for an alarm to be triggered.
     /// - `alarmTriggered`. An alarm has been triggered and a melody associated with it is playing.
@@ -50,6 +53,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     /// When an alarm is triggerd,  a melody is played by the audio player
     var audioPlayer: AVAudioPlayer?
+    
+    /// Number of times we've tried to wake up a user
+    private var numberOfAttempts = 0
     
     // This is a singleton class, hence a private constructor
     private override init() {
@@ -244,6 +250,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         stopAudioPlayer()
         
+        numberOfAttempts = 0
+        
         os_log("Alarm dismissed", log: log, type: .info)
     }
     
@@ -268,6 +276,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         currentlyTriggeredAlarm = nil
         
         stopAudioPlayer()
+        
+        numberOfAttempts = 0
         
         ifNotificationsAreAllowed {
             let content = self.prepareNotificationContentForAlarm(alarmToSnooze)
@@ -310,15 +320,24 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         if countSnoozedAlarms > 0 {
             os_log("Did cancel snoozed alarms. Number of snoozes canceled: %{public}d", log: log, type: .info, countSnoozedAlarms)
         } else {
-            os_log("There aren't any snoozed alarms.")
+            os_log("There aren't any snoozed alarms.", log: log, type: .info)
         }
     }
     
     // MARK: - AVAudioPlayerDelegate
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        os_log("Finished playing a melody for an alarm", log: log, type: .info)
-        dismissAlarm()
+        if numberOfAttempts == 0 {
+            os_log("Finished playing a soft melody.", log: log, type: .info)
+           
+            numberOfAttempts += 1
+            
+            playAudio(fileName: loudAlarmFileName, numberOfLoops: 5)
+        } else {
+            os_log("Finished playing the loud alarm.", log: log, type: .info)
+            
+            dismissAlarm()
+        }
     }
     
     // MARK: - Helper functions
@@ -519,16 +538,25 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     }
     
     private func playAlarm(_ alarm: Alarm) {
+        playAudio(fileName: alarm.melodyName + ".mp3", numberOfLoops: 0)
+    }
+    
+    private func shouldTriggerSnoozedAlarm(_ alarm: Alarm, now: Date) -> Bool {
+        guard let snoozeDate = alarm.snoozeDate else { return false }
         
+        return now.equals(snoozeDate, toGranularity: .minute)
+    }
+    
+    private func playAudio(fileName: String, numberOfLoops: Int) {
         if audioPlayer != nil && audioPlayer!.isPlaying{
-            os_log("Will not play melody for the current alarm. A previous alarm is still playing.", log: log, type: .info)
+            os_log("Will not play melody. Audio player is already playing.", log: log, type: .info)
             return
         }
         
         os_log("Will play melody now.", log: log, type: .info)
         
         // Play the selected melody
-        let path = Bundle.main.path(forResource: alarm.melodyName + ".mp3", ofType: nil)
+        let path = Bundle.main.path(forResource: fileName, ofType: nil)
             
         let url = URL(fileURLWithPath: path!)
         
@@ -541,19 +569,12 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.delegate = self
-            audioPlayer?.numberOfLoops = 5
+            audioPlayer?.numberOfLoops = numberOfLoops
             audioPlayer?.setVolume(1.0, fadeDuration: 1)
             audioPlayer?.play()
         } catch let error as NSError {
-            os_log("Playing melody for alarm %{public}s failed: %{public}s", log: log, type: .error, error.localizedDescription)
-            
+            os_log("Playing an audio file failed. %{public}s failed: %{public}s", log: log, type: .error, error.localizedDescription)
         }
-    }
-    
-    private func shouldTriggerSnoozedAlarm(_ alarm: Alarm, now: Date) -> Bool {
-        guard let snoozeDate = alarm.snoozeDate else { return false }
-        
-        return now.equals(snoozeDate, toGranularity: .minute)
     }
     
     private func stopAudioPlayer() {
