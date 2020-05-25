@@ -560,10 +560,27 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             
         let url = URL(fileURLWithPath: path!)
         
+        HeartBeatService.sharedInstance.stop()
+        
+       
+        let audioSession = AVAudioSession.sharedInstance()
+            
         do {
-            try AVAudioSession.sharedInstance().setActive(true)
+            try audioSession.setCategory(.playAndRecord, mode: .default, options: [ .duckOthers])
         } catch let error as NSError {
-            os_log("Activating session failed: %{public}s", log: log, type: .error, error.localizedDescription)
+            os_log("Setting a category for alarm playback failed: %{public}s", log: log, type: .error, error.localizedDescription)
+        }
+        
+        do {
+            try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+        } catch let error as NSError {
+            os_log("Overriding output audio port to 'speaker' failed: %{public}s ", log: log, type: .error, error.localizedDescription )
+        }
+        
+        do {
+            try audioSession.setActive(true)
+        } catch let error as NSError {
+            os_log("Activating audio session for alarm playback failed: %{public}s", log: log, type: .error, error.localizedDescription)
         }
             
         do {
@@ -582,6 +599,14 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             audioPlayer!.stop()
             audioPlayer = nil
         }
+        
+        do {
+          try  AVAudioSession.sharedInstance().setActive(false)
+        } catch let error as NSError {
+            os_log("Deactivating audio session for alarm playback failed: %{public}s", log: log, type: .error, error.localizedDescription)
+        }
+        
+        HeartBeatService.sharedInstance.start()
     }
     
     func purge() {

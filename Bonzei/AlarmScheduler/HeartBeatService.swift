@@ -18,6 +18,8 @@ class HeartBeatService {
     
     private var timer = Timer()
     
+    private var log = OSLog(subsystem: "Alarm", category: "HeartBeatService")
+    
     private init() {
         //register for notifications about interruptions
         NotificationCenter
@@ -48,7 +50,7 @@ class HeartBeatService {
         do {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
-            print ("Activating a session failed")
+            os_log("Activating the Heart Beat session failed", log: log, type: .error)
         }
         
         do {
@@ -62,10 +64,27 @@ class HeartBeatService {
         
         timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(HeartBeatService.heartBeat),
         userInfo: nil, repeats: true)
+        
+        os_log("Heart Beat service started", log: log, type: .info)
+    }
+    
+    public func stop() {
+        if audioPlayer != nil {
+            audioPlayer!.stop()
+            audioPlayer = nil
+        }
+        
+        do {
+            try AVAudioSession.sharedInstance().setActive(false)
+        } catch let error as NSError {
+            os_log("Failed to deactivate the session: %s", log: log, type: .error, error.localizedDescription)
+        }
+        
+        os_log("Heart Beat stopped", log: log, type: .info)
     }
     
     @objc func heartBeat() {
-        // os_log("Heart Beat", log: OSLog.default, type: .info)
+        //os_log("Heart Beat", log: log, type: .info)
         AlarmScheduler.sharedInstance.checkAndTriggerAlarms()
     }
     
@@ -80,22 +99,23 @@ class HeartBeatService {
         switch type {
 
         case .began:
-            print ("interruption began")
+            logInfo("Heart Beat interruption began")
+            
             if audioPlayer != nil {
                 audioPlayer!.pause()
             }
 
         case .ended:
-           print("interruption ended")
+           logInfo("Heart Beat interruption ended")
            
            guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
             
            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
            if options.contains(.shouldResume) {
-                print("audio should resume")
+                logInfo("Heart beat should resume")
                 audioPlayer!.play()
             } else {
-                print("audio should not resume")
+                logInfo("Heart Beat should not resume")
             }
 
         default: ()
@@ -109,7 +129,15 @@ class HeartBeatService {
                 .sharedInstance()
                 .setCategory(.playback, mode: .default, options: [.mixWithOthers ])
         } catch {
-            print("Failed to set audio session category.")
+            os_log("Failed to set up the audio session.", log: log, type: .error)
         }
+    }
+    
+    private func logInfo(_ message: String) {
+        os_log("%public{s}", log: OSLog.default, type: .info, message)
+    }
+    
+    private func logError(_ message: String) {
+        os_log("%public{s}", log: OSLog.default, type: .error, message)
     }
 }
