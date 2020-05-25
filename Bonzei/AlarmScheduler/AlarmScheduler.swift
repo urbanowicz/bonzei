@@ -332,11 +332,11 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
            
             numberOfAttempts += 1
             
-            playAudio(fileName: loudAlarmFileName, numberOfLoops: 5)
+            playAudio(fileName: loudAlarmFileName, numberOfLoops: 0)
         } else {
             os_log("Finished playing the loud alarm.", log: log, type: .info)
             
-            dismissAlarm()
+            snooze()
         }
     }
     
