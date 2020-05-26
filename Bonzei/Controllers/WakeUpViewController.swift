@@ -293,8 +293,6 @@ class AlarmsTableCell: UITableViewCell {
     
     @IBOutlet weak var amLabel: UILabel!
     
-    @IBOutlet weak var timeHStack: UIStackView!
-    
     @IBOutlet weak var isActiveSwitch: UISwitch!
     
     internal func setupViews() {
@@ -302,9 +300,6 @@ class AlarmsTableCell: UITableViewCell {
     }
     
     private func setupTimeLabel() {
-        
-        timeLabel.backgroundColor = UIColor.yellow
-        
         var foregroundColor = BonzeiColors.darkGrayDisabled
         
         if alarm.isActive {
@@ -327,7 +322,6 @@ class AlarmsTableCell: UITableViewCell {
     }
     
     private func setupAmLabel() {
-        amLabel.backgroundColor = UIColor.systemPink
         var foregroundColor = BonzeiColors.darkGrayDisabled
         
         if alarm.isActive {
