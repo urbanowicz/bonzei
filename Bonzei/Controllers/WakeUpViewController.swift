@@ -101,6 +101,11 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
         return configuration
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let alarmsTableCell = cell as! AlarmsTableCell
+        alarmsTableCell.setupViews()
+    }
+    
     // MARK: - Gestures
     
     /// Handles tap gestures on the 'AlarmsTable'.
@@ -233,17 +238,20 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
 /// A custom cell for the 'Alarms Table'
 /// Note: It should live in a separate file (eg. Views/AlarmsTableCell.swift) but for some reason 'Assistant Editor' didn't allow me to connect outlets if the class weren't here.
 class AlarmsTableCell: UITableViewCell {
-    @IBInspectable var activeColor: UIColor = UIColor.black
-    @IBInspectable var disabledColor: UIColor = UIColor.systemGray
-    @IBInspectable var kern: Float = 20.0
     
+    @IBInspectable var activeColor: UIColor = BonzeiColors.darkTextColor
+    
+    @IBInspectable var disabledColor: UIColor = UIColor.systemGray
+    
+    @IBInspectable var kern: Float = 20.0
     
     var alarm: Alarm! {
         didSet {
-
+            
+            setupTimeLabel()
+            
             isActiveSwitch.onTintColor = UIColor(red: 0.93, green: 0.91, blue: 0.95, alpha: 1.00)
             
-            timeLabel.text = alarm.dateString
             melodyLabel.text = "\u{266A} " + alarm.melodyName
             let s = NSMutableAttributedString(string: "MTWTFSS")
             s.addAttribute(.kern, value: kern, range: NSRange(location: 0, length: s.length))
@@ -261,7 +269,6 @@ class AlarmsTableCell: UITableViewCell {
                     }
                 }
                 repeatOnLabel.attributedText = s
-                timeLabel.textColor = activeColor
                 melodyLabel.textColor = activeColor
 
             } else {
@@ -270,7 +277,6 @@ class AlarmsTableCell: UITableViewCell {
                 
                 s.addAttribute(.foregroundColor, value: disabledColor, range: NSRange(location:0, length: s.length))
                 repeatOnLabel.attributedText = s
-                timeLabel.textColor = disabledColor
                 melodyLabel.textColor = disabledColor
                 
             }
@@ -279,8 +285,44 @@ class AlarmsTableCell: UITableViewCell {
     }
     
     @IBOutlet weak var repeatOnLabel: UILabel!
+    
     @IBOutlet weak var melodyLabel: UILabel!
+    
     @IBOutlet weak var timeLabel: UILabel!
+    
     @IBOutlet weak var isActiveSwitch: UISwitch!
     
+    internal func setupViews() {
+        
+    }
+    
+    private func setupTimeLabel() {
+        var foregroundColor = BonzeiColors.darkGrayDisabled
+        
+        if alarm.isActive {
+            foregroundColor = BonzeiColors.darkTextColor
+        }
+        
+        let muliFontBig = UIFontMetrics.default.scaledFont(for: UIFont(name: "Muli-SemiBold", size: 40)!)
+        
+        let muliFontSmall = UIFontMetrics.default.scaledFont(for: UIFont(name: "Muli-SemiBold", size: 16)!)
+        
+        let dateString = alarm.dateString
+        
+        let attributedText = NSMutableAttributedString(string: dateString)
+        
+        // Style the AM/PM part of the text
+        attributedText.addAttributes([ .foregroundColor: foregroundColor,
+                                       .kern: 0.21,
+                                       .font: muliFontSmall ],
+                                     range: NSRange(location: dateString.count - 2, length: 2))
+        
+        // Style the main part of the text eg. "11:15"
+        attributedText.addAttributes([ .foregroundColor: foregroundColor,
+                                       .kern: 0.53,
+                                       .font: muliFontBig ],
+                                     range: NSRange(location: 0, length: dateString.count - 2))
+        
+        timeLabel.attributedText = attributedText
+    }
 }

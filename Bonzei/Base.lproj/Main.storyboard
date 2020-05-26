@@ -13,6 +13,9 @@
         <array key="Muli-Regular.ttf">
             <string>Muli-Regular</string>
         </array>
+        <array key="Muli-SemiBold.ttf">
+            <string>Muli-SemiBold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Wake up-->
@@ -78,20 +81,20 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="321" height="55"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gUB-H5-rOM" userLabel="HStack">
-                                                            <rect key="frame" x="0.0" y="0.0" width="182" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="207" height="37"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Time&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kii-g2-JUS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="37"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="30" id="cya-2R-9PT"/>
+                                                                        <constraint firstAttribute="height" constant="37" id="cya-2R-9PT"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                                    <nil key="textColor"/>
+                                                                    <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="40"/>
+                                                                    <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Melody&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R82-Pj-IU8" userLabel="Melody">
-                                                                    <rect key="frame" x="125" y="15.5" width="57" height="14.5"/>
+                                                                    <rect key="frame" x="150" y="22.5" width="57" height="14.5"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <nil key="textColor"/>
@@ -109,7 +112,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dHv-wg-m6g">
-                                                    <rect key="frame" x="323" y="17" width="51" height="31"/>
+                                                    <rect key="frame" x="323" y="24.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="toggleAlarm:" destination="9pv-A4-QxB" eventType="valueChanged" id="fPc-Jy-eQH"/>
                                                     </connections>

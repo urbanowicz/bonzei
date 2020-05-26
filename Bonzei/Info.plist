@@ -76,6 +76,7 @@
 	<array>
 		<string>Muli-Regular.ttf</string>
 		<string>Muli-Bold.ttf</string>
+		<string>Muli-SemiBold.ttf</string>
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>

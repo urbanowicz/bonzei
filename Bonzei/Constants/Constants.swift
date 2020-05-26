@@ -24,8 +24,12 @@ struct BonzeiColors {
     // Used as text color
     static let darkGray = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 1.00)
     
+    static let darkGrayDisabled = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.5)
+    
     // Used as text color
     static let darkTextColor = UIColor(red: 0.11, green: 0.14, blue: 0.13, alpha: 1.00)
+    
+    
 }
 
 // Fonts
