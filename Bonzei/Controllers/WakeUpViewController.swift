@@ -33,6 +33,12 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if AlarmScheduler.sharedInstance.allAlarms().count == 0 {
+            showSetFirstAlarmViews()
+        } else {
+            hideSetFirstAlarmViews()
+        }
+        
         alarmsTable.dataSource = alarmsTableDataSource
         alarmsTable.delegate = self 
         alarmsTable.backgroundColor = BonzeiColors.offWhite
@@ -47,16 +53,6 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
     
     override func viewWillDisappear(_ animated: Bool) {
         stopReceivingAlarmTriggeredNotification()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        if AlarmScheduler.sharedInstance.allAlarms().count == 0 {
-            noAlarmsVStack.isHidden = false
-            alarmsLabel.isHidden = true
-        } else {
-            noAlarmsVStack.isHidden = true
-            alarmsLabel.isHidden = false
-        }
     }
     
     // MARK: - Actions
@@ -100,6 +96,10 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
             AlarmScheduler.sharedInstance.unscheduleAlarm(withId: alarmCell.alarm.id)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            if AlarmScheduler.sharedInstance.allAlarms().count == 0 {
+                self.showSetFirstAlarmViews()
+            }
             
             complete(true)
         }
@@ -160,6 +160,9 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
         
         switch setAlarmViewControler.request {
         case .newAlarm :
+            if AlarmScheduler.sharedInstance.allAlarms().count == 0 {
+                hideSetFirstAlarmViews()
+            }
             let newAlarm = setAlarmViewControler.newAlarm
             AlarmScheduler.sharedInstance.schedule(alarm: newAlarm!)
             HeartBeatService.sharedInstance.start()
@@ -244,6 +247,16 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
             v = v!.superview
         }
         return v as? AlarmsTableCell
+    }
+    
+    private func hideSetFirstAlarmViews() {
+        noAlarmsVStack.isHidden = true
+        alarmsLabel.isHidden = false
+    }
+    
+    private func showSetFirstAlarmViews() {
+        noAlarmsVStack.isHidden = false
+        alarmsLabel.isHidden = true
     }
 }
 
