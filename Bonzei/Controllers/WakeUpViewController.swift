@@ -31,8 +31,10 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
         
         alarmsTable.dataSource = alarmsTableDataSource
         alarmsTable.delegate = self 
-        alarmsTable.backgroundColor = UIColor.white
+        alarmsTable.backgroundColor = BonzeiColors.offWhite
         addTapGestureRecognizerToAlarmsTable()
+        
+        setupWakeUpLabel()
         
         registerForAlarmTriggeredNotification()
     }
@@ -164,6 +166,20 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
         alarmsTable.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    private func setupWakeUpLabel() {
+        guard let muliBoldFont = UIFont(name: "Muli-Bold", size: BonzeiFonts.title.size) else {
+            fatalError("""
+                Failed to load the "Muli-Bold" font.
+                """
+            )
+        }
+        
+        wakeUpLabel.font = UIFontMetrics.default.scaledFont(for: muliBoldFont)
+        wakeUpLabel.adjustsFontForContentSizeCategory = true
+        wakeUpLabel.textColor = BonzeiColors.darkTextColor
+        
+    }
+    
     private func registerForAlarmTriggeredNotification() {
         NotificationCenter.default.addObserver(
                 self,
@@ -217,7 +233,7 @@ class AlarmsTableCell: UITableViewCell {
             if self.alarm.isActive {
                 
                 isActiveSwitch.isOn = true
-                isActiveSwitch.thumbTintColor = BonzeiColors.green
+                isActiveSwitch.thumbTintColor = BonzeiColors.jungleGreen
                 
                 //Set color for each day of the week depending on whether it was picked or not
                 for i in 0...6 {

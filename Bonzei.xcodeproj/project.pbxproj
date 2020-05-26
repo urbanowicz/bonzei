@@ -17,6 +17,9 @@
 		F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1421C252454B710003D226A /* DayOfWeekPicker.swift */; };
 		F142BDE424704CF200B5857C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142BDE324704CF200B5857C /* DateExtension.swift */; };
 		F142BDE524704CF200B5857C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142BDE324704CF200B5857C /* DateExtension.swift */; };
+		F1477720247D073E00D12C60 /* Gilam-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F147771E247D073E00D12C60 /* Gilam-Bold.ttf */; };
+		F1477721247D073E00D12C60 /* Gilam-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F147771F247D073E00D12C60 /* Gilam-Light.ttf */; };
+		F1477723247D0C3200D12C60 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1477722247D0C3200D12C60 /* Muli-Bold.ttf */; };
 		F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */; };
 		F14EF8AC24766537006A40D8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14EF8AB24766537006A40D8 /* NotificationExtension.swift */; };
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
@@ -63,6 +66,9 @@
 		F1368DA3246065B200BBFC39 /* Forest Light Rays.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Forest Light Rays.mp3"; sourceTree = "<group>"; };
 		F1421C252454B710003D226A /* DayOfWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekPicker.swift; sourceTree = "<group>"; };
 		F142BDE324704CF200B5857C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		F147771E247D073E00D12C60 /* Gilam-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilam-Bold.ttf"; sourceTree = "<group>"; };
+		F147771F247D073E00D12C60 /* Gilam-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilam-Light.ttf"; sourceTree = "<group>"; };
+		F1477722247D0C3200D12C60 /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
 		F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMelodyViewController.swift; sourceTree = "<group>"; };
 		F14EF8AB24766537006A40D8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
@@ -148,6 +154,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F147771D247D070300D12C60 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F1477722247D0C3200D12C60 /* Muli-Bold.ttf */,
+				F147771E247D073E00D12C60 /* Gilam-Bold.ttf */,
+				F147771F247D073E00D12C60 /* Gilam-Light.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		F15526C2244A01E900741E80 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +217,7 @@
 		F17ABEE12447089F008E9227 /* Bonzei */ = {
 			isa = PBXGroup;
 			children = (
+				F147771D247D070300D12C60 /* Fonts */,
 				F142BDE224704CBF00B5857C /* Extensions */,
 				F1AB936C2465EFE1008FAA1D /* Constants */,
 				F15C1AB82461731800F47CCC /* AlarmScheduler */,
@@ -327,6 +344,9 @@
 				F17ABEF1244708A2008E9227 /* Assets.xcassets in Resources */,
 				F1368DA1246063FA00BBFC39 /* Midnight Moon.mp3 in Resources */,
 				F17ABEEC2447089F008E9227 /* Main.storyboard in Resources */,
+				F1477723247D0C3200D12C60 /* Muli-Bold.ttf in Resources */,
+				F1477721247D073E00D12C60 /* Gilam-Light.ttf in Resources */,
+				F1477720247D073E00D12C60 /* Gilam-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,7 +549,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -548,7 +568,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

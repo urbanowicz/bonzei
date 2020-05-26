@@ -16,6 +16,11 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Gilam-Bold.ttf</string>
+		<string>Gilam-Light.ttf</string>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 </dict>

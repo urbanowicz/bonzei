@@ -225,7 +225,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     
     private func setSnoozeSwitchThumbTintColor() {
         if snoozeSwitch.isOn {
-            snoozeSwitch.thumbTintColor = BonzeiColors.green
+            snoozeSwitch.thumbTintColor = BonzeiColors.jungleGreen
         } else {
             snoozeSwitch.thumbTintColor = UIColor.white
         }
