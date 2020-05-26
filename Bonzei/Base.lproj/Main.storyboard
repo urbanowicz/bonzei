@@ -80,8 +80,8 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="M42-Xr-7rz" userLabel="VStack">
                                                     <rect key="frame" x="0.0" y="0.0" width="321" height="55"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gUB-H5-rOM" userLabel="HStack">
-                                                            <rect key="frame" x="0.0" y="0.0" width="207" height="37"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="bottom" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="gUB-H5-rOM" userLabel="HStack">
+                                                            <rect key="frame" x="0.0" y="0.0" width="224.5" height="37"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Time&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kii-g2-JUS">
                                                                     <rect key="frame" x="0.0" y="0.0" width="140" height="37"/>
@@ -93,8 +93,14 @@
                                                                     <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNK-s6-mQb">
+                                                                    <rect key="frame" x="141" y="16.5" width="25.5" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="16"/>
+                                                                    <color key="textColor" red="0.10980392160000001" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Melody&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R82-Pj-IU8" userLabel="Melody">
-                                                                    <rect key="frame" x="150" y="22.5" width="57" height="14.5"/>
+                                                                    <rect key="frame" x="167.5" y="22.5" width="57" height="14.5"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <nil key="textColor"/>
@@ -137,9 +143,11 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="amLabel" destination="xNK-s6-mQb" id="Wiq-SQ-8SC"/>
                                             <outlet property="isActiveSwitch" destination="dHv-wg-m6g" id="XH4-yv-hpz"/>
                                             <outlet property="melodyLabel" destination="R82-Pj-IU8" id="H8p-AE-u1r"/>
                                             <outlet property="repeatOnLabel" destination="1IJ-h7-Pff" id="16M-Ju-nwP"/>
+                                            <outlet property="timeHStack" destination="gUB-H5-rOM" id="Lwr-Fb-ZqG"/>
                                             <outlet property="timeLabel" destination="Kii-g2-JUS" id="Uta-bq-rfY"/>
                                         </connections>
                                     </tableViewCell>

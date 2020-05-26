@@ -249,6 +249,7 @@ class AlarmsTableCell: UITableViewCell {
         didSet {
             
             setupTimeLabel()
+            setupAmLabel()
             
             isActiveSwitch.onTintColor = UIColor(red: 0.93, green: 0.91, blue: 0.95, alpha: 1.00)
             
@@ -290,13 +291,20 @@ class AlarmsTableCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var amLabel: UILabel!
+    
+    @IBOutlet weak var timeHStack: UIStackView!
+    
     @IBOutlet weak var isActiveSwitch: UISwitch!
     
     internal func setupViews() {
-        
+
     }
     
     private func setupTimeLabel() {
+        
+        timeLabel.backgroundColor = UIColor.yellow
+        
         var foregroundColor = BonzeiColors.darkGrayDisabled
         
         if alarm.isActive {
@@ -305,24 +313,38 @@ class AlarmsTableCell: UITableViewCell {
         
         let muliFontBig = UIFontMetrics.default.scaledFont(for: UIFont(name: "Muli-SemiBold", size: 40)!)
         
-        let muliFontSmall = UIFontMetrics.default.scaledFont(for: UIFont(name: "Muli-SemiBold", size: 16)!)
+        var dateString = alarm.dateString
+        dateString = String(dateString.prefix(dateString.count - 3))
         
-        let dateString = alarm.dateString
+        let attributedString = NSMutableAttributedString(string: dateString)
         
-        let attributedText = NSMutableAttributedString(string: dateString)
-        
-        // Style the AM/PM part of the text
-        attributedText.addAttributes([ .foregroundColor: foregroundColor,
-                                       .kern: 0.21,
-                                       .font: muliFontSmall ],
-                                     range: NSRange(location: dateString.count - 2, length: 2))
-        
-        // Style the main part of the text eg. "11:15"
-        attributedText.addAttributes([ .foregroundColor: foregroundColor,
+        attributedString.addAttributes([ .foregroundColor: foregroundColor,
                                        .kern: 0.53,
                                        .font: muliFontBig ],
-                                     range: NSRange(location: 0, length: dateString.count - 2))
+                                     range: NSRange(location: 0, length: dateString.count))
         
-        timeLabel.attributedText = attributedText
+        timeLabel.attributedText = attributedString
+    }
+    
+    private func setupAmLabel() {
+        amLabel.backgroundColor = UIColor.systemPink
+        var foregroundColor = BonzeiColors.darkGrayDisabled
+        
+        if alarm.isActive {
+            foregroundColor = BonzeiColors.darkTextColor
+        }
+        
+        let muliFontSmall = UIFontMetrics.default.scaledFont(for: UIFont(name: "Muli-SemiBold", size: 16)!)
+        
+        let amString = String(alarm.dateString.suffix(2))
+                
+        let attributedString = NSMutableAttributedString(string: amString)
+                
+        attributedString.addAttributes([ .foregroundColor: foregroundColor,
+                                         .kern: 0.21,
+                                         .font: muliFontSmall ],
+                                       range: NSRange(location: 0, length: 2))
+        
+        amLabel.attributedText = attributedString
     }
 }
