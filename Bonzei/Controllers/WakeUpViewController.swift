@@ -108,7 +108,7 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
             complete(true)
         }
         
-        deleteAction.backgroundColor = BonzeiColors.gray
+        deleteAction.backgroundColor = BonzeiColors.coquelicot
         deleteAction.title = nil
         deleteAction.image = UIImage(systemName: "bin.xmark")
         

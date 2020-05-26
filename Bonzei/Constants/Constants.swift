@@ -13,6 +13,8 @@ import UIKit
 // Colors
 struct BonzeiColors {
     
+    static let coquelicot = UIColor(red: 1.00, green: 0.23, blue: 0.00, alpha: 1.00)
+    
     static let jungleGreen = UIColor(red: 0.14, green: 0.24, blue: 0.21, alpha: 1.00)
     
     // Used as background for some of the buttons (eg. play, pause, stop, repeat on)
