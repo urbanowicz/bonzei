@@ -67,7 +67,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-Yu-6ic" userLabel="AlarmsTable">
-                                <rect key="frame" x="20" y="193" width="374" height="620"/>
+                                <rect key="frame" x="20" y="209" width="374" height="604"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,7 +141,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALARMS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Z7-re-qkz">
-                                <rect key="frame" x="20" y="163" width="374" height="18"/>
+                                <rect key="frame" x="20" y="171" width="374" height="18"/>
                                 <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="14"/>
                                 <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.41960784313725491" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -153,11 +153,11 @@
                             <constraint firstItem="pp5-aH-gMu" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="43" id="3wD-pg-pL9"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="VAZ-Yu-6ic" secondAttribute="trailing" constant="20" id="7dP-Z5-F6q"/>
                             <constraint firstItem="VAZ-Yu-6ic" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="8u4-uW-bgK"/>
-                            <constraint firstItem="VAZ-Yu-6ic" firstAttribute="firstBaseline" secondItem="pp5-aH-gMu" secondAttribute="baseline" constant="80" id="Bms-nK-PHq"/>
+                            <constraint firstItem="VAZ-Yu-6ic" firstAttribute="top" secondItem="pp5-aH-gMu" secondAttribute="bottom" constant="82" id="Bms-nK-PHq"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="VAZ-Yu-6ic" secondAttribute="bottom" id="CEE-s4-xdV"/>
                             <constraint firstItem="pp5-aH-gMu" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="DO6-9k-Mik"/>
                             <constraint firstItem="6Z7-re-qkz" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="nwI-JD-nYN"/>
-                            <constraint firstItem="VAZ-Yu-6ic" firstAttribute="top" secondItem="6Z7-re-qkz" secondAttribute="bottom" constant="12" id="pR5-8l-Ozs"/>
+                            <constraint firstItem="VAZ-Yu-6ic" firstAttribute="top" secondItem="6Z7-re-qkz" secondAttribute="firstBaseline" constant="24" id="pR5-8l-Ozs"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="pp5-aH-gMu" secondAttribute="trailing" constant="20" id="wrz-7f-Uut"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
