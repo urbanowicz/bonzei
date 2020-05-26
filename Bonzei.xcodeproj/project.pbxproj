@@ -56,6 +56,7 @@
 		F1A608BD24713C00008A45EF /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F1A608BE24716416008A45EF /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
 		F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB936D2465EFFD008FAA1D /* Constants.swift */; };
+		F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D298FE247D74A500D25238 /* RoundedButton.swift */; };
 		F1F83E1E2472F7490072630A /* RootViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E1D2472F7490072630A /* RootViewViewController.swift */; };
 		F1F83E222472FD0C0072630A /* AlarmSchedulerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */; };
 		F1FF6CE72469B26C00B07237 /* AlarmPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */; };
@@ -122,6 +123,7 @@
 		F18A86EA247949C000C5597C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAlarmViewController.swift; sourceTree = "<group>"; };
 		F1AB936D2465EFFD008FAA1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F1D298FE247D74A500D25238 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F1F83E1D2472F7490072630A /* RootViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewViewController.swift; sourceTree = "<group>"; };
 		F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSchedulerDelegate.swift; sourceTree = "<group>"; };
 		F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPersistenceService.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				F1421C252454B710003D226A /* DayOfWeekPicker.swift */,
 				F1329B172460912300E7F7A2 /* OvalButton.swift */,
+				F1D298FE247D74A500D25238 /* RoundedButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */,
 				F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */,
 				F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */,
+				F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */,
 				F1A26FA6247284A300A13B3C /* DismissAlarmViewController.swift in Sources */,
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F15526C4244A060300741E80 /* Alarm.swift in Sources */,
