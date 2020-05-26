@@ -250,6 +250,7 @@ class AlarmsTableCell: UITableViewCell {
             
             setupTimeLabel()
             setupAmLabel()
+            setupMelodyLabel()
             
             isActiveSwitch.onTintColor = UIColor(red: 0.93, green: 0.91, blue: 0.95, alpha: 1.00)
             
@@ -324,5 +325,14 @@ class AlarmsTableCell: UITableViewCell {
         amLabel.textColor = foregroundColor
         
         amLabel.text = String(alarm.dateString.suffix(2))
+    }
+    
+    private func setupMelodyLabel() {
+        if alarm.isActive {
+            melodyLabel.textColor = BonzeiColors.darkGray
+        } else {
+            melodyLabel.textColor = BonzeiColors.darkGrayDisabled
+        }
+        
     }
 }
