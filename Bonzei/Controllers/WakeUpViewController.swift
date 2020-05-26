@@ -16,6 +16,8 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
     
     @IBOutlet weak var wakeUpLabel: UILabel!
     
+    @IBOutlet weak var alarmsLabel: UILabel!
+    
     @IBOutlet weak var alarmsTable: UITableView!
     
     /// A data source for the alarms table.
@@ -35,6 +37,8 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
         addTapGestureRecognizerToAlarmsTable()
         
         setupWakeUpLabel()
+        
+        setupAlarmsLabel()
         
         registerForAlarmTriggeredNotification()
     }
@@ -166,6 +170,7 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
         alarmsTable.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    
     private func setupWakeUpLabel() {
         guard let muliBoldFont = UIFont(name: "Muli-Bold", size: BonzeiFonts.title.size) else {
             fatalError("""
@@ -177,7 +182,19 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
         wakeUpLabel.font = UIFontMetrics.default.scaledFont(for: muliBoldFont)
         wakeUpLabel.adjustsFontForContentSizeCategory = true
         wakeUpLabel.textColor = BonzeiColors.darkTextColor
+    }
+    
+    private func setupAlarmsLabel() {
+        // Color, font and size are set in the storyboard
         
+        let text = NSMutableAttributedString(
+            string: alarmsLabel.text!)
+        
+        text.addAttribute(.kern,
+                          value: BonzeiFonts.label.character,
+                          range: NSRange(location: 0, length: text.length))
+        
+        alarmsLabel.attributedText = text
     }
     
     private func registerForAlarmTriggeredNotification() {

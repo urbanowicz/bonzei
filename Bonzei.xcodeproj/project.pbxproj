@@ -20,6 +20,7 @@
 		F1477720247D073E00D12C60 /* Gilam-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F147771E247D073E00D12C60 /* Gilam-Bold.ttf */; };
 		F1477721247D073E00D12C60 /* Gilam-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F147771F247D073E00D12C60 /* Gilam-Light.ttf */; };
 		F1477723247D0C3200D12C60 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1477722247D0C3200D12C60 /* Muli-Bold.ttf */; };
+		F1477725247D1FE100D12C60 /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1477724247D1FE100D12C60 /* Muli-Regular.ttf */; };
 		F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */; };
 		F14EF8AC24766537006A40D8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14EF8AB24766537006A40D8 /* NotificationExtension.swift */; };
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
@@ -69,6 +70,7 @@
 		F147771E247D073E00D12C60 /* Gilam-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilam-Bold.ttf"; sourceTree = "<group>"; };
 		F147771F247D073E00D12C60 /* Gilam-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilam-Light.ttf"; sourceTree = "<group>"; };
 		F1477722247D0C3200D12C60 /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
+		F1477724247D1FE100D12C60 /* Muli-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Regular.ttf"; sourceTree = "<group>"; };
 		F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMelodyViewController.swift; sourceTree = "<group>"; };
 		F14EF8AB24766537006A40D8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		F147771D247D070300D12C60 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				F1477724247D1FE100D12C60 /* Muli-Regular.ttf */,
 				F1477722247D0C3200D12C60 /* Muli-Bold.ttf */,
 				F147771E247D073E00D12C60 /* Gilam-Bold.ttf */,
 				F147771F247D073E00D12C60 /* Gilam-Light.ttf */,
@@ -342,6 +345,7 @@
 				F1368DA2246063FA00BBFC39 /* Ambient Sea Waves.mp3 in Resources */,
 				F18A86EB247949C000C5597C /* alarm.mp3 in Resources */,
 				F17ABEF1244708A2008E9227 /* Assets.xcassets in Resources */,
+				F1477725247D1FE100D12C60 /* Muli-Regular.ttf in Resources */,
 				F1368DA1246063FA00BBFC39 /* Midnight Moon.mp3 in Resources */,
 				F17ABEEC2447089F008E9227 /* Main.storyboard in Resources */,
 				F1477723247D0C3200D12C60 /* Muli-Bold.ttf in Resources */,

@@ -31,6 +31,8 @@ struct BonzeiColors {
 // Fonts
 struct BonzeiFonts {
     static let title =  Font(name: "Muli-Bold", size: 28, character: 0.37, line: 37)
+    
+    static let label = Font(name: "Muli-Regular", size: 14, character: 0.65, line: 17)
 }
 
 struct Font {
