@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pp5-aH-gMu" userLabel="HStack">
-                                <rect key="frame" x="20" y="99" width="374" height="40"/>
+                                <rect key="frame" x="24" y="99" width="366" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="du5-cL-cDe" userLabel="Wake up Label">
                                         <rect key="frame" x="0.0" y="0.0" width="119.5" height="40"/>
@@ -49,7 +49,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fW0-bm-2EE" customClass="OvalButton" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="334" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="326" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="GWq-FV-aY4"/>
                                             <constraint firstAttribute="width" secondItem="fW0-bm-2EE" secondAttribute="height" multiplier="1:1" id="Vtk-no-uP9"/>
@@ -70,17 +70,17 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-Yu-6ic" userLabel="AlarmsTable">
-                                <rect key="frame" x="20" y="221" width="374" height="592"/>
+                                <rect key="frame" x="24" y="221" width="366" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alarmsTableCell" id="nb0-Db-ZNB" customClass="AlarmsTableCell" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="115"/>
+                                        <rect key="frame" x="0.0" y="28" width="366" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nb0-Db-ZNB" id="WUJ-f4-lPi">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="366" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Time&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kii-g2-JUS">
@@ -104,13 +104,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dHv-wg-m6g">
-                                                    <rect key="frame" x="323" y="24.5" width="51" height="31"/>
+                                                    <rect key="frame" x="315" y="24.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="toggleAlarm:" destination="9pv-A4-QxB" eventType="valueChanged" id="fPc-Jy-eQH"/>
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M   T   W   T   F   S   S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IJ-h7-Pff">
-                                                    <rect key="frame" x="0.0" y="55" width="324" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="55" width="316" height="20.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Muli-Medium" family="Muli" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -144,22 +144,22 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALARMS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Z7-re-qkz">
-                                <rect key="frame" x="20" y="183" width="374" height="18"/>
+                                <rect key="frame" x="24" y="183" width="366" height="18"/>
                                 <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="14"/>
                                 <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.41960784313725491" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="7hp-Kn-lhZ" userLabel="VStack">
-                                <rect key="frame" x="20" y="339" width="374" height="179"/>
+                                <rect key="frame" x="24" y="339" width="366" height="179"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Own your morning by starting the day effectively with the best sounding alarm clock." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUD-6f-SEE">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="43"/>
                                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
                                         <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3P-5f-fSd" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="123" width="374" height="56"/>
+                                        <rect key="frame" x="0.0" y="123" width="366" height="56"/>
                                         <color key="backgroundColor" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="5ud-dY-5fU"/>
@@ -188,19 +188,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99873024225234985" green="0.99270755052566528" blue="0.99225538969039917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="6Z7-re-qkz" secondAttribute="trailing" constant="20" id="0fd-pe-ZAt"/>
-                            <constraint firstItem="7hp-Kn-lhZ" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="1IJ-br-xu2"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="6Z7-re-qkz" secondAttribute="trailing" constant="24" id="0fd-pe-ZAt"/>
+                            <constraint firstItem="7hp-Kn-lhZ" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="24" id="1IJ-br-xu2"/>
                             <constraint firstItem="pp5-aH-gMu" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="55" id="3wD-pg-pL9"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="VAZ-Yu-6ic" secondAttribute="trailing" constant="20" id="7dP-Z5-F6q"/>
-                            <constraint firstItem="VAZ-Yu-6ic" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="8u4-uW-bgK"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="VAZ-Yu-6ic" secondAttribute="trailing" constant="24" id="7dP-Z5-F6q"/>
+                            <constraint firstItem="VAZ-Yu-6ic" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="24" id="8u4-uW-bgK"/>
                             <constraint firstItem="VAZ-Yu-6ic" firstAttribute="top" secondItem="pp5-aH-gMu" secondAttribute="bottom" constant="82" id="Bms-nK-PHq"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="VAZ-Yu-6ic" secondAttribute="bottom" id="CEE-s4-xdV"/>
-                            <constraint firstItem="pp5-aH-gMu" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="DO6-9k-Mik"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="7hp-Kn-lhZ" secondAttribute="trailing" constant="20" id="bBD-Cd-ZiT"/>
+                            <constraint firstItem="pp5-aH-gMu" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="24" id="DO6-9k-Mik"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="7hp-Kn-lhZ" secondAttribute="trailing" constant="24" id="bBD-Cd-ZiT"/>
                             <constraint firstItem="7hp-Kn-lhZ" firstAttribute="centerY" secondItem="PQr-Ze-W5v" secondAttribute="centerY" id="jqi-G8-Y1V"/>
-                            <constraint firstItem="6Z7-re-qkz" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="nwI-JD-nYN"/>
+                            <constraint firstItem="6Z7-re-qkz" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="24" id="nwI-JD-nYN"/>
                             <constraint firstItem="VAZ-Yu-6ic" firstAttribute="top" secondItem="6Z7-re-qkz" secondAttribute="firstBaseline" constant="24" id="pR5-8l-Ozs"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="pp5-aH-gMu" secondAttribute="trailing" constant="20" id="wrz-7f-Uut"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="pp5-aH-gMu" secondAttribute="trailing" constant="24" id="wrz-7f-Uut"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
