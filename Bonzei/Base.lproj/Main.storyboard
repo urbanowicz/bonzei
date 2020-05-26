@@ -320,10 +320,10 @@
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
-                                                                <color key="value" red="0.92937999959999995" green="0.91708433629999997" blue="0.94444125889999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="value" red="0.93333333333333335" green="0.9137254901960784" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
-                                                                <color key="value" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="value" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -343,7 +343,7 @@
                                                             <constraint firstAttribute="width" constant="50" id="cRA-YG-Ktc"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                        <color key="tintColor" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="chevron.right" catalog="system">
                                                             <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -366,7 +366,7 @@
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-hN-NrP" customClass="DayOfWeekPicker" customModule="Bonzei" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="366" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="so1-HR-iuD"/>
                                                 </constraints>
@@ -378,7 +378,7 @@
                                                         <real key="value" value="17"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                        <color key="value" red="0.92937999959999995" green="0.91708433629999997" blue="0.94444125889999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.93333333333333335" green="0.9137254901960784" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
