@@ -18,7 +18,11 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
     @IBInspectable var radius:Float = 15
     
     //Color of the selection rectangle
-    @IBInspectable var color:UIColor = UIColor.systemGreen
+    @IBInspectable var selectionColor:UIColor = UIColor.systemGreen
+    
+    @IBInspectable var fontColor:UIColor = UIColor.darkText
+    
+    @IBInspectable var font:UIFont = UIFont(name: "Muli-SemiBold", size: 16.0)!
     
     //Day of week labels 'M' 'T' 'W' 'T' 'F' 'S' 'S'
     private var labels = [DayOfWeekLabel]()
@@ -66,6 +70,8 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
             let label = DayOfWeekLabel()
             label.index = index
             label.text = text
+            label.textColor = fontColor
+            label.font = UIFontMetrics.default.scaledFont(for: font)
             label.isUserInteractionEnabled = false
             label.textAlignment = .center
             label.backgroundColor = UIColor.clear
@@ -94,7 +100,7 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
     
     private func layoutSelectionLayer() {
         selectionLayer.backgroundColor = UIColor.clear.cgColor
-        selectionLayer.fillColor = color.cgColor
+        selectionLayer.fillColor = selectionColor.cgColor
         selectionLayer.frame = CGRect(origin: self.bounds.origin, size: self.bounds.size)
     }
     
