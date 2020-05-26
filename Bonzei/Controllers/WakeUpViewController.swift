@@ -306,19 +306,12 @@ class AlarmsTableCell: UITableViewCell {
             foregroundColor = BonzeiColors.darkTextColor
         }
         
-        let muliFontBig = UIFontMetrics.default.scaledFont(for: UIFont(name: "Muli-SemiBold", size: 40)!)
+        timeLabel.textColor = foregroundColor
         
         var dateString = alarm.dateString
         dateString = String(dateString.prefix(dateString.count - 3))
-        
-        let attributedString = NSMutableAttributedString(string: dateString)
-        
-        attributedString.addAttributes([ .foregroundColor: foregroundColor,
-                                       .kern: 0.53,
-                                       .font: muliFontBig ],
-                                     range: NSRange(location: 0, length: dateString.count))
-        
-        timeLabel.attributedText = attributedString
+       
+        timeLabel.text = dateString
     }
     
     private func setupAmLabel() {
@@ -328,17 +321,8 @@ class AlarmsTableCell: UITableViewCell {
             foregroundColor = BonzeiColors.darkTextColor
         }
         
-        let muliFontSmall = UIFontMetrics.default.scaledFont(for: UIFont(name: "Muli-SemiBold", size: 16)!)
+        amLabel.textColor = foregroundColor
         
-        let amString = String(alarm.dateString.suffix(2))
-                
-        let attributedString = NSMutableAttributedString(string: amString)
-                
-        attributedString.addAttributes([ .foregroundColor: foregroundColor,
-                                         .kern: 0.21,
-                                         .font: muliFontSmall ],
-                                       range: NSRange(location: 0, length: 2))
-        
-        amLabel.attributedText = attributedString
+        amLabel.text = String(alarm.dateString.suffix(2))
     }
 }
