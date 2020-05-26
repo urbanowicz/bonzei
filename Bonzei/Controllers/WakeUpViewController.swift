@@ -12,6 +12,8 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
     
     @IBOutlet weak var setAlarmButton: UIButton!
     
+    @IBOutlet weak var noAlarmsVStack: UIStackView!
+    
     @IBOutlet weak var setFirstAlarmButton: UIButton!
     
     @IBOutlet weak var wakeUpLabel: UILabel!
@@ -45,6 +47,16 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
     
     override func viewWillDisappear(_ animated: Bool) {
         stopReceivingAlarmTriggeredNotification()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        if AlarmScheduler.sharedInstance.allAlarms().count == 0 {
+            noAlarmsVStack.isHidden = false
+            alarmsLabel.isHidden = true
+        } else {
+            noAlarmsVStack.isHidden = true
+            alarmsLabel.isHidden = false
+        }
     }
     
     // MARK: - Actions
