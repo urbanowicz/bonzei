@@ -66,7 +66,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-Yu-6ic" userLabel="AlarmsTable">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-Yu-6ic" userLabel="AlarmsTable">
                                 <rect key="frame" x="20" y="193" width="374" height="620"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -74,10 +74,10 @@
                                 <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alarmsTableCell" id="nb0-Db-ZNB" customClass="AlarmsTableCell" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="80"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nb0-Db-ZNB" id="WUJ-f4-lPi">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Time&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kii-g2-JUS">
@@ -107,21 +107,21 @@
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M   T   W   T   F   S   S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IJ-h7-Pff">
-                                                    <rect key="frame" x="0.0" y="58.5" width="324" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="55" width="324" height="20.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Muli-Medium" family="Muli" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.99873024225234985" green="0.99270755052566528" blue="0.99225538969039917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="1IJ-h7-Pff" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dHv-wg-m6g" secondAttribute="leading" constant="1" id="2Fg-vf-ABC"/>
                                                 <constraint firstItem="dHv-wg-m6g" firstAttribute="centerY" secondItem="Kii-g2-JUS" secondAttribute="firstBaseline" id="Ct0-gL-nUB"/>
                                                 <constraint firstItem="1IJ-h7-Pff" firstAttribute="leading" secondItem="WUJ-f4-lPi" secondAttribute="leading" id="QPg-1J-Pj5"/>
                                                 <constraint firstItem="R82-Pj-IU8" firstAttribute="firstBaseline" secondItem="Kii-g2-JUS" secondAttribute="firstBaseline" id="WcM-0E-JGT"/>
                                                 <constraint firstItem="dHv-wg-m6g" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="R82-Pj-IU8" secondAttribute="trailing" constant="1" id="ZDV-oC-bBJ"/>
-                                                <constraint firstItem="1IJ-h7-Pff" firstAttribute="top" secondItem="Kii-g2-JUS" secondAttribute="bottom" constant="8" id="cx2-rx-Dgi"/>
+                                                <constraint firstItem="1IJ-h7-Pff" firstAttribute="top" secondItem="Kii-g2-JUS" secondAttribute="firstBaseline" constant="15" id="cx2-rx-Dgi"/>
                                                 <constraint firstAttribute="trailing" secondItem="dHv-wg-m6g" secondAttribute="trailing" constant="2" id="f1q-up-uej"/>
                                                 <constraint firstItem="Kii-g2-JUS" firstAttribute="leading" secondItem="WUJ-f4-lPi" secondAttribute="leading" id="gXP-LJ-F7V"/>
                                                 <constraint firstItem="Kii-g2-JUS" firstAttribute="top" secondItem="WUJ-f4-lPi" secondAttribute="top" id="gbn-AQ-J7u"/>
@@ -130,14 +130,6 @@
                                                 <constraint firstItem="R82-Pj-IU8" firstAttribute="leading" secondItem="xNK-s6-mQb" secondAttribute="trailing" constant="18" id="y4y-5Y-HVj"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                <color key="value" cocoaTouchSystemColor="darkTextColor"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="amLabel" destination="xNK-s6-mQb" id="Wiq-SQ-8SC"/>
                                             <outlet property="isActiveSwitch" destination="dHv-wg-m6g" id="XH4-yv-hpz"/>
