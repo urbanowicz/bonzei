@@ -239,12 +239,6 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
 /// Note: It should live in a separate file (eg. Views/AlarmsTableCell.swift) but for some reason 'Assistant Editor' didn't allow me to connect outlets if the class weren't here.
 class AlarmsTableCell: UITableViewCell {
     
-    @IBInspectable var activeColor: UIColor = BonzeiColors.darkTextColor
-    
-    @IBInspectable var disabledColor: UIColor = UIColor.systemGray
-    
-    @IBInspectable var kern: Float = 20.0
-    
     var alarm: Alarm! {
         didSet {
             
@@ -252,27 +246,8 @@ class AlarmsTableCell: UITableViewCell {
             setupAmLabel()
             setupMelodyLabel()
             setupIsActiveSwitch()
-            
-            
-            let s = NSMutableAttributedString(string: "MTWTFSS")
-            s.addAttribute(.kern, value: kern, range: NSRange(location: 0, length: s.length))
-            if self.alarm.isActive {
-                
-                //Set color for each day of the week depending on whether it was picked or not
-                for i in 0...6 {
-                    if alarm.repeatOn.contains(i) {
-                        s.addAttribute(.foregroundColor, value: activeColor, range: NSRange(location: i, length: 1))
-                    } else {
-                        s.addAttribute(.foregroundColor, value: disabledColor, range: NSRange(location: i, length: 1))
-                    }
-                }
-                repeatOnLabel.attributedText = s
+            setupRepeatOnLabel()
 
-            } else {
-                s.addAttribute(.foregroundColor, value: disabledColor, range: NSRange(location:0, length: s.length))
-                repeatOnLabel.attributedText = s
-                
-            }
             self.setNeedsDisplay()
         }
     }
@@ -338,5 +313,27 @@ class AlarmsTableCell: UITableViewCell {
             isActiveSwitch.thumbTintColor = UIColor.white
             isActiveSwitch.isOn = false
         }
+    }
+    
+    private func setupRepeatOnLabel() {
+        let s = NSMutableAttributedString(string: "MTWTFSS")
+        
+        s.addAttribute(.kern, value: 20, range: NSRange(location: 0, length: s.length))
+        
+        if self.alarm.isActive {
+            
+            for i in 0...6 {
+                if alarm.repeatOn.contains(i) {
+                    s.addAttribute(.foregroundColor, value: BonzeiColors.darkTextColor, range: NSRange(location: i, length: 1))
+                } else {
+                    s.addAttribute(.foregroundColor, value: BonzeiColors.darkGrayDisabled, range: NSRange(location: i, length: 1))
+                }
+            }
+
+        } else {
+            s.addAttribute(.foregroundColor, value: BonzeiColors.darkGrayDisabled, range: NSRange(location:0, length: s.length))
+        }
+        
+        repeatOnLabel.attributedText = s
     }
 }
