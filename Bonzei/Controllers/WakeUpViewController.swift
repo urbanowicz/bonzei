@@ -75,6 +75,10 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
         performSegue(withIdentifier: "NewAlarm", sender: self)
     }
     
+    @IBAction func setFirstAlarmButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "NewAlarm", sender: self)
+    }
+    
     @objc func didTriggerAlarm(_ notification: Notification) {
         let userInfo = notification.userInfo as! [String: Any]
         let alarm = userInfo["alarm"] as! Alarm

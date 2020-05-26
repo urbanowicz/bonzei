@@ -179,6 +179,9 @@
                                                 <color key="value" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="setFirstAlarmButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="iqR-dj-MB1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
