@@ -87,8 +87,6 @@ class Clock: UIControl {
         
         dynamicLayer.fillColor = handColor.cgColor
         
-        
-        
         layer.addSublayer(staticLayer)
         
         layer.addSublayer(dynamicLayer)
@@ -191,8 +189,7 @@ class Clock: UIControl {
     
     override func draw(_ rect: CGRect) {
         let handsOfAClock = CGMutablePath()
-        
-        
+    
         
         handsOfAClock.addPath(hourHand(
             
@@ -205,7 +202,6 @@ class Clock: UIControl {
             radius: CGFloat(hourHandRadius))
             
         )
-        
         
         
         handsOfAClock.addPath(minutesHand(

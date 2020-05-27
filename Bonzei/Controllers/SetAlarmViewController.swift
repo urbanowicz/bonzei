@@ -207,7 +207,10 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBAction func datePickerValueChanged(sender: UIDatePicker, forEvent event: UIEvent) {
         print(datePicker.date)
-        clock.setTime(date: datePicker.date)
+        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
+            self.clock.setTime(date: self.datePicker.date)
+        })
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
