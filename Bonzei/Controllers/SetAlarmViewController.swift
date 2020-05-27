@@ -67,7 +67,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var snoozeSwitch: UISwitch!
     
-    @IBOutlet weak var clock: Clock!
+    @IBOutlet weak var clock: BonzeiClock!
     
     //MARK: - Initialization
     
@@ -117,7 +117,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
             snoozeSwitch.isOn = alarmToEdit!.snoozeEnabled
         }
         
-        clock.setTime(date: datePicker.date)
+        clock.setTime(date: datePicker.date, animated: false)
         setSnoozeSwitchThumbTintColor()
     }
     
@@ -206,11 +206,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     @IBAction func datePickerValueChanged(sender: UIDatePicker, forEvent event: UIEvent) {
-        print(datePicker.date)
-        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
-            self.clock.setTime(date: self.datePicker.date)
-        })
-       
+        self.clock.setTime(date: self.datePicker.date, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
