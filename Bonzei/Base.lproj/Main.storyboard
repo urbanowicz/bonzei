@@ -278,24 +278,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YpM-26-u3d" customClass="Clock" customModule="Bonzei" customModuleProvider="target">
+                                <rect key="frame" x="107" y="44" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.14117647059999999" green="0.24313725489999999" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="k1M-6Q-gOL"/>
+                                    <constraint firstAttribute="height" constant="200" id="n10-SB-BhH"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-bc-pLe" userLabel="VStack">
-                                <rect key="frame" x="24" y="44" width="366" height="793"/>
+                                <rect key="frame" x="24" y="260" width="366" height="577"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YpM-26-u3d">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="200"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="n10-SB-BhH"/>
-                                        </constraints>
-                                    </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-Mh-4Ei">
-                                        <rect key="frame" x="0.0" y="244" width="366" height="140"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="161"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="140" id="wRW-38-YJC"/>
+                                            <constraint firstAttribute="height" constant="161" id="wRW-38-YJC"/>
                                         </constraints>
                                     </datePicker>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="erj-sZ-6wr" userLabel="VStack">
-                                        <rect key="frame" x="0.0" y="428" width="366" height="73"/>
+                                        <rect key="frame" x="0.0" y="207" width="366" height="73"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MELODY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLc-zD-nbu">
                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="18"/>
@@ -356,7 +358,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VCc-3B-GUh" userLabel="VStack">
-                                        <rect key="frame" x="0.0" y="545" width="366" height="73"/>
+                                        <rect key="frame" x="0.0" y="325.5" width="366" height="73"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPEAT ON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mg0-gv-yyA">
                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="18"/>
@@ -388,7 +390,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSh-C6-7s3" userLabel="HStack">
-                                        <rect key="frame" x="0.0" y="662" width="366" height="31"/>
+                                        <rect key="frame" x="0.0" y="444.5" width="366" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SNOOZE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2a-np-g7B" userLabel="SnoozeLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="317" height="31"/>
@@ -407,7 +409,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pv-Ko-fib" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="737" width="366" height="56"/>
+                                        <rect key="frame" x="0.0" y="521" width="366" height="56"/>
                                         <color key="backgroundColor" red="0.14139676094055176" green="0.2391318678855896" blue="0.21359971165657043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="1E8-hj-tCM"/>
@@ -452,14 +454,17 @@
                         <constraints>
                             <constraint firstItem="0z8-0d-9Kv" firstAttribute="top" secondItem="Cpd-bb-Gf2" secondAttribute="top" id="20Q-yu-jbe"/>
                             <constraint firstItem="Cpd-bb-Gf2" firstAttribute="bottom" secondItem="wZf-bc-pLe" secondAttribute="bottom" constant="25" id="48w-9o-m7c"/>
-                            <constraint firstItem="wZf-bc-pLe" firstAttribute="top" secondItem="Cpd-bb-Gf2" secondAttribute="top" id="6aL-i7-YO3"/>
+                            <constraint firstItem="wZf-bc-pLe" firstAttribute="top" secondItem="YpM-26-u3d" secondAttribute="bottom" constant="16" id="MUo-us-Ewx"/>
                             <constraint firstItem="Cpd-bb-Gf2" firstAttribute="trailing" secondItem="wZf-bc-pLe" secondAttribute="trailing" constant="24" id="RY2-31-RcV"/>
                             <constraint firstItem="Cpd-bb-Gf2" firstAttribute="trailing" secondItem="0z8-0d-9Kv" secondAttribute="trailing" constant="20" id="XUA-4e-jgB"/>
+                            <constraint firstItem="YpM-26-u3d" firstAttribute="centerX" secondItem="Cpd-bb-Gf2" secondAttribute="centerX" id="bPV-dQ-CxX"/>
                             <constraint firstItem="wZf-bc-pLe" firstAttribute="leading" secondItem="Cpd-bb-Gf2" secondAttribute="leading" constant="24" id="gPh-Rq-cRn"/>
+                            <constraint firstItem="YpM-26-u3d" firstAttribute="top" secondItem="Cpd-bb-Gf2" secondAttribute="top" id="gcQ-08-um2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cpd-bb-Gf2"/>
                     </view>
                     <connections>
+                        <outlet property="clock" destination="YpM-26-u3d" id="8ef-sU-S95"/>
                         <outlet property="datePicker" destination="PFR-Mh-4Ei" id="mna-Hf-63g"/>
                         <outlet property="dayOfWeekPicker" destination="Kaw-hN-NrP" id="aFh-YC-wVQ"/>
                         <outlet property="melodyLabel" destination="Rvx-bA-ZYS" id="mlq-n0-9QL"/>

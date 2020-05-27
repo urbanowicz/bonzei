@@ -67,6 +67,8 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var snoozeSwitch: UISwitch!
     
+    @IBOutlet weak var clock: Clock!
+    
     //MARK: - Initialization
     
     override func viewDidLoad() {
@@ -92,6 +94,9 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.addTarget(self, action: #selector(SetAlarmViewController.melodyLabelTapped(tapRecoginzer:)))
         melodyLabel.addGestureRecognizer(tapGestureRecognizer)
+        
+        datePicker.addTarget(self, action: #selector(SetAlarmViewController.datePickerValueChanged), for: .valueChanged)
+        
     }
     
     func prepareTofulfillRequest(withType requestType: RequestType, forAlarm alarm: Alarm?) {
@@ -112,6 +117,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
             snoozeSwitch.isOn = alarmToEdit!.snoozeEnabled
         }
         
+        clock.setTime(date: datePicker.date)
         setSnoozeSwitchThumbTintColor()
     }
     
@@ -197,6 +203,11 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBAction func snoozeSwitchToggled(_ sender: UISwitch) {
         setSnoozeSwitchThumbTintColor()
+    }
+    
+    @IBAction func datePickerValueChanged(sender: UIDatePicker, forEvent event: UIEvent) {
+        print(datePicker.date)
+        clock.setTime(date: datePicker.date)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
