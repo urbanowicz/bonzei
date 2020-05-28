@@ -12,7 +12,7 @@ import UIKit
 @IBDesignable
 class BonzeiClock: UIControl, CAAnimationDelegate {
     
-    @IBInspectable var margin: Double = 13
+    @IBInspectable var margin: Double = 17
     
     /// Radius of the clock face. Calculated based on the size of the frame and the desired margin.
     var bigCircleRadius: Double = 0.0
@@ -34,12 +34,16 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     /// Big circle will be drawn in this layer
     var bigCircleView = CircleView()
     
+    var bigCircleMaskLayer = CAShapeLayer()
+    
     /// Small circles will be drawn in this layer
     var smallCirclesLayer = CAShapeLayer()
     
     var hourCircleView = CircleView()
     
     var minuteCircleView = CircleView()
+    
+    var glareCircleView1 = AnotherCircleView()
     
     var boundsRadius: Double {
         get {
@@ -82,6 +86,13 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
         addSubview(bigCircleView)
         
+        glareCircleView1.setGradient(
+            top: BonzeiColors.Gradients.blue.top,
+            bottom: BonzeiColors.Gradients.blue.bottom
+        )
+
+        // addSubview(glareCircleView1)
+        
         smallCirclesLayer.backgroundColor = UIColor.clear.cgColor
         smallCirclesLayer.fillColor = smallCircleColor.cgColor
         layer.addSublayer(smallCirclesLayer)
@@ -101,6 +112,8 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         )
         
         addSubview(minuteCircleView)
+        
+        clipsToBounds = true
     }
     
     public func setTime(date: Date, animated: Bool) {
@@ -159,7 +172,11 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         super.draw(rect)
         
         // 1. Draw the big circle
-         drawBigCircle()
+        drawBigCircle()
+        
+        prepareBigCircleMaskingLayer()
+        
+        drawGlareCircle1()
         
         // 2. Draw small circles
         drawSmallCircles()
@@ -226,6 +243,20 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         }
         
         smallCirclesLayer.path = smallCirclesPath
+    }
+    
+    private func drawGlareCircle1() {
+        let glareRadius = bigCircleRadius * 0.95 //slightly smaller than the big circle
+        glareCircleView1.frame = CGRect(x: 0, y: 0, width: 2.0 * glareRadius, height: 2.0 * glareRadius)
+        
+        let dx = (bounds.width / 200) * 93
+        let dy = (bounds.width / 200) * 15
+        
+        glareCircleView1.center = CGPoint(x: boundsCenterX.cgFloat + dx, y: boundsCenterY.cgFloat + dy)
+    }
+    
+    private func prepareBigCircleMaskingLayer() {
+        bigCircleMaskLayer.path = makeCirclePath(centerX: boundsCenterX, centerY: boundsCenterY, radius: bigCircleRadius)
     }
     
     //MARK:- Private API
@@ -398,4 +429,39 @@ class CircleView: UIView {
         gradientLayer.frame = bounds
 
     }
+}
+
+class AnotherCircleView: UIView {
+    
+    let gradientLayer = CAGradientLayer()
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        
+    }
+    
+    func setGradient(top: UIColor, bottom: UIColor) {
+        if layer.sublayers == nil || !layer.sublayers!.contains(gradientLayer) {
+            layer.insertSublayer(gradientLayer, at: 0)
+        }
+
+        gradientLayer.colors = [top.cgColor, bottom.cgColor]
+        
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        gradientLayer.frame = bounds
+        gradientLayer.cornerRadius = bounds.width/2
+    }
+    
 }
