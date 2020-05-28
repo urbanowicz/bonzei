@@ -40,7 +40,6 @@
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F15590FD245EF27300928589 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15590FC245EF27300928589 /* Melody.swift */; };
 		F15C1ABA2461734A00F47CCC /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
-		F1799B71247DA1DE00C74A59 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1799B70247DA1DE00C74A59 /* Clock.swift */; };
 		F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE22447089F008E9227 /* AppDelegate.swift */; };
 		F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE42447089F008E9227 /* SceneDelegate.swift */; };
 		F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE62447089F008E9227 /* WakeUpViewController.swift */; };
@@ -108,7 +107,6 @@
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		F15590FC245EF27300928589 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
 		F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmScheduler.swift; sourceTree = "<group>"; };
-		F1799B70247DA1DE00C74A59 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		F17ABEDF2447089F008E9227 /* Bonzei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bonzei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17ABEE22447089F008E9227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17ABEE42447089F008E9227 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				F1421C252454B710003D226A /* DayOfWeekPicker.swift */,
 				F1329B172460912300E7F7A2 /* OvalButton.swift */,
 				F1D298FE247D74A500D25238 /* RoundedButton.swift */,
-				F1799B70247DA1DE00C74A59 /* Clock.swift */,
 				F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */,
 			);
 			path = Controls;
@@ -460,7 +457,6 @@
 				F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */,
 				F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */,
 				F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */,
-				F1799B71247DA1DE00C74A59 /* Clock.swift in Sources */,
 				F1C76B6C247EBDBF0099F1F1 /* BonzeiClock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
