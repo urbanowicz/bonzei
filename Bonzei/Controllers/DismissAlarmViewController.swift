@@ -15,7 +15,12 @@ class DismissAlarmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let gradientView = view as! GradientView
+        gradientView.topColor = BonzeiColors.Gradients.pink.top
+        gradientView.bottomColor = BonzeiColors.Gradients.pink.bottom
+        
         snoozeButton.isHidden = true
+
     }
     
     func prepareToDismissAlarm(_ alarm: Alarm?) {
@@ -35,5 +40,4 @@ class DismissAlarmViewController: UIViewController {
         AlarmScheduler.sharedInstance.dismissAlarm()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-    
 }
