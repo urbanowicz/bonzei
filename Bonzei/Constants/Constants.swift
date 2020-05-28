@@ -31,7 +31,23 @@ struct BonzeiColors {
     // Used as text color
     static let darkTextColor = UIColor(red: 0.11, green: 0.14, blue: 0.13, alpha: 1.00)
     
-    
+    //Gradients
+    struct Gradients {
+        
+        static let coquelicot = Gradient(
+            top: UIColor(red: 1.00, green: 0.07, blue: 0.00, alpha: 1.00),
+            bottom: UIColor(red: 0.96, green: 0.53, blue: 0.43, alpha: 1.00)
+        )
+        
+        static let pink = Gradient(
+            top: UIColor(red: 0.99, green: 0.86, blue: 0.84, alpha: 1.00),
+            bottom: UIColor(red: 0.87, green: 0.91, blue: 0.98, alpha: 1.00)
+        )
+        
+        static let blue = Gradient(
+            top: UIColor(red: 0.23, green: 0.26, blue: 0.95, alpha: 1.00),
+            bottom: UIColor(red: 0.23, green: 0.55, blue: 0.95, alpha: 1.00))
+    }
 }
 
 // Fonts
@@ -48,4 +64,7 @@ struct Font {
     var line: CGFloat
 }
 
-
+struct Gradient {
+   var top: UIColor
+   var bottom: UIColor
+}

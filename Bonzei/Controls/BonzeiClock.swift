@@ -82,8 +82,18 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         smallCirclesLayer.fillColor = smallCircleColor.cgColor
         layer.addSublayer(smallCirclesLayer)
         
-        hourCircleView.setGradient(top: UIColor.yellow, bottom: UIColor.red)
+        hourCircleView.setGradient(
+            top: BonzeiColors.Gradients.coquelicot.top,
+            bottom: BonzeiColors.Gradients.coquelicot.bottom
+        )
+        
         addSubview(hourCircleView)
+        
+        minuteCircleView.setGradient(
+            top: BonzeiColors.Gradients.coquelicot.top,
+            bottom: BonzeiColors.Gradients.coquelicot.bottom
+        )
+        
         addSubview(minuteCircleView)
     }
     
