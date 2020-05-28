@@ -297,16 +297,16 @@
                                         </constraints>
                                     </datePicker>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="erj-sZ-6wr" userLabel="VStack">
-                                        <rect key="frame" x="0.0" y="186.66666666666669" width="327" height="71.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="186" width="327" height="72.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MELODY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLc-zD-nbu">
-                                                <rect key="frame" x="0.0" y="0.0" width="327" height="16.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="17.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="14"/>
                                                 <color key="textColor" red="0.42352941179999998" green="0.41960784309999999" blue="0.41960784309999999" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="oTG-VP-ZdH" userLabel="HStack">
-                                                <rect key="frame" x="0.0" y="31.333333333333314" width="327" height="40"/>
+                                                <rect key="frame" x="0.0" y="32.666666666666686" width="327" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0L-Sf-8Df" userLabel="PlayMelodyButton" customClass="OvalButton" customModule="Bonzei" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -358,16 +358,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VCc-3B-GUh" userLabel="VStack">
-                                        <rect key="frame" x="0.0" y="283.66666666666663" width="327" height="71.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="283.66666666666663" width="327" height="72.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPEAT ON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mg0-gv-yyA">
-                                                <rect key="frame" x="0.0" y="0.0" width="327" height="16.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="17.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="14"/>
                                                 <color key="textColor" red="0.42352941179999998" green="0.41960784309999999" blue="0.41960784309999999" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-hN-NrP" customClass="DayOfWeekPicker" customModule="Bonzei" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="31.333333333333371" width="327" height="40"/>
+                                                <rect key="frame" x="0.0" y="32.666666666666742" width="327" height="40"/>
                                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="so1-HR-iuD"/>
@@ -390,7 +390,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSh-C6-7s3" userLabel="HStack">
-                                        <rect key="frame" x="0.0" y="380.33333333333337" width="327" height="31"/>
+                                        <rect key="frame" x="0.0" y="381" width="327" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SNOOZE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2a-np-g7B" userLabel="SnoozeLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="278" height="31"/>

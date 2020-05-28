@@ -12,15 +12,21 @@ import UIKit
 @IBDesignable
 class BonzeiClock: UIControl, CAAnimationDelegate {
     
-    @IBInspectable var bigCircleRadius: Double = 0.0
+    @IBInspectable var margin: Double = 13
+    
+    /// Radius of the clock face. Calculated based on the size of the frame and the desired margin.
+    var bigCircleRadius: Double = 0.0
+    
+    @IBInspectable var bigCircleColor: UIColor = UIColor.black
     
     @IBInspectable var smallCircleRadius: Double =  2.0
+    
+    @IBInspectable var smallCircleColor: UIColor = BonzeiColors.gray
     
     @IBInspectable var minuteCircleRadius: Double = 10.0
     
     @IBInspectable var hourCircleRadius: Double = 20.0
     
-    @IBInspectable var margin: Double = 13
     
     /// Space between the edge of the big circle and edges of the small circles
     @IBInspectable var space: Double = 7.0
@@ -69,11 +75,14 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     
     private func commonInit() {
         bigCircleLayer.backgroundColor = UIColor.clear.cgColor
+        bigCircleLayer.fillColor = bigCircleColor.cgColor
         layer.addSublayer(bigCircleLayer)
         
         smallCirclesLayer.backgroundColor = UIColor.clear.cgColor
+        smallCirclesLayer.fillColor = smallCircleColor.cgColor
         layer.addSublayer(smallCirclesLayer)
         
+        hourCircleView.setGradient(top: UIColor.yellow, bottom: UIColor.red)
         addSubview(hourCircleView)
         addSubview(minuteCircleView)
     }
@@ -324,11 +333,11 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
 }
 
 class CircleView: UIView {
-    private let circleLayer = CAShapeLayer()
+    let circleLayer = CAShapeLayer()
     
-    var topColor: UIColor = BonzeiColors.coquelicot
+    let gradientLayer = CAGradientLayer()
     
-    var bottomColor: UIColor = BonzeiColors.coquelicot
+    var fillColor: UIColor = BonzeiColors.coquelicot
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -341,14 +350,24 @@ class CircleView: UIView {
     }
     
     private func commonInit() {
-        circleLayer.backgroundColor = UIColor.clear.cgColor
-        circleLayer.fillColor = topColor.cgColor
-        layer.addSublayer(circleLayer)
+        layer.backgroundColor = fillColor.cgColor
+        layer.mask = circleLayer
     }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         circleLayer.path = UIBezierPath.init(ovalIn: self.bounds).cgPath
     }
+   
+    func setGradient(top: UIColor, bottom: UIColor) {
+        if layer.sublayers == nil || !layer.sublayers!.contains(gradientLayer) {
+            layer.insertSublayer(gradientLayer, at: 0)
+        }
+        gradientLayer.colors = [top.cgColor, bottom.cgColor]
+    }
     
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        gradientLayer.frame = bounds
+    }
 }
