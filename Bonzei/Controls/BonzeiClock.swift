@@ -17,7 +17,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     /// Radius of the clock face. Calculated based on the size of the frame and the desired margin.
     var bigCircleRadius: Double = 0.0
     
-    @IBInspectable var bigCircleColor: UIColor = UIColor.black
+    var bigCircleColor: UIColor = UIColor.black
     
     @IBInspectable var smallCircleRadius: Double =  2.0
     
@@ -32,7 +32,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     @IBInspectable var space: Double = 7.0
     
     /// Big circle will be drawn in this layer
-    var bigCircleLayer = CAShapeLayer()
+    var bigCircleView = CircleView()
     
     /// Small circles will be drawn in this layer
     var smallCirclesLayer = CAShapeLayer()
@@ -74,9 +74,11 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     }
     
     private func commonInit() {
-        bigCircleLayer.backgroundColor = UIColor.clear.cgColor
-        bigCircleLayer.fillColor = bigCircleColor.cgColor
-        layer.addSublayer(bigCircleLayer)
+        bigCircleView.setGradient(
+            top: BonzeiColors.Gradients.pink.top,
+            bottom: BonzeiColors.Gradients.pink.bottom
+        )
+        addSubview(bigCircleView)
         
         smallCirclesLayer.backgroundColor = UIColor.clear.cgColor
         smallCirclesLayer.fillColor = smallCircleColor.cgColor
@@ -154,10 +156,9 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
         // 1. Draw the big circle
         bigCircleRadius = boundsRadius - margin
-        bigCircleLayer.path = makeCirclePath(
-            centerX: boundsCenterX,
-            centerY: boundsCenterY,
-            radius: bigCircleRadius)
+        bigCircleView.frame = CGRect(x: 0, y: 0, width: 2.0 * bigCircleRadius, height: 2.0 * bigCircleRadius)
+        bigCircleView.center = CGPoint(x: boundsCenterX, y: boundsCenterY)
+        
                 
         // 2. Draw small circles
         drawSmallCircles()
