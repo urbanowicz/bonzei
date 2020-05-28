@@ -76,8 +76,10 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     private func commonInit() {
         bigCircleView.setGradient(
             top: BonzeiColors.Gradients.pink.top,
-            bottom: BonzeiColors.Gradients.pink.bottom
+            bottom: BonzeiColors.Gradients.pink.bottom,
+            rotationAngle: nil
         )
+        
         addSubview(bigCircleView)
         
         smallCirclesLayer.backgroundColor = UIColor.clear.cgColor
@@ -86,14 +88,16 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
         hourCircleView.setGradient(
             top: BonzeiColors.Gradients.coquelicot.top,
-            bottom: BonzeiColors.Gradients.coquelicot.bottom
+            bottom: BonzeiColors.Gradients.coquelicot.bottom,
+            rotationAngle: nil
         )
         
         addSubview(hourCircleView)
         
         minuteCircleView.setGradient(
             top: BonzeiColors.Gradients.coquelicot.top,
-            bottom: BonzeiColors.Gradients.coquelicot.bottom
+            bottom: BonzeiColors.Gradients.coquelicot.bottom,
+            rotationAngle: nil
         )
         
         addSubview(minuteCircleView)
@@ -155,11 +159,8 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         super.draw(rect)
         
         // 1. Draw the big circle
-        bigCircleRadius = boundsRadius - margin
-        bigCircleView.frame = CGRect(x: 0, y: 0, width: 2.0 * bigCircleRadius, height: 2.0 * bigCircleRadius)
-        bigCircleView.center = CGPoint(x: boundsCenterX, y: boundsCenterY)
+         drawBigCircle()
         
-                
         // 2. Draw small circles
         drawSmallCircles()
         
@@ -201,6 +202,12 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
             height: 2.0 * minuteCircleRadius.cgFloat)
         
         minuteCircleView.center = CGPoint(x: x, y: y)
+    }
+    
+    private func drawBigCircle() {
+        bigCircleRadius = boundsRadius - margin
+        bigCircleView.frame = CGRect(x: 0, y: 0, width: 2.0 * bigCircleRadius, height: 2.0 * bigCircleRadius)
+        bigCircleView.center = CGPoint(x: boundsCenterX, y: boundsCenterY)
     }
     
     private func drawSmallCircles() {
@@ -350,6 +357,8 @@ class CircleView: UIView {
     
     var fillColor: UIColor = BonzeiColors.coquelicot
     
+    var gradientRotationAngle: Double?
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
@@ -370,15 +379,23 @@ class CircleView: UIView {
         circleLayer.path = UIBezierPath.init(ovalIn: self.bounds).cgPath
     }
    
-    func setGradient(top: UIColor, bottom: UIColor) {
+    func setGradient(top: UIColor, bottom: UIColor, rotationAngle: Double?) {
         if layer.sublayers == nil || !layer.sublayers!.contains(gradientLayer) {
             layer.insertSublayer(gradientLayer, at: 0)
         }
+        
         gradientLayer.colors = [top.cgColor, bottom.cgColor]
+        
+        gradientRotationAngle = rotationAngle
+        if let rotationAngle = gradientRotationAngle {
+            gradientLayer.transform = CATransform3DMakeRotation(rotationAngle.cgFloat, 0, 0, 1)
+        }
     }
     
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
+        
         gradientLayer.frame = bounds
+
     }
 }
