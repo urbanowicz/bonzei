@@ -80,22 +80,25 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     
     public func setTime(date: Date, animated: Bool) {
         var newHour = date.hour
+        
         if (newHour >= 12) {
             newHour = newHour % 12
         }
+        
         let newMinute = date.minute
         
         if !animated {
+        
             self.hour = newHour
             self.minute = newMinute
             setNeedsDisplay()
+        
         } else {
+            
             let oldHour = self.hour
             let oldMinute = self.minute
             self.hour = newHour
             self.minute = newMinute
-            
-            updateHourCirclePosition(hour: self.hour, minute: self.minute)
             
             let animation = CAKeyframeAnimation()
             animation.keyPath = "position"
@@ -108,8 +111,22 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
                 newMinute: newMinute)
             animation.isRemovedOnCompletion = true
             animation.delegate = self
-
+            
+            updateHourCirclePosition(hour: self.hour, minute: self.minute)
+            
             hourCircleView.layer.add(animation, forKey: "move")
+            
+            let minuteCircleAnimation = CAKeyframeAnimation()
+            minuteCircleAnimation.keyPath = "position"
+            minuteCircleAnimation.duration = 0.5
+            minuteCircleAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            minuteCircleAnimation.isRemovedOnCompletion = true
+            minuteCircleAnimation.path = calculateAnimationTrajectoryForMinuteCircle(
+                oldMinute: oldMinute,
+                newMinute: newMinute
+            )
+            updateMinuteCirclePosition(hour: self.hour, minute: self.minute)
+            minuteCircleView.layer.add(minuteCircleAnimation, forKey: "move")
         }
     }
     
@@ -272,6 +289,37 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
             endAngle: endAngle,
             clockwise: clockwise).cgPath
         
+    }
+    
+    private func calculateAnimationTrajectoryForMinuteCircle(oldMinute: Int, newMinute: Int) -> CGPath {
+        let startAngle = minuteHandAngle(minute: oldMinute)
+        let endAngle = minuteHandAngle(minute: newMinute)
+        
+        let clockwise = shouldMoveClockwiseBetween(startAngle: startAngle, endAngle: endAngle)
+        
+        return UIBezierPath.init(
+            arcCenter: CGPoint(x: boundsCenterX, y: boundsCenterY),
+            radius: minuteHandleLength().cgFloat,
+            startAngle: startAngle.cgFloat,
+            endAngle: endAngle.cgFloat,
+            clockwise: clockwise
+        ).cgPath
+    }
+    
+    /// Returns `true` if the clockwise move between two angles is shorter than counterclockwise. Otherwise it retursn `false`
+    private func shouldMoveClockwiseBetween(startAngle: Double, endAngle: Double) -> Bool {
+        var clockwise = false
+        
+        var deltaAngle =  endAngle - startAngle
+        if deltaAngle < 0 {
+            deltaAngle = 2.0 * .pi + deltaAngle
+        }
+        
+        if deltaAngle <= .pi {
+            clockwise = true
+        }
+        
+        return clockwise
     }
 }
 
