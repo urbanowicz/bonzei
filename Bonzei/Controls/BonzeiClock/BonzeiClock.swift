@@ -32,7 +32,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     @IBInspectable var space: Double = 7.0
     
     /// Big circle will be drawn in this layer
-    var bigCircleView = CircleView()
+    var bigCircleView = ClockFaceView()
     
     var bigCircleMaskLayer = CAShapeLayer()
     
@@ -78,11 +78,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     }
     
     private func commonInit() {
-        bigCircleView.setGradient(
-            top: BonzeiColors.Gradients.pink.top,
-            bottom: BonzeiColors.Gradients.pink.bottom,
-            rotationAngle: nil
-        )
         
         addSubview(bigCircleView)
         
@@ -378,6 +373,21 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         }
         
         return clockwise
+    }
+}
+
+class ClockFaceView: UIView {
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        let frameWidth = rect.width * (1.57733511 * 1.1)
+        let frameHeight = rect.height * (1.33215589 * 1.1)
+        BonzeiClockFace.drawCanvas1(frame: CGRect(x: -2.0, y: -2.0, width: frameWidth, height: frameHeight), resizing: .aspectFill)
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
+        maskLayer.path = UIBezierPath.init(ovalIn: maskLayer.bounds).cgPath
+        
+        layer.mask = maskLayer
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */; };
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
 		F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127AC542468265B007F9734 /* HeartBeatService.swift */; };
 		F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1329B172460912300E7F7A2 /* OvalButton.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonzeiClockFace.swift; sourceTree = "<group>"; };
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
 		F127AC542468265B007F9734 /* HeartBeatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatService.swift; sourceTree = "<group>"; };
 		F1329B172460912300E7F7A2 /* OvalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButton.swift; sourceTree = "<group>"; };
@@ -163,6 +165,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F10B5CA4248558730042D915 /* BonzeiClock */ = {
+			isa = PBXGroup;
+			children = (
+				F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */,
+				F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */,
+			);
+			path = BonzeiClock;
+			sourceTree = "<group>";
+		};
 		F11E3F1C244EFEF400CF6B4A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,11 +198,11 @@
 		F1421C242454B6BF003D226A /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				F10B5CA4248558730042D915 /* BonzeiClock */,
 				F195A8E524850ED6009D54A3 /* TimePicker */,
 				F1421C252454B710003D226A /* DayOfWeekPicker.swift */,
 				F1329B172460912300E7F7A2 /* OvalButton.swift */,
 				F1D298FE247D74A500D25238 /* RoundedButton.swift */,
-				F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */,
 				F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */,
 			);
 			path = Controls;
@@ -477,6 +488,7 @@
 				F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */,
 				F1F83E222472FD0C0072630A /* AlarmSchedulerDelegate.swift in Sources */,
 				F15590FD245EF27300928589 /* Melody.swift in Sources */,
+				F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */,
 				F14EF8AC24766537006A40D8 /* NotificationExtension.swift in Sources */,
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
 				F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */,
