@@ -32,7 +32,7 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
     //selection == [0,1] means 'Monday' and 'Tuesday' are selected.
     //selection == [0,2,3,4] means 'Monday','Wednesday', Thursday' and 'Friday' are selected.
     //selection == [] means no day is selected.
-    var selection = Set<Int>([0])
+    var selection = Set<Int>()
     
     //We will draw selection rectangles in this layer
     var selectionLayer = CAShapeLayer()
