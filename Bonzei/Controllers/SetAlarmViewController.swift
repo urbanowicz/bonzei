@@ -204,7 +204,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
     }
     
      func valueChanged(sender: TimePicker) {
-        self.clock.setTime(date: timePicker.getDate(), animated: false)
+        self.clock.setTime(date: timePicker.getDate(), animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

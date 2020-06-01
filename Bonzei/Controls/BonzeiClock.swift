@@ -140,7 +140,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
             
             let animation = CAKeyframeAnimation()
             animation.keyPath = "position"
-            animation.duration = 0.5
+            animation.duration = 0.15
             animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
             animation.path = calculateAnimationTrajectoryForHourCircle(
                 oldHour: oldHour,
@@ -156,7 +156,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
             
             let minuteCircleAnimation = CAKeyframeAnimation()
             minuteCircleAnimation.keyPath = "position"
-            minuteCircleAnimation.duration = 0.5
+            minuteCircleAnimation.duration = 0.1
             minuteCircleAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
             minuteCircleAnimation.isRemovedOnCompletion = true
             minuteCircleAnimation.path = calculateAnimationTrajectoryForMinuteCircle(
