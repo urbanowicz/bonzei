@@ -22,6 +22,8 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
     
     @IBInspectable var fontColor:UIColor = UIColor.darkText
     
+    @IBInspectable var textColorDeselected:UIColor = BonzeiColors.darkGrayDisabled
+    
     @IBInspectable var font:UIFont = UIFont(name: "Muli-SemiBold", size: 16.0)!
     
     //Day of week labels 'M' 'T' 'W' 'T' 'F' 'S' 'S'
@@ -70,7 +72,7 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
             let label = DayOfWeekLabel()
             label.index = index
             label.text = text
-            label.textColor = fontColor
+            label.textColor = textColorDeselected
             label.font = UIFontMetrics.default.scaledFont(for: font)
             label.isUserInteractionEnabled = false
             label.textAlignment = .center
@@ -120,10 +122,19 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
         //y coordinate of a label
         let y = bounds.origin.y
         
+        var i = 0
         for label in labels {
             x += spacing
             label.frame = CGRect(x: x, y: y, width: w, height: h)
             x += w
+            
+            if (selection.contains(i)) {
+                label.textColor = fontColor
+            } else {
+                label.textColor = textColorDeselected
+            }
+            
+            i += 1
         }
     }
     
@@ -139,8 +150,10 @@ class DayOfWeekPicker: UIControl, UIGestureRecognizerDelegate {
             let i = touchedLabel.index
             if selection.contains(i) {
                 selection.remove(i)
+                touchedLabel.textColor = textColorDeselected
             } else {
                 selection.insert(i)
+                touchedLabel.textColor = fontColor
             }
         }
         self.setNeedsDisplay()
