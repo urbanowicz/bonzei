@@ -21,9 +21,9 @@ class TimePicker: UIView, PickerViewDelegate {
     
     private var fontName: String = "Muli-Regular"
     
-    private var textColor: UIColor = UIColor.systemGray
+    private var textColor: UIColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.5)
     
-    private var textColorSelected: UIColor = UIColor.darkText
+    private var textColorSelected: UIColor = BonzeiColors.jungleGreen
     
     private var font: UIFont = UIFont.systemFont(ofSize: 24)
     
@@ -41,7 +41,7 @@ class TimePicker: UIView, PickerViewDelegate {
     
     private var colonLabel: UILabel!
     
-    private var selectionRectangleColor = UIColor.systemGray
+    private var selectionRectangleColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
     
     private var selectionRectangleCornerRadiusRatio = 0.15
     
@@ -55,9 +55,9 @@ class TimePicker: UIView, PickerViewDelegate {
     
     private var bottomBorder: GradientView!
     
-    private var borderGradientColor_1: UIColor = UIColor.white
+    private var borderGradientColor_1: UIColor = UIColor.white.withAlphaComponent(0.8)
     
-    private var borderGradientColor_2: UIColor = UIColor(red: 1.00, green: 0.99, blue: 0.99, alpha: 1.00)
+    private var borderGradientColor_2: UIColor = UIColor(red: 1.00, green: 0.99, blue: 0.99, alpha: 0.2)
     
     private var borderSizeRatio = 0.23
     
@@ -81,8 +81,6 @@ class TimePicker: UIView, PickerViewDelegate {
         
         loadCustomFont()
         
-        setupTopAndBottomBorders()
-        
         setupHourPicker()
         
         setupColonLabel()
@@ -92,18 +90,22 @@ class TimePicker: UIView, PickerViewDelegate {
         setup_am_or_pm_picker()
         
         setupSelectionRectangle()
+        
+        setupTopAndBottomBorders()
     }
     
     private func setupTopAndBottomBorders() {
         topBorder = GradientView(frame: frame)
         topBorder.topColor = borderGradientColor_1
         topBorder.bottomColor = borderGradientColor_2
+        topBorder.isUserInteractionEnabled = false
         
         addSubview(topBorder)
         
         bottomBorder = GradientView(frame: frame)
         bottomBorder.topColor = borderGradientColor_2
         bottomBorder.bottomColor = borderGradientColor_1
+        bottomBorder.isUserInteractionEnabled = false
         
         addSubview(bottomBorder)
     }
