@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
+class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePickerDelegate {
     
     /// Used to indicate the kind of request the controller is requested to handle.
     /// - 'newAlarm' means a user wishes to set a new alarm.
@@ -52,8 +52,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    /// A standard date picker. Not customizable. Need to be replaced with a custom control.
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var timePicker: TimePicker!
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -94,9 +93,8 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.addTarget(self, action: #selector(SetAlarmViewController.melodyLabelTapped(tapRecoginzer:)))
         melodyLabel.addGestureRecognizer(tapGestureRecognizer)
-        
-        datePicker.addTarget(self, action: #selector(SetAlarmViewController.datePickerValueChanged), for: .valueChanged)
-        
+
+        timePicker.delegate = self
     }
     
     func prepareTofulfillRequest(withType requestType: RequestType, forAlarm alarm: Alarm?) {
@@ -113,11 +111,11 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
             melodyLabel.text = alarmToEdit!.melodyName
             selectedMelody = alarmToEdit!.melodyName
             dayOfWeekPicker.selection = alarmToEdit!.repeatOn
-            datePicker.date = alarmToEdit!.date
+            timePicker.setDate(to: alarmToEdit!.date)
             snoozeSwitch.isOn = alarmToEdit!.snoozeEnabled
         }
         
-        clock.setTime(date: datePicker.date, animated: false)
+        clock.setTime(date: timePicker.getDate(), animated: false)
         setSnoozeSwitchThumbTintColor()
     }
     
@@ -161,7 +159,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         switch request {
         case .newAlarm:
              newAlarm = Alarm(
-                date: datePicker.date,
+                date: timePicker.getDate(),
                 repeatOn: dayOfWeekPicker.selection,
                 melodyName: selectedMelody,
                 snoozeEnabled: snoozeSwitch.isOn
@@ -170,7 +168,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         case .editExistingAlarm:
             let alarm = Alarm(
                 id: alarmToEdit!.id,
-                date: datePicker.date,
+                date: timePicker.getDate(),
                 repeatOn: dayOfWeekPicker.selection,
                 melodyName: selectedMelody,
                 snoozeEnabled: snoozeSwitch.isOn,
@@ -205,8 +203,8 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate {
         setSnoozeSwitchThumbTintColor()
     }
     
-    @IBAction func datePickerValueChanged(sender: UIDatePicker, forEvent event: UIEvent) {
-        self.clock.setTime(date: self.datePicker.date, animated: true)
+     func valueChanged(sender: TimePicker) {
+        self.clock.setTime(date: timePicker.getDate(), animated: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

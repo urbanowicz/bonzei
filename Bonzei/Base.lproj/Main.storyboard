@@ -310,16 +310,10 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-bc-pLe" userLabel="VStack">
-                                <rect key="frame" x="24" y="260" width="327" height="493"/>
+                                <rect key="frame" x="24" y="436" width="327" height="317"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-Mh-4Ei">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="161"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="161" id="wRW-38-YJC"/>
-                                        </constraints>
-                                    </datePicker>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="erj-sZ-6wr" userLabel="VStack">
-                                        <rect key="frame" x="0.0" y="186" width="327" height="72.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="72.666666666666671"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MELODY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLc-zD-nbu">
                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="17.666666666666668"/>
@@ -380,7 +374,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VCc-3B-GUh" userLabel="VStack">
-                                        <rect key="frame" x="0.0" y="283.66666666666663" width="327" height="72.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="101" width="327" height="72.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPEAT ON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mg0-gv-yyA">
                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="17.666666666666668"/>
@@ -389,7 +383,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-hN-NrP" customClass="DayOfWeekPicker" customModule="Bonzei" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="32.666666666666742" width="327" height="40"/>
+                                                <rect key="frame" x="0.0" y="32.666666666666629" width="327" height="40"/>
                                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="so1-HR-iuD"/>
@@ -412,7 +406,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSh-C6-7s3" userLabel="HStack">
-                                        <rect key="frame" x="0.0" y="381" width="327" height="31"/>
+                                        <rect key="frame" x="0.0" y="201.66666666666663" width="327" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SNOOZE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2a-np-g7B" userLabel="SnoozeLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="278" height="31"/>
@@ -431,7 +425,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pv-Ko-fib" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="437" width="327" height="56"/>
+                                        <rect key="frame" x="0.0" y="261" width="327" height="56"/>
                                         <color key="backgroundColor" red="0.14139676094055176" green="0.2391318678855896" blue="0.21359971165657043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="1E8-hj-tCM"/>
@@ -471,29 +465,39 @@
                                     <action selector="cancelPressed:" destination="WKb-vj-sEy" eventType="touchUpInside" id="DoA-ni-55I"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUh-gu-Ey5" userLabel="TimePicker" customClass="TimePicker" customModule="Bonzei" customModuleProvider="target">
+                                <rect key="frame" x="64.666666666666686" y="260" width="246" height="160"/>
+                                <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="246" id="7Mj-fG-i50"/>
+                                    <constraint firstAttribute="height" constant="160" id="R4h-zK-qna"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0z8-0d-9Kv" firstAttribute="top" secondItem="Cpd-bb-Gf2" secondAttribute="top" id="20Q-yu-jbe"/>
                             <constraint firstItem="Cpd-bb-Gf2" firstAttribute="bottom" secondItem="wZf-bc-pLe" secondAttribute="bottom" constant="25" id="48w-9o-m7c"/>
-                            <constraint firstItem="wZf-bc-pLe" firstAttribute="top" secondItem="YpM-26-u3d" secondAttribute="bottom" constant="16" id="MUo-us-Ewx"/>
+                            <constraint firstItem="wZf-bc-pLe" firstAttribute="top" secondItem="CUh-gu-Ey5" secondAttribute="bottom" constant="16" id="MUo-us-Ewx"/>
                             <constraint firstItem="Cpd-bb-Gf2" firstAttribute="trailing" secondItem="wZf-bc-pLe" secondAttribute="trailing" constant="24" id="RY2-31-RcV"/>
+                            <constraint firstItem="CUh-gu-Ey5" firstAttribute="centerX" secondItem="Cpd-bb-Gf2" secondAttribute="centerX" id="Rms-bq-aH5"/>
                             <constraint firstItem="Cpd-bb-Gf2" firstAttribute="trailing" secondItem="0z8-0d-9Kv" secondAttribute="trailing" constant="20" id="XUA-4e-jgB"/>
                             <constraint firstItem="YpM-26-u3d" firstAttribute="centerX" secondItem="Cpd-bb-Gf2" secondAttribute="centerX" id="bPV-dQ-CxX"/>
                             <constraint firstItem="wZf-bc-pLe" firstAttribute="leading" secondItem="Cpd-bb-Gf2" secondAttribute="leading" constant="24" id="gPh-Rq-cRn"/>
                             <constraint firstItem="YpM-26-u3d" firstAttribute="top" secondItem="Cpd-bb-Gf2" secondAttribute="top" id="gcQ-08-um2"/>
+                            <constraint firstItem="CUh-gu-Ey5" firstAttribute="top" secondItem="YpM-26-u3d" secondAttribute="bottom" constant="16" id="qWd-Gl-dlA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cpd-bb-Gf2"/>
                     </view>
                     <connections>
                         <outlet property="clock" destination="YpM-26-u3d" id="Hb7-yH-fZs"/>
-                        <outlet property="datePicker" destination="PFR-Mh-4Ei" id="mna-Hf-63g"/>
                         <outlet property="dayOfWeekPicker" destination="Kaw-hN-NrP" id="aFh-YC-wVQ"/>
                         <outlet property="melodyLabel" destination="Rvx-bA-ZYS" id="mlq-n0-9QL"/>
                         <outlet property="playMelodyButton" destination="y0L-Sf-8Df" id="UF3-bE-SAp"/>
                         <outlet property="saveButton" destination="3pv-Ko-fib" id="dfI-iX-qOe"/>
                         <outlet property="setMelodyButton" destination="b9b-bz-mgS" id="ALC-Zp-GRm"/>
                         <outlet property="snoozeSwitch" destination="CJp-ET-CKq" id="e3B-iM-XUI"/>
+                        <outlet property="timePicker" destination="CUh-gu-Ey5" id="wAM-gO-9af"/>
                         <segue destination="5Gm-9t-4jN" kind="unwind" identifier="unwindSaveAlarmSegue" unwindAction="unwindSaveAlarm:" id="Huo-eK-pUv"/>
                         <segue destination="5Gm-9t-4jN" kind="unwind" identifier="unwindCancel" unwindAction="unwindCancel:" id="Eol-WB-Kgu"/>
                     </connections>
@@ -501,7 +505,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgF-Jv-OLy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="5Gm-9t-4jN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="-727"/>
+            <point key="canvasLocation" x="1640.8" y="-727.09359605911334"/>
         </scene>
         <!--Set Melody-->
         <scene sceneID="DCG-mP-h5R">
