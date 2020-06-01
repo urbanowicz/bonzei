@@ -52,6 +52,11 @@
 		F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */; };
 		F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */; };
 		F18A86EB247949C000C5597C /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F18A86EA247949C000C5597C /* alarm.mp3 */; };
+		F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E624850F81009D54A3 /* PickerVIew.swift */; };
+		F195A8EC24850F81009D54A3 /* TimePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */; };
+		F195A8ED24850F81009D54A3 /* WraparoundPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E824850F81009D54A3 /* WraparoundPickerView.swift */; };
+		F195A8EE24850F81009D54A3 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E924850F81009D54A3 /* TimePicker.swift */; };
+		F195A8EF24850F81009D54A3 /* PickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8EA24850F81009D54A3 /* PickerViewDelegate.swift */; };
 		F1A26FA6247284A300A13B3C /* DismissAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */; };
 		F1A608BD24713C00008A45EF /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F1A608BE24716416008A45EF /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
@@ -124,6 +129,11 @@
 		F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsTableDataSource.swift; sourceTree = "<group>"; };
 		F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodiesTableDataSource.swift; sourceTree = "<group>"; };
 		F18A86EA247949C000C5597C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
+		F195A8E624850F81009D54A3 /* PickerVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerVIew.swift; sourceTree = "<group>"; };
+		F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerDelegate.swift; sourceTree = "<group>"; };
+		F195A8E824850F81009D54A3 /* WraparoundPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WraparoundPickerView.swift; sourceTree = "<group>"; };
+		F195A8E924850F81009D54A3 /* TimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		F195A8EA24850F81009D54A3 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
 		F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAlarmViewController.swift; sourceTree = "<group>"; };
 		F1AB936D2465EFFD008FAA1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -177,6 +187,7 @@
 		F1421C242454B6BF003D226A /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				F195A8E524850ED6009D54A3 /* TimePicker */,
 				F1421C252454B710003D226A /* DayOfWeekPicker.swift */,
 				F1329B172460912300E7F7A2 /* OvalButton.swift */,
 				F1D298FE247D74A500D25238 /* RoundedButton.swift */,
@@ -302,6 +313,18 @@
 				F17ABF00244708A2008E9227 /* Info.plist */,
 			);
 			path = BonzeiTests;
+			sourceTree = "<group>";
+		};
+		F195A8E524850ED6009D54A3 /* TimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				F195A8E624850F81009D54A3 /* PickerVIew.swift */,
+				F195A8EA24850F81009D54A3 /* PickerViewDelegate.swift */,
+				F195A8E924850F81009D54A3 /* TimePicker.swift */,
+				F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */,
+				F195A8E824850F81009D54A3 /* WraparoundPickerView.swift */,
+			);
+			path = TimePicker;
 			sourceTree = "<group>";
 		};
 		F1AB936C2465EFE1008FAA1D /* Constants */ = {
@@ -436,6 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F195A8ED24850F81009D54A3 /* WraparoundPickerView.swift in Sources */,
 				F1FF6CE72469B26C00B07237 /* AlarmPersistenceService.swift in Sources */,
 				F15C1ABA2461734A00F47CCC /* AlarmScheduler.swift in Sources */,
 				F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */,
@@ -446,6 +470,8 @@
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F1C76B6E247ED7CD0099F1F1 /* DoubleExtension.swift in Sources */,
 				F15526C4244A060300741E80 /* Alarm.swift in Sources */,
+				F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */,
+				F195A8EC24850F81009D54A3 /* TimePickerDelegate.swift in Sources */,
 				F1BC60D3247FE7AF00BB6CB0 /* GradientView.swift in Sources */,
 				F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */,
 				F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */,
@@ -455,8 +481,10 @@
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
 				F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */,
 				F1F83E1E2472F7490072630A /* RootViewViewController.swift in Sources */,
+				F195A8EF24850F81009D54A3 /* PickerViewDelegate.swift in Sources */,
 				F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */,
 				F142BDE424704CF200B5857C /* DateExtension.swift in Sources */,
+				F195A8EE24850F81009D54A3 /* TimePicker.swift in Sources */,
 				F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */,
 				F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */,
 				F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */,
