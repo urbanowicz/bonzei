@@ -300,16 +300,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YpM-26-u3d" customClass="BonzeiClock" customModule="Bonzei" customModuleProvider="target">
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="YpM-26-u3d" customClass="BonzeiClock" customModule="Bonzei" customModuleProvider="target">
                                 <rect key="frame" x="82.666666666666686" y="44" width="210" height="210"/>
                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.14117647059999999" green="0.24313725489999999" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="210" id="k1M-6Q-gOL"/>
-                                    <constraint firstAttribute="height" constant="210" id="n10-SB-BhH"/>
+                                    <constraint firstAttribute="width" secondItem="YpM-26-u3d" secondAttribute="height" multiplier="1:1" id="hIQ-OS-CTU"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="210" id="n10-SB-BhH"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-bc-pLe" userLabel="VStack">
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-bc-pLe" userLabel="VStack">
                                 <rect key="frame" x="24" y="446" width="327" height="307"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="erj-sZ-6wr" userLabel="VStack">
