@@ -105,6 +105,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         switch request {
         case .newAlarm:
             melodyLabel.text = selectedMelody
+            timePicker.setDate(to: Date())
             
         case .editExistingAlarm:
             alarmToEdit = alarm
