@@ -135,7 +135,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
             
             let animation = CAKeyframeAnimation()
             animation.keyPath = "position"
-            animation.duration = 0.15
+            animation.duration = 0.1
             animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
             animation.path = calculateAnimationTrajectoryForHourCircle(
                 oldHour: oldHour,
