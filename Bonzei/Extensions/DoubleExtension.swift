@@ -24,3 +24,50 @@ extension CGFloat {
         }
     }
 }
+
+func *(lhs: Int, rhs: Double) -> Double {
+    return Double(lhs) * rhs
+}
+
+func *(lhs: Double, rhs: Int) -> Double {
+    return lhs * Double(rhs)
+}
+func *(lhs: CGFloat, rhs: Double) -> Double {
+    return Double(lhs) * rhs
+}
+
+func *(lhs: Double, rhs: CGFloat) -> Double {
+    return lhs * Double(rhs)
+}
+
+func +(lhs: Int, rhs: Double) -> Double {
+    return Double(lhs) + rhs
+}
+
+func +(lhs: Double, rhs: Int) -> Double {
+    return lhs + Double(rhs)
+}
+
+func +(lhs: CGFloat, rhs: Double) -> Double {
+    return Double(lhs) + rhs
+}
+
+func +(lhs: Double, rhs: CGFloat) -> Double {
+    return lhs + Double(rhs)
+}
+
+func -(lhs: Int, rhs: Double) -> Double {
+    return Double(lhs) - rhs
+}
+
+func -(lhs: Double, rhs: Int) -> Double {
+    return lhs - Double(rhs)
+}
+
+func -(lhs: CGFloat, rhs: Double) -> Double {
+    return Double(lhs) - rhs
+}
+
+func -(lhs: Double, rhs: CGFloat) -> Double {
+    return lhs - Double(rhs)
+}
