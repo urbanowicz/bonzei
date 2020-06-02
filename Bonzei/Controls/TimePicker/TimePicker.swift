@@ -31,7 +31,7 @@ class TimePicker: UIView, PickerViewDelegate {
     
     private let labelPadding = 16.0
     
-    private var scrollPadding = 0.0
+    private var scrollPadding = 30.0
     
     private var xOffset = 0.0
     
@@ -225,7 +225,7 @@ class TimePicker: UIView, PickerViewDelegate {
     private func layoutHourPicker() {
         
         // 1.
-        let x = xOffset
+        let x = xOffset - scrollPadding
         
         // 2.
         let y = 0.0
@@ -245,13 +245,15 @@ class TimePicker: UIView, PickerViewDelegate {
     private func layoutMinutePicker() {
         
         // 1. Calculate the frame width
-        let frameWidth = scrollPadding + 2.0 * labelPadding + calculateLabelWidth(forText: "00")
+        let frameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "00") + scrollPadding
         
         // 2.
         let frameHeight = Double(bounds.height)
         
         // 3.
-        let x = xOffset + Double(hourPicker.frame.width + colonLabel.frame.width)
+        let x = xOffset
+            + 2.0 * labelPadding + calculateLabelWidth(forText: "00") //hourPicker
+            + calculateLabelWidth(forText: ":") 
         
         // 4.
         let y = 0.0
@@ -276,7 +278,7 @@ class TimePicker: UIView, PickerViewDelegate {
         let y = CGFloat(0.0)
         
         // 4.
-        let x = CGFloat(xOffset) + hourPicker.frame.width
+        let x = CGFloat(xOffset + 2.0 * labelPadding + calculateLabelWidth(forText: "00"))
         
         let frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
         
@@ -295,7 +297,11 @@ class TimePicker: UIView, PickerViewDelegate {
         let y = 0.0
         
         // 4.
-        let x = xOffset + hourPicker.frame.width + minutePicker.frame.width + colonLabel.frame.width + (2 * labelPadding)
+        let x = xOffset
+            + 2.0 * labelPadding + calculateLabelWidth(forText: "00") // hourPicker
+            + calculateLabelWidth(forText: ":") // colonLabel
+            + 2.0 * labelPadding + calculateLabelWidth(forText: "00") // minutePicker
+            + 2.0 * labelPadding // space between the minutePicker and the AM/PM picker
         
         let frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
         
@@ -323,8 +329,10 @@ class TimePicker: UIView, PickerViewDelegate {
         
         selectionRectangle_1.frame = frame
         
-        //2. hourPicker and minutePicker selectionRectangle
-        frameWidth = Double(hourPicker.frame.width + colonLabel.frame.width + minutePicker.frame.width)
+        //2. hourPicker and minutePicker selectionRectangle eg. "11:58"
+        frameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "00")
+            + calculateLabelWidth(forText: ":")
+            + 2.0 * labelPadding + calculateLabelWidth(forText: "00")
         
         x = xOffset
         
