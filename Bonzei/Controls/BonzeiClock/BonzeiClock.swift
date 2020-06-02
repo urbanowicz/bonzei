@@ -105,58 +105,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         addSubview(minuteCircleView)
     }
     
-    public func setTime(date: Date, animated: Bool) {
-        var newHour = date.hour
-        
-        if (newHour >= 12) {
-            newHour = newHour % 12
-        }
-        
-        let newMinute = date.minute
-        
-        if !animated {
-        
-            self.hour = newHour
-            self.minute = newMinute
-            setNeedsDisplay()
-        
-        } else {
-            
-            let oldHour = self.hour
-            let oldMinute = self.minute
-            self.hour = newHour
-            self.minute = newMinute
-            
-            let animation = CAKeyframeAnimation()
-            animation.keyPath = "position"
-            animation.duration = 0.1
-            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-            animation.path = calculateAnimationTrajectoryForHourCircle(
-                oldHour: oldHour,
-                oldMinute: oldMinute,
-                newHour: newHour,
-                newMinute: newMinute)
-            animation.isRemovedOnCompletion = true
-            animation.delegate = self
-            
-            updateHourCirclePosition(hour: self.hour, minute: self.minute)
-            
-            hourCircleView.layer.add(animation, forKey: "move")
-            
-            let minuteCircleAnimation = CAKeyframeAnimation()
-            minuteCircleAnimation.keyPath = "position"
-            minuteCircleAnimation.duration = 0.1
-            minuteCircleAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-            minuteCircleAnimation.isRemovedOnCompletion = true
-            minuteCircleAnimation.path = calculateAnimationTrajectoryForMinuteCircle(
-                oldMinute: oldMinute,
-                newMinute: newMinute
-            )
-            updateMinuteCirclePosition(hour: self.hour, minute: self.minute)
-            minuteCircleView.layer.add(minuteCircleAnimation, forKey: "move")
-        }
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -355,6 +303,59 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         }
         
         return clockwise
+    }
+    
+    // MARK:- Public API
+    public func setTime(date: Date, animated: Bool) {
+        var newHour = date.hour
+        
+        if (newHour >= 12) {
+            newHour = newHour % 12
+        }
+        
+        let newMinute = date.minute
+        
+        if !animated {
+        
+            self.hour = newHour
+            self.minute = newMinute
+            setNeedsDisplay()
+        
+        } else {
+            
+            let oldHour = self.hour
+            let oldMinute = self.minute
+            self.hour = newHour
+            self.minute = newMinute
+            
+            let animation = CAKeyframeAnimation()
+            animation.keyPath = "position"
+            animation.duration = 0.1
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            animation.path = calculateAnimationTrajectoryForHourCircle(
+                oldHour: oldHour,
+                oldMinute: oldMinute,
+                newHour: newHour,
+                newMinute: newMinute)
+            animation.isRemovedOnCompletion = true
+            animation.delegate = self
+            
+            updateHourCirclePosition(hour: self.hour, minute: self.minute)
+            
+            hourCircleView.layer.add(animation, forKey: "move")
+            
+            let minuteCircleAnimation = CAKeyframeAnimation()
+            minuteCircleAnimation.keyPath = "position"
+            minuteCircleAnimation.duration = 0.1
+            minuteCircleAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            minuteCircleAnimation.isRemovedOnCompletion = true
+            minuteCircleAnimation.path = calculateAnimationTrajectoryForMinuteCircle(
+                oldMinute: oldMinute,
+                newMinute: newMinute
+            )
+            updateMinuteCirclePosition(hour: self.hour, minute: self.minute)
+            minuteCircleView.layer.add(minuteCircleAnimation, forKey: "move")
+        }
     }
 }
 
