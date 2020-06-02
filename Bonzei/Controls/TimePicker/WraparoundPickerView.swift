@@ -94,7 +94,7 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
     private func setupLabel(_ label: UILabel) {
         label.textColor = textColor
         label.textAlignment = .center
-        label.backgroundColor = UIColor.yellow
+        label.backgroundColor = UIColor.clear
         if let font = font {
             label.font = font
         }
@@ -104,6 +104,8 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.decelerationRate = .normal
+        
+        scrollView.backgroundColor = UIColor.yellow
         
         scrollView.delegate = self
     }

@@ -234,17 +234,18 @@ class TimePicker: UIView, PickerViewDelegate {
         let frameHeight = Double(bounds.height)
         
         // 4. Calculate the frame width
-        let frameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "00")
+        let frameWidth = scrollPadding + 2.0 * labelPadding + calculateLabelWidth(forText: "00")
         
         let frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
         
+        hourPicker.paddingLeft = scrollPadding
         hourPicker.frame = frame
     }
     
     private func layoutMinutePicker() {
         
         // 1. Calculate the frame width
-        let frameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "00")
+        let frameWidth = scrollPadding + 2.0 * labelPadding + calculateLabelWidth(forText: "00")
         
         // 2.
         let frameHeight = Double(bounds.height)
@@ -256,6 +257,8 @@ class TimePicker: UIView, PickerViewDelegate {
         let y = 0.0
         
         let frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
+        
+        minutePicker.paddingRight = scrollPadding
         
         minutePicker.frame = frame
     }
