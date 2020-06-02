@@ -376,10 +376,13 @@ class ClockFaceView: UIView {
 class CircleView: GradientView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+        
         let padding = CGFloat(2.0)
+        
         let maskLayer = CAShapeLayer()
         maskLayer.frame = CGRect(x: padding, y: padding, width: bounds.width - 2.0 * padding, height: bounds.height - 2.0 * padding)
         maskLayer.path = UIBezierPath.init(ovalIn: maskLayer.frame).cgPath
+        
         layer.mask = maskLayer
     }
 }
