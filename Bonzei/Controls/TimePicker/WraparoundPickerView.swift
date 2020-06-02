@@ -99,7 +99,7 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
     private func setupScrollView() {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.decelerationRate = .fast
+        scrollView.decelerationRate = .normal
         
         scrollView.delegate = self
     }
