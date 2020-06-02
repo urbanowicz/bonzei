@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PickerViewDelegate {
     func valueChanged()
+    
+    func pickerDidScroll(sender: UIView)
 }

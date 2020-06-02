@@ -10,4 +10,8 @@ import Foundation
 
 protocol TimePickerDelegate {
     func valueChanged(sender: TimePicker)
+    
+    func hourPickerDidScroll(picker: WraparoundPickerView)
+    
+    func minutePickerDidScroll(picker: WraparoundPickerView)
 }

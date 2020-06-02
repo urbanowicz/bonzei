@@ -18,6 +18,8 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
         }
     }
     
+    public var id:String?
+    
     public var paddingRight = 0.0
     
     public var paddingLeft = 0.0
@@ -177,6 +179,7 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
             rebalanceScrollView()
         }
         
+        delegate?.pickerDidScroll(sender: self)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

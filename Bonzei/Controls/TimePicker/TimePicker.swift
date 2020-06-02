@@ -138,6 +138,7 @@ class TimePicker: UIView, PickerViewDelegate {
     private func setupHourPicker() {
         hourPicker = WraparoundPickerView()
         
+        hourPicker.id = "hourPicker"
         hourPicker.font = font
         hourPicker.textColor = textColor
         hourPicker.backgroundColor = backgroundColor
@@ -169,6 +170,7 @@ class TimePicker: UIView, PickerViewDelegate {
     private func setupMinutePicker() {
         minutePicker = WraparoundPickerView()
         
+        minutePicker.id = "minutePicker"
         minutePicker.font = font
         minutePicker.textColor = textColor
         minutePicker.backgroundColor = backgroundColor
@@ -389,6 +391,19 @@ class TimePicker: UIView, PickerViewDelegate {
     }
     
     //MARK:- Acting as PickerViewDelegate
+    
+    func pickerDidScroll(sender: UIView) {
+        if let picker = sender as? WraparoundPickerView {
+            
+            if picker.id! == "hourPicker" {
+                delegate?.hourPickerDidScroll(picker: picker)
+            }
+            
+            if picker.id! == "minutePicker" {
+                delegate?.minutePickerDidScroll(picker: picker)
+            }
+        }
+    }
     
     func valueChanged() {
         let hour = hourPicker.getPickedItem()
