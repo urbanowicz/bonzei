@@ -310,10 +310,9 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUh-gu-Ey5" userLabel="TimePicker" customClass="TimePicker" customModule="Bonzei" customModuleProvider="target">
-                                <rect key="frame" x="37.666666666666657" y="270" width="300" height="160"/>
+                                <rect key="frame" x="24" y="270" width="327" height="160"/>
                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="7Mj-fG-i50"/>
                                     <constraint firstAttribute="height" constant="160" id="R4h-zK-qna"/>
                                 </constraints>
                             </view>
@@ -478,14 +477,16 @@
                         <constraints>
                             <constraint firstItem="0z8-0d-9Kv" firstAttribute="top" secondItem="Cpd-bb-Gf2" secondAttribute="top" id="20Q-yu-jbe"/>
                             <constraint firstItem="Cpd-bb-Gf2" firstAttribute="bottom" secondItem="wZf-bc-pLe" secondAttribute="bottom" constant="25" id="48w-9o-m7c"/>
+                            <constraint firstItem="YpM-26-u3d" firstAttribute="centerX" secondItem="Cpd-bb-Gf2" secondAttribute="centerX" id="DNf-jP-3Vu"/>
+                            <constraint firstItem="Cpd-bb-Gf2" firstAttribute="trailing" secondItem="CUh-gu-Ey5" secondAttribute="trailing" constant="24" id="FkS-cH-ivn"/>
                             <constraint firstItem="wZf-bc-pLe" firstAttribute="top" secondItem="CUh-gu-Ey5" secondAttribute="bottom" constant="25" id="MUo-us-Ewx"/>
                             <constraint firstItem="Cpd-bb-Gf2" firstAttribute="trailing" secondItem="wZf-bc-pLe" secondAttribute="trailing" constant="24" id="RY2-31-RcV"/>
                             <constraint firstItem="CUh-gu-Ey5" firstAttribute="centerX" secondItem="Cpd-bb-Gf2" secondAttribute="centerX" id="Rms-bq-aH5"/>
                             <constraint firstItem="Cpd-bb-Gf2" firstAttribute="trailing" secondItem="0z8-0d-9Kv" secondAttribute="trailing" constant="20" id="XUA-4e-jgB"/>
-                            <constraint firstItem="YpM-26-u3d" firstAttribute="centerX" secondItem="Cpd-bb-Gf2" secondAttribute="centerX" id="bPV-dQ-CxX"/>
                             <constraint firstItem="wZf-bc-pLe" firstAttribute="leading" secondItem="Cpd-bb-Gf2" secondAttribute="leading" constant="24" id="gPh-Rq-cRn"/>
                             <constraint firstItem="YpM-26-u3d" firstAttribute="top" secondItem="Cpd-bb-Gf2" secondAttribute="top" id="gcQ-08-um2"/>
                             <constraint firstItem="CUh-gu-Ey5" firstAttribute="top" secondItem="YpM-26-u3d" secondAttribute="bottom" constant="16" id="qWd-Gl-dlA"/>
+                            <constraint firstItem="CUh-gu-Ey5" firstAttribute="leading" secondItem="Cpd-bb-Gf2" secondAttribute="leading" constant="24" id="svH-aU-0jT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cpd-bb-Gf2"/>
                     </view>

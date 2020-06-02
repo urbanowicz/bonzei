@@ -105,7 +105,7 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.decelerationRate = .normal
         
-        scrollView.backgroundColor = UIColor.yellow
+        scrollView.backgroundColor = UIColor.clear
         
         scrollView.delegate = self
     }
