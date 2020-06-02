@@ -18,6 +18,10 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
         }
     }
     
+    public var paddingRight = 0.0
+    
+    public var paddingLeft = 0.0
+    
     public var numberOfVisibleRows = 3
     
     public var font: UIFont?
@@ -90,7 +94,7 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
     private func setupLabel(_ label: UILabel) {
         label.textColor = textColor
         label.textAlignment = .center
-        label.backgroundColor = UIColor.clear
+        label.backgroundColor = UIColor.yellow
         if let font = font {
             label.font = font
         }
@@ -126,8 +130,14 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
         
         var i = 0
         for label in labels {
-            label.frame = CGRect(x: 0, y: 0, width: bounds.width, height: CGFloat(rowHeight()))
-            label.frame.origin = CGPoint(x: 0, y: i * rowHeight())
+            label.frame = CGRect(
+                x: 0.0,
+                y: 0.0,
+                width: bounds.width - (paddingLeft + paddingRight),
+                height: rowHeight())
+            
+            label.frame.origin = CGPoint(x: paddingLeft, y: i * rowHeight())
+            
             i += 1
         }
         

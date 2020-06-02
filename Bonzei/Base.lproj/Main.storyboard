@@ -310,10 +310,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUh-gu-Ey5" userLabel="TimePicker" customClass="TimePicker" customModule="Bonzei" customModuleProvider="target">
-                                <rect key="frame" x="64.666666666666686" y="270" width="246" height="160"/>
+                                <rect key="frame" x="37.666666666666657" y="270" width="300" height="160"/>
                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="246" id="7Mj-fG-i50"/>
+                                    <constraint firstAttribute="width" constant="300" id="7Mj-fG-i50"/>
                                     <constraint firstAttribute="height" constant="160" id="R4h-zK-qna"/>
                                 </constraints>
                             </view>

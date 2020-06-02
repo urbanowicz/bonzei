@@ -29,7 +29,11 @@ class TimePicker: UIView, PickerViewDelegate {
     
     private let fontSize = 24
     
-    private let padding = 16.0
+    private let labelPadding = 16.0
+    
+    private var scrollPadding = 0.0
+    
+    private var xOffset = 0.0
     
     private let numberOfVisibleRows = 3
     
@@ -202,6 +206,9 @@ class TimePicker: UIView, PickerViewDelegate {
     //MARK:- Laying out subviews and drawing
     
     override func layoutSubviews() {
+        //Calculate xOffset
+        xOffset = (bounds.width - calculateMinimumFrameWidth()) / 2.0
+        
         layoutHourPicker()
         
         layoutColonLabel()
@@ -218,7 +225,7 @@ class TimePicker: UIView, PickerViewDelegate {
     private func layoutHourPicker() {
         
         // 1.
-        let x = 0.0
+        let x = xOffset
         
         // 2.
         let y = 0.0
@@ -227,12 +234,7 @@ class TimePicker: UIView, PickerViewDelegate {
         let frameHeight = Double(bounds.height)
         
         // 4. Calculate the frame width
-        let label = UILabel()
-        label.font = font
-        label.text = "00"
-        label.sizeToFit()
-        
-        let frameWidth = 2.0 * padding + label.frame.width
+        let frameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "00")
         
         let frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
         
@@ -242,18 +244,13 @@ class TimePicker: UIView, PickerViewDelegate {
     private func layoutMinutePicker() {
         
         // 1. Calculate the frame width
-        let label = UILabel()
-        label.font = font
-        label.text = "00"
-        label.sizeToFit()
-        
-        let frameWidth = 2.0 * padding + label.frame.width
+        let frameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "00")
         
         // 2.
         let frameHeight = Double(bounds.height)
         
         // 3.
-        let x = Double(hourPicker.frame.width + colonLabel.frame.width)
+        let x = xOffset + Double(hourPicker.frame.width + colonLabel.frame.width)
         
         // 4.
         let y = 0.0
@@ -261,30 +258,6 @@ class TimePicker: UIView, PickerViewDelegate {
         let frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
         
         minutePicker.frame = frame
-    }
-    
-    private func layout_am_or_pm_picker() {
-        
-        // 1. Calculate the frame width for the AM/PM picker
-        let label = UILabel()
-        label.font = font
-        label.text = "AM"
-        label.sizeToFit()
-        
-        let frameWidth = 2.0 * padding + label.frame.width
-        
-        // 2.
-        let frameHeight = Double(bounds.height)
-        
-        // 3.
-        let y = 0.0
-        
-        // 4.
-        let x = bounds.width - frameWidth
-        
-        let frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
-        
-        am_or_pm_picker.frame = frame
     }
     
     private func layoutColonLabel() {
@@ -300,11 +273,30 @@ class TimePicker: UIView, PickerViewDelegate {
         let y = CGFloat(0.0)
         
         // 4.
-        let x = hourPicker.frame.width
+        let x = CGFloat(xOffset) + hourPicker.frame.width
         
         let frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
         
         colonLabel.frame = frame
+    }
+    
+    private func layout_am_or_pm_picker() {
+        
+        // 1. Calculate the frame width for the AM/PM picker
+        let frameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "AM")
+        
+        // 2.
+        let frameHeight = Double(bounds.height)
+        
+        // 3.
+        let y = 0.0
+        
+        // 4.
+        let x = xOffset + hourPicker.frame.width + minutePicker.frame.width + colonLabel.frame.width + (2 * labelPadding)
+        
+        let frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
+        
+        am_or_pm_picker.frame = frame
     }
     
     private func layoutSelectionRectangle() {
@@ -312,7 +304,8 @@ class TimePicker: UIView, PickerViewDelegate {
         // There are two selection rectangles
         // 1. for the AM/PM picker
         // 2. Second for the hh:mm picker
-              
+        
+        //1. AM/PM picker selection rectangle
         var frameWidth = Double(am_or_pm_picker.frame.width)
 
         let frameHeight = Double(bounds.height) / Double(numberOfVisibleRows)
@@ -327,9 +320,10 @@ class TimePicker: UIView, PickerViewDelegate {
         
         selectionRectangle_1.frame = frame
         
+        //2. hourPicker and minutePicker selectionRectangle
         frameWidth = Double(hourPicker.frame.width + colonLabel.frame.width + minutePicker.frame.width)
         
-        x = 0.0
+        x = xOffset
         
         frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
         
@@ -365,6 +359,23 @@ class TimePicker: UIView, PickerViewDelegate {
         self.font = UIFontMetrics.default.scaledFont(for: customFont)
     }
     
+    private func calculateLabelWidth(forText text: String) -> Double {
+        let label = UILabel()
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        return Double(label.frame.width)
+    }
+    
+    private func calculateMinimumFrameWidth() -> Double {
+        let minimumFrameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "00")
+            + calculateLabelWidth(forText: ":")
+            + 2.0 * labelPadding + calculateLabelWidth(forText: "00")
+            + 2.0 * labelPadding
+            + 2.0 * labelPadding + calculateLabelWidth(forText: "AM")
+        
+        return minimumFrameWidth
+    }
     
     //MARK:- Acting as PickerViewDelegate
     
