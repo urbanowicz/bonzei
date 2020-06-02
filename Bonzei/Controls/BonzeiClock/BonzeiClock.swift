@@ -14,32 +14,33 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     
     @IBInspectable var margin: Double = 17
     
-    /// Radius of the clock face. Calculated based on the size of the frame and the desired margin.
-    var bigCircleRadius: Double = 0.0
-    
-    var bigCircleColor: UIColor = UIColor.black
-    
     @IBInspectable var smallCircleRadius: Double =  2.0
-    
-    @IBInspectable var smallCircleColor: UIColor = BonzeiColors.gray
-    
+
     @IBInspectable var minuteCircleRadius: Double = 10.0
     
     @IBInspectable var hourCircleRadius: Double = 20.0
     
+    private var smallCircleColor: UIColor = BonzeiColors.gray
+    
+    private var topColor = BonzeiColors.Gradients.coquelicot.top
+    
+    private var bottomColor = BonzeiColors.Gradients.coquelicot.bottom
     
     /// Space between the edge of the big circle and edges of the small circles
-    @IBInspectable var space: Double = 7.0
+    private var space: Double = 7.0
+    
+    /// Radius of the clock face. Calculated based on the size of the frame and the desired margin.
+    private var bigCircleRadius: Double = 0.0
     
     /// Big circle will be drawn in this layer
-    var bigCircleView = ClockFaceView()
+    private var bigCircleView = ClockFaceView()
     
     /// Small circles will be drawn in this layer
-    var smallCirclesLayer = CAShapeLayer()
+    private var smallCirclesLayer = CAShapeLayer()
     
-    var hourCircleView = CircleView()
+    private var hourCircleView = CircleView()
     
-    var minuteCircleView = CircleView()
+    private var minuteCircleView = CircleView()
     
     var boundsRadius: Double {
         get {
@@ -76,19 +77,31 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     private func commonInit() {
         addSubview(bigCircleView)
         
+        setupSmallCirclesLayer()
+        
+        setupHourCircleView()
+        
+        setupMinuteCircleView()
+    }
+    
+    private func setupSmallCirclesLayer() {
         smallCirclesLayer.backgroundColor = UIColor.clear.cgColor
         smallCirclesLayer.fillColor = smallCircleColor.cgColor
+        
         layer.addSublayer(smallCirclesLayer)
+    }
+    
+    private func setupHourCircleView() {
+        hourCircleView.topColor = topColor
+        hourCircleView.bottomColor = bottomColor
         
-        hourCircleView.topColor = BonzeiColors.Gradients.coquelicot.top
-        hourCircleView.bottomColor = BonzeiColors.Gradients.coquelicot.bottom
-//        hourCircleView.backgroundColor = UIColor.systemGreen
         addSubview(hourCircleView)
-        
-       // minuteCircleView.backgroundColor = UIColor.systemGreen
-        minuteCircleView.topColor = BonzeiColors.Gradients.coquelicot.top
+    }
+    
+    private func setupMinuteCircleView() {
+        minuteCircleView.topColor = topColor
         minuteCircleView.bottomColor = BonzeiColors.Gradients.coquelicot.bottom
-        
+    
         addSubview(minuteCircleView)
     }
     
