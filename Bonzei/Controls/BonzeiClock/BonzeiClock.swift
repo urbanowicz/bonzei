@@ -41,8 +41,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     
     var minuteCircleView = CircleView()
     
-    var glareCircleView1 = AnotherCircleView()
-    
     var boundsRadius: Double {
         get {
             return bounds.width.asDouble / 2.0
@@ -78,13 +76,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     private func commonInit() {
         
         addSubview(bigCircleView)
-        
-        glareCircleView1.setGradient(
-            top: BonzeiColors.Gradients.blue.top,
-            bottom: BonzeiColors.Gradients.blue.bottom
-        )
-
-        // addSubview(glareCircleView1)
         
         smallCirclesLayer.backgroundColor = UIColor.clear.cgColor
         smallCirclesLayer.fillColor = smallCircleColor.cgColor
@@ -167,8 +158,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         // 1. Draw the big circle
         drawBigCircle()
         
-        drawGlareCircle1()
-        
         // 2. Draw small circles
         drawSmallCircles()
         
@@ -181,7 +170,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     
     //MARK:- Animation Delegate
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        //setNeedsDisplay()
+        
     }
     
     private func updateHourCirclePosition(hour: Int, minute: Int) {
@@ -234,16 +223,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         }
         
         smallCirclesLayer.path = smallCirclesPath
-    }
-    
-    private func drawGlareCircle1() {
-        let glareRadius = bigCircleRadius * 0.95 //slightly smaller than the big circle
-        glareCircleView1.frame = CGRect(x: 0, y: 0, width: 2.0 * glareRadius, height: 2.0 * glareRadius)
-        
-        let dx = (bounds.width / 200) * 93
-        let dy = (bounds.width / 200) * 15
-        
-        glareCircleView1.center = CGPoint(x: boundsCenterX.cgFloat + dx, y: boundsCenterY.cgFloat + dy)
     }
     
     //MARK:- Private API
