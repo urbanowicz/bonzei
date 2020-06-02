@@ -60,9 +60,11 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         }
     }
     
-    var hour: Int = 10
+    private var hour: Int = 10
     
-    var minute: Int = 30
+    private var hourAngle: Double = 0.0
+    
+    private var minute: Int = 30
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -112,7 +114,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
         layoutSmallCircles()
         
-        updateHourCirclePosition(hour: self.hour, minute: self.minute)
+        updateHourCirclePosition()
         
         updateMinuteCirclePosition(hour: self.hour, minute: self.minute)
     }
@@ -120,7 +122,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        updateHourCirclePosition(hour: self.hour, minute: self.minute)
+        updateHourCirclePosition()
         
         updateMinuteCirclePosition(hour: self.hour, minute: self.minute)
     }
@@ -130,8 +132,8 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
     }
     
-    private func updateHourCirclePosition(hour: Int, minute: Int) {
-        let angle = hourHandAngle(hour: hour, minute: minute)
+    private func updateHourCirclePosition() {
+        let angle = self.hourAngle
         
         let (x,y) = convertToPoint(angle: angle, distance: hourHandLength())
         
@@ -306,6 +308,16 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     }
     
     // MARK:- Public API
+    
+    public func setHourAngle(to angle: Double) {
+        hourAngle = angle
+        setNeedsDisplay()
+    }
+    
+    public func moveHourHand(byDeltaAngle angle: Double) {
+        
+    }
+    
     public func setTime(date: Date, animated: Bool) {
         var newHour = date.hour
         
@@ -319,6 +331,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
             self.hour = newHour
             self.minute = newMinute
+            self.hourAngle = hourHandAngle(hour: newHour, minute: newMinute)
             setNeedsDisplay()
         
         } else {
@@ -340,7 +353,8 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
             animation.isRemovedOnCompletion = true
             animation.delegate = self
             
-            updateHourCirclePosition(hour: self.hour, minute: self.minute)
+            hourAngle = hourHandAngle(hour: newHour, minute: newMinute)
+            updateHourCirclePosition()
             
             hourCircleView.layer.add(animation, forKey: "move")
             
