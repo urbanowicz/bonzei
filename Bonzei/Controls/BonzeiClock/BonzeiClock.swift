@@ -34,8 +34,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     /// Big circle will be drawn in this layer
     var bigCircleView = ClockFaceView()
     
-    var bigCircleMaskLayer = CAShapeLayer()
-    
     /// Small circles will be drawn in this layer
     var smallCirclesLayer = CAShapeLayer()
     
@@ -169,8 +167,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         // 1. Draw the big circle
         drawBigCircle()
         
-        prepareBigCircleMaskingLayer()
-        
         drawGlareCircle1()
         
         // 2. Draw small circles
@@ -248,10 +244,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         let dy = (bounds.width / 200) * 15
         
         glareCircleView1.center = CGPoint(x: boundsCenterX.cgFloat + dx, y: boundsCenterY.cgFloat + dy)
-    }
-    
-    private func prepareBigCircleMaskingLayer() {
-        bigCircleMaskLayer.path = makeCirclePath(centerX: boundsCenterX, centerY: boundsCenterY, radius: bigCircleRadius)
     }
     
     //MARK:- Private API
