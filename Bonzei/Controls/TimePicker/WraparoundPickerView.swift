@@ -293,6 +293,20 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
         return data[itemIndex]
     }
     
+    ///- Returns: a number between 0.0 and 1.0 that can be thought of as the current position of the picker
+    public func getScrollProgress() -> Double {
+        var offsetY = Double(scrollView.contentOffset.y)
+        
+        let contentHeight = Double(scrollView.contentSize.height / CGFloat(numberOfPages))
+        
+        while offsetY > contentHeight {
+            offsetY -= contentHeight
+        }
+        
+        return offsetY / contentHeight
+    }
+    
+    
     /// Selects the item with the given index
     public func selectItem(withIndex itemIndex: Int) {
         guard itemIndex >= 0 && itemIndex < data.count  else { return }
