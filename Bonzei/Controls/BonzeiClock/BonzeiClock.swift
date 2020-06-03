@@ -131,7 +131,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     }
     
     private func updateHourCirclePosition() {
-        let angle = self.hourAngle
+        let angle = hourAngle
         
         let (x,y) = convertToPoint(angle: angle, distance: hourHandLength())
         
@@ -308,14 +308,21 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     // MARK:- Public API
     
     public func setHourAngle(to angle: Double) {
+        // We need to move the angle by 90 degrees
+        // because 0 degrees is at 3 O'clock and we want it to be at 12 O'clock
         hourAngle = angle - (0.5 * .pi)
+        
+        // We also need to include the minute hand's position
+        
         setNeedsDisplay()
     }
     
     public func setMinuteAngle(to angle: Double) {
+                
         // We need to move the angle by 90 degrees
         // because 0 degrees is at 3 O'clock and we want it to be at 12 O'clock
         minuteAngle = angle - (0.5 * .pi)
+        
         
         setNeedsDisplay()
     }
