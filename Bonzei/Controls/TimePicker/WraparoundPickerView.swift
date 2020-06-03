@@ -295,7 +295,7 @@ class WraparoundPickerView: UIView, UIScrollViewDelegate {
     
     ///- Returns: a number between 0.0 and 1.0 that can be thought of as the current position of the picker
     public func getScrollProgress() -> Double {
-        var offsetY = Double(scrollView.contentOffset.y)
+        var offsetY = Double(scrollView.contentOffset.y) + (numberOfVisibleRows / 2) * rowHeight()
         
         let contentHeight = Double(scrollView.contentSize.height / CGFloat(numberOfPages))
         

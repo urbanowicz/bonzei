@@ -308,16 +308,15 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     // MARK:- Public API
     
     public func setHourAngle(to angle: Double) {
-        hourAngle = angle
+        hourAngle = angle - (0.5 * .pi)
         setNeedsDisplay()
     }
     
-    public func moveHourHand(byDeltaAngle angle: Double) {
-        
-    }
-    
     public func setMinuteAngle(to angle: Double) {
-        minuteAngle = angle
+        // We need to move the angle by 90 degrees
+        // because 0 degrees is at 3 O'clock and we want it to be at 12 O'clock
+        minuteAngle = angle - (0.5 * .pi)
+        
         setNeedsDisplay()
     }
     
