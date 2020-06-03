@@ -187,13 +187,12 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     //MARK:- Private API
     
     /// Calculates the angle for the hour hand 
-    private func hourHandAngle(hour: Int, minute: Int) -> Double {
+    private func hourHandAngle(hour: Int) -> Double {
         let hour = Double(hour)
-        let minutes = Double(minute)
         
         // Number of minutes that passed since 12 o'clock divided by the total number of minutes in 12 hours.
         // This will give us the angle at which the hour hand must be drawn
-        let ratio = (hour * 60.0 + minutes) / (12.0 * 60.0)
+        let ratio = (hour * 60.0) / (12.0 * 60.0)
         
         var angle = (2.0 * .pi ) * ratio + 1.5 * .pi
         if angle >= 2.0 * .pi {
@@ -252,7 +251,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     private func calculateAnimationTrajectoryForHourCircle(newHour: Int, newMinute: Int) -> CGPath {
         let startAngle = hourAngle.cgFloat
        
-        let endAngle = hourHandAngle(hour: newHour, minute: newMinute).cgFloat
+        let endAngle = hourHandAngle(hour: newHour).cgFloat
         
         var clockwise = false
         
@@ -335,7 +334,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
         if !animated {
         
-            self.hourAngle = hourHandAngle(hour: newHour, minute: newMinute)
+            self.hourAngle = hourHandAngle(hour: newHour)
             self.minuteAngle = minuteHandAngle(minute: newMinute)
             setNeedsDisplay()
         
@@ -351,7 +350,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
             animation.isRemovedOnCompletion = true
             animation.delegate = self
             
-            hourAngle = hourHandAngle(hour: newHour, minute: newMinute)
+            hourAngle = hourHandAngle(hour: newHour)
             updateHourCirclePosition()
             
             hourCircleView.layer.add(animation, forKey: "move")
