@@ -222,14 +222,18 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
     
     func hourPickerDidScroll(picker: WraparoundPickerView) {
         let scrollProgress = picker.getScrollProgress()
-       // print("-----> \(scrollProgress)")
-        let angle = (2.0 * .pi) * scrollProgress
+
+        // We need to move the angle forward by the equivalent of one hour.
+        // When the picker reports scrollProgress of 0 it means 1 o'clock
+        // But if we pass 0 angle to the clock it will position the hand at 12 o'clock.
+        // Hence the adjustment.
+        let angle = (2.0 * .pi) * scrollProgress + (.pi / 6.0)
+
         clock.setHourAngle(to: angle)
     }
     
     func minutePickerDidScroll(picker: WraparoundPickerView) {
         let scrollProgress = picker.getScrollProgress()
-        print("---->\(scrollProgress)")
         
         let angle = (2.0 * .pi) * scrollProgress
         
