@@ -249,6 +249,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         currentlyTriggeredAlarm = nil
         
         stopAudioPlayer()
+        deactivateAudioSession()
+        
+        HeartBeatService.sharedInstance.start()
         
         numberOfAttempts = 0
         
@@ -276,6 +279,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         currentlyTriggeredAlarm = nil
         
         stopAudioPlayer()
+        deactivateAudioSession()
+        
+        HeartBeatService.sharedInstance.start()
         
         numberOfAttempts = 0
         
@@ -599,14 +605,14 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             audioPlayer!.stop()
             audioPlayer = nil
         }
-        
+    }
+    
+    private func deactivateAudioSession() {
         do {
           try  AVAudioSession.sharedInstance().setActive(false)
         } catch let error as NSError {
             os_log("Deactivating audio session for alarm playback failed: %{public}s", log: log, type: .error, error.localizedDescription)
         }
-        
-        HeartBeatService.sharedInstance.start()
     }
     
     func purge() {
