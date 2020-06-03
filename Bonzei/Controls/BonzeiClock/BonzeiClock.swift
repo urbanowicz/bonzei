@@ -60,11 +60,9 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         }
     }
     
-    private var hour: Int = 10
-    
     private var hourAngle: Double = 0.0
     
-    private var minute: Int = 30
+    private var minuteAngle: Double = 0.0
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -116,7 +114,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
         updateHourCirclePosition()
         
-        updateMinuteCirclePosition(hour: self.hour, minute: self.minute)
+        updateMinuteCirclePosition()
     }
     
     override func draw(_ rect: CGRect) {
@@ -124,7 +122,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
         updateHourCirclePosition()
         
-        updateMinuteCirclePosition(hour: self.hour, minute: self.minute)
+        updateMinuteCirclePosition()
     }
     
     //MARK:- Animation Delegate
@@ -146,8 +144,8 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         hourCircleView.center = CGPoint(x: x, y: y)
     }
     
-    private func updateMinuteCirclePosition(hour: Int, minute: Int) {
-        let angle = minuteHandAngle(minute: minute)
+    private func updateMinuteCirclePosition() {
+        let angle = self.minuteAngle
         
         let (x,y) = convertToPoint(angle: angle, distance: minuteHandleLength())
         
@@ -251,15 +249,15 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         return UIBezierPath.init(ovalIn: CGRect(x: x, y: y, width: radius * 2.0, height: radius * 2.0)).cgPath
     }
     
-    private func calculateAnimationTrajectoryForHourCircle(oldHour: Int, oldMinute: Int, newHour: Int, newMinute: Int) -> CGPath {
-        let startAngle = hourHandAngle(hour: oldHour, minute: oldMinute).cgFloat
+    private func calculateAnimationTrajectoryForHourCircle(newHour: Int, newMinute: Int) -> CGPath {
+        let startAngle = hourAngle.cgFloat
        
         let endAngle = hourHandAngle(hour: newHour, minute: newMinute).cgFloat
         
         var clockwise = false
         
         var deltaAngle =  endAngle - startAngle
-        if deltaAngle < 0{
+        if deltaAngle < 0 {
             deltaAngle = 2.0 * .pi + deltaAngle
         }
         
@@ -276,8 +274,8 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
     }
     
-    private func calculateAnimationTrajectoryForMinuteCircle(oldMinute: Int, newMinute: Int) -> CGPath {
-        let startAngle = minuteHandAngle(minute: oldMinute)
+    private func calculateAnimationTrajectoryForMinuteCircle(newMinute: Int) -> CGPath {
+        let startAngle = minuteAngle
         let endAngle = minuteHandAngle(minute: newMinute)
         
         let clockwise = shouldMoveClockwiseBetween(startAngle: startAngle, endAngle: endAngle)
@@ -318,6 +316,11 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
     }
     
+    public func setMinuteAngle(to angle: Double) {
+        minuteAngle = angle
+        setNeedsDisplay()
+    }
+    
     public func setTime(date: Date, animated: Bool) {
         var newHour = date.hour
         
@@ -329,25 +332,17 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
         if !animated {
         
-            self.hour = newHour
-            self.minute = newMinute
             self.hourAngle = hourHandAngle(hour: newHour, minute: newMinute)
+            self.minuteAngle = minuteHandAngle(minute: newMinute)
             setNeedsDisplay()
         
         } else {
-            
-            let oldHour = self.hour
-            let oldMinute = self.minute
-            self.hour = newHour
-            self.minute = newMinute
             
             let animation = CAKeyframeAnimation()
             animation.keyPath = "position"
             animation.duration = 0.1
             animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
             animation.path = calculateAnimationTrajectoryForHourCircle(
-                oldHour: oldHour,
-                oldMinute: oldMinute,
                 newHour: newHour,
                 newMinute: newMinute)
             animation.isRemovedOnCompletion = true
@@ -363,17 +358,17 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
             minuteCircleAnimation.duration = 0.1
             minuteCircleAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
             minuteCircleAnimation.isRemovedOnCompletion = true
-            minuteCircleAnimation.path = calculateAnimationTrajectoryForMinuteCircle(
-                oldMinute: oldMinute,
-                newMinute: newMinute
-            )
-            updateMinuteCirclePosition(hour: self.hour, minute: self.minute)
+            minuteCircleAnimation.path = calculateAnimationTrajectoryForMinuteCircle(newMinute: newMinute)
+            
+            minuteAngle = minuteHandAngle(minute: newMinute)
+            updateMinuteCirclePosition()
+            
             minuteCircleView.layer.add(minuteCircleAnimation, forKey: "move")
         }
     }
 }
 
-class ClockFaceView: UIView {
+fileprivate class ClockFaceView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let frameWidth = rect.width * (1.57733511 * 1.1)
