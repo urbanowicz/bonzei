@@ -178,7 +178,11 @@ class TimePicker: UIView, PickerViewDelegate {
         minutePicker.data = [String]()
         
         for minute in 0...59 {
-            minutePicker.data.append(String(minute))
+            var minuteString = String(minute)
+            if minute < 10 {
+                minuteString = "0" + minuteString
+            }
+            minutePicker.data.append(minuteString)
         }
         
         minutePicker.selectItem(withIndex: 0) // 0 minutes

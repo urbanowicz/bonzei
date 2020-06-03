@@ -312,8 +312,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         // because 0 degrees is at 3 O'clock and we want it to be at 12 O'clock
         hourAngle = angle - (0.5 * .pi)
         
-        // We also need to include the minute hand's position
-        
         setNeedsDisplay()
     }
     
@@ -322,7 +320,6 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         // We need to move the angle by 90 degrees
         // because 0 degrees is at 3 O'clock and we want it to be at 12 O'clock
         minuteAngle = angle - (0.5 * .pi)
-        
         
         setNeedsDisplay()
     }
