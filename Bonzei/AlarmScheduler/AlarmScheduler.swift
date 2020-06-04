@@ -70,6 +70,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// How many times should the looud alarm be played before auto snoozing.
     private let numberOfLoppsForLoudAlarm = 0
     
+    private let snoozeTimeMinutes = 2
+    
     // This is a singleton class, hence a private constructor
     private override init() {
         super.init()
@@ -212,65 +214,47 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             
         })
         
-        for var alarm in alarms {
+        for alarm in alarms {
             let snoozeExpired = shouldTriggerSnoozedAlarm(alarm, now: nowDate)
             
-            if snoozeExpired || (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15 && !alarm.isSnoozed) {
-                
-                if snoozeExpired {
-                    os_log("Triggering a snoozed alarm", log: log, type: .info)
-                } else {
-                    os_log("Triggering alarm", log: log, type: .info)
-                }
-                
-                state = .alarmTriggered
-                
-                alarm.lastTriggerDate = Date()
-                
-                alarm.snoozeDate = nil
-                
-                // if this is a one time alarm, make sure we change it to inactive and remove related notification requests.
-                if alarm.isOneTime {
-                    alarm.isActive = false
-                }
-                
-                if alarm.isOneTime || snoozeExpired {
-                    refreshAlarmAndNotificationRequests(alarm)
-                } else {
-                    refreshAlarmOnly(alarm)
-                }
-                
-                self.currentlyTriggeredAlarm = alarm
-                
-                delegate?.didTriggerAlarm(alarm)
-                
-                // post didTriggerAlarm notification
-                NotificationCenter.default.post(name: .didTriggerAlarm, object: self, userInfo: ["alarm": alarm])
-                
-                playAlarm(alarm)
+            if snoozeExpired {
+                triggerSnoozedAlarm(alarm)
+            } else if (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15 && !alarm.isSnoozed) {
+                triggerAlarm(alarm)
             }
         }
     }
     
     public func dismissAlarm() {
-        os_log("Will dismiss currently triggered alarm", log: log, type: .info)
+        os_log("Will dismiss an alarm", log: log, type: .info)
         
-        guard state == .alarmTriggered else {
-            os_log("There's no alarm to dismiss. No alarm is currently triggered")
+        guard state == .alarmTriggered || state == .alarmSnoozed else {
+            os_log("There's no alarm to dismiss. No alarm is currently triggered nor snoozed", log: log, type: .info)
             return
         }
         
-        state = .waiting
-        currentlyTriggeredAlarm = nil
+        var dismissedAlarm = currentlyTriggeredAlarm
         
-        stopAudioPlayer()
-        deactivateAudioSession()
+        state = .waiting
+        numberOfAttempts = 0
+        
+        if currentlySnoozedAlarm != nil {
+            dismissedAlarm = currentlySnoozedAlarm
+            dismissCurrentlySnoozedAlarm()
+            currentlySnoozedAlarm = nil
+            
+            os_log("Dismissed the currently snoozed alarm", log: log, type: .info)
+        } else {
+            currentlyTriggeredAlarm = nil
+            stopAudioPlayer()
+            deactivateAudioSession()
+            
+            os_log("Dismissed the currently playing alarm", log: log, type: .info)
+        }
         
         HeartBeatService.sharedInstance.start()
         
-        numberOfAttempts = 0
-        
-        os_log("Alarm dismissed", log: log, type: .info)
+        NotificationCenter.default.post(name: .didDismissAlarm, object: self, userInfo: ["alarm": dismissedAlarm!])
     }
     
     /// Snooze currently triggered alarm
@@ -284,14 +268,15 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         let i = indexOfAlarm(withId: currentlyTriggeredAlarm!.id)!
         
-        scheduledAlarms[i].snoozeDate = Date().new(byAdding: .minute, value: 2)
+        scheduledAlarms[i].snoozeDate = Date().new(byAdding: .minute, value: snoozeTimeMinutes)
         
         let alarmToSnooze = scheduledAlarms[i]
         
         AlarmPersistenceService.sharedInstance.updateAlarm(withId: alarmToSnooze.id, using: alarmToSnooze)
         
-        state = .waiting
+        state = .alarmSnoozed
         currentlyTriggeredAlarm = nil
+        currentlySnoozedAlarm = alarmToSnooze
         
         stopAudioPlayer()
         deactivateAudioSession()
@@ -361,7 +346,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    // MARK: - Helper functions
+    // MARK: - Private API
     
     private func ifNotificationsAreAllowed(run: @escaping () -> Void) {
         UNUserNotificationCenter
@@ -436,6 +421,84 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             
             dao.createNotificationRequest(NotificationRequest(identifier: request.identifier, alarmId: alarm.id))
         }
+    }
+    
+    private func triggerAlarm(_ alarmToTrigger: Alarm) {
+        os_log("Triggering alarm", log: log, type: .info)
+        
+        if state == .alarmSnoozed {
+            os_log("There is a snoozed alarm. Dissmissing it.", log: log, type: .info)
+            dismissCurrentlySnoozedAlarm()
+        }
+        
+        var alarm = alarmToTrigger
+        
+        state = .alarmTriggered
+        
+        alarm.lastTriggerDate = Date()
+        
+        alarm.snoozeDate = nil
+        
+        // if this is a one time alarm, make sure we change it to inactive and remove related notification requests.
+        if alarm.isOneTime {
+            alarm.isActive = false
+            refreshAlarmAndNotificationRequests(alarm)
+        } else {
+            refreshAlarmOnly(alarm)
+        }
+        
+        self.currentlyTriggeredAlarm = alarm
+        
+        playAlarm(alarm)
+        
+        delegate?.didTriggerAlarm(alarm)
+        
+        NotificationCenter.default.post(name: .didTriggerAlarm, object: self, userInfo: ["alarm": alarm])
+    }
+    
+    private func triggerSnoozedAlarm(_ alarmToTrigger: Alarm) {
+        os_log("Triggering a snoozed alarm", log: log, type: .info)
+        
+        var alarm = alarmToTrigger
+        
+        alarm.lastTriggerDate = Date()
+        
+        alarm.snoozeDate = nil
+        
+        // if this is a one time alarm, make sure we change it to inactive and remove related notification requests.
+        if alarm.isOneTime {
+            alarm.isActive = false
+        }
+
+        refreshAlarmAndNotificationRequests(alarm)
+        
+        if state == .alarmTriggered {
+             // There already is a new alarm playing. Snooze must be ignored
+            os_log("A different alarm is already triggered. Triggering the snoozed alarm is canceled.", log: log, type: .info)
+            return
+         }
+        
+        state = .alarmTriggered
+        
+        self.currentlyTriggeredAlarm = alarm
+        self.currentlySnoozedAlarm = nil
+        
+        playAlarm(alarm)
+        
+        delegate?.didTriggerAlarm(alarm)
+        
+        // post didTriggerAlarm notification
+        NotificationCenter.default.post(name: .didTriggerAlarm, object: self, userInfo: ["alarm": alarm])
+    }
+    
+    private func dismissCurrentlySnoozedAlarm() {
+        guard currentlySnoozedAlarm != nil else { return }
+        
+        let i = indexOfAlarm(withId: currentlySnoozedAlarm!.id)!
+        
+        scheduledAlarms[i].snoozeDate = nil
+        refreshAlarmAndNotificationRequests(scheduledAlarms[i])
+        
     }
     
     private func refreshAlarmOnly(_ alarm: Alarm) {
@@ -570,8 +633,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     private func playAudio(fileName: String, numberOfLoops: Int) {
         if audioPlayer != nil && audioPlayer!.isPlaying{
-            os_log("Will not play melody. Audio player is already playing.", log: log, type: .info)
-            return
+            stopAudioPlayer()
         }
         
         os_log("Will play melody now.", log: log, type: .info)
