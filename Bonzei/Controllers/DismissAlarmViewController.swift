@@ -44,7 +44,7 @@ class DismissAlarmViewController: UIViewController {
     
     @IBAction func snoozeButtonPressed(_ sender: Any) {
         AlarmScheduler.sharedInstance.snooze()
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        switchViews(from: alarmTriggeredView, to: alarmSnoozedView)
     }
     
     @IBAction func dismissAlarmButtonPressed(_ sender: UIButton) {
@@ -56,11 +56,10 @@ class DismissAlarmViewController: UIViewController {
     
     /// Used to switch between the `alarmSnoozed' and 'alarmTriggered' views`
     private func switchViews(from fromView: UIView, to toView: UIView) {
-        
         toView.alpha = 0
         toView.isHidden = false
         
-        UIView.animate(withDuration: 1.0, delay: 1.2, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseOut, animations: {
             fromView.alpha = 0.0
             toView.alpha = 1.0
             
