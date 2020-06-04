@@ -20,6 +20,7 @@ import os.log
 ///
 ///     let scheduler = AlarmScheduler.sharedInstance
 ///
+/// - See `NotificationExtension.swift` for the list of notifications that `AlarmScheduler` will post.
 class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     /// A single, shared instance of the scheduler.
