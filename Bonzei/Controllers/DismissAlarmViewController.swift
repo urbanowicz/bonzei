@@ -32,16 +32,13 @@ class DismissAlarmViewController: UIViewController {
     private func setupAlarmTriggeredView() {
         alarmTriggeredView.topColor = BonzeiColors.Gradients.pink.top
         alarmTriggeredView.bottomColor = BonzeiColors.Gradients.pink.bottom
-        alarmTriggeredView.isHidden = false
     }
     
     private func setupAlarmSnoozedView() {
         alarmSnoozedView.topColor = BonzeiColors.Gradients.pink.top
         alarmSnoozedView.bottomColor = BonzeiColors.Gradients.pink.bottom
-        alarmSnoozedView.isHidden = true
     }
     
-
     
     // MARK:- Actions
     
@@ -57,12 +54,46 @@ class DismissAlarmViewController: UIViewController {
     
     // MARK:- Private API
     
+    /// Used to switch between the `alarmSnoozed' and 'alarmTriggered' views`
+    private func switchViews(from fromView: UIView, to toView: UIView) {
+        
+        toView.alpha = 0
+        toView.isHidden = false
+        
+        UIView.animate(withDuration: 1.0, delay: 1.2, options: .curveEaseOut, animations: {
+            fromView.alpha = 0.0
+            toView.alpha = 1.0
+            
+        }, completion: { finished in
+            fromView.isHidden = true
+        })
+    }
+    
+    private func makeVisible(view: UIView) {
+        view.alpha = 1.0
+        view.isHidden = false
+    }
+    
+    private func makeInvisible(view: UIView) {
+        view.alpha = 0.0
+        view.isHidden = true
+    }
+    
     // MARK:- Public API
     public func prepareToDismissAlarm(_ alarm: Alarm?) {
         guard let alarmToDismiss = alarm else { return }
-       
+        
         loadViewIfNeeded()
         
         snoozeButton.isHidden = !alarmToDismiss.snoozeEnabled
+        
+        if AlarmScheduler.sharedInstance.isAlarmPlaying {
+            makeVisible(view: alarmTriggeredView)
+            makeInvisible(view: alarmSnoozedView)
+        }
+        
+//        if AlarmScheduler.sharedInstance.isAlarmSnoozed {
+//            prepareAlarmSnoozedView()
+//        }
     }
 }
