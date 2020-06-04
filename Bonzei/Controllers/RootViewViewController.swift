@@ -9,6 +9,8 @@
 import UIKit
 
 class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
+    
+    private var dismissAlarmViewController: DismissAlarmViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,25 +20,40 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(RootViewViewController.sceneDidBecomeActive),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        dismissAlarmViewController = nil
+        
     }
     
     /// Called  after application has been launched or has moved to foreground
     @objc func sceneDidBecomeActive(notification: Notification) {
-        if AlarmScheduler.sharedInstance.isAlarmPlaying {
+        if AlarmScheduler.sharedInstance.isAlarmPlaying && dismissAlarmViewController == nil {
             presentDismissAlarmViewController()
         }
     }
     
     // MARK: - AlarmSchedulerDelegate
     
-    /// Called by the AlarmScheduler when an alarm has been triggerred.
     func didTriggerAlarm(_ alarm: Alarm) {
         // if the app is open and alarm has been triggered present `DismissAlarmViewController`
         let state = UIApplication.shared.applicationState
         
-        if self.isViewLoaded && state == .active {
+        if self.isViewLoaded && state == .active && dismissAlarmViewController == nil {
             presentDismissAlarmViewController()
+        } else if dismissAlarmViewController != nil {
+            dismissAlarmViewController!.didTriggerAlarm(alarm)
         }
+
+    }
+    
+    func didSnoozeAlarm(_ alarm: Alarm) {
+        if let dismissAlarmViewController = self.dismissAlarmViewController {
+            dismissAlarmViewController.didSnoozeAlarm(alarm)
+        }
+    }
+    
+    func didDismissAlarm(_ alarm: Alarm) {
+        dismissAlarmViewController = nil
     }
     
     private func presentDismissAlarmViewController() {
@@ -44,6 +61,8 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         
         let dismissAlarmVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "DismissAlarmViewController") as! DismissAlarmViewController
+        
+        self.dismissAlarmViewController = dismissAlarmVC
         
         dismissAlarmVC.modalPresentationStyle = .overFullScreen
         

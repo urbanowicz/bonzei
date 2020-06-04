@@ -44,7 +44,6 @@ class DismissAlarmViewController: UIViewController {
     
     @IBAction func snoozeButtonPressed(_ sender: Any) {
         AlarmScheduler.sharedInstance.snooze()
-        switchViews(from: alarmTriggeredView, to: alarmSnoozedView)
     }
     
     @IBAction func dismissAlarmButtonPressed(_ sender: UIButton) {
@@ -76,6 +75,14 @@ class DismissAlarmViewController: UIViewController {
     private func makeInvisible(view: UIView) {
         view.alpha = 0.0
         view.isHidden = true
+    }
+    
+    func didSnoozeAlarm(_ alarm: Alarm) {
+        switchViews(from: alarmTriggeredView, to: alarmSnoozedView)
+    }
+    
+    func didTriggerAlarm(_ alarm: Alarm) {
+        switchViews(from: alarmSnoozedView, to: alarmTriggeredView)
     }
     
     // MARK:- Public API

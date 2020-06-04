@@ -12,4 +12,8 @@ protocol AlarmSchedulerDelegate {
     
     func didTriggerAlarm(_ alarm: Alarm)
     
+    func didSnoozeAlarm(_ alarm: Alarm)
+    
+    func didDismissAlarm(_ alarm: Alarm)
+    
 }

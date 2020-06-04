@@ -254,6 +254,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         HeartBeatService.sharedInstance.start()
         
+        delegate?.didDismissAlarm(dismissedAlarm!)
         NotificationCenter.default.post(name: .didDismissAlarm, object: self, userInfo: ["alarm": dismissedAlarm!])
     }
     
@@ -298,6 +299,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             self.requestNotificationForAlarm(alarmToSnooze, request: request)
         }
         
+        delegate?.didSnoozeAlarm(alarmToSnooze)
         NotificationCenter.default.post(name: .didSnoozeAlarm, object: self, userInfo: ["alarm": alarmToSnooze])
        
         os_log("Alarm snoozed", log: log, type: .info)
