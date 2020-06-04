@@ -286,6 +286,38 @@
                                     <constraint firstAttribute="bottom" secondItem="qWe-8A-y3z" secondAttribute="bottom" constant="40" id="yiy-2Z-UhW"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-aa-UHG" userLabel="AlarmSnoozedView" customClass="GradientView" customModule="Bonzei" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fke-zy-ycD" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="716" width="327" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="eIv-4k-ThA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="16"/>
+                                        <state key="normal" title="I am awake">
+                                            <color key="titleColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
+                                                <color key="value" red="0.0078431372549019607" green="0.35686274509803922" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
+                                                <color key="value" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fke-zy-ycD" secondAttribute="bottom" constant="40" id="AVU-A1-MYs"/>
+                                    <constraint firstItem="fke-zy-ycD" firstAttribute="leading" secondItem="ZSk-aa-UHG" secondAttribute="leading" constant="24" id="Cyf-oy-qP8"/>
+                                    <constraint firstAttribute="trailing" secondItem="fke-zy-ycD" secondAttribute="trailing" constant="24" id="QUm-gh-Vut"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -293,10 +325,15 @@
                             <constraint firstItem="bzp-ep-qS4" firstAttribute="trailing" secondItem="I72-lU-JZx" secondAttribute="trailing" id="NZI-mA-A8b"/>
                             <constraint firstItem="bzp-ep-qS4" firstAttribute="leading" secondItem="I72-lU-JZx" secondAttribute="leading" id="Nxp-Rr-jJy"/>
                             <constraint firstItem="bzp-ep-qS4" firstAttribute="top" secondItem="I72-lU-JZx" secondAttribute="top" id="RGW-vm-j8o"/>
+                            <constraint firstItem="ZSk-aa-UHG" firstAttribute="leading" secondItem="I72-lU-JZx" secondAttribute="leading" id="fV2-WE-AlL"/>
+                            <constraint firstAttribute="bottom" secondItem="ZSk-aa-UHG" secondAttribute="bottom" id="g8g-3d-rwY"/>
+                            <constraint firstItem="ZSk-aa-UHG" firstAttribute="top" secondItem="I72-lU-JZx" secondAttribute="top" id="i2E-83-79R"/>
+                            <constraint firstItem="ZSk-aa-UHG" firstAttribute="trailing" secondItem="I72-lU-JZx" secondAttribute="trailing" id="uh7-7G-n4t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Spu-WM-Qhc"/>
                     </view>
                     <connections>
+                        <outlet property="alarmSnoozedView" destination="ZSk-aa-UHG" id="nIZ-4Z-6yp"/>
                         <outlet property="alarmTriggeredView" destination="bzp-ep-qS4" id="Muq-AM-Xht"/>
                         <outlet property="snoozeButton" destination="xtw-4h-hsz" id="b2Y-fo-1Ar"/>
                     </connections>

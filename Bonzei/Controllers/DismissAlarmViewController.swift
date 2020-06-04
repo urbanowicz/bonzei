@@ -12,25 +12,38 @@ class DismissAlarmViewController: UIViewController {
 
     @IBOutlet weak var alarmTriggeredView: GradientView!
     
+    @IBOutlet weak var alarmSnoozedView: GradientView!
+    
     @IBOutlet weak var snoozeButton: UIButton!
+    
+    // MARK:- Initialization
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        alarmTriggeredView.topColor = BonzeiColors.Gradients.pink.top
-        alarmTriggeredView.bottomColor = BonzeiColors.Gradients.pink.bottom
+        setupAlarmTriggeredView()
+        
+        setupAlarmSnoozedView()
         
         snoozeButton.isHidden = true
 
     }
     
-    func prepareToDismissAlarm(_ alarm: Alarm?) {
-        guard let alarmToDismiss = alarm else { return }
-       
-        loadViewIfNeeded()
-        
-        snoozeButton.isHidden = !alarmToDismiss.snoozeEnabled
+    private func setupAlarmTriggeredView() {
+        alarmTriggeredView.topColor = BonzeiColors.Gradients.pink.top
+        alarmTriggeredView.bottomColor = BonzeiColors.Gradients.pink.bottom
+        alarmTriggeredView.isHidden = false
     }
+    
+    private func setupAlarmSnoozedView() {
+        alarmSnoozedView.topColor = BonzeiColors.Gradients.pink.top
+        alarmSnoozedView.bottomColor = BonzeiColors.Gradients.pink.bottom
+        alarmSnoozedView.isHidden = true
+    }
+    
+
+    
+    // MARK:- Actions
     
     @IBAction func snoozeButtonPressed(_ sender: Any) {
         AlarmScheduler.sharedInstance.snooze()
@@ -40,5 +53,16 @@ class DismissAlarmViewController: UIViewController {
     @IBAction func dismissAlarmButtonPressed(_ sender: UIButton) {
         AlarmScheduler.sharedInstance.dismissAlarm()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK:- Private API
+    
+    // MARK:- Public API
+    public func prepareToDismissAlarm(_ alarm: Alarm?) {
+        guard let alarmToDismiss = alarm else { return }
+       
+        loadViewIfNeeded()
+        
+        snoozeButton.isHidden = !alarmToDismiss.snoozeEnabled
     }
 }
