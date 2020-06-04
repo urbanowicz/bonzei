@@ -10,14 +10,15 @@ import UIKit
 
 class DismissAlarmViewController: UIViewController {
 
+    @IBOutlet weak var alarmTriggeredView: GradientView!
+    
     @IBOutlet weak var snoozeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let gradientView = view as! GradientView
-        gradientView.topColor = BonzeiColors.Gradients.pink.top
-        gradientView.bottomColor = BonzeiColors.Gradients.pink.bottom
+        alarmTriggeredView.topColor = BonzeiColors.Gradients.pink.top
+        alarmTriggeredView.bottomColor = BonzeiColors.Gradients.pink.bottom
         
         snoozeButton.isHidden = true
 

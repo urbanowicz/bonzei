@@ -224,73 +224,86 @@
         <scene sceneID="A1h-u0-jxu">
             <objects>
                 <viewController storyboardIdentifier="DismissAlarmViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NXM-oz-kLD" userLabel="Dismiss Alarm" customClass="DismissAlarmViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="I72-lU-JZx" customClass="GradientView" customModule="Bonzei" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="I72-lU-JZx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWe-8A-y3z" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
-                                <rect key="frame" x="20" y="697" width="335" height="56"/>
-                                <color key="backgroundColor" white="1" alpha="0.80492829623287676" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzp-ep-qS4" userLabel="AlarmTriggeredView" customClass="GradientView" customModule="Bonzei" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWe-8A-y3z" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="716" width="327" height="56"/>
+                                        <color key="backgroundColor" white="1" alpha="0.80492829623287676" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="a2c-GJ-b0S"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="16"/>
+                                        <state key="normal" title="I am awake">
+                                            <color key="titleColor" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="dismissAlarmButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="H6y-pg-xh7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtw-4h-hsz" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="378" width="327" height="56"/>
+                                        <color key="backgroundColor" red="0.89922862059999997" green="0.89371707209999995" blue="0.92231123100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="nhU-lq-WsW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="16"/>
+                                        <state key="normal" title="Snooze">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
+                                                <color key="value" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
+                                                <color key="value" red="0.0078431372550000003" green="0.35686274509999999" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="snoozeButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="Qw5-VC-w0e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="a2c-GJ-b0S"/>
+                                    <constraint firstAttribute="trailing" secondItem="qWe-8A-y3z" secondAttribute="trailing" constant="24" id="EwE-b8-5oa"/>
+                                    <constraint firstAttribute="trailing" secondItem="xtw-4h-hsz" secondAttribute="trailing" constant="24" id="Nas-JA-Inm"/>
+                                    <constraint firstItem="xtw-4h-hsz" firstAttribute="centerY" secondItem="bzp-ep-qS4" secondAttribute="centerY" id="Q1I-cP-Gi4"/>
+                                    <constraint firstItem="xtw-4h-hsz" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="fjA-Ka-JGV"/>
+                                    <constraint firstItem="qWe-8A-y3z" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="vx0-HP-3Bo"/>
+                                    <constraint firstAttribute="bottom" secondItem="qWe-8A-y3z" secondAttribute="bottom" constant="40" id="yiy-2Z-UhW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="16"/>
-                                <state key="normal" title="I am awake">
-                                    <color key="titleColor" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="28"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="dismissAlarmButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="H6y-pg-xh7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtw-4h-hsz" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
-                                <rect key="frame" x="20" y="383" width="335" height="56"/>
-                                <color key="backgroundColor" red="0.89922862059999997" green="0.89371707209999995" blue="0.92231123100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="nhU-lq-WsW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="16"/>
-                                <state key="normal" title="Snooze">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="28"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0078431372550000003" green="0.35686274509999999" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="snoozeButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="Qw5-VC-w0e"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="qWe-8A-y3z" firstAttribute="leading" secondItem="Spu-WM-Qhc" secondAttribute="leading" constant="20" id="L18-pN-T4O"/>
-                            <constraint firstItem="Spu-WM-Qhc" firstAttribute="bottom" secondItem="qWe-8A-y3z" secondAttribute="bottom" constant="25" id="NKR-Sn-IUG"/>
-                            <constraint firstItem="Spu-WM-Qhc" firstAttribute="trailing" secondItem="qWe-8A-y3z" secondAttribute="trailing" constant="20" id="SQF-Gr-T0e"/>
-                            <constraint firstItem="xtw-4h-hsz" firstAttribute="leading" secondItem="Spu-WM-Qhc" secondAttribute="leading" constant="20" id="i6j-lC-zfv"/>
-                            <constraint firstItem="xtw-4h-hsz" firstAttribute="centerY" secondItem="Spu-WM-Qhc" secondAttribute="centerY" id="yJ4-yA-FrL"/>
-                            <constraint firstItem="Spu-WM-Qhc" firstAttribute="trailing" secondItem="xtw-4h-hsz" secondAttribute="trailing" constant="20" id="yc5-0f-h1u"/>
+                            <constraint firstAttribute="bottom" secondItem="bzp-ep-qS4" secondAttribute="bottom" id="2CS-Nx-O0k"/>
+                            <constraint firstItem="bzp-ep-qS4" firstAttribute="trailing" secondItem="I72-lU-JZx" secondAttribute="trailing" id="NZI-mA-A8b"/>
+                            <constraint firstItem="bzp-ep-qS4" firstAttribute="leading" secondItem="I72-lU-JZx" secondAttribute="leading" id="Nxp-Rr-jJy"/>
+                            <constraint firstItem="bzp-ep-qS4" firstAttribute="top" secondItem="I72-lU-JZx" secondAttribute="top" id="RGW-vm-j8o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Spu-WM-Qhc"/>
                     </view>
                     <connections>
+                        <outlet property="alarmTriggeredView" destination="bzp-ep-qS4" id="Muq-AM-Xht"/>
                         <outlet property="snoozeButton" destination="xtw-4h-hsz" id="b2Y-fo-1Ar"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoK-Ru-mfq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766.66666666666674" y="-1503.3482142857142"/>
+            <point key="canvasLocation" x="765.60000000000002" y="-1503.6945812807883"/>
         </scene>
         <!--Set Alarm-->
         <scene sceneID="Caj-vz-Vp0">
