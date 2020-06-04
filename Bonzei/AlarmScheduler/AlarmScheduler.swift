@@ -24,13 +24,13 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     /// A single, shared instance of the scheduler.
     /// Use it to access scheduler's API.
-    static let sharedInstance = AlarmScheduler()
+    public static let sharedInstance = AlarmScheduler()
     
     /// A delegate for the scheduler
-    var delegate: AlarmSchedulerDelegate?
+    public var delegate: AlarmSchedulerDelegate?
     
     /// Name of the file with the loud alarm. It will be played if the soft alarm is not dismissed.
-    var loudAlarmFileName: String = "alarm.mp3"
+    public var loudAlarmFileName: String = "alarm.mp3"
     
     /// State of the scheduler. There are two states:
     /// - `waiting`. No alarm is being played. The scheduler is waiting for an alarm to be triggered.
@@ -40,7 +40,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// After an alarm has been triggered and the scheduler has entered the `alarmPlaying` state this variable will hold the relevant alarm.
     private(set) var currentlyTriggeredAlarm: Alarm?
     
-    var isAlarmPlaying: Bool {
+    public var isAlarmPlaying: Bool {
         get {
             return state == .alarmTriggered
         }
@@ -52,10 +52,13 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     private var log = OSLog(subsystem: "Alarm", category: "AlarmScheduler")
     
     /// When an alarm is triggerd,  a melody is played by the audio player
-    var audioPlayer: AVAudioPlayer?
+    private var audioPlayer: AVAudioPlayer?
     
     /// Number of times we've tried to wake up a user
     private var numberOfAttempts = 0
+    
+    /// How many times should the looud alarm be played before auto snoozing.
+    private let numberOfLoppsForLoudAlarm = 0
     
     // This is a singleton class, hence a private constructor
     private override init() {
@@ -65,6 +68,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         dump()
         dumpNotifications()
     }
+    
+    //MARK: - Public API
     
     /// Schedules a given alarm.
     ///
@@ -338,7 +343,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
            
             numberOfAttempts += 1
             
-            playAudio(fileName: loudAlarmFileName, numberOfLoops: 0)
+            playAudio(fileName: loudAlarmFileName, numberOfLoops: numberOfLoppsForLoudAlarm)
         } else {
             os_log("Finished playing the loud alarm.", log: log, type: .info)
             
@@ -665,7 +670,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     }
 }
 
-enum AlarmSchedulerState {
+public enum AlarmSchedulerState {
     case waiting
     
     case alarmTriggered
