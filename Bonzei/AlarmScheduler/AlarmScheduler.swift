@@ -33,16 +33,25 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     public var loudAlarmFileName: String = "alarm.mp3"
     
     /// State of the scheduler. There are two states:
-    /// - `waiting`. No alarm is being played. The scheduler is waiting for an alarm to be triggered.
-    /// - `alarmTriggered`. An alarm has been triggered and a melody associated with it is playing.
+    /// - `waiting`. No alarm is being played. The scheduler is waiting for an alarm to be triggered. Can transition to `alarmTriggered`
+    /// - `alarmTriggered`. An alarm has been triggered and a melody associated with it is playing. Can transition to `waiting`, `alarmSnoozed`
+    /// - `alarmSnoozed`. An alarm has been snooozed. The melody is stopped. Can transition to `waiting`, `alarmTriggered`
     private(set) var state: AlarmSchedulerState = .waiting
     
     /// After an alarm has been triggered and the scheduler has entered the `alarmPlaying` state this variable will hold the relevant alarm.
     private(set) var currentlyTriggeredAlarm: Alarm?
     
+    private(set) var currentlySnoozedAlarm: Alarm?
+    
     public var isAlarmPlaying: Bool {
         get {
             return state == .alarmTriggered
+        }
+    }
+    
+    public var isAlarmSnoozed: Bool {
+        get {
+            return state == .alarmSnoozed
         }
     }
     
@@ -674,4 +683,6 @@ public enum AlarmSchedulerState {
     case waiting
     
     case alarmTriggered
+    
+    case alarmSnoozed
 }
