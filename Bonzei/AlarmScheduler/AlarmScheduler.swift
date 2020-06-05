@@ -56,6 +56,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
+    public let snoozeTimeMinutes = 2
+    
     /// All scheduled alarms
     private var scheduledAlarms = [Alarm]()
     
@@ -69,8 +71,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     /// How many times should the looud alarm be played before auto snoozing.
     private let numberOfLoppsForLoudAlarm = 0
-    
-    private let snoozeTimeMinutes = 2
     
     // This is a singleton class, hence a private constructor
     private override init() {

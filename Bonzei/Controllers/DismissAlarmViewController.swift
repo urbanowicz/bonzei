@@ -16,6 +16,8 @@ class DismissAlarmViewController: UIViewController {
     
     @IBOutlet weak var snoozeButton: UIButton!
     
+    @IBOutlet weak var countDownTimer: TimerView!
+    
     // MARK:- Initialization
     
     override func viewDidLoad() {
@@ -24,6 +26,7 @@ class DismissAlarmViewController: UIViewController {
         setupAlarmTriggeredView()
         
         setupAlarmSnoozedView()
+        setupCountDownTimer()
         
         snoozeButton.isHidden = true
 
@@ -39,6 +42,11 @@ class DismissAlarmViewController: UIViewController {
         alarmSnoozedView.bottomColor = BonzeiColors.Gradients.pink.bottom
     }
     
+    private func setupCountDownTimer() {
+        countDownTimer.mode = .timer
+        countDownTimer.label.textAlignment = .center
+    }
+    
     
     // MARK:- Actions
     
@@ -48,6 +56,7 @@ class DismissAlarmViewController: UIViewController {
     
     @IBAction func dismissAlarmButtonPressed(_ sender: UIButton) {
         AlarmScheduler.sharedInstance.dismissAlarm()
+        countDownTimer.stop()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -79,10 +88,13 @@ class DismissAlarmViewController: UIViewController {
     
     func didSnoozeAlarm(_ alarm: Alarm) {
         switchViews(from: alarmTriggeredView, to: alarmSnoozedView)
+        countDownTimer.countDownTimeSeconds = AlarmScheduler.sharedInstance.snoozeTimeMinutes * 60
+        countDownTimer.start()
     }
     
     func didTriggerAlarm(_ alarm: Alarm) {
         switchViews(from: alarmSnoozedView, to: alarmTriggeredView)
+        countDownTimer.stop()
     }
     
     // MARK:- Public API
