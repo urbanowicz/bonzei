@@ -67,16 +67,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        print("Scheduler::WillPresent: \(notification.request.content.body)")
-        
         completionHandler([.alert, .badge, .sound,])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                didReceive response: UNNotificationResponse,
                withCompletionHandler completionHandler: @escaping () -> Void) {
-        completionHandler()
-        print("Scheduler::DidReceive: \(response.notification.request.content.body)")
+
         completionHandler()
     }
 

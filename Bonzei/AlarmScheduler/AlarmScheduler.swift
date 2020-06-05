@@ -56,7 +56,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    public let snoozeTimeMinutes = 2
+    public let snoozeTimeMinutes = 1
     
     /// All scheduled alarms
     private var scheduledAlarms = [Alarm]()
@@ -71,6 +71,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     /// How many times should the looud alarm be played before auto snoozing.
     private let numberOfLoppsForLoudAlarm = 0
+    
+    private let noLaterThanSeconds = 15
     
     // This is a singleton class, hence a private constructor
     private override init() {
@@ -219,7 +221,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             
             if snoozeExpired {
                 triggerSnoozedAlarm(alarm)
-            } else if (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < 15 && !alarm.isSnoozed) {
+            } else if (alarm.hour == now.hour && alarm.minute == now.minute && now.second! < noLaterThanSeconds && !alarm.isSnoozed) {
                 triggerAlarm(alarm)
             }
         }
@@ -585,7 +587,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     private func prepareNotificationTriggerForSnooze(_ alarm: Alarm) -> UNCalendarNotificationTrigger {
         let triggerDateComponents = Calendar
             .current
-            .dateComponents([.year, .month, .day, .hour, .minute], from: alarm.snoozeDate!)
+            .dateComponents([.year, .month, .day, .hour, .minute, .second], from: alarm.snoozeDate!)
         
         return UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
     }
@@ -630,7 +632,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     private func shouldTriggerSnoozedAlarm(_ alarm: Alarm, now: Date) -> Bool {
         guard let snoozeDate = alarm.snoozeDate else { return false }
         
-        return now.equals(snoozeDate, toGranularity: .minute)
+        let timeIntervalSinceNow = Int(snoozeDate.timeIntervalSinceNow)
+        return timeIntervalSinceNow < 0 && timeIntervalSinceNow >= (-1 * noLaterThanSeconds)
     }
     
     private func playAudio(fileName: String, numberOfLoops: Int) {
