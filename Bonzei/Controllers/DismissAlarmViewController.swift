@@ -94,7 +94,6 @@ class DismissAlarmViewController: UIViewController {
     
     func didTriggerAlarm(_ alarm: Alarm) {
         switchViews(from: alarmSnoozedView, to: alarmTriggeredView)
-        countDownTimer.stop()
     }
     
     // MARK:- Public API

@@ -85,7 +85,7 @@ class TimerView: UIView {
         let calendar = Calendar.current
         stopDate = calendar.date(
             byAdding: .second,
-            value: countDownTimeSeconds + 1,
+            value: countDownTimeSeconds,
             to: Date()
         )
         
