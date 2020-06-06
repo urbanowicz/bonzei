@@ -102,7 +102,7 @@ class DismissAlarmViewController: UIViewController {
         toView.alpha = 0
         toView.isHidden = false
         
-        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
             fromView.alpha = 0.0
             toView.alpha = 1.0
             
