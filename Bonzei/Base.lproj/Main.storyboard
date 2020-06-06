@@ -282,16 +282,26 @@
                                             <constraint firstAttribute="height" constant="40" id="PfM-UN-Mk2"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up and grow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rv9-gI-uwG">
+                                        <rect key="frame" x="24" y="235" width="327" height="36"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="28"/>
+                                        <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="sMK-Wm-gZV" secondAttribute="trailing" constant="24" id="2xN-vJ-EoY"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rv9-gI-uwG" secondAttribute="trailing" constant="24" id="5GF-Nt-uDX"/>
                                     <constraint firstAttribute="trailing" secondItem="qWe-8A-y3z" secondAttribute="trailing" constant="24" id="EwE-b8-5oa"/>
                                     <constraint firstItem="sMK-Wm-gZV" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="Hb1-az-kbL"/>
                                     <constraint firstAttribute="trailing" secondItem="xtw-4h-hsz" secondAttribute="trailing" constant="24" id="Nas-JA-Inm"/>
                                     <constraint firstItem="xtw-4h-hsz" firstAttribute="centerY" secondItem="bzp-ep-qS4" secondAttribute="centerY" id="Q1I-cP-Gi4"/>
+                                    <constraint firstItem="Rv9-gI-uwG" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="UcO-kn-DQe"/>
                                     <constraint firstItem="sMK-Wm-gZV" firstAttribute="centerY" secondItem="bzp-ep-qS4" secondAttribute="top" constant="160" id="ZNi-GO-fAp"/>
                                     <constraint firstItem="xtw-4h-hsz" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="fjA-Ka-JGV"/>
+                                    <constraint firstItem="Rv9-gI-uwG" firstAttribute="top" secondItem="sMK-Wm-gZV" secondAttribute="bottom" constant="55" id="mYB-lK-AZB"/>
                                     <constraint firstItem="qWe-8A-y3z" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="vx0-HP-3Bo"/>
                                     <constraint firstAttribute="bottom" secondItem="qWe-8A-y3z" secondAttribute="bottom" constant="40" id="yiy-2Z-UhW"/>
                                 </constraints>
