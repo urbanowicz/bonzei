@@ -633,7 +633,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         guard let snoozeDate = alarm.snoozeDate else { return false }
         
         let timeIntervalSinceNow = Int(snoozeDate.timeIntervalSinceNow)
-        return timeIntervalSinceNow < 0 && timeIntervalSinceNow >= (-1 * noLaterThanSeconds)
+        return timeIntervalSinceNow <= 0 && timeIntervalSinceNow >= (-1 * noLaterThanSeconds)
     }
     
     private func playAudio(fileName: String, numberOfLoops: Int) {
