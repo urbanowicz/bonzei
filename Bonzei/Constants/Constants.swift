@@ -13,7 +13,11 @@ import UIKit
 // Colors
 struct BonzeiColors {
     
+    // A kind of red
     static let coquelicot = UIColor(red: 1.00, green: 0.23, blue: 0.00, alpha: 1.00)
+    
+    // Used as a background for 'delete alarm' action
+    static let red = UIColor(red: 0.92, green: 0.27, blue: 0.35, alpha: 1.00)
     
     static let jungleGreen = UIColor(red: 0.14, green: 0.24, blue: 0.21, alpha: 1.00)
     

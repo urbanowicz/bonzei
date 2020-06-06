@@ -108,9 +108,9 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
             complete(true)
         }
         
-        deleteAction.backgroundColor = BonzeiColors.coquelicot
+        deleteAction.backgroundColor = BonzeiColors.red
         deleteAction.title = nil
-        deleteAction.image = UIImage(systemName: "bin.xmark")
+        deleteAction.image = UIImage(named: "bin")
         
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         configuration.performsFirstActionWithFullSwipe = true
