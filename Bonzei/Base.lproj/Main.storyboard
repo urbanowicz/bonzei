@@ -337,13 +337,6 @@
                                             <action selector="dismissAlarmButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="vdS-dU-6Eq"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzg-9o-NH7" customClass="BonzeiClockV2" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="59.999999999999986" width="327" height="253.66666666666663"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Rzg-9o-NH7" secondAttribute="height" multiplier="330:256" id="5wJ-w0-jEn"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jwb-Fp-3YV" customClass="TimerView" customModule="Bonzei" customModuleProvider="target">
                                         <rect key="frame" x="67" y="163" width="240" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -356,6 +349,25 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzg-9o-NH7" customClass="BonzeiClockV2" customModule="Bonzei" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="59.999999999999986" width="327" height="253.66666666666663"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Rzg-9o-NH7" secondAttribute="height" multiplier="330:256" id="5wJ-w0-jEn"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btp-qa-Zqd">
+                                        <rect key="frame" x="67.666666666666686" y="373.66666666666669" width="240" height="72"/>
+                                        <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="57"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="and grow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2a-gP-fiL">
+                                        <rect key="frame" x="124" y="461.66666666666669" width="127" height="36"/>
+                                        <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
@@ -363,11 +375,15 @@
                                     <constraint firstItem="Jwb-Fp-3YV" firstAttribute="leading" secondItem="ZSk-aa-UHG" secondAttribute="leading" constant="67" id="9qL-M0-uaA"/>
                                     <constraint firstAttribute="bottom" secondItem="fke-zy-ycD" secondAttribute="bottom" constant="72" id="AVU-A1-MYs"/>
                                     <constraint firstItem="fke-zy-ycD" firstAttribute="leading" secondItem="ZSk-aa-UHG" secondAttribute="leading" constant="24" id="Cyf-oy-qP8"/>
+                                    <constraint firstItem="Btp-qa-Zqd" firstAttribute="top" secondItem="Rzg-9o-NH7" secondAttribute="bottom" constant="60" id="Fm0-qO-8ig"/>
                                     <constraint firstAttribute="trailing" secondItem="Rzg-9o-NH7" secondAttribute="trailing" constant="24" id="O8P-ft-uJA"/>
                                     <constraint firstAttribute="trailing" secondItem="fke-zy-ycD" secondAttribute="trailing" constant="24" id="QUm-gh-Vut"/>
+                                    <constraint firstItem="x2a-gP-fiL" firstAttribute="top" secondItem="Btp-qa-Zqd" secondAttribute="bottom" constant="16" id="Rlx-rU-i38"/>
                                     <constraint firstItem="Jwb-Fp-3YV" firstAttribute="centerY" secondItem="Rzg-9o-NH7" secondAttribute="centerY" id="aIQ-cA-pqo"/>
                                     <constraint firstItem="Rzg-9o-NH7" firstAttribute="top" secondItem="ZSk-aa-UHG" secondAttribute="top" constant="60" id="nPV-LM-LvT"/>
                                     <constraint firstItem="Rzg-9o-NH7" firstAttribute="leading" secondItem="ZSk-aa-UHG" secondAttribute="leading" constant="24" id="r7f-Nn-jsd"/>
+                                    <constraint firstItem="Btp-qa-Zqd" firstAttribute="centerX" secondItem="ZSk-aa-UHG" secondAttribute="centerX" id="u4w-uH-1al"/>
+                                    <constraint firstItem="x2a-gP-fiL" firstAttribute="centerX" secondItem="ZSk-aa-UHG" secondAttribute="centerX" id="w4M-7c-JXJ"/>
                                 </constraints>
                             </view>
                         </subviews>
