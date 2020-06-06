@@ -112,7 +112,7 @@ class DismissAlarmViewController: UIViewController {
     
     private func loadCustomFont(fontName: String, fontSize: Double) -> UIFont {
         guard let customFont = UIFont(name: fontName , size: CGFloat(fontSize)) else {
-            fatalError("Failed to load custom font: \(fontName)")
+            return UIFont.systemFont(ofSize: CGFloat(fontSize))
         }
         
         return UIFontMetrics.default.scaledFont(for: customFont)

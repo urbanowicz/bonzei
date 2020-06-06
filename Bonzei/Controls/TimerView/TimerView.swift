@@ -58,21 +58,21 @@ class TimerView: UIView {
     // MARK: - Layout subiews
     
     override func layoutSubviews() {
-        label.sizeToFit()
-        label.frame = CGRect(
-            x: 0,
-            y: 0 ,
-            width: bounds.width,
-            height: label.frame.height)
+//        label.sizeToFit()
+//        label.frame = CGRect(
+//            x: 0,
+//            y: 0 ,
+//            width: bounds.width,
+//            height: label.frame.height)
+//
+//        self.frame = CGRect(
+//            x: frame.origin.x,
+//            y: frame.origin.y,
+//            width: frame.width,
+//            height: label.frame.height
+//        )
         
-        self.frame = CGRect(
-            x: frame.origin.x,
-            y: frame.origin.y,
-            width: frame.width,
-            height: label.frame.height
-        )
-        
-        // label.frame = bounds
+         label.frame = bounds
     }
     
     // MARK: - Private API

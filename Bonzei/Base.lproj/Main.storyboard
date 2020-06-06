@@ -275,9 +275,12 @@
                                             <action selector="snoozeButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="Qw5-VC-w0e"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="327" placeholderIntrinsicHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="sMK-Wm-gZV" customClass="TimerView" customModule="Bonzei" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMK-Wm-gZV" customClass="TimerView" customModule="Bonzei" customModuleProvider="target">
                                         <rect key="frame" x="24" y="140" width="327" height="40"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="PfM-UN-Mk2"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -349,6 +352,12 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="ZSk-aa-UHG"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="fV2-WE-AlL"/>
+                                <exclude reference="g8g-3d-rwY"/>
+                                <exclude reference="i2E-83-79R"/>
+                                <exclude reference="uh7-7G-n4t"/>
                             </mask>
                         </variation>
                     </view>
