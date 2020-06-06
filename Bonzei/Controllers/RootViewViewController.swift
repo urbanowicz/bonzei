@@ -27,7 +27,8 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
     
     /// Called  after application has been launched or has moved to foreground
     @objc func sceneDidBecomeActive(notification: Notification) {
-        if AlarmScheduler.sharedInstance.isAlarmPlaying && dismissAlarmViewController == nil {
+        let scheduler = AlarmScheduler.sharedInstance
+        if (scheduler.isAlarmPlaying || scheduler.isAlarmSnoozed) && dismissAlarmViewController == nil {
             presentDismissAlarmViewController()
         }
     }
@@ -66,7 +67,7 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         
         dismissAlarmVC.modalPresentationStyle = .overFullScreen
         
-        dismissAlarmVC.prepareToDismissAlarm(AlarmScheduler.sharedInstance.currentlyTriggeredAlarm)
+        dismissAlarmVC.prepareToDismissAlarm()
         
         currentVC.present(dismissAlarmVC, animated: true, completion: nil)
     }

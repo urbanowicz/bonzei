@@ -275,12 +275,19 @@
                                             <action selector="snoozeButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="Qw5-VC-w0e"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="327" placeholderIntrinsicHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="sMK-Wm-gZV" customClass="TimerView" customModule="Bonzei" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="140" width="327" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="sMK-Wm-gZV" secondAttribute="trailing" constant="24" id="2xN-vJ-EoY"/>
                                     <constraint firstAttribute="trailing" secondItem="qWe-8A-y3z" secondAttribute="trailing" constant="24" id="EwE-b8-5oa"/>
+                                    <constraint firstItem="sMK-Wm-gZV" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="Hb1-az-kbL"/>
                                     <constraint firstAttribute="trailing" secondItem="xtw-4h-hsz" secondAttribute="trailing" constant="24" id="Nas-JA-Inm"/>
                                     <constraint firstItem="xtw-4h-hsz" firstAttribute="centerY" secondItem="bzp-ep-qS4" secondAttribute="centerY" id="Q1I-cP-Gi4"/>
+                                    <constraint firstItem="sMK-Wm-gZV" firstAttribute="centerY" secondItem="bzp-ep-qS4" secondAttribute="top" constant="160" id="ZNi-GO-fAp"/>
                                     <constraint firstItem="xtw-4h-hsz" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="fjA-Ka-JGV"/>
                                     <constraint firstItem="qWe-8A-y3z" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="vx0-HP-3Bo"/>
                                     <constraint firstAttribute="bottom" secondItem="qWe-8A-y3z" secondAttribute="bottom" constant="40" id="yiy-2Z-UhW"/>
@@ -339,10 +346,16 @@
                             <constraint firstItem="ZSk-aa-UHG" firstAttribute="trailing" secondItem="I72-lU-JZx" secondAttribute="trailing" id="uh7-7G-n4t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Spu-WM-Qhc"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ZSk-aa-UHG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="alarmSnoozedView" destination="ZSk-aa-UHG" id="nIZ-4Z-6yp"/>
                         <outlet property="alarmTriggeredView" destination="bzp-ep-qS4" id="Muq-AM-Xht"/>
+                        <outlet property="clockTimer" destination="sMK-Wm-gZV" id="VWJ-Dp-kMx"/>
                         <outlet property="countDownTimer" destination="Jwb-Fp-3YV" id="IGu-Ak-ZgD"/>
                         <outlet property="snoozeButton" destination="xtw-4h-hsz" id="b2Y-fo-1Ar"/>
                     </connections>

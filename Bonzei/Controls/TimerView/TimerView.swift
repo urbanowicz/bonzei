@@ -29,7 +29,7 @@ class TimerView: UIView {
     public var countDownTimeSeconds: Int = 0
     
     /// In `clock` mode, this is the format that will be used to display the current time.
-    public var timeFormat:String = "hh:mm a"
+    public var timeFormat:String = "HH:mm"
     
     private var timer: Timer?
     
@@ -58,13 +58,27 @@ class TimerView: UIView {
     // MARK: - Layout subiews
     
     override func layoutSubviews() {
-        label.frame = bounds
+        label.sizeToFit()
+        label.frame = CGRect(
+            x: 0,
+            y: 0 ,
+            width: bounds.width,
+            height: label.frame.height)
+        
+        self.frame = CGRect(
+            x: frame.origin.x,
+            y: frame.origin.y,
+            width: frame.width,
+            height: label.frame.height
+        )
+        
+        // label.frame = bounds
     }
     
     // MARK: - Private API
     private func startClock() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.dateFormat = timeFormat
         
         label.text = dateFormatter.string(from: Date())
         

@@ -12,11 +12,21 @@ class DismissAlarmViewController: UIViewController {
 
     @IBOutlet weak var alarmTriggeredView: GradientView!
     
-    @IBOutlet weak var alarmSnoozedView: GradientView!
+    @IBOutlet weak var clockTimer: TimerView!
     
     @IBOutlet weak var snoozeButton: UIButton!
     
+    @IBOutlet weak var alarmSnoozedView: GradientView!
+    
     @IBOutlet weak var countDownTimer: TimerView!
+    
+    var clockTimerFontName: String = "Muli-SemiBold"
+    
+    var clockTimerFontSize = 40.0
+    
+    var clockTimerTextColor = BonzeiColors.darkTextColor
+    
+    private var currentView: UIView!
     
     // MARK:- Initialization
     
@@ -24,6 +34,7 @@ class DismissAlarmViewController: UIViewController {
         super.viewDidLoad()
         
         setupAlarmTriggeredView()
+        setupClockTimer()
         
         setupAlarmSnoozedView()
         setupCountDownTimer()
@@ -37,6 +48,18 @@ class DismissAlarmViewController: UIViewController {
         alarmTriggeredView.bottomColor = BonzeiColors.Gradients.pink.bottom
     }
     
+    private func setupClockTimer() {
+        clockTimer.mode = .clock
+        clockTimer.label.textAlignment = .center
+        clockTimer.label.font = loadCustomFont(
+            fontName: clockTimerFontName,
+            fontSize: clockTimerFontSize
+        )
+        clockTimer.label.textColor = clockTimerTextColor
+        clockTimer.backgroundColor = UIColor.clear
+        clockTimer.label.backgroundColor = UIColor.clear
+    }
+    
     private func setupAlarmSnoozedView() {
         alarmSnoozedView.topColor = BonzeiColors.Gradients.pink.top
         alarmSnoozedView.bottomColor = BonzeiColors.Gradients.pink.bottom
@@ -46,7 +69,6 @@ class DismissAlarmViewController: UIViewController {
         countDownTimer.mode = .timer
         countDownTimer.label.textAlignment = .center
     }
-    
     
     // MARK:- Actions
     
@@ -74,6 +96,8 @@ class DismissAlarmViewController: UIViewController {
         }, completion: { finished in
             fromView.isHidden = true
         })
+        
+        currentView = toView
     }
     
     private func makeVisible(view: UIView) {
@@ -86,31 +110,50 @@ class DismissAlarmViewController: UIViewController {
         view.isHidden = true
     }
     
+    private func loadCustomFont(fontName: String, fontSize: Double) -> UIFont {
+        guard let customFont = UIFont(name: fontName , size: CGFloat(fontSize)) else {
+            fatalError("Failed to load custom font: \(fontName)")
+        }
+        
+        return UIFontMetrics.default.scaledFont(for: customFont)
+    }
+    
     func didSnoozeAlarm(_ alarm: Alarm) {
         switchViews(from: alarmTriggeredView, to: alarmSnoozedView)
+        clockTimer.stop()
+        
         countDownTimer.countDownTimeSeconds = AlarmScheduler.sharedInstance.snoozeTimeMinutes * 60
         countDownTimer.start()
     }
     
     func didTriggerAlarm(_ alarm: Alarm) {
-        switchViews(from: alarmSnoozedView, to: alarmTriggeredView)
+        if currentView == alarmSnoozedView {
+            switchViews(from: alarmSnoozedView, to: alarmTriggeredView)
+            currentView = alarmTriggeredView
+        }
+        
+        snoozeButton.isHidden = !alarm.snoozeEnabled
+        clockTimer.start()
     }
     
     // MARK:- Public API
-    public func prepareToDismissAlarm(_ alarm: Alarm?) {
-        guard let alarmToDismiss = alarm else { return }
+    public func prepareToDismissAlarm() {
         
         loadViewIfNeeded()
         
-        snoozeButton.isHidden = !alarmToDismiss.snoozeEnabled
-        
         if AlarmScheduler.sharedInstance.isAlarmPlaying {
+            let alarmToDismiss = AlarmScheduler.sharedInstance.currentlyTriggeredAlarm!
+            
+            snoozeButton.isHidden = !alarmToDismiss.snoozeEnabled
+            
             makeVisible(view: alarmTriggeredView)
             makeInvisible(view: alarmSnoozedView)
+            
+            currentView = alarmTriggeredView
+            
+            clockTimer.start()
+        } else if AlarmScheduler.sharedInstance.isAlarmSnoozed {
+            fatalError("Not implemented yet")
         }
-        
-//        if AlarmScheduler.sharedInstance.isAlarmSnoozed {
-//            prepareAlarmSnoozedView()
-//        }
     }
 }
