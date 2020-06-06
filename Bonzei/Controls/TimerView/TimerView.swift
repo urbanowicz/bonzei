@@ -20,6 +20,18 @@ class TimerView: UIView {
         case timer
     }
     
+    @IBInspectable var font:UIFont = UIFont.systemFont(ofSize: 16) {
+        didSet {
+            label.font = font
+        }
+    }
+    
+    @IBInspectable var textColor:UIColor = UIColor.darkText {
+        didSet {
+            label.textColor = textColor
+        }
+    }
+    
     public var mode: Mode = .clock
     
     /// A label used to display the time. eg '05:55'
@@ -52,6 +64,9 @@ class TimerView: UIView {
     
     private func commonInit() {
         label.text = "00:00"
+        label.textColor = textColor
+        label.font = font
+        label.textAlignment = .center
         addSubview(label)
     }
     

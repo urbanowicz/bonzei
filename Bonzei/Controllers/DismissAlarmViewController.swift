@@ -20,11 +20,17 @@ class DismissAlarmViewController: UIViewController {
     
     @IBOutlet weak var countDownTimer: TimerView!
     
-    var clockTimerFontName: String = "Muli-SemiBold"
+    private var clockTimerFontName = "Muli-SemiBold"
     
-    var clockTimerFontSize = 40.0
+    private var clockTimerFontSize = 40.0
     
-    var clockTimerTextColor = BonzeiColors.darkTextColor
+    private var clockTimerTextColor = BonzeiColors.darkTextColor
+    
+    private var countDownTimerFontName = "Muli-SemiBold"
+    
+    private var countDownTimerFontSize = 57.0
+    
+    private var countDowntimerTextColor = UIColor.white
     
     private var currentView: UIView!
     
@@ -68,6 +74,13 @@ class DismissAlarmViewController: UIViewController {
     private func setupCountDownTimer() {
         countDownTimer.mode = .timer
         countDownTimer.label.textAlignment = .center
+        countDownTimer.label.font = loadCustomFont(
+            fontName: countDownTimerFontName,
+            fontSize: countDownTimerFontSize
+        )
+        countDownTimer.label.textColor = countDowntimerTextColor
+        countDownTimer.backgroundColor = UIColor.clear
+        countDownTimer.label.backgroundColor = UIColor.clear
     }
     
     // MARK:- Actions
