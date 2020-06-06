@@ -42,6 +42,8 @@
 		F15590FD245EF27300928589 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15590FC245EF27300928589 /* Melody.swift */; };
 		F15C1ABA2461734A00F47CCC /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
 		F1607DAE248AAE5300968586 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1607DAD248AAE5300968586 /* TimerView.swift */; };
+		F16770E0248C0C4E00797F0A /* ClockFaceAndDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16770DF248C0C4E00797F0A /* ClockFaceAndDots.swift */; };
+		F16770E4248C0D3200797F0A /* BonzeiClockV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16770E3248C0D3200797F0A /* BonzeiClockV2.swift */; };
 		F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE22447089F008E9227 /* AppDelegate.swift */; };
 		F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE42447089F008E9227 /* SceneDelegate.swift */; };
 		F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE62447089F008E9227 /* WakeUpViewController.swift */; };
@@ -117,6 +119,8 @@
 		F15590FC245EF27300928589 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
 		F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmScheduler.swift; sourceTree = "<group>"; };
 		F1607DAD248AAE5300968586 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		F16770DF248C0C4E00797F0A /* ClockFaceAndDots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockFaceAndDots.swift; sourceTree = "<group>"; };
+		F16770E3248C0D3200797F0A /* BonzeiClockV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClockV2.swift; sourceTree = "<group>"; };
 		F17ABEDF2447089F008E9227 /* Bonzei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bonzei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17ABEE22447089F008E9227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17ABEE42447089F008E9227 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,8 +174,8 @@
 		F10B5CA4248558730042D915 /* BonzeiClock */ = {
 			isa = PBXGroup;
 			children = (
-				F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */,
-				F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */,
+				F16770E2248C0C9800797F0A /* Variation2 */,
+				F16770E1248C0C7800797F0A /* Variation1 */,
 			);
 			path = BonzeiClock;
 			sourceTree = "<group>";
@@ -284,6 +288,24 @@
 				F1607DAD248AAE5300968586 /* TimerView.swift */,
 			);
 			path = TimerView;
+			sourceTree = "<group>";
+		};
+		F16770E1248C0C7800797F0A /* Variation1 */ = {
+			isa = PBXGroup;
+			children = (
+				F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */,
+				F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */,
+			);
+			path = Variation1;
+			sourceTree = "<group>";
+		};
+		F16770E2248C0C9800797F0A /* Variation2 */ = {
+			isa = PBXGroup;
+			children = (
+				F16770DF248C0C4E00797F0A /* ClockFaceAndDots.swift */,
+				F16770E3248C0D3200797F0A /* BonzeiClockV2.swift */,
+			);
+			path = Variation2;
 			sourceTree = "<group>";
 		};
 		F17ABED62447089F008E9227 = {
@@ -498,8 +520,10 @@
 				F1BC60D3247FE7AF00BB6CB0 /* GradientView.swift in Sources */,
 				F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */,
 				F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */,
+				F16770E0248C0C4E00797F0A /* ClockFaceAndDots.swift in Sources */,
 				F1F83E222472FD0C0072630A /* AlarmSchedulerDelegate.swift in Sources */,
 				F15590FD245EF27300928589 /* Melody.swift in Sources */,
+				F16770E4248C0D3200797F0A /* BonzeiClockV2.swift in Sources */,
 				F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */,
 				F14EF8AC24766537006A40D8 /* NotificationExtension.swift in Sources */,
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
