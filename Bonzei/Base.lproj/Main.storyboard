@@ -231,6 +231,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzp-ep-qS4" userLabel="AlarmTriggeredView" customClass="GradientView" customModule="Bonzei" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up and grow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rv9-gI-uwG">
+                                        <rect key="frame" x="24" y="235" width="327" height="36"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="28"/>
+                                        <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWe-8A-y3z" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
                                         <rect key="frame" x="24" y="716" width="327" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="0.80492829623287676" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -282,11 +289,10 @@
                                             <constraint firstAttribute="height" constant="40" id="PfM-UN-Mk2"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up and grow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rv9-gI-uwG">
-                                        <rect key="frame" x="24" y="235" width="327" height="36"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="28"/>
-                                        <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Own your morning, right here, right now." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI4-SD-CWL">
+                                        <rect key="frame" x="24" y="303" width="327" height="22"/>
+                                        <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
+                                        <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -294,12 +300,15 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="sMK-Wm-gZV" secondAttribute="trailing" constant="24" id="2xN-vJ-EoY"/>
                                     <constraint firstAttribute="trailing" secondItem="Rv9-gI-uwG" secondAttribute="trailing" constant="24" id="5GF-Nt-uDX"/>
+                                    <constraint firstItem="cI4-SD-CWL" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="6kX-cy-8Qw"/>
                                     <constraint firstAttribute="trailing" secondItem="qWe-8A-y3z" secondAttribute="trailing" constant="24" id="EwE-b8-5oa"/>
                                     <constraint firstItem="sMK-Wm-gZV" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="Hb1-az-kbL"/>
                                     <constraint firstAttribute="trailing" secondItem="xtw-4h-hsz" secondAttribute="trailing" constant="24" id="Nas-JA-Inm"/>
                                     <constraint firstItem="xtw-4h-hsz" firstAttribute="centerY" secondItem="bzp-ep-qS4" secondAttribute="centerY" id="Q1I-cP-Gi4"/>
                                     <constraint firstItem="Rv9-gI-uwG" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="UcO-kn-DQe"/>
+                                    <constraint firstAttribute="trailing" secondItem="cI4-SD-CWL" secondAttribute="trailing" constant="24" id="VTH-5F-Bpd"/>
                                     <constraint firstItem="sMK-Wm-gZV" firstAttribute="centerY" secondItem="bzp-ep-qS4" secondAttribute="top" constant="160" id="ZNi-GO-fAp"/>
+                                    <constraint firstItem="cI4-SD-CWL" firstAttribute="top" secondItem="Rv9-gI-uwG" secondAttribute="bottom" constant="32" id="ccY-FJ-xEk"/>
                                     <constraint firstItem="xtw-4h-hsz" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="fjA-Ka-JGV"/>
                                     <constraint firstItem="Rv9-gI-uwG" firstAttribute="top" secondItem="sMK-Wm-gZV" secondAttribute="bottom" constant="55" id="mYB-lK-AZB"/>
                                     <constraint firstItem="qWe-8A-y3z" firstAttribute="leading" secondItem="bzp-ep-qS4" secondAttribute="leading" constant="24" id="vx0-HP-3Bo"/>
