@@ -344,6 +344,13 @@
                                             <constraint firstAttribute="height" constant="56" id="KRe-ui-iVJ"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzg-9o-NH7" customClass="BonzeiClockV2" customModule="Bonzei" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="59.999999999999986" width="327" height="253.66666666666663"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Rzg-9o-NH7" secondAttribute="height" multiplier="330:256" id="5wJ-w0-jEn"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -351,7 +358,10 @@
                                     <constraint firstItem="Jwb-Fp-3YV" firstAttribute="leading" secondItem="ZSk-aa-UHG" secondAttribute="leading" constant="67" id="9qL-M0-uaA"/>
                                     <constraint firstAttribute="bottom" secondItem="fke-zy-ycD" secondAttribute="bottom" constant="72" id="AVU-A1-MYs"/>
                                     <constraint firstItem="fke-zy-ycD" firstAttribute="leading" secondItem="ZSk-aa-UHG" secondAttribute="leading" constant="24" id="Cyf-oy-qP8"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rzg-9o-NH7" secondAttribute="trailing" constant="24" id="O8P-ft-uJA"/>
                                     <constraint firstAttribute="trailing" secondItem="fke-zy-ycD" secondAttribute="trailing" constant="24" id="QUm-gh-Vut"/>
+                                    <constraint firstItem="Rzg-9o-NH7" firstAttribute="top" secondItem="ZSk-aa-UHG" secondAttribute="top" constant="60" id="nPV-LM-LvT"/>
+                                    <constraint firstItem="Rzg-9o-NH7" firstAttribute="leading" secondItem="ZSk-aa-UHG" secondAttribute="leading" constant="24" id="r7f-Nn-jsd"/>
                                     <constraint firstItem="fke-zy-ycD" firstAttribute="top" secondItem="Jwb-Fp-3YV" secondAttribute="bottom" constant="200" id="zae-wy-MVi"/>
                                 </constraints>
                             </view>

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@IBDesignable
 class BonzeiClockV2: UIView {
     
     required init?(coder: NSCoder) {
@@ -22,7 +23,7 @@ class BonzeiClockV2: UIView {
     }
     
     private func commonInit() {
-
+        backgroundColor = UIColor.clear
     }
     
     override func draw(_ rect: CGRect) {
