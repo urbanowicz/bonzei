@@ -599,7 +599,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// sorts the `scheduledAlarms` array
     private func sortAlarms() {
         scheduledAlarms.sort() { alarmA, alarmB in
-            print("\(alarmA.hour):\(alarmA.minute) ? \(alarmB.hour):\(alarmA.minute)")
             if alarmA.hour == alarmB.hour {
                 return alarmA.minute < alarmB.minute
             } else {
@@ -699,6 +698,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     private func stopAudioPlayer() {
         if audioPlayer != nil && audioPlayer!.isPlaying {
+            audioPlayer!.setVolume(0, fadeDuration: 0.1)
             audioPlayer!.stop()
             audioPlayer = nil
         }
