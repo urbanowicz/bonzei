@@ -166,7 +166,14 @@ class DismissAlarmViewController: UIViewController {
             
             clockTimer.start()
         } else if AlarmScheduler.sharedInstance.isAlarmSnoozed {
-            fatalError("Not implemented yet")
+            makeVisible(view: alarmSnoozedView)
+            makeInvisible(view: alarmTriggeredView)
+            currentView = alarmSnoozedView
+            
+            let stopDate = AlarmScheduler.sharedInstance.currentlySnoozedAlarm!.snoozeDate!
+            
+            countDownTimer.countDownTimeSeconds = Int(stopDate.timeIntervalSinceNow)
+            countDownTimer.start()
         }
     }
 }
