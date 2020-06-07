@@ -107,7 +107,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         var newAlarm = alarm
         newAlarm.lastUpdateDate = Date()
         
-        scheduledAlarms.insert(newAlarm, at: 0)
+        scheduledAlarms.append(alarm)
+        sortAlarms()
+        
         AlarmPersistenceService.sharedInstance.create(alarm: newAlarm)
         
         if !newAlarm.isActive {
@@ -176,6 +178,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         
         refreshAlarmAndNotificationRequests(updatedAlarm)
+        
+        sortAlarms()
         
         if (!alarm.isActive) {
             os_log("Updated an alarm. The alarm is inactive.", log: log, type: .info)
@@ -592,8 +596,18 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         return UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
     }
     
+    /// sorts the `scheduledAlarms` array
+    private func sortAlarms() {
+        scheduledAlarms.sort() { alarmA, alarmB in
+            print("\(alarmA.hour):\(alarmA.minute) ? \(alarmB.hour):\(alarmA.minute)")
+            if alarmA.hour == alarmB.hour {
+                return alarmA.minute < alarmB.minute
+            } else {
+                return alarmA.hour < alarmB.hour
+            }
+        }
+    }
     /// Finds an alarm given by `id` in the internal `scheduledAlarms` array.
-    ///
     private func indexOfAlarm(withId id: String) -> Int? {
         return scheduledAlarms.firstIndex(where: {$0.id == id})
     }
@@ -607,6 +621,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         guard let persistedAlarms = dao.readAllAlarms() else { return }
         
         scheduledAlarms = persistedAlarms
+        sortAlarms()
     }
     
     private func getNotificationRequestsForAlarm(withId alarmId: String) -> [NotificationRequest]? {

@@ -170,14 +170,16 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
             let newAlarm = setAlarmViewControler.newAlarm
             AlarmScheduler.sharedInstance.schedule(alarm: newAlarm!)
             HeartBeatService.sharedInstance.start()
-            insertRowIntoAlarmsTable()
+            alarmsTable.reloadData()
             
         case .editExistingAlarm:
             let editedAlarm = setAlarmViewControler.alarmToEdit!
             selectedCell!.alarm = editedAlarm
             AlarmScheduler.sharedInstance.updateAlarm(withId: editedAlarm.id, using: editedAlarm)
+            alarmsTable.reloadData()
             HeartBeatService.sharedInstance.start()
         }
+        
     }
     
     /// Called when a user cancels editing in 'SetAlarmView'
@@ -236,15 +238,6 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
              object: nil)
     }
     
-    /// Inserts a row into 'AlarmsTable'. Called after adding a new alarm to `AlarmScheduler`
-    private func insertRowIntoAlarmsTable() {
-        alarmsTable.beginUpdates()
-        alarmsTable.insertRows(at: [IndexPath(item: 0, section: 0)],
-                               with: UITableView.RowAnimation.top)
-        alarmsTable.endUpdates()
-    }
-    
- 
     private func findSuperviewThatIsAnAlarmsTableCell(for childView: UIView) -> AlarmsTableCell? {
         var v = childView.superview
         while ((v as? AlarmsTableCell) == nil && v != nil) {
