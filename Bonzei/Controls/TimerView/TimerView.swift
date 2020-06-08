@@ -109,14 +109,14 @@ class TimerView: UIView {
             fatalError("Can't create a timer with a negative count down time.")
         }
         
-        label.text = formatCountDownString(secondsLeft: countDownTimeSeconds)
-        
         let calendar = Calendar.current
         stopDate = calendar.date(
             byAdding: .second,
             value: countDownTimeSeconds,
             to: Date()
         )
+        
+        label.text = formatCountDownString(secondsLeft: Int(stopDate!.timeIntervalSinceNow))
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
             timer in
