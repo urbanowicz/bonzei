@@ -204,7 +204,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wake up" image="alarm.fill" catalog="system" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Wake up" image="clock-green" selectedImage="clock-white" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="AlarmsLabel" destination="6Z7-re-qkz" id="4E8-Py-I4z"/>
                         <outlet property="alarmsLabel" destination="6Z7-re-qkz" id="n9m-GE-p4k"/>
@@ -802,10 +802,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="alarm.fill" catalog="system" width="62" height="64"/>
         <image name="book.fill" catalog="system" width="64" height="50"/>
         <image name="chevron.left" catalog="system" width="48" height="64"/>
         <image name="chevron.right" catalog="system" width="48" height="64"/>
+        <image name="clock-green" width="32" height="32"/>
+        <image name="clock-white" width="32" height="32"/>
         <image name="play.fill" catalog="system" width="58" height="64"/>
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
