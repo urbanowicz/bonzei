@@ -69,6 +69,7 @@
 		F1C76B6C247EBDBF0099F1F1 /* BonzeiClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */; };
 		F1C76B6E247ED7CD0099F1F1 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */; };
 		F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D298FE247D74A500D25238 /* RoundedButton.swift */; };
+		F1D2D695248E27C1000DE8D2 /* MovingGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */; };
 		F1F83E1E2472F7490072630A /* RootViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E1D2472F7490072630A /* RootViewViewController.swift */; };
 		F1F83E222472FD0C0072630A /* AlarmSchedulerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */; };
 		F1FF6CE72469B26C00B07237 /* AlarmPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */; };
@@ -148,6 +149,7 @@
 		F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClock.swift; sourceTree = "<group>"; };
 		F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		F1D298FE247D74A500D25238 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingGradientView.swift; sourceTree = "<group>"; };
 		F1F83E1D2472F7490072630A /* RootViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewViewController.swift; sourceTree = "<group>"; };
 		F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSchedulerDelegate.swift; sourceTree = "<group>"; };
 		F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPersistenceService.swift; sourceTree = "<group>"; };
@@ -204,13 +206,13 @@
 		F1421C242454B6BF003D226A /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				F1D2D693248E2781000DE8D2 /* GradientView */,
 				F1607DAC248AAE0A00968586 /* TimerView */,
 				F10B5CA4248558730042D915 /* BonzeiClock */,
 				F195A8E524850ED6009D54A3 /* TimePicker */,
 				F1421C252454B710003D226A /* DayOfWeekPicker.swift */,
 				F1329B172460912300E7F7A2 /* OvalButton.swift */,
 				F1D298FE247D74A500D25238 /* RoundedButton.swift */,
-				F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -379,6 +381,15 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		F1D2D693248E2781000DE8D2 /* GradientView */ = {
+			isa = PBXGroup;
+			children = (
+				F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */,
+				F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */,
+			);
+			path = GradientView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -515,6 +526,7 @@
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F1C76B6E247ED7CD0099F1F1 /* DoubleExtension.swift in Sources */,
 				F15526C4244A060300741E80 /* Alarm.swift in Sources */,
+				F1D2D695248E27C1000DE8D2 /* MovingGradientView.swift in Sources */,
 				F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */,
 				F195A8EC24850F81009D54A3 /* TimePickerDelegate.swift in Sources */,
 				F1BC60D3247FE7AF00BB6CB0 /* GradientView.swift in Sources */,

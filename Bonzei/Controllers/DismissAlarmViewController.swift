@@ -10,13 +10,13 @@ import UIKit
 
 class DismissAlarmViewController: UIViewController {
 
-    @IBOutlet weak var alarmTriggeredView: GradientView!
+    @IBOutlet weak var alarmTriggeredView: MovingGradientView!
     
     @IBOutlet weak var clockTimer: TimerView!
     
     @IBOutlet weak var snoozeButton: UIButton!
     
-    @IBOutlet weak var alarmSnoozedView: GradientView!
+    @IBOutlet weak var alarmSnoozedView: MovingGradientView!
     
     @IBOutlet weak var countDownTimer: TimerView!
     
