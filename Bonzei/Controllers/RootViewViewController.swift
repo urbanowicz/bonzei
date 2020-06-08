@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
     
     private var dismissAlarmViewController: DismissAlarmViewController?
 
+    private var volumeView: MPVolumeView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,9 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         
         dismissAlarmViewController = nil
         
+        volumeView = MPVolumeView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+        volumeView.isHidden = true
+        view.addSubview(volumeView)
     }
     
     /// Called  after application has been launched or has moved to foreground
@@ -44,7 +49,8 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         } else if dismissAlarmViewController != nil {
             dismissAlarmViewController!.didTriggerAlarm(alarm)
         }
-
+        
+        turnSystemVolumeUp()
     }
     
     func didSnoozeAlarm(_ alarm: Alarm) {
@@ -82,5 +88,16 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         }
         
         return currentViewController
+    }
+    
+    private func turnSystemVolumeUp() {
+        let slider = volumeView.subviews.filter{NSStringFromClass($0.classForCoder) == "MPVolumeSlider"}.first as? UISlider
+        
+        if slider != nil {
+            if slider!.value < 0.6 {
+                slider!.setValue(0.6, animated: false)
+                print("Helllooo")
+            }
+        }
     }
 }

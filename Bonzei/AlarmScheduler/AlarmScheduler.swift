@@ -9,6 +9,7 @@
 import Foundation
 import UserNotifications
 import AVFoundation
+import MediaPlayer
 import os.log
 
 /// An alarm scheduler.
