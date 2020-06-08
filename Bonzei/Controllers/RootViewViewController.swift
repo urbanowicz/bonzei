@@ -96,7 +96,6 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         if slider != nil {
             if slider!.value < 0.6 {
                 slider!.setValue(0.6, animated: false)
-                print("Helllooo")
             }
         }
     }
