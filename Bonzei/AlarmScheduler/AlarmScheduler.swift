@@ -57,7 +57,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    public let snoozeTimeMinutes = 1
+    public let snoozeTimeMinutes = 8
     
     /// All scheduled alarms
     private var scheduledAlarms = [Alarm]()
