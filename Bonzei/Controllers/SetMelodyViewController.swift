@@ -131,6 +131,7 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.delegate = self
+                audioPlayer?.setVolume(1.0, fadeDuration: 0.1)
                 audioPlayer?.play()
                 indexOfCurrentlyPlayingCell = melodiesTable.indexPath(for: cell)!.row
                 cell.play()
@@ -150,6 +151,9 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     private func stopCurrentlyPlayingCell() {
         currentlyPlayingCell()?.stop()
         indexOfCurrentlyPlayingCell = nil
+        
+        self.audioPlayer?.setVolume(0, fadeDuration: 0.05)
+        Thread.sleep(forTimeInterval: 0.1)
         audioPlayer?.stop()
     }
     

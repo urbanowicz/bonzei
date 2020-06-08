@@ -701,8 +701,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         if audioPlayer != nil && audioPlayer!.isPlaying {
             let queue = DispatchQueue(label: "StopAudio", qos: .userInteractive)
              queue.async {
-                self.audioPlayer!.setVolume(0, fadeDuration: 0.1)
-                 Thread.sleep(forTimeInterval: 0.25)
+                self.audioPlayer!.setVolume(0, fadeDuration: 0.05)
+                Thread.sleep(forTimeInterval: 0.1)
                 self.audioPlayer!.stop()
                 self.audioPlayer = nil
              }
