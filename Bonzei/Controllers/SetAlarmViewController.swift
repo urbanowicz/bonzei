@@ -250,7 +250,13 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
     private func stopPlayback() {
         isMelodyPlaying = false
         if let audioPlayer = self.audioPlayer {
-            audioPlayer.stop()
+            let queue = DispatchQueue(label: "StopAudio", qos: .userInteractive)
+            queue.async {
+                audioPlayer.setVolume(0, fadeDuration: 0.1)
+                Thread.sleep(forTimeInterval: 0.25)
+                audioPlayer.stop()
+                self.audioPlayer = nil
+            }
         }
     }
     
