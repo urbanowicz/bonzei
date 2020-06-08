@@ -50,7 +50,7 @@ class DismissAlarmViewController: UIViewController {
     }
     
     private func setupAlarmTriggeredView() {
-        alarmTriggeredView.topColor = BonzeiColors.Gradients.pink.top
+        alarmTriggeredView.topColor =  UIColor(red: 1.00, green: 0.76, blue: 0.73, alpha: 1.00)
         alarmTriggeredView.bottomColor = BonzeiColors.Gradients.pink.bottom
     }
     
@@ -67,7 +67,7 @@ class DismissAlarmViewController: UIViewController {
     }
     
     private func setupAlarmSnoozedView() {
-        alarmSnoozedView.topColor = BonzeiColors.Gradients.pink.top
+        alarmSnoozedView.topColor = UIColor(red: 1.00, green: 0.76, blue: 0.73, alpha: 1.00)
         alarmSnoozedView.bottomColor = BonzeiColors.Gradients.pink.bottom
     }
     
