@@ -429,7 +429,7 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="210" id="n10-SB-BhH"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUh-gu-Ey5" userLabel="TimePicker" customClass="TimePicker_AM_PM" customModule="Bonzei" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUh-gu-Ey5" userLabel="TimePicker" customClass="TimePicker_24" customModule="Bonzei" customModuleProvider="target">
                                 <rect key="frame" x="24" y="270" width="327" height="160"/>
                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

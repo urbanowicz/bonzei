@@ -125,11 +125,11 @@ class TimePicker_24: UIView, TimePicker, PickerViewDelegate {
         
         hourPicker.data = [String]()
         
-        for hour in 1...12 {
+        for hour in 0...23 {
             hourPicker.data.append(String(hour))
         }
         
-        hourPicker.selectItem(withIndex: 11) //12 o'clock
+        hourPicker.selectItem(withIndex: 0) //12 o'clock
         
         hourPicker.delegate = self
         

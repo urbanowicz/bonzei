@@ -52,7 +52,9 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         }
     }
     
-    var timePicker: TimePicker!
+    private var timePicker: TimePicker!
+    
+    private var isClockIn24HourMode = true
     
     @IBOutlet weak var timePickerView: UIView!
     
@@ -223,12 +225,32 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
     
     func hourPickerDidScroll(picker: WraparoundPickerView) {
         let scrollProgress = picker.getScrollProgress()
+        var angle = 0.0
+        
+        if isClockIn24HourMode {
+            
+            // In 24 hour mode progress of 0.5 means 12
+            // and progress of 1.0 means 24
+            // we need to adjust the progress so that the values between 0.5 and 1.0
+            // mean the same thing as values between 0.0 and 0.5.
+            // The clock only goes from 0 to 12 after all.
+            
+            var scrollProgressDoubled = scrollProgress * 24.0
+            if scrollProgressDoubled >= 12.0 {
+                scrollProgressDoubled -= 12.0
+            }
+            scrollProgressDoubled /= 12.0
+            
+            angle = (2.0 * .pi) * scrollProgressDoubled
+        } else {
 
-        // We need to move the angle forward by the equivalent of one hour.
-        // When the picker reports scrollProgress of 0 it means 1 o'clock
+        // In AM/PM mode we need to move the angle forward by the equivalent of one hour.
+        // When the AM/PM picker reports scrollProgress of 0 it means 1 o'clock
         // But if we pass 0 angle to the clock it will position the hand at 12 o'clock.
         // Hence the adjustment.
-        let angle = (2.0 * .pi) * scrollProgress + (.pi / 6.0)
+            
+            angle = (2.0 * .pi) * scrollProgress + (.pi / 6.0)
+        }
 
         clock.setHourAngle(to: angle)
     }
