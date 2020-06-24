@@ -232,7 +232,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up and grow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rv9-gI-uwG">
-                                        <rect key="frame" x="24" y="280" width="327" height="36"/>
+                                        <rect key="frame" x="24" y="280" width="327" height="35.333333333333314"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="28"/>
                                         <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -258,7 +258,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtw-4h-hsz" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="435" width="327" height="56"/>
+                                        <rect key="frame" x="24" y="434" width="327" height="56"/>
                                         <color key="backgroundColor" red="0.89922862059999997" green="0.89371707209999995" blue="0.92231123100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="nhU-lq-WsW"/>
@@ -290,7 +290,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Own your morning, right here, right now." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI4-SD-CWL">
-                                        <rect key="frame" x="24" y="348" width="327" height="22"/>
+                                        <rect key="frame" x="24" y="347.33333333333331" width="327" height="21.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
                                         <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -357,13 +357,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btp-qa-Zqd">
-                                        <rect key="frame" x="67.666666666666686" y="373.66666666666669" width="240" height="72"/>
+                                        <rect key="frame" x="68.000000000000014" y="373.66666666666669" width="239.33333333333337" height="71.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="57"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="and grow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2a-gP-fiL">
-                                        <rect key="frame" x="124" y="461.66666666666669" width="127" height="36"/>
+                                        <rect key="frame" x="124.33333333333334" y="461.33333333333331" width="126.33333333333334" height="35.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="28"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -429,7 +429,7 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="210" id="n10-SB-BhH"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUh-gu-Ey5" userLabel="TimePicker" customClass="TimePicker" customModule="Bonzei" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUh-gu-Ey5" userLabel="TimePicker" customClass="TimePicker_AM_PM" customModule="Bonzei" customModuleProvider="target">
                                 <rect key="frame" x="24" y="270" width="327" height="160"/>
                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

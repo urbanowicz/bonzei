@@ -59,7 +59,7 @@
 		F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E624850F81009D54A3 /* PickerVIew.swift */; };
 		F195A8EC24850F81009D54A3 /* TimePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */; };
 		F195A8ED24850F81009D54A3 /* WraparoundPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E824850F81009D54A3 /* WraparoundPickerView.swift */; };
-		F195A8EE24850F81009D54A3 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E924850F81009D54A3 /* TimePicker.swift */; };
+		F195A8EE24850F81009D54A3 /* TimePicker_AM_PM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E924850F81009D54A3 /* TimePicker_AM_PM.swift */; };
 		F195A8EF24850F81009D54A3 /* PickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8EA24850F81009D54A3 /* PickerViewDelegate.swift */; };
 		F1A26FA6247284A300A13B3C /* DismissAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */; };
 		F1A608BD24713C00008A45EF /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
@@ -142,7 +142,7 @@
 		F195A8E624850F81009D54A3 /* PickerVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerVIew.swift; sourceTree = "<group>"; };
 		F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerDelegate.swift; sourceTree = "<group>"; };
 		F195A8E824850F81009D54A3 /* WraparoundPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WraparoundPickerView.swift; sourceTree = "<group>"; };
-		F195A8E924850F81009D54A3 /* TimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		F195A8E924850F81009D54A3 /* TimePicker_AM_PM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePicker_AM_PM.swift; sourceTree = "<group>"; };
 		F195A8EA24850F81009D54A3 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
 		F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAlarmViewController.swift; sourceTree = "<group>"; };
 		F1AB936D2465EFFD008FAA1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 			children = (
 				F195A8E624850F81009D54A3 /* PickerVIew.swift */,
 				F195A8EA24850F81009D54A3 /* PickerViewDelegate.swift */,
-				F195A8E924850F81009D54A3 /* TimePicker.swift */,
+				F195A8E924850F81009D54A3 /* TimePicker_AM_PM.swift */,
 				F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */,
 				F195A8E824850F81009D54A3 /* WraparoundPickerView.swift */,
 				F1E0FFE124A3757700F75FDF /* TimePicker_24.swift */,
@@ -548,7 +548,7 @@
 				F195A8EF24850F81009D54A3 /* PickerViewDelegate.swift in Sources */,
 				F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */,
 				F142BDE424704CF200B5857C /* DateExtension.swift in Sources */,
-				F195A8EE24850F81009D54A3 /* TimePicker.swift in Sources */,
+				F195A8EE24850F81009D54A3 /* TimePicker_AM_PM.swift in Sources */,
 				F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */,
 				F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */,
 				F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */,

@@ -52,7 +52,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         }
     }
     
-    @IBOutlet weak var timePicker: TimePicker!
+    @IBOutlet weak var timePicker: TimePicker_AM_PM!
     
     @IBOutlet weak var saveButton: UIButton!
     
