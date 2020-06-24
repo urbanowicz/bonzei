@@ -326,34 +326,14 @@ class TimePicker_24: UIView, TimePicker, PickerViewDelegate {
     }
     
     func valueChanged() {
-//        let hour = hourPicker.getPickedItem()
-//
-//        let minute = minutePicker.getPickedItem()
-//
-//        let amOrPm = am_or_pm_picker.getPickedItem()
-//
-//        let timeString = hour + ":" + minute + " " + amOrPm
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "h:mm a"
-//
-//        let date = dateFormatter.date(from: timeString)!
-//        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
-//
-//        let now = Date()
-//        let nowComponents = Calendar.current.dateComponents([.year, .month, .day], from: now)
-//
-//        var combinedDateComponents = DateComponents()
-//
-//        combinedDateComponents.year = nowComponents.year!
-//        combinedDateComponents.month = nowComponents.month!
-//        combinedDateComponents.day = nowComponents.day!
-//        combinedDateComponents.hour = dateComponents.hour
-//        combinedDateComponents.minute = dateComponents.minute!
-//
-//        self.date = Calendar.current.date(from: combinedDateComponents)!
-//
-//        delegate?.valueChanged(sender: self)
+        let hour =  Int(hourPicker.getPickedItem()) ?? 0
+        let minute = Int(minutePicker.getPickedItem()) ?? 0
+        
+        self.date = Date()
+            .new(bySetting: .hour, to: hour)
+            .new(bySetting: .minute, to: minute)
+
+        delegate?.valueChanged(sender: self)
     }
     
     //MARK:- Public API
@@ -363,36 +343,11 @@ class TimePicker_24: UIView, TimePicker, PickerViewDelegate {
     }
     
     public func setDate(to date: Date) {
-//        // 1.
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "a"
-//
-//        if dateFormatter.string(from: date) == "PM" {
-//            am_or_pm_picker.selectItem(withIndex: 1)
-//        } else {
-//            am_or_pm_picker.selectItem(withIndex: 0)
-//        }
-//
-//        // 2.
-//        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
-//        var hour = dateComponents.hour!
-//        if hour == 0 {
-//            hour = 12
-//        }
-//        if hour > 12 {
-//            hour -= 12
-//        }
-//
-//        hourPicker.selectItem(withIndex: hour - 1)
-//
-//        // 3.
-//        let minute = dateComponents.minute!
-//
-//        minutePicker.selectItem(withIndex: minute)
-//
-//        // 4.
-//        self.date = date
-        
+        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+        hourPicker.selectItem(withIndex: dateComponents.hour!)
+        minutePicker.selectItem(withIndex: dateComponents.minute!)
+
+        self.date = date
     }
     
     func setDelegate(_ delegate: TimePickerDelegate) {
