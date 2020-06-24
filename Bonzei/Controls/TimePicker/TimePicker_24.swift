@@ -38,8 +38,6 @@ class TimePicker_24: UIView, PickerViewDelegate {
     
     private var minutePicker: WraparoundPickerView!
     
-    private var am_or_pm_picker: PickerView!
-    
     private var colonLabel: UILabel!
     
     private var selectionRectangleColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
@@ -48,9 +46,7 @@ class TimePicker_24: UIView, PickerViewDelegate {
     
     private var selectionRectangleBorderWidth = 1.0
     
-    private var selectionRectangle_1: UIView!
-    
-    private var selectionRectangle_2: UIView!
+    private var selectionRectangle: UIView!
 
     private var topBorder: GradientView!
     
@@ -88,8 +84,6 @@ class TimePicker_24: UIView, PickerViewDelegate {
         
         setupMinutePicker()
         
-        setup_am_or_pm_picker()
-        
         setupSelectionRectangle()
         
         setupTopAndBottomBorders()
@@ -112,24 +106,13 @@ class TimePicker_24: UIView, PickerViewDelegate {
     }
     
     private func setupSelectionRectangle() {
-        // There are two selection rectangles
-        // 1. for the AM/PM picker
-        // 2. Second for the hh:mm picker
-        selectionRectangle_1 = UIView()
-        selectionRectangle_1.isUserInteractionEnabled = false
-        selectionRectangle_1.layer.borderColor = selectionRectangleColor.cgColor
-        selectionRectangle_1.layer.borderWidth = CGFloat(selectionRectangleBorderWidth)
-        selectionRectangle_1.backgroundColor = UIColor.clear
+        selectionRectangle = UIView()
+        selectionRectangle.isUserInteractionEnabled = false
+        selectionRectangle.layer.borderColor = selectionRectangleColor.cgColor
+        selectionRectangle.layer.borderWidth = CGFloat(selectionRectangleBorderWidth)
+        selectionRectangle.backgroundColor = UIColor.clear
         
-        addSubview(selectionRectangle_1)
-        
-        selectionRectangle_2 = UIView()
-        selectionRectangle_2.isUserInteractionEnabled = false
-        selectionRectangle_2.layer.borderColor = selectionRectangleColor.cgColor
-        selectionRectangle_2.layer.borderWidth = CGFloat(selectionRectangleBorderWidth)
-        selectionRectangle_2.backgroundColor = UIColor.clear
-        
-        addSubview(selectionRectangle_2)
+        addSubview(selectionRectangle)
     }
     
     private func setupHourPicker() {
@@ -189,23 +172,6 @@ class TimePicker_24: UIView, PickerViewDelegate {
         addSubview(minutePicker)
     }
     
-    private func setup_am_or_pm_picker() {
-        am_or_pm_picker = PickerView()
-    
-        am_or_pm_picker.font = font
-        am_or_pm_picker.textColor = textColor
-        am_or_pm_picker.backgroundColor = backgroundColor
-        
-        am_or_pm_picker.data = ["AM", "PM"]
-        
-        am_or_pm_picker.selectItem(withIndex: 1) // "PM"
-        
-        am_or_pm_picker.delegate = self
-        
-        addSubview(am_or_pm_picker)
-    }
-    
-    
     //MARK:- Laying out subviews and drawing
     
     override func layoutSubviews() {
@@ -217,8 +183,6 @@ class TimePicker_24: UIView, PickerViewDelegate {
         layoutColonLabel()
         
         layoutMinutePicker()
-        
-        layout_am_or_pm_picker()
         
         layoutSelectionRectangle()
         
@@ -288,62 +252,19 @@ class TimePicker_24: UIView, PickerViewDelegate {
         colonLabel.frame = frame
     }
     
-    private func layout_am_or_pm_picker() {
-        
-        // 1. Calculate the frame width for the AM/PM picker
-        let frameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "AM")
-        
-        // 2.
-        let frameHeight = Double(bounds.height)
-        
-        // 3.
-        let y = 0.0
-        
-        // 4.
-        let x = xOffset
-            + 2.0 * labelPadding + calculateLabelWidth(forText: "00") // hourPicker
-            + calculateLabelWidth(forText: ":") // colonLabel
-            + 2.0 * labelPadding + calculateLabelWidth(forText: "00") // minutePicker
-            + 2.0 * labelPadding // space between the minutePicker and the AM/PM picker
-        
-        let frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
-        
-        am_or_pm_picker.frame = frame
-    }
-    
     private func layoutSelectionRectangle() {
-        
-        // There are two selection rectangles
-        // 1. for the AM/PM picker
-        // 2. Second for the hh:mm picker
-        
-        //1. AM/PM picker selection rectangle
-        var frameWidth = Double(am_or_pm_picker.frame.width)
-
-        let frameHeight = Double(bounds.height) / Double(numberOfVisibleRows)
-        
-        let y = Int(numberOfVisibleRows / 2) * frameHeight
-        
-        var x = Double(am_or_pm_picker.frame.origin.x)
-        
-        var frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
-        
-        selectionRectangle_1.layer.cornerRadius = CGFloat(frameHeight * selectionRectangleCornerRadiusRatio)
-        
-        selectionRectangle_1.frame = frame
-        
-        //2. hourPicker and minutePicker selectionRectangle eg. "11:58"
-        frameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "00")
+        let frameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "00")
             + calculateLabelWidth(forText: ":")
             + 2.0 * labelPadding + calculateLabelWidth(forText: "00")
         
-        x = xOffset
+        let frameHeight = Double(bounds.height) / Double(numberOfVisibleRows)
         
-        frame = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
+        let x = xOffset
         
-        selectionRectangle_2.layer.cornerRadius = selectionRectangle_1.layer.cornerRadius
+        let y = Int(numberOfVisibleRows / 2) * frameHeight
+        selectionRectangle.frame  = CGRect(x: x, y: y, width: frameWidth, height: frameHeight)
         
-        selectionRectangle_2.frame = frame
+        selectionRectangle.layer.cornerRadius = CGFloat(frameHeight * selectionRectangleCornerRadiusRatio)
     }
     
     private func layoutTopAndBottomBorders() {
@@ -385,8 +306,6 @@ class TimePicker_24: UIView, PickerViewDelegate {
         let minimumFrameWidth = 2.0 * labelPadding + calculateLabelWidth(forText: "00")
             + calculateLabelWidth(forText: ":")
             + 2.0 * labelPadding + calculateLabelWidth(forText: "00")
-            + 2.0 * labelPadding
-            + 2.0 * labelPadding + calculateLabelWidth(forText: "AM")
         
         return minimumFrameWidth
     }
@@ -407,34 +326,34 @@ class TimePicker_24: UIView, PickerViewDelegate {
     }
     
     func valueChanged() {
-        let hour = hourPicker.getPickedItem()
-        
-        let minute = minutePicker.getPickedItem()
-        
-        let amOrPm = am_or_pm_picker.getPickedItem()
-        
-        let timeString = hour + ":" + minute + " " + amOrPm
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm a"
-        
-        let date = dateFormatter.date(from: timeString)!
-        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
-        
-        let now = Date()
-        let nowComponents = Calendar.current.dateComponents([.year, .month, .day], from: now)
-        
-        var combinedDateComponents = DateComponents()
-        
-        combinedDateComponents.year = nowComponents.year!
-        combinedDateComponents.month = nowComponents.month!
-        combinedDateComponents.day = nowComponents.day!
-        combinedDateComponents.hour = dateComponents.hour
-        combinedDateComponents.minute = dateComponents.minute!
-        
-        self.date = Calendar.current.date(from: combinedDateComponents)!
-        
-        delegate?.valueChanged(sender: self)
+//        let hour = hourPicker.getPickedItem()
+//
+//        let minute = minutePicker.getPickedItem()
+//
+//        let amOrPm = am_or_pm_picker.getPickedItem()
+//
+//        let timeString = hour + ":" + minute + " " + amOrPm
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "h:mm a"
+//
+//        let date = dateFormatter.date(from: timeString)!
+//        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+//
+//        let now = Date()
+//        let nowComponents = Calendar.current.dateComponents([.year, .month, .day], from: now)
+//
+//        var combinedDateComponents = DateComponents()
+//
+//        combinedDateComponents.year = nowComponents.year!
+//        combinedDateComponents.month = nowComponents.month!
+//        combinedDateComponents.day = nowComponents.day!
+//        combinedDateComponents.hour = dateComponents.hour
+//        combinedDateComponents.minute = dateComponents.minute!
+//
+//        self.date = Calendar.current.date(from: combinedDateComponents)!
+//
+//        delegate?.valueChanged(sender: self)
     }
     
     //MARK:- Public API
@@ -444,35 +363,35 @@ class TimePicker_24: UIView, PickerViewDelegate {
     }
     
     public func setDate(to date: Date) {
-        // 1.
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "a"
-            
-        if dateFormatter.string(from: date) == "PM" {
-            am_or_pm_picker.selectItem(withIndex: 1)
-        } else {
-            am_or_pm_picker.selectItem(withIndex: 0)
-        }
-        
-        // 2.
-        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
-        var hour = dateComponents.hour!
-        if hour == 0 {
-            hour = 12
-        }
-        if hour > 12 {
-            hour -= 12
-        }
-        
-        hourPicker.selectItem(withIndex: hour - 1)
-        
-        // 3.
-        let minute = dateComponents.minute!
-        
-        minutePicker.selectItem(withIndex: minute)
-        
-        // 4.
-        self.date = date
+//        // 1.
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "a"
+//
+//        if dateFormatter.string(from: date) == "PM" {
+//            am_or_pm_picker.selectItem(withIndex: 1)
+//        } else {
+//            am_or_pm_picker.selectItem(withIndex: 0)
+//        }
+//
+//        // 2.
+//        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+//        var hour = dateComponents.hour!
+//        if hour == 0 {
+//            hour = 12
+//        }
+//        if hour > 12 {
+//            hour -= 12
+//        }
+//
+//        hourPicker.selectItem(withIndex: hour - 1)
+//
+//        // 3.
+//        let minute = dateComponents.minute!
+//
+//        minutePicker.selectItem(withIndex: minute)
+//
+//        // 4.
+//        self.date = date
         
     }
 }
