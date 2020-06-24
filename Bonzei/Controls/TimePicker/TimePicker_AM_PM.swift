@@ -13,7 +13,7 @@ import UIKit
 /// Appearence of this control is not customizable throgh the interface builder or through an API.
 /// You can customize the appearence by modyfing the class fields. (eg. `fontName`, `textColor`)
 @IBDesignable
-class TimePicker_AM_PM: UIView, PickerViewDelegate {
+class TimePicker_AM_PM: UIView, TimePicker, PickerViewDelegate {
     
     public var delegate: TimePickerDelegate?
     
@@ -476,6 +476,9 @@ class TimePicker_AM_PM: UIView, PickerViewDelegate {
         
         // 4.
         self.date = date
-        
+    }
+    
+    func setDelegate(_ delegate: TimePickerDelegate) {
+        self.delegate = delegate
     }
 }

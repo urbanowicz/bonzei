@@ -52,7 +52,9 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         }
     }
     
-    @IBOutlet weak var timePicker: TimePicker_AM_PM!
+    var timePicker: TimePicker!
+    
+    @IBOutlet weak var timePickerView: UIView!
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -93,8 +95,10 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.addTarget(self, action: #selector(SetAlarmViewController.melodyLabelTapped(tapRecoginzer:)))
         melodyLabel.addGestureRecognizer(tapGestureRecognizer)
-
-        timePicker.delegate = self
+        
+        timePicker = (timePickerView as! TimePicker)
+        
+        timePicker.setDelegate(self)
     }
     
     func prepareTofulfillRequest(withType requestType: RequestType, forAlarm alarm: Alarm?) {

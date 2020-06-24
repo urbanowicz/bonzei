@@ -618,7 +618,7 @@
                         <outlet property="saveButton" destination="3pv-Ko-fib" id="dfI-iX-qOe"/>
                         <outlet property="setMelodyButton" destination="b9b-bz-mgS" id="ALC-Zp-GRm"/>
                         <outlet property="snoozeSwitch" destination="CJp-ET-CKq" id="e3B-iM-XUI"/>
-                        <outlet property="timePicker" destination="CUh-gu-Ey5" id="wAM-gO-9af"/>
+                        <outlet property="timePickerView" destination="CUh-gu-Ey5" id="AJ6-mq-hQa"/>
                         <segue destination="5Gm-9t-4jN" kind="unwind" identifier="unwindSaveAlarmSegue" unwindAction="unwindSaveAlarm:" id="Huo-eK-pUv"/>
                         <segue destination="5Gm-9t-4jN" kind="unwind" identifier="unwindCancel" unwindAction="unwindCancel:" id="Eol-WB-Kgu"/>
                     </connections>

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class TimePicker_24: UIView, PickerViewDelegate {
+class TimePicker_24: UIView, TimePicker, PickerViewDelegate {
     
     public var delegate: TimePickerDelegate?
     
@@ -393,5 +393,9 @@ class TimePicker_24: UIView, PickerViewDelegate {
 //        // 4.
 //        self.date = date
         
+    }
+    
+    func setDelegate(_ delegate: TimePickerDelegate) {
+        self.delegate = delegate
     }
 }
