@@ -7,11 +7,30 @@
 //
 
 import Foundation
+import UIKit
 
 protocol TimePickerDelegate {
-    func valueChanged(sender: TimePicker)
+    func valueChanged(sender: UIView)
     
     func hourPickerDidScroll(picker: WraparoundPickerView)
     
     func minutePickerDidScroll(picker: WraparoundPickerView)
+}
+
+// Default empty implementations of the methods defined in the protocol.
+// This effectively makes them optional.
+// A delegate class that only needs to implement say the `valueChanged` method can skip
+// the `minutePickerDidScroll` and `hourPickerDidScroll` mehtods
+extension TimePickerDelegate {
+    func valueChanged(sender: UIView) {
+        
+    }
+    
+    func hourPickerDidScroll(picker: WraparoundPickerView) {
+        
+    }
+    
+    func minutePickerDidScroll(picker: WraparoundPickerView) {
+        
+    }
 }

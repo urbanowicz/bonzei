@@ -216,9 +216,6 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
     }
     
     //MARK: - Acting as TimePickerDelegate
-     func valueChanged(sender: TimePicker) {
-        //self.clock.setTime(date: timePicker.getDate(), animated: true)
-    }
     
     func hourPickerDidScroll(picker: WraparoundPickerView) {
         let scrollProgress = picker.getScrollProgress()
