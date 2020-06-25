@@ -241,13 +241,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         var dismissedAlarm = currentlyTriggeredAlarm
         
-        state = .waiting
-        numberOfAttempts = 0
-        
-        if currentlySnoozedAlarm != nil {
+        if state == .alarmSnoozed {
             dismissedAlarm = currentlySnoozedAlarm
             dismissCurrentlySnoozedAlarm()
-            currentlySnoozedAlarm = nil
             
             os_log("Dismissed the currently snoozed alarm", log: log, type: .info)
         } else {
@@ -257,6 +253,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             
             os_log("Dismissed the currently playing alarm", log: log, type: .info)
         }
+        
+        state = .waiting
+        numberOfAttempts = 0
         
         HeartBeatService.sharedInstance.start()
         
@@ -506,7 +505,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         scheduledAlarms[i].snoozeDate = nil
         refreshAlarmAndNotificationRequests(scheduledAlarms[i])
-        
+        currentlySnoozedAlarm = nil
     }
     
     private func refreshAlarmOnly(_ alarm: Alarm) {
