@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@IBDesignable
 class TimePickerView: UIView, TimePicker {
     
     public var is24mode = true
