@@ -80,6 +80,12 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         super.init()
         
         readAlarmsAndNotificationsFromDisk()
+        
+        // it might be that the set of available melodies changed
+        // In such a case we must delete alarms that reference nonexisting melodies
+        let alarmsWithMissingMelodyFiles = scheduledAlarms.filter( { alarm in !melodies.contains(alarm.melodyName) })
+        alarmsWithMissingMelodyFiles.forEach({ alarm in self.unscheduleAlarm(withId: alarm.id) })
+        
         dump()
         dumpNotifications()
     }
@@ -89,13 +95,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     /// Schedules a given alarm.
     ///
     /// If an alarm with the same id is already scheduled, the request is ignored. Use `AlarmScheduler.update()` to reschedule an existing alarm.
-    ///
-    /// The alarm will ring on every weekday specified by `Alarm.repeatOn` at time specified by `Alarm.date`.
-    /// Only the time component of `Aalarm.date` is taken into consideration. Other components (`year`, `month`, `day of month`)  are ignored.
-    /// This means, it is impossible to schedule an alarm to ring once on a given date.
-    ///
-    /// If `Alarm.repeatOn` is empty, the alarm is added to the scheduler, but will not be scheduled for execution.
-    /// Similarly, if `Alarm.isActive` is false, the alarm is added to the scheduler, but will not be scheduled for execution.
     ///
     /// - Parameter alarm : an Alarm to be scheduled.
     ///
