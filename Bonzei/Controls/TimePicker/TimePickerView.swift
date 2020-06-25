@@ -62,7 +62,15 @@ class TimePickerView: UIView, TimePicker {
     
     
     private func shouldUse24Mode() -> Bool {
-        return true
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeStyle = .short
+
+        if dateFormatter.dateFormat!.prefix(2) == "HH" {
+            return true
+        } else {
+            return false
+        }
     }
     
     // MARK:- TimePicker protocol

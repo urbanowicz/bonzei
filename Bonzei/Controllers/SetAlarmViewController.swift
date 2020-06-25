@@ -52,8 +52,6 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         }
     }
     
-    private var isClockIn24HourMode = true
-    
     @IBOutlet weak var timePicker: TimePickerView!
     
     @IBOutlet weak var saveButton: UIButton!
@@ -223,7 +221,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         let scrollProgress = picker.getScrollProgress()
         var angle = 0.0
         
-        if isClockIn24HourMode {
+        if timePicker.is24mode {
             
             // In 24 hour mode progress of 0.5 means 12
             // and progress of 1.0 means 24
