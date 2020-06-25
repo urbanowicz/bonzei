@@ -126,7 +126,11 @@ class TimePicker_24: UIView, TimePicker, PickerViewDelegate {
         hourPicker.data = [String]()
         
         for hour in 0...23 {
-            hourPicker.data.append(String(hour))
+            var hourString = String(hour)
+            if hour < 10 {
+                hourString = "0" + hourString
+            }
+            hourPicker.data.append(hourString)
         }
         
         hourPicker.selectItem(withIndex: 0) //12 o'clock
