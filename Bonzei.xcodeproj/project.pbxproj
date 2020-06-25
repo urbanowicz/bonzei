@@ -207,9 +207,36 @@
 			path = TableDataSources;
 			sourceTree = "<group>";
 		};
+		F11ED05024A3F1FB002CA419 /* TimePicker_24 */ = {
+			isa = PBXGroup;
+			children = (
+				F1E0FFE124A3757700F75FDF /* TimePicker_24.swift */,
+			);
+			path = TimePicker_24;
+			sourceTree = "<group>";
+		};
+		F11ED05124A3F230002CA419 /* TimePicker_AM_PM */ = {
+			isa = PBXGroup;
+			children = (
+				F195A8E924850F81009D54A3 /* TimePicker_AM_PM.swift */,
+			);
+			path = TimePicker_AM_PM;
+			sourceTree = "<group>";
+		};
+		F11ED05224A3F257002CA419 /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				F195A8E624850F81009D54A3 /* PickerVIew.swift */,
+				F195A8EA24850F81009D54A3 /* PickerViewDelegate.swift */,
+				F195A8E824850F81009D54A3 /* WraparoundPickerView.swift */,
+			);
+			path = PickerView;
+			sourceTree = "<group>";
+		};
 		F1421C242454B6BF003D226A /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				F11ED05224A3F257002CA419 /* PickerView */,
 				F1D2D693248E2781000DE8D2 /* GradientView */,
 				F1607DAC248AAE0A00968586 /* TimerView */,
 				F10B5CA4248558730042D915 /* BonzeiClock */,
@@ -368,12 +395,9 @@
 		F195A8E524850ED6009D54A3 /* TimePicker */ = {
 			isa = PBXGroup;
 			children = (
-				F195A8E624850F81009D54A3 /* PickerVIew.swift */,
-				F195A8EA24850F81009D54A3 /* PickerViewDelegate.swift */,
-				F195A8E924850F81009D54A3 /* TimePicker_AM_PM.swift */,
+				F11ED05124A3F230002CA419 /* TimePicker_AM_PM */,
+				F11ED05024A3F1FB002CA419 /* TimePicker_24 */,
 				F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */,
-				F195A8E824850F81009D54A3 /* WraparoundPickerView.swift */,
-				F1E0FFE124A3757700F75FDF /* TimePicker_24.swift */,
 				F17C609D24A38DA80076F49D /* TimePicker.swift */,
 			);
 			path = TimePicker;
