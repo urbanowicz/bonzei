@@ -52,11 +52,9 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         }
     }
     
-    private var timePicker: TimePicker!
-    
     private var isClockIn24HourMode = true
     
-    @IBOutlet weak var timePickerView: UIView!
+    @IBOutlet weak var timePicker: TimePickerView!
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -97,8 +95,6 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.addTarget(self, action: #selector(SetAlarmViewController.melodyLabelTapped(tapRecoginzer:)))
         melodyLabel.addGestureRecognizer(tapGestureRecognizer)
-        
-        timePicker = (timePickerView as! TimePicker)
         
         timePicker.setDelegate(self)
     }
