@@ -41,7 +41,7 @@ class HeartBeatService {
             audioPlayer = nil
         }
         
-        let path = Bundle.main.path(forResource: "Forest Light Rays.mp3", ofType: nil)!
+        let path = Bundle.main.path(forResource: "alarm.mp3", ofType: nil)!
             
         let url = URL(fileURLWithPath: path)
         

@@ -11,7 +11,8 @@ import Foundation
 /// A static array of names of melodies.
 ///
 /// For every melody name in the array there must be a corresponding `.mp3` file the `SoundFiles` folder.
-let melodies = ["Ambient Sea Waves",
-                "Endorphin Birds",
-                "Forest Light Rays",
-                "Midnight Moon"]
+let melodies = ["Ambient Waves",
+                "Coast Cliffs",
+                "Ocean Horizon",
+                "Sunriser",
+                "Early Riser"]
