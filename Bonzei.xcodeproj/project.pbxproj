@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -59,6 +59,7 @@
 		F17ABEF4244708A2008E9227 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17ABEF2244708A2008E9227 /* LaunchScreen.storyboard */; };
 		F17ABEFF244708A2008E9227 /* BonzeiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEFE244708A2008E9227 /* BonzeiTests.swift */; };
 		F17C609E24A38DA80076F49D /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17C609D24A38DA80076F49D /* TimePicker.swift */; };
+		F17D199624AA0EE200633BBC /* ArticlesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D199524AA0EE200633BBC /* ArticlesCollectionViewController.swift */; };
 		F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */; };
 		F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */; };
 		F18A86EB247949C000C5597C /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F18A86EA247949C000C5597C /* alarm.mp3 */; };
@@ -151,6 +152,7 @@
 		F17ABEFE244708A2008E9227 /* BonzeiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiTests.swift; sourceTree = "<group>"; };
 		F17ABF00244708A2008E9227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F17C609D24A38DA80076F49D /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		F17D199524AA0EE200633BBC /* ArticlesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCollectionViewController.swift; sourceTree = "<group>"; };
 		F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsTableDataSource.swift; sourceTree = "<group>"; };
 		F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodiesTableDataSource.swift; sourceTree = "<group>"; };
 		F18A86EA247949C000C5597C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
@@ -201,7 +203,6 @@
 				7EB6FEA5EB293EC7B8EC891A /* Pods-BonzeiTests.debug.xcconfig */,
 				950F93ED70126B3B2F742D3D /* Pods-BonzeiTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -223,7 +224,7 @@
 			path = BonzeiClock;
 			sourceTree = "<group>";
 		};
-		F11E3F1C244EFEF400CF6B4A /* Controllers */ = {
+		F11E3F1C244EFEF400CF6B4A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				F17ABEE62447089F008E9227 /* WakeUpViewController.swift */,
@@ -232,7 +233,7 @@
 				F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */,
 				F1F83E1D2472F7490072630A /* RootViewViewController.swift */,
 			);
-			path = Controllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		F11E3F1D244EFFE400CF6B4A /* TableDataSources */ = {
@@ -402,15 +403,11 @@
 		F17ABEE12447089F008E9227 /* Bonzei */ = {
 			isa = PBXGroup;
 			children = (
+				F17D199224AA0BBE00633BBC /* Learn */,
+				F17D199124AA0B5300633BBC /* AlarmClock */,
 				F147771D247D070300D12C60 /* Fonts */,
 				F142BDE224704CBF00B5857C /* Extensions */,
 				F1AB936C2465EFE1008FAA1D /* Constants */,
-				F15C1AB82461731800F47CCC /* AlarmScheduler */,
-				F15590F7245EE3F400928589 /* SoundFiles */,
-				F1421C242454B6BF003D226A /* Controls */,
-				F11E3F1D244EFFE400CF6B4A /* TableDataSources */,
-				F11E3F1C244EFEF400CF6B4A /* Controllers */,
-				F15526C2244A01E900741E80 /* Models */,
 				F17ABEE22447089F008E9227 /* AppDelegate.swift */,
 				F17ABEE42447089F008E9227 /* SceneDelegate.swift */,
 				F17ABEE82447089F008E9227 /* SecondViewController.swift */,
@@ -431,6 +428,43 @@
 				F17ABF00244708A2008E9227 /* Info.plist */,
 			);
 			path = BonzeiTests;
+			sourceTree = "<group>";
+		};
+		F17D199124AA0B5300633BBC /* AlarmClock */ = {
+			isa = PBXGroup;
+			children = (
+				F1421C242454B6BF003D226A /* Controls */,
+				F15590F7245EE3F400928589 /* SoundFiles */,
+				F11E3F1D244EFFE400CF6B4A /* TableDataSources */,
+				F11E3F1C244EFEF400CF6B4A /* ViewControllers */,
+				F15526C2244A01E900741E80 /* Models */,
+				F15C1AB82461731800F47CCC /* AlarmScheduler */,
+			);
+			path = AlarmClock;
+			sourceTree = "<group>";
+		};
+		F17D199224AA0BBE00633BBC /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				F17D199424AA0E8D00633BBC /* Models */,
+				F17D199324AA0E7800633BBC /* ViewControllers */,
+			);
+			path = Learn;
+			sourceTree = "<group>";
+		};
+		F17D199324AA0E7800633BBC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F17D199524AA0EE200633BBC /* ArticlesCollectionViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F17D199424AA0E8D00633BBC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F195A8E524850ED6009D54A3 /* TimePicker */ = {
@@ -658,6 +692,7 @@
 				F195A8ED24850F81009D54A3 /* WraparoundPickerView.swift in Sources */,
 				F1FF6CE72469B26C00B07237 /* AlarmPersistenceService.swift in Sources */,
 				F17C609E24A38DA80076F49D /* TimePicker.swift in Sources */,
+				F17D199624AA0EE200633BBC /* ArticlesCollectionViewController.swift in Sources */,
 				F15C1ABA2461734A00F47CCC /* AlarmScheduler.swift in Sources */,
 				F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */,
 				F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */,
