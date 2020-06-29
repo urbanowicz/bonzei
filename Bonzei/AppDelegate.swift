@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import os.log
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -18,9 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // 1. Get notified when iOS delivers notifications you have scheduled
+        // Get notified when iOS delivers notifications you have scheduled
         UNUserNotificationCenter.current().delegate = self
         
+        // Initialize Firebase
+        FirebaseApp.configure()
         
         return true
     }
