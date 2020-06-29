@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>60819642277-vhbjrth22b91supd9gje27fcf6ug817g.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.60819642277-vhbjrth22b91supd9gje27fcf6ug817g</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAlu0rhJQhI3UveRzHrE2Jf49GEPI8Hka4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>60819642277</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>app.bonzei.Bonzei</string>
+	<key>PROJECT_ID</key>
+	<string>bonzei-test</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bonzei-test.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:60819642277:ios:ec005c9313880fbcf47a4c</string>
+	<key>DATABASE_URL</key>
+	<string>https://bonzei-test.firebaseio.com</string>
+</dict>
+</plist>

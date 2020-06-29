@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D78953AEBB5614006F251A1 /* Pods_BonzeiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5452D96417A6D570681ABA72 /* Pods_BonzeiTests.framework */; };
+		D08169CFEBC8B3E70EBDF4AC /* Pods_Bonzei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6D397B511E4530007BCA40 /* Pods_Bonzei.framework */; };
 		F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */; };
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
 		F11ED05424A4EE12002CA419 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11ED05324A4EE12002CA419 /* TimePickerView.swift */; };
+		F121851C24A8D8B6000BE34B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */; };
 		F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127AC542468265B007F9734 /* HeartBeatService.swift */; };
 		F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1329B172460912300E7F7A2 /* OvalButton.swift */; };
 		F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1421C252454B710003D226A /* DayOfWeekPicker.swift */; };
@@ -90,9 +93,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5452D96417A6D570681ABA72 /* Pods_BonzeiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BonzeiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		689D5F7ADEFD7E2AD72E5B08 /* Pods-Bonzei.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bonzei.release.xcconfig"; path = "Target Support Files/Pods-Bonzei/Pods-Bonzei.release.xcconfig"; sourceTree = "<group>"; };
+		7EB6FEA5EB293EC7B8EC891A /* Pods-BonzeiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BonzeiTests.debug.xcconfig"; path = "Target Support Files/Pods-BonzeiTests/Pods-BonzeiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8F6D397B511E4530007BCA40 /* Pods_Bonzei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bonzei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		950F93ED70126B3B2F742D3D /* Pods-BonzeiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BonzeiTests.release.xcconfig"; path = "Target Support Files/Pods-BonzeiTests/Pods-BonzeiTests.release.xcconfig"; sourceTree = "<group>"; };
 		F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonzeiClockFace.swift; sourceTree = "<group>"; };
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
 		F11ED05324A4EE12002CA419 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
+		F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F127AC542468265B007F9734 /* HeartBeatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatService.swift; sourceTree = "<group>"; };
 		F1329B172460912300E7F7A2 /* OvalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButton.swift; sourceTree = "<group>"; };
 		F1421C252454B710003D226A /* DayOfWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekPicker.swift; sourceTree = "<group>"; };
@@ -161,6 +170,7 @@
 		F1F83E1D2472F7490072630A /* RootViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewViewController.swift; sourceTree = "<group>"; };
 		F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSchedulerDelegate.swift; sourceTree = "<group>"; };
 		F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPersistenceService.swift; sourceTree = "<group>"; };
+		F53AE58E8AB0B9A106B38E3A /* Pods-Bonzei.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bonzei.debug.xcconfig"; path = "Target Support Files/Pods-Bonzei/Pods-Bonzei.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D08169CFEBC8B3E70EBDF4AC /* Pods_Bonzei.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,12 +186,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D78953AEBB5614006F251A1 /* Pods_BonzeiTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		383392AD75E96038E294ACCD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F53AE58E8AB0B9A106B38E3A /* Pods-Bonzei.debug.xcconfig */,
+				689D5F7ADEFD7E2AD72E5B08 /* Pods-Bonzei.release.xcconfig */,
+				7EB6FEA5EB293EC7B8EC891A /* Pods-BonzeiTests.debug.xcconfig */,
+				950F93ED70126B3B2F742D3D /* Pods-BonzeiTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		906BC5DD63FF49398FB79CDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8F6D397B511E4530007BCA40 /* Pods_Bonzei.framework */,
+				5452D96417A6D570681ABA72 /* Pods_BonzeiTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F10B5CA4248558730042D915 /* BonzeiClock */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +385,8 @@
 				F17ABEE12447089F008E9227 /* Bonzei */,
 				F17ABEFD244708A2008E9227 /* BonzeiTests */,
 				F17ABEE02447089F008E9227 /* Products */,
+				383392AD75E96038E294ACCD /* Pods */,
+				906BC5DD63FF49398FB79CDB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -382,6 +417,7 @@
 				F17ABEEA2447089F008E9227 /* Main.storyboard */,
 				F17ABEF0244708A2008E9227 /* Assets.xcassets */,
 				F17ABEF2244708A2008E9227 /* LaunchScreen.storyboard */,
+				F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */,
 				F17ABEF5244708A2008E9227 /* Info.plist */,
 				F17ABEED2447089F008E9227 /* Bonzei.xcdatamodeld */,
 			);
@@ -433,9 +469,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F17ABF03244708A2008E9227 /* Build configuration list for PBXNativeTarget "Bonzei" */;
 			buildPhases = (
+				5B48A380C2FBA4DB7CFB3540 /* [CP] Check Pods Manifest.lock */,
 				F17ABEDB2447089F008E9227 /* Sources */,
 				F17ABEDC2447089F008E9227 /* Frameworks */,
 				F17ABEDD2447089F008E9227 /* Resources */,
+				902C51D51FB9351020582FDE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -450,6 +488,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F17ABF06244708A2008E9227 /* Build configuration list for PBXNativeTarget "BonzeiTests" */;
 			buildPhases = (
+				F6A6AE446913E41565BF8D03 /* [CP] Check Pods Manifest.lock */,
 				F17ABEF6244708A2008E9227 /* Sources */,
 				F17ABEF7244708A2008E9227 /* Frameworks */,
 				F17ABEF8244708A2008E9227 /* Resources */,
@@ -520,6 +559,7 @@
 				F1477725247D1FE100D12C60 /* Muli-Regular.ttf in Resources */,
 				F147773A247D2B0000D12C60 /* Muli-BoldItalic.ttf in Resources */,
 				F1477741247D2B0000D12C60 /* Muli-Italic.ttf in Resources */,
+				F121851C24A8D8B6000BE34B /* GoogleService-Info.plist in Resources */,
 				F17ABEEC2447089F008E9227 /* Main.storyboard in Resources */,
 				F147773F247D2B0000D12C60 /* Muli-Black.ttf in Resources */,
 				F15B681924A6724400A34C3D /* Ambient Waves.mp3 in Resources */,
@@ -545,6 +585,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B48A380C2FBA4DB7CFB3540 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bonzei-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		902C51D51FB9351020582FDE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bonzei/Pods-Bonzei-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bonzei/Pods-Bonzei-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bonzei/Pods-Bonzei-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6A6AE446913E41565BF8D03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BonzeiTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F17ABEDB2447089F008E9227 /* Sources */ = {
@@ -750,10 +854,11 @@
 		};
 		F17ABF04244708A2008E9227 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F53AE58E8AB0B9A106B38E3A /* Pods-Bonzei.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -769,10 +874,11 @@
 		};
 		F17ABF05244708A2008E9227 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 689D5F7ADEFD7E2AD72E5B08 /* Pods-Bonzei.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -788,6 +894,7 @@
 		};
 		F17ABF07244708A2008E9227 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EB6FEA5EB293EC7B8EC891A /* Pods-BonzeiTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -810,6 +917,7 @@
 		};
 		F17ABF08244708A2008E9227 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 950F93ED70126B3B2F742D3D /* Pods-BonzeiTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
