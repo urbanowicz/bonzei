@@ -77,6 +77,8 @@
 		F1BC60D3247FE7AF00BB6CB0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */; };
 		F1C76B6C247EBDBF0099F1F1 /* BonzeiClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */; };
 		F1C76B6E247ED7CD0099F1F1 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */; };
+		F1CA2D4D24AB549100524860 /* ArticlesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA2D4C24AB549100524860 /* ArticlesProvider.swift */; };
+		F1CA2D4F24AB55B100524860 /* TestArticleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA2D4E24AB55B100524860 /* TestArticleProvider.swift */; };
 		F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D298FE247D74A500D25238 /* RoundedButton.swift */; };
 		F1D2D695248E27C1000DE8D2 /* MovingGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */; };
 		F1E0FFE224A3757700F75FDF /* TimePicker_24.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E0FFE124A3757700F75FDF /* TimePicker_24.swift */; };
@@ -170,6 +172,8 @@
 		F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClock.swift; sourceTree = "<group>"; };
 		F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		F1CA2D4C24AB549100524860 /* ArticlesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesProvider.swift; sourceTree = "<group>"; };
+		F1CA2D4E24AB55B100524860 /* TestArticleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestArticleProvider.swift; sourceTree = "<group>"; };
 		F1D298FE247D74A500D25238 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingGradientView.swift; sourceTree = "<group>"; };
 		F1E0FFE124A3757700F75FDF /* TimePicker_24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker_24.swift; sourceTree = "<group>"; };
@@ -450,6 +454,7 @@
 		F17D199224AA0BBE00633BBC /* Learn */ = {
 			isa = PBXGroup;
 			children = (
+				F1CA2D4B24AB545600524860 /* ArticlesProvider */,
 				F17D199424AA0E8D00633BBC /* Models */,
 				F17D199324AA0E7800633BBC /* ViewControllers */,
 			);
@@ -491,6 +496,15 @@
 				F1AB936D2465EFFD008FAA1D /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		F1CA2D4B24AB545600524860 /* ArticlesProvider */ = {
+			isa = PBXGroup;
+			children = (
+				F1CA2D4C24AB549100524860 /* ArticlesProvider.swift */,
+				F1CA2D4E24AB55B100524860 /* TestArticleProvider.swift */,
+			);
+			path = ArticlesProvider;
 			sourceTree = "<group>";
 		};
 		F1D2D693248E2781000DE8D2 /* GradientView */ = {
@@ -727,8 +741,10 @@
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,
 				F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */,
 				F1F83E1E2472F7490072630A /* RootViewViewController.swift in Sources */,
+				F1CA2D4D24AB549100524860 /* ArticlesProvider.swift in Sources */,
 				F195A8EF24850F81009D54A3 /* PickerViewDelegate.swift in Sources */,
 				F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */,
+				F1CA2D4F24AB55B100524860 /* TestArticleProvider.swift in Sources */,
 				F142BDE424704CF200B5857C /* DateExtension.swift in Sources */,
 				F195A8EE24850F81009D54A3 /* TimePicker_AM_PM.swift in Sources */,
 				F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */,

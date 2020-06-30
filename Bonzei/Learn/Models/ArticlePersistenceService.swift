@@ -11,7 +11,7 @@ import CoreData
 import UIKit
 import os.log
 
-/// 
+/// Provides CRUD operations for articles stored in local db
 class ArticlePersistenceService {
     
     static let sharedInstance = ArticlePersistenceService()
@@ -46,7 +46,7 @@ class ArticlePersistenceService {
     /// Reads an article from the local db
     /// - Parameter articleId: unique id of the article to be read from the local db
     /// - Returns: Article given by `articleId` or `nil` if no such article exists
-    public func read(articleId: String) -> Article? {
+    public func read(articleId: Int64) -> Article? {
         guard let managedArticle = fetchManagedArticle(articleId: articleId) else { return nil }
         
         return convertToArticle(managedArticle: managedArticle)
@@ -80,7 +80,7 @@ class ArticlePersistenceService {
     
     /// Removes an article from the local db
     /// - Parameter articleId: id of the article that you wish to dlelete from the local db.
-    public func delete(articleId: String) {
+    public func delete(articleId: Int64) {
         guard let managedArticle = fetchManagedArticle(articleId: articleId) else { return }
         
         viewContext.delete(managedArticle)
@@ -97,7 +97,7 @@ class ArticlePersistenceService {
         }
     }
     
-    private func fetchManagedArticle(articleId id: String) -> ManagedArticle? {
+    private func fetchManagedArticle(articleId id: Int64) -> ManagedArticle? {
         let fetchRequest = NSFetchRequest<ManagedArticle>(entityName: articleEntityName)
         fetchRequest.returnsObjectsAsFaults = false
         fetchRequest.predicate = NSPredicate(format: "id = %@", id)
@@ -132,7 +132,7 @@ class ArticlePersistenceService {
                               subtitle: managedArticle.subtitle!,
                               text: managedArticle.text!,
                               creationDate: managedArticle.creationDate!,
-                              id: managedArticle.id!)
+                              id: managedArticle.id)
         return article
     }
 
