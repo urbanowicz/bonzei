@@ -18,8 +18,11 @@ class ArticlesCollectionViewController: UIViewController {
         // Do any additional setup after loading the view.
         articlesProvider.syncWithBackend()
         print()
-        print("Articles:")
+        print("ArticlesProvider:")
         articlesProvider.getAll()?.forEach() { print($0.title) }
+        print()
+        print("ArticlesPersistenceService:")
+        ArticlePersistenceService.sharedInstance.readAll()?.forEach() { print($0.title) }
     }
 
 }

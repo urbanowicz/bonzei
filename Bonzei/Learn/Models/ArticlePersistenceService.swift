@@ -88,6 +88,13 @@ class ArticlePersistenceService {
         commit()
     }
     
+    public func deleteAll() {
+        let managedArticles = fetchAllManagedArticles()
+        managedArticles?.forEach() { viewContext.delete($0) }
+        
+        commit()
+    }
+    
     // MARK: -Private API
     
     private func commit() {
