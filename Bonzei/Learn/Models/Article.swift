@@ -24,14 +24,15 @@ struct Article {
     var creationDate: Date
     
     /// Unique ID of the article
-    var id: Int64
+    var id: String
     
     /// - Returns: a dictionary representation of this article
     var dictionary: [String: Any] {
       return [
         "title": title,
         "subtitle": subtitle,
-        "text": text
+        "text": text,
+        "creationDate": creationDate
       ]
     }
 }
@@ -43,8 +44,8 @@ extension Article {
             let subtitle = dictionary["subtitle"] as? String,
             let text = dictionary["text"] as? String,
             let creationDate = dictionary["creationDate"] as? Date,
-            let id = dictionary["id"] as? Int64 else { return nil }
+            let id = dictionary["id"] as? String else { return nil }
 
-        self.init(title: title, subtitle: subtitle, text: text, creationDate: creationDate, id:id)
+        self.init(title: title, subtitle: subtitle, text: text, creationDate: creationDate, id: id)
     }
 }

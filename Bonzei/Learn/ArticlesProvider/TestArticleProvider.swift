@@ -10,13 +10,21 @@ import Foundation
 
 class TestArticlesProvider: ArticlesProvider {
     
-    private let backendArticles: [Article] = [
-        Article(
-            title: "Cold Bath",
-            subtitle: "What is it and why you really need one",
-            text: "This article explains what a cold bath is and why you really need one.",
-            creationDate: Date(),
-            id: 1)]
+    private var backendArticles: [Article] = [Article]()
+    
+    init() {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        backendArticles = [
+            Article(
+                title: "Cold Bath",
+                subtitle: "What is it and why you really need one",
+                text: "This article explains what a cold bath is and why you really need one.",
+                creationDate: df.date(from: "2020-06-30 21:28:00")!,
+                id: "1")
+        ]
+    }
     
     public func getAll() -> [Article]? {
         return ArticlePersistenceService.sharedInstance.readAll()
@@ -30,8 +38,8 @@ class TestArticlesProvider: ArticlesProvider {
         if localArticles == nil {
             newArticles = fetchAllBackendArticles()
         } else {
-            localArticles!.sort() { $0.id > $1.id }
-            newArticles = fetchBackendArticles(newerThan: localArticles!.last!.id)
+            localArticles!.sort() { $0.creationDate > $1.creationDate }
+            newArticles = fetchBackendArticles(newerThan: localArticles!.last!.creationDate)
         }
         
         newArticles?.forEach() { ArticlePersistenceService.sharedInstance.create(article: $0) }
@@ -41,7 +49,7 @@ class TestArticlesProvider: ArticlesProvider {
         return backendArticles
     }
     
-    private func fetchBackendArticles(newerThan articleId: Int64) -> [Article] {
-        return backendArticles.filter() {$0.id > articleId }
+    private func fetchBackendArticles(newerThan creationDate: Date) -> [Article] {
+        return backendArticles.filter() {$0.creationDate > creationDate }
     }
 }
