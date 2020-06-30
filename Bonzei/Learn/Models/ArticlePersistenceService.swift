@@ -56,6 +56,7 @@ class ArticlePersistenceService {
     /// - Returns: all articles stored in the local db or `nil` if the local db is empty.
     public func readAll() -> [Article]? {
         guard let managedArticles = fetchAllManagedArticles() else { return nil }
+        guard managedArticles.count > 0 else { return nil }
         
         let articles: [Article] = managedArticles.map() { convertToArticle(managedArticle: $0) }
         

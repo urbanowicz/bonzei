@@ -85,9 +85,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         // In such a case we must delete alarms that reference nonexisting melodies
         let alarmsWithMissingMelodyFiles = scheduledAlarms.filter( { alarm in !melodies.contains(alarm.melodyName) })
         alarmsWithMissingMelodyFiles.forEach({ alarm in self.unscheduleAlarm(withId: alarm.id) })
-        
-        dump()
-        dumpNotifications()
+
     }
     
     //MARK: - Public API

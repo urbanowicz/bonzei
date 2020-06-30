@@ -9,11 +9,17 @@
 import UIKit
 
 class ArticlesCollectionViewController: UIViewController {
+    
+    private var articlesProvider = TestArticlesProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        articlesProvider.syncWithBackend()
+        print()
+        print("Articles:")
+        articlesProvider.getAll()?.forEach() { print($0.title) }
     }
 
 }
