@@ -22,6 +22,33 @@ class FirebaseArticlesProvider: ArticlesProvider {
         
     }
     
+    // MARK:- Public API
+    
+    public func syncWithBackend(completionHandler: @escaping ()->Void) {
+        
+        // This is a naive implementation that always fetches all documents
+        let localArticlesDb = ArticlePersistenceService.sharedInstance
+        
+        localArticlesDb.deleteAll()
+        
+        firestore
+            .collection("articles")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    os_log("Failed to get documents from Firestore db: %{public}s", log: self.log, type: .error, err.localizedDescription)
+                } else {
+                    for document in querySnapshot!.documents {
+                        guard let article = self.convertToArticle(document: document) else { continue }
+                        
+                        localArticlesDb.create(article: article)
+                    }
+                }
+                completionHandler()
+        }
+    }
+    
+    // MARK:- Private API
+    
     func getAll() -> [Article]? {
         let timeStamp = date(from: "2020-06-01 00:00:00")
         

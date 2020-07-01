@@ -30,7 +30,7 @@ class TestArticlesProvider: ArticlesProvider {
         return ArticlePersistenceService.sharedInstance.readAll()
     }
     
-    public func syncWithBackend() {
+    public func syncWithBackend(completionHandler: @escaping ()->Void) {
         var localArticles = ArticlePersistenceService.sharedInstance.readAll()
         
         var newArticles: [Article]?
