@@ -14,7 +14,11 @@ class FirebaseArticlesProvider: ArticlesProvider {
     
     static let sharedInstance = FirebaseArticlesProvider()
     
+    /// Firebase firestore
     private let firestore = Firestore.firestore()
+    
+    /// Firebase cloud storage
+    private let storage = Storage.storage()
     
     private var log = OSLog(subsystem: "Learn", category: "FireBaseArticlesProvider")
     
@@ -39,11 +43,23 @@ class FirebaseArticlesProvider: ArticlesProvider {
                 } else {
                     for document in querySnapshot!.documents {
                         guard let article = self.convertToArticle(document: document) else { continue }
-                        
                         localArticlesDb.create(article: article)
                     }
                 }
                 completionHandler()
+        }
+    }
+    
+    public func getUIImage(forURL url:String, completionHandler: @escaping (UIImage?) -> Void ) {
+        let gsReference = self.storage.reference(forURL: url)
+        
+        gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                os_log("Failed to get data from firebase storage: %{public}s", log: self.log, type: .error, error.localizedDescription)
+                completionHandler(nil)
+            } else {
+                completionHandler(UIImage(data: data!))
+            }
         }
     }
     
