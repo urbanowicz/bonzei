@@ -7,6 +7,7 @@ target 'Bonzei' do
 
   # Pods for Bonzei
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
 
   target 'BonzeiTests' do
     inherit! :search_paths
