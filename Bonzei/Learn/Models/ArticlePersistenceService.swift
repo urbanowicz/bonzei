@@ -28,7 +28,7 @@ class ArticlePersistenceService {
         viewContext = appDelegate.persistentContainer.viewContext
     }
     
-    // MARK: -Public API
+    // MARK: - Public API
     
     /// Stores an article in the local db
     /// - Parameter article: an article to be saved in the local db
@@ -39,6 +39,7 @@ class ArticlePersistenceService {
         managedArticle.subtitle = article.subtitle
         managedArticle.creationDate = article.creationDate
         managedArticle.text = article.text
+        managedArticle.coverImageURL = article.coverImageURL
         
         commit()
     }
@@ -75,6 +76,7 @@ class ArticlePersistenceService {
         managedArticle.subtitle = article.subtitle
         managedArticle.text = article.text
         managedArticle.creationDate = article.creationDate
+        managedArticle.coverImageURL = article.coverImageURL
         
         commit()
     }
@@ -95,7 +97,7 @@ class ArticlePersistenceService {
         commit()
     }
     
-    // MARK: -Private API
+    // MARK: - Private API
     
     private func commit() {
         do {
@@ -140,7 +142,8 @@ class ArticlePersistenceService {
                               subtitle: managedArticle.subtitle!,
                               text: managedArticle.text!,
                               creationDate: managedArticle.creationDate!,
-                              id: managedArticle.id!)
+                              id: managedArticle.id!,
+                              coverImageURL: managedArticle.coverImageURL!)
         return article
     }
 
