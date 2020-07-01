@@ -23,7 +23,7 @@ class FirebaseArticlesProvider: ArticlesProvider {
     }
     
     func getAll() -> [Article]? {
-        let timeStamp = Date()
+        let timeStamp = date(from: "2020-06-01 00:00:00")
         
         firestore
             .collection("articles")
@@ -49,5 +49,11 @@ class FirebaseArticlesProvider: ArticlesProvider {
         dictionary["id"] = document.documentID
         
         return Article(dictionary: dictionary)
+    }
+    
+    private func date(from: String) -> Date {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return df.date(from: from)!
     }
 }
