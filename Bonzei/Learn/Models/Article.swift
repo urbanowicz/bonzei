@@ -29,10 +29,11 @@ struct Article {
     /// - Returns: a dictionary representation of this article
     var dictionary: [String: Any] {
       return [
+        "id": id,
+        "creationDate": creationDate,
         "title": title,
         "subtitle": subtitle,
-        "text": text,
-        "creationDate": creationDate
+        "text": text
       ]
     }
 }
@@ -47,5 +48,15 @@ extension Article {
             let id = dictionary["id"] as? String else { return nil }
 
         self.init(title: title, subtitle: subtitle, text: text, creationDate: creationDate, id: id)
+    }
+    
+    func string() -> String {
+        return """
+        id: \(id)
+        creationDate: \(creationDate)
+        title: \(title)
+        subtitle: \(subtitle)
+        text: \(text)
+        """
     }
 }

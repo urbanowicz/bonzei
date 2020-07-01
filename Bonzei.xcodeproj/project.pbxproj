@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D78953AEBB5614006F251A1 /* Pods_BonzeiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5452D96417A6D570681ABA72 /* Pods_BonzeiTests.framework */; };
 		D08169CFEBC8B3E70EBDF4AC /* Pods_Bonzei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6D397B511E4530007BCA40 /* Pods_Bonzei.framework */; };
+		F106311F24AC962800CBB9C6 /* FirebaseArticlesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */; };
 		F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */; };
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
 		F11ED05424A4EE12002CA419 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11ED05324A4EE12002CA419 /* TimePickerView.swift */; };
@@ -103,6 +104,7 @@
 		7EB6FEA5EB293EC7B8EC891A /* Pods-BonzeiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BonzeiTests.debug.xcconfig"; path = "Target Support Files/Pods-BonzeiTests/Pods-BonzeiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F6D397B511E4530007BCA40 /* Pods_Bonzei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bonzei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		950F93ED70126B3B2F742D3D /* Pods-BonzeiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BonzeiTests.release.xcconfig"; path = "Target Support Files/Pods-BonzeiTests/Pods-BonzeiTests.release.xcconfig"; sourceTree = "<group>"; };
+		F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseArticlesProvider.swift; sourceTree = "<group>"; };
 		F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonzeiClockFace.swift; sourceTree = "<group>"; };
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
 		F11ED05324A4EE12002CA419 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 			children = (
 				F1CA2D4C24AB549100524860 /* ArticlesProvider.swift */,
 				F1CA2D4E24AB55B100524860 /* TestArticleProvider.swift */,
+				F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */,
 			);
 			path = ArticlesProvider;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				F1F83E222472FD0C0072630A /* AlarmSchedulerDelegate.swift in Sources */,
 				F15590FD245EF27300928589 /* Melody.swift in Sources */,
 				F16770E4248C0D3200797F0A /* BonzeiClockV2.swift in Sources */,
+				F106311F24AC962800CBB9C6 /* FirebaseArticlesProvider.swift in Sources */,
 				F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */,
 				F14EF8AC24766537006A40D8 /* NotificationExtension.swift in Sources */,
 				F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */,

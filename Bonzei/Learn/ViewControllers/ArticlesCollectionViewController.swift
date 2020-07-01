@@ -10,19 +10,21 @@ import UIKit
 
 class ArticlesCollectionViewController: UIViewController {
     
-    private var articlesProvider = TestArticlesProvider()
+    private var articlesProvider = FirebaseArticlesProvider.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        articlesProvider.syncWithBackend()
-        print()
-        print("ArticlesProvider:")
-        articlesProvider.getAll()?.forEach() { print($0.title) }
-        print()
-        print("ArticlesPersistenceService:")
-        ArticlePersistenceService.sharedInstance.readAll()?.forEach() { print($0.title) }
+        print("Calling firestore:")
+        articlesProvider.getAll()
+//        articlesProvider.syncWithBackend()
+//        print()
+//        print("ArticlesProvider:")
+//        articlesProvider.getAll()?.forEach() { print($0.title) }
+//        print()
+//        print("ArticlesPersistenceService:")
+//        ArticlePersistenceService.sharedInstance.readAll()?.forEach() { print($0.title) }
     }
 
 }
