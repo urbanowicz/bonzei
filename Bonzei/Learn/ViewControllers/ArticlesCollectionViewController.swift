@@ -23,6 +23,10 @@ class ArticlesCollectionViewController: UIViewController {
             articles?.forEach() {
                 print()
                 print($0.string())
+                self.articlesProvider.getUIImage(forURL: $0.coverImageURL) {
+                    coverImage in
+                    print("Downloaded image")
+                }
             }
         }
     }
