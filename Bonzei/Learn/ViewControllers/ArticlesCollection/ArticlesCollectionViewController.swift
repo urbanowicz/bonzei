@@ -21,12 +21,13 @@ class ArticlesCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
         articlesProvider.syncWithBackend() {
-            guard let articles = ArticlePersistenceService.sharedInstance.readAll() else { return }
+            guard let allArticles = ArticlePersistenceService.sharedInstance.readAll() else { return }
             
-            self.articles = articles
+            self.articles = allArticles
+            self.articles.sort() { $0.creationDate > $1.creationDate }
             
-            for i in 0..<articles.count {
-                let coverImage = self.articlesProvider.getUIImage(forURL: articles[i].coverImageURL) {
+            for i in 0..<self.articles.count {
+                let coverImage = self.articlesProvider.getUIImage(forURL: self.articles[i].coverImageURL) {
                     coverImage in
                     
                     self.articles[i].coverImage = coverImage
