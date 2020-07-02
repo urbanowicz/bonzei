@@ -806,6 +806,43 @@
             </objects>
             <point key="canvasLocation" x="765.60000000000002" y="750.73891625615772"/>
         </scene>
+        <!--Full Article View Controller-->
+        <scene sceneID="i8v-jR-9x2">
+            <objects>
+                <viewController id="rPh-zk-nne" customClass="FullArticleViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rLT-IN-HyR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4X-Zv-Yhe">
+                                <rect key="frame" x="24" y="68" width="327" height="710"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVC-ag-j4c">
+                                <rect key="frame" x="30" y="21" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="N4X-Zv-Yhe" firstAttribute="top" secondItem="O33-MZ-Ael" secondAttribute="top" constant="24" id="5WF-KZ-QJ6"/>
+                            <constraint firstItem="N4X-Zv-Yhe" firstAttribute="bottom" secondItem="O33-MZ-Ael" secondAttribute="bottom" id="HDE-wA-Omd"/>
+                            <constraint firstItem="O33-MZ-Ael" firstAttribute="trailing" secondItem="N4X-Zv-Yhe" secondAttribute="trailing" constant="24" id="XnC-hW-IE3"/>
+                            <constraint firstItem="RVC-ag-j4c" firstAttribute="top" secondItem="rLT-IN-HyR" secondAttribute="top" constant="21" id="ffb-Zy-Hlj"/>
+                            <constraint firstItem="RVC-ag-j4c" firstAttribute="leading" secondItem="O33-MZ-Ael" secondAttribute="leading" constant="30" id="hK9-u1-0l1"/>
+                            <constraint firstItem="N4X-Zv-Yhe" firstAttribute="leading" secondItem="O33-MZ-Ael" secondAttribute="leading" constant="24" id="wmz-x6-d0p"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O33-MZ-Ael"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4MB-qy-cNP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1560.8" y="750.73891625615772"/>
+        </scene>
         <!--Root View View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>

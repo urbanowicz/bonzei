@@ -12,6 +12,7 @@
 		F106311F24AC962800CBB9C6 /* FirebaseArticlesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */; };
 		F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */; };
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
+		F11BFFE824AE3C8E003A4D45 /* FullArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */; };
 		F11ED05424A4EE12002CA419 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11ED05324A4EE12002CA419 /* TimePickerView.swift */; };
 		F121851C24A8D8B6000BE34B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */; };
 		F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127AC542468265B007F9734 /* HeartBeatService.swift */; };
@@ -107,6 +108,7 @@
 		F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseArticlesProvider.swift; sourceTree = "<group>"; };
 		F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonzeiClockFace.swift; sourceTree = "<group>"; };
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
+		F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullArticleViewController.swift; sourceTree = "<group>"; };
 		F11ED05324A4EE12002CA419 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F127AC542468265B007F9734 /* HeartBeatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatService.swift; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				F1BAE26624ADF5A400C71199 /* ArticlesCollection */,
+				F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				F16770E0248C0C4E00797F0A /* ClockFaceAndDots.swift in Sources */,
 				F1F83E222472FD0C0072630A /* AlarmSchedulerDelegate.swift in Sources */,
 				F15590FD245EF27300928589 /* Melody.swift in Sources */,
+				F11BFFE824AE3C8E003A4D45 /* FullArticleViewController.swift in Sources */,
 				F16770E4248C0D3200797F0A /* BonzeiClockV2.swift in Sources */,
 				F106311F24AC962800CBB9C6 /* FirebaseArticlesProvider.swift in Sources */,
 				F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */,
