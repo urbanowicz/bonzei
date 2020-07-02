@@ -26,5 +26,9 @@ class FullArticleViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "UnwindToArticlesCollection", sender: self)
+    }
 
 }

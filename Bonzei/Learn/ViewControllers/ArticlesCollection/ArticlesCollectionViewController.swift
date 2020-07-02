@@ -71,6 +71,15 @@ extension ArticlesCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let article = articles[indexPath.row]
         
+        performSegue(withIdentifier: "FullArticle", sender: self)
+        
+    }
+}
+
+// MARK: - Navigation
+extension ArticlesCollectionViewController {
+    @IBAction func unwindToArticlesCollection(_ unwindSegue: UIStoryboardSegue) {
+        //nothing to do here.
     }
 }
 

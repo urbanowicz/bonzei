@@ -801,6 +801,9 @@
                         </cells>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Learn" image="book.fill" catalog="system" id="cPa-gy-q4n"/>
+                    <connections>
+                        <segue destination="rPh-zk-nne" kind="presentation" identifier="FullArticle" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="vfl-Sf-AHA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -815,7 +818,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4X-Zv-Yhe">
-                                <rect key="frame" x="24" y="68" width="327" height="710"/>
+                                <rect key="frame" x="24" y="94" width="327" height="684"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -823,23 +826,30 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVC-ag-j4c">
-                                <rect key="frame" x="30" y="21" width="34" height="30"/>
+                                <rect key="frame" x="30" y="40" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="rPh-zk-nne" eventType="touchUpInside" id="OxH-ks-wug"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="N4X-Zv-Yhe" firstAttribute="top" secondItem="O33-MZ-Ael" secondAttribute="top" constant="24" id="5WF-KZ-QJ6"/>
+                            <constraint firstItem="N4X-Zv-Yhe" firstAttribute="top" secondItem="O33-MZ-Ael" secondAttribute="top" constant="50" id="5WF-KZ-QJ6"/>
                             <constraint firstItem="N4X-Zv-Yhe" firstAttribute="bottom" secondItem="O33-MZ-Ael" secondAttribute="bottom" id="HDE-wA-Omd"/>
                             <constraint firstItem="O33-MZ-Ael" firstAttribute="trailing" secondItem="N4X-Zv-Yhe" secondAttribute="trailing" constant="24" id="XnC-hW-IE3"/>
-                            <constraint firstItem="RVC-ag-j4c" firstAttribute="top" secondItem="rLT-IN-HyR" secondAttribute="top" constant="21" id="ffb-Zy-Hlj"/>
+                            <constraint firstItem="RVC-ag-j4c" firstAttribute="top" secondItem="rLT-IN-HyR" secondAttribute="top" constant="40" id="ffb-Zy-Hlj"/>
                             <constraint firstItem="RVC-ag-j4c" firstAttribute="leading" secondItem="O33-MZ-Ael" secondAttribute="leading" constant="30" id="hK9-u1-0l1"/>
                             <constraint firstItem="N4X-Zv-Yhe" firstAttribute="leading" secondItem="O33-MZ-Ael" secondAttribute="leading" constant="24" id="wmz-x6-d0p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O33-MZ-Ael"/>
                     </view>
+                    <connections>
+                        <segue destination="Rgo-h0-uDj" kind="unwind" identifier="UnwindToArticlesCollection" unwindAction="unwindToArticlesCollection:" id="FVA-Zi-rZr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4MB-qy-cNP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Rgo-h0-uDj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1560.8" y="750.73891625615772"/>
         </scene>
@@ -876,6 +886,6 @@
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6e3-ZK-DPt"/>
+        <segue reference="Qew-y1-UeD"/>
     </inferredMetricsTieBreakers>
 </document>
