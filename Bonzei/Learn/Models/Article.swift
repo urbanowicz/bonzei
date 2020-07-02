@@ -29,6 +29,8 @@ struct Article {
     /// Cover image  URL
     var coverImageURL: String
     
+    var coverImage: UIImage?
+    
     /// - Returns: a dictionary representation of this article
     var dictionary: [String: Any] {
       return [

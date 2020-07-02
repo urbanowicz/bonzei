@@ -25,13 +25,14 @@ class ArticlesCollectionViewController: UICollectionViewController {
             
             self.articles = articles
             
-            articles.forEach() {
-                print()
-                print($0.string())
-                self.articlesProvider.getUIImage(forURL: $0.coverImageURL) {
+            for i in 0..<articles.count {
+                let coverImage = self.articlesProvider.getUIImage(forURL: articles[i].coverImageURL) {
                     coverImage in
-                    print("Downloaded image")
+                    
+                    self.articles[i].coverImage = coverImage
+                    self.collectionView.reloadData()
                 }
+                self.articles[i].coverImage = coverImage
             }
             
             self.collectionView.reloadData()
@@ -59,8 +60,15 @@ extension ArticlesCollectionViewController {
                                                       for: indexPath) as! ArticleCoverCell
         let article = articles[indexPath.row]
         cell.titleLabel.text = article.title
-        cell.backgroundColor = UIColor.systemPink
+        cell.coverImage.image = article.coverImage
         
         return cell
     }
+}
+
+// MARK: - ArtileCoverCell
+class ArticleCoverCell: UICollectionViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var coverImage: UIImageView!
 }
