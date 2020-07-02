@@ -34,6 +34,8 @@ class ArticlesCollectionViewController: UICollectionViewController {
                     print("Downloaded image")
                 }
             }
+            
+            self.collectionView.reloadData()
         }
     }
 }
@@ -46,14 +48,18 @@ extension ArticlesCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return 5 //articles.count
+        
+        print("A")
+        return articles.count
     }
     
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("B")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! ArticleCoverCell
-        cell.titleLabel.text = "Bonjour"
+        let article = articles[indexPath.row]
+        cell.titleLabel.text = article.title
         cell.backgroundColor = UIColor.systemPink
         
         return cell
