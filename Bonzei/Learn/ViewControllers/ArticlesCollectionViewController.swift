@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticlesCollectionViewController: UIViewController {
+class ArticlesCollectionViewController: UICollectionViewController {
     
     private var articlesProvider = FirebaseArticlesProvider.sharedInstance
 
