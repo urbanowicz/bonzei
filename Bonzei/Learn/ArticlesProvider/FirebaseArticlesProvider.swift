@@ -46,7 +46,9 @@ class FirebaseArticlesProvider: ArticlesProvider {
                         localArticlesDb.create(article: article)
                     }
                 }
-                completionHandler()
+                DispatchQueue.main.async {
+                    completionHandler()
+                }
         }
     }
     
@@ -56,9 +58,13 @@ class FirebaseArticlesProvider: ArticlesProvider {
         gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
                 os_log("Failed to get data from firebase storage: %{public}s", log: self.log, type: .error, error.localizedDescription)
-                completionHandler(nil)
+                DispatchQueue.main.async {
+                    completionHandler(nil)
+                }
             } else {
-                completionHandler(UIImage(data: data!))
+                DispatchQueue.main.async {
+                    completionHandler(UIImage(data: data!))
+                }
             }
         }
     }
