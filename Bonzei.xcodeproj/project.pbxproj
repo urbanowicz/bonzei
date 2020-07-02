@@ -75,6 +75,7 @@
 		F1A608BD24713C00008A45EF /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F1A608BE24716416008A45EF /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
 		F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB936D2465EFFD008FAA1D /* Constants.swift */; };
+		F1BAE26824ADF5F800C71199 /* ArticleCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAE26724ADF5F800C71199 /* ArticleCoverCell.swift */; };
 		F1BC60D3247FE7AF00BB6CB0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */; };
 		F1C76B6C247EBDBF0099F1F1 /* BonzeiClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */; };
 		F1C76B6E247ED7CD0099F1F1 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */; };
@@ -171,6 +172,7 @@
 		F195A8EA24850F81009D54A3 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
 		F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAlarmViewController.swift; sourceTree = "<group>"; };
 		F1AB936D2465EFFD008FAA1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F1BAE26724ADF5F800C71199 /* ArticleCoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCoverCell.swift; sourceTree = "<group>"; };
 		F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClock.swift; sourceTree = "<group>"; };
 		F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
@@ -466,7 +468,7 @@
 		F17D199324AA0E7800633BBC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F17D199524AA0EE200633BBC /* ArticlesCollectionViewController.swift */,
+				F1BAE26624ADF5A400C71199 /* ArticlesCollection */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -498,6 +500,15 @@
 				F1AB936D2465EFFD008FAA1D /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		F1BAE26624ADF5A400C71199 /* ArticlesCollection */ = {
+			isa = PBXGroup;
+			children = (
+				F17D199524AA0EE200633BBC /* ArticlesCollectionViewController.swift */,
+				F1BAE26724ADF5F800C71199 /* ArticleCoverCell.swift */,
+			);
+			path = ArticlesCollection;
 			sourceTree = "<group>";
 		};
 		F1CA2D4B24AB545600524860 /* ArticlesProvider */ = {
@@ -724,6 +735,7 @@
 				F1607DAE248AAE5300968586 /* TimerView.swift in Sources */,
 				F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */,
 				F1A26FA6247284A300A13B3C /* DismissAlarmViewController.swift in Sources */,
+				F1BAE26824ADF5F800C71199 /* ArticleCoverCell.swift in Sources */,
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F17D199824AA654D00633BBC /* Article.swift in Sources */,
 				F1C76B6E247ED7CD0099F1F1 /* DoubleExtension.swift in Sources */,
