@@ -49,13 +49,12 @@ extension ArticlesCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         
-        print("A")
         return articles.count
     }
     
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("B")
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! ArticleCoverCell
         let article = articles[indexPath.row]
