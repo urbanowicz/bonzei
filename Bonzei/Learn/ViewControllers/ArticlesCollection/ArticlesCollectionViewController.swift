@@ -20,7 +20,7 @@ class ArticlesCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         articlesProvider.syncWithBackend() {
             guard let allArticles = ArticlePersistenceService.sharedInstance.readAll() else { return }

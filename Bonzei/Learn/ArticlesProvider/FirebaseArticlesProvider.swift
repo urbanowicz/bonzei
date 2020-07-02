@@ -33,10 +33,16 @@ class FirebaseArticlesProvider: ArticlesProvider {
         // This is a naive implementation that always fetches all documents
         let localArticlesDb = ArticlePersistenceService.sharedInstance
         
-        localArticlesDb.deleteAll()
+        var timestamp = date(from: "2020-01-01 00:00:00") // all articles are newer than this
+        
+        if var localArticles = localArticlesDb.readAll() {
+            localArticles.sort() { $0.creationDate > $1.creationDate }
+            timestamp = localArticles.first!.creationDate
+        }
         
         firestore
             .collection("articles")
+            .whereField("creationDate", isGreaterThan: timestamp)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     os_log("Failed to get documents from Firestore db: %{public}s", log: self.log, type: .error, err.localizedDescription)
