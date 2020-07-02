@@ -52,7 +52,7 @@ class FirebaseArticlesProvider: ArticlesProvider {
         }
     }
     
-    public func getUIImage(forURL url:String, completionHandler: @escaping (UIImage?) -> Void ) {
+    public func getUIImage(forURL url:String, completionHandler: @escaping (UIImage?) -> Void ) -> UIImage {
         let gsReference = self.storage.reference(forURL: url)
         
         gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
@@ -67,6 +67,8 @@ class FirebaseArticlesProvider: ArticlesProvider {
                 }
             }
         }
+        
+        return UIImage(named: "default-article-cover")!
     }
     
     // MARK:- Private API

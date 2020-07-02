@@ -20,7 +20,6 @@ class ArticlesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("Calling firestore:")
         articlesProvider.syncWithBackend() {
             guard let articles = ArticlePersistenceService.sharedInstance.readAll() else { return }
             
