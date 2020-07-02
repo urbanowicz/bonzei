@@ -66,6 +66,14 @@ extension ArticlesCollectionViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+extension ArticlesCollectionViewController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let article = articles[indexPath.row]
+        
+    }
+}
+
 // MARK: - ArtileCoverCell
 class ArticleCoverCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
