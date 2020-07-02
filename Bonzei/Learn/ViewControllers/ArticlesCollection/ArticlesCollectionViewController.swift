@@ -14,6 +14,8 @@ class ArticlesCollectionViewController: UICollectionViewController {
     
     private var articles: [Article] = []
     
+    private var selectedArticle: Article?
+    
     private let reuseIdentifier = "ArticleCoverCell"
     
     override func viewDidLoad() {
@@ -69,7 +71,7 @@ extension ArticlesCollectionViewController {
 // MARK: - UICollectionViewDelegate
 extension ArticlesCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let article = articles[indexPath.row]
+        selectedArticle = articles[indexPath.row]
         
         performSegue(withIdentifier: "FullArticle", sender: self)
         
@@ -78,6 +80,15 @@ extension ArticlesCollectionViewController {
 
 // MARK: - Navigation
 extension ArticlesCollectionViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier! == "FullArticle" {
+            let fullArticleViewController = segue.destination as! FullArticleViewController
+            
+            fullArticleViewController.article = selectedArticle
+        }
+    }
+    
     @IBAction func unwindToArticlesCollection(_ unwindSegue: UIStoryboardSegue) {
         //nothing to do here.
     }

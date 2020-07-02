@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import WebKit
 
 class FullArticleViewController: UIViewController {
-
+    
+    var article: Article?
+    
+    @IBOutlet weak var webView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let article = self.article {
+            webView.loadHTMLString(article.text, baseURL: nil)
+        }
         // Do any additional setup after loading the view.
     }
     
