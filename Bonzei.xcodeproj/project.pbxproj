@@ -66,6 +66,7 @@
 		F17D199A24AA6F2E00633BBC /* ArticlePersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D199924AA6F2E00633BBC /* ArticlePersistenceService.swift */; };
 		F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */; };
 		F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */; };
+		F180E44324AF9592001F702E /* ArticlesCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */; };
 		F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */; };
 		F18A86EB247949C000C5597C /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F18A86EA247949C000C5597C /* alarm.mp3 */; };
 		F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E624850F81009D54A3 /* PickerVIew.swift */; };
@@ -166,6 +167,7 @@
 		F17D199924AA6F2E00633BBC /* ArticlePersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePersistenceService.swift; sourceTree = "<group>"; };
 		F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsTableDataSource.swift; sourceTree = "<group>"; };
 		F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesCollectionHeaderView.xib; sourceTree = "<group>"; };
+		F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCollectionHeaderView.swift; sourceTree = "<group>"; };
 		F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodiesTableDataSource.swift; sourceTree = "<group>"; };
 		F18A86EA247949C000C5597C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		F195A8E624850F81009D54A3 /* PickerVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerVIew.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */,
+				F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				F1F83E1E2472F7490072630A /* RootViewViewController.swift in Sources */,
 				F1CA2D4D24AB549100524860 /* ArticlesProvider.swift in Sources */,
 				F195A8EF24850F81009D54A3 /* PickerViewDelegate.swift in Sources */,
+				F180E44324AF9592001F702E /* ArticlesCollectionHeaderView.swift in Sources */,
 				F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */,
 				F1CA2D4F24AB55B100524860 /* TestArticleProvider.swift in Sources */,
 				F142BDE424704CF200B5857C /* DateExtension.swift in Sources */,
