@@ -22,18 +22,25 @@ class ArticlesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        let localArticlesDb = ArticlePersistenceService.sharedInstance
+        
         articlesProvider.syncWithBackend() {
-            guard let allArticles = ArticlePersistenceService.sharedInstance.readAll() else { return }
+            guard let allArticles = localArticlesDb.readAll() else { return }
             
             self.articles = allArticles
             self.articles.sort() { $0.creationDate > $1.creationDate }
             
+            
             for i in 0..<self.articles.count {
+                if self.articles[i].coverImage != nil {
+                    continue
+                }
                 let coverImage = self.articlesProvider.getUIImage(forURL: self.articles[i].coverImageURL) {
                     coverImage in
                     
                     self.articles[i].coverImage = coverImage
                     self.collectionView.reloadData()
+                    localArticlesDb.update(article: self.articles[i])
                 }
                 self.articles[i].coverImage = coverImage
             }

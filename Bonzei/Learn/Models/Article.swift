@@ -30,18 +30,6 @@ struct Article {
     var coverImageURL: String
     
     var coverImage: UIImage?
-    
-    /// - Returns: a dictionary representation of this article
-    var dictionary: [String: Any] {
-      return [
-        "id": id,
-        "creationDate": creationDate,
-        "title": title,
-        "subtitle": subtitle,
-        "text": text,
-        "coverImageURL": coverImageURL
-      ]
-    }
 }
 
 extension Article {

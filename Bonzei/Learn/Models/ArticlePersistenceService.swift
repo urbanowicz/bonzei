@@ -34,13 +34,8 @@ class ArticlePersistenceService {
     /// - Parameter article: an article to be saved in the local db
     public func create(article: Article) {
         let managedArticle = ManagedArticle(context: viewContext)
-        managedArticle.id = article.id
-        managedArticle.title = article.title
-        managedArticle.subtitle = article.subtitle
-        managedArticle.creationDate = article.creationDate
-        managedArticle.text = article.text
-        managedArticle.coverImageURL = article.coverImageURL
         
+        copyValues(from: article, to: managedArticle)
         commit()
     }
     
@@ -72,12 +67,7 @@ class ArticlePersistenceService {
     public func update(article: Article) {
         guard let managedArticle = fetchManagedArticle(articleId: article.id) else { return }
         
-        managedArticle.title = article.title
-        managedArticle.subtitle = article.subtitle
-        managedArticle.text = article.text
-        managedArticle.creationDate = article.creationDate
-        managedArticle.coverImageURL = article.coverImageURL
-        
+        copyValues(from: article, to: managedArticle)
         commit()
     }
     
@@ -138,13 +128,28 @@ class ArticlePersistenceService {
     }
     
     private func convertToArticle(managedArticle: ManagedArticle) -> Article {
-        let article = Article(title: managedArticle.title!,
+        var article = Article(title: managedArticle.title!,
                               subtitle: managedArticle.subtitle!,
                               text: managedArticle.text!,
                               creationDate: managedArticle.creationDate!,
                               id: managedArticle.id!,
                               coverImageURL: managedArticle.coverImageURL!)
+        
+        if let coverImageData = managedArticle.coverImage {
+            article.coverImage = UIImage(data: coverImageData)
+        }
+        
         return article
+    }
+    
+    private func copyValues(from article: Article, to managedArticle: ManagedArticle) {
+        managedArticle.id = article.id
+        managedArticle.title = article.title
+        managedArticle.subtitle = article.subtitle
+        managedArticle.creationDate = article.creationDate
+        managedArticle.text = article.text
+        managedArticle.coverImageURL = article.coverImageURL
+        managedArticle.coverImage = article.coverImage?.pngData()
     }
 
 }
