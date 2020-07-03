@@ -799,12 +799,12 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gyr-RR-0La">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ArticlesCollectionHeader" id="gyr-RR-0La">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Improve your mornings through set of tools, techniques and knowledge available in the app." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7R-g6-hE4">
-                                    <rect key="frame" x="24" y="113" width="316" height="73"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Improve your mornings through set of tools, techniques and knowledge available in the app." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7R-g6-hE4">
+                                    <rect key="frame" x="24" y="113" width="316" height="64.333333333333314"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="316" id="Yf7-Jd-F9C"/>
                                     </constraints>
@@ -819,7 +819,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGN-xu-WyJ">
-                                    <rect key="frame" x="24" y="61" width="77" height="36"/>
+                                    <rect key="frame" x="24" y="61.666666666666657" width="77" height="35.333333333333343"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="77" id="gXF-AD-1rO"/>
                                     </constraints>
