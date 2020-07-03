@@ -65,6 +65,7 @@
 		F17D199824AA654D00633BBC /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D199724AA654D00633BBC /* Article.swift */; };
 		F17D199A24AA6F2E00633BBC /* ArticlePersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D199924AA6F2E00633BBC /* ArticlePersistenceService.swift */; };
 		F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */; };
+		F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */; };
 		F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */; };
 		F18A86EB247949C000C5597C /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F18A86EA247949C000C5597C /* alarm.mp3 */; };
 		F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E624850F81009D54A3 /* PickerVIew.swift */; };
@@ -164,6 +165,7 @@
 		F17D199724AA654D00633BBC /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		F17D199924AA6F2E00633BBC /* ArticlePersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePersistenceService.swift; sourceTree = "<group>"; };
 		F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsTableDataSource.swift; sourceTree = "<group>"; };
+		F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesCollectionHeaderView.xib; sourceTree = "<group>"; };
 		F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodiesTableDataSource.swift; sourceTree = "<group>"; };
 		F18A86EA247949C000C5597C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		F195A8E624850F81009D54A3 /* PickerVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerVIew.swift; sourceTree = "<group>"; };
@@ -483,6 +485,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F180E43F24AF8BCB001F702E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F195A8E524850ED6009D54A3 /* TimePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,6 +516,7 @@
 		F1BAE26624ADF5A400C71199 /* ArticlesCollection */ = {
 			isa = PBXGroup;
 			children = (
+				F180E43F24AF8BCB001F702E /* Views */,
 				F17D199524AA0EE200633BBC /* ArticlesCollectionViewController.swift */,
 			);
 			path = ArticlesCollection;
@@ -626,6 +637,7 @@
 				F147773E247D2B0000D12C60 /* Muli-ExtraLightItalic.ttf in Resources */,
 				F1477725247D1FE100D12C60 /* Muli-Regular.ttf in Resources */,
 				F147773A247D2B0000D12C60 /* Muli-BoldItalic.ttf in Resources */,
+				F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */,
 				F1477741247D2B0000D12C60 /* Muli-Italic.ttf in Resources */,
 				F121851C24A8D8B6000BE34B /* GoogleService-Info.plist in Resources */,
 				F17ABEEC2447089F008E9227 /* Main.storyboard in Resources */,
