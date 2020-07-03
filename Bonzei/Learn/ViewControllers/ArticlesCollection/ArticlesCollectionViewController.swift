@@ -69,6 +69,7 @@ extension ArticlesCollectionViewController {
                                                       for: indexPath) as! ArticleCoverCell
         let article = articles[indexPath.row]
         cell.titleLabel.text = article.title
+        cell.subtitleLabel.text = article.subtitle
         cell.coverImage.image = article.coverImage
         
         return cell
@@ -130,6 +131,8 @@ extension ArticlesCollectionViewController {
 // MARK: - ArtileCoverCell
 class ArticleCoverCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var subtitleLabel: UILabel!
     
     @IBOutlet weak var coverImage: UIImageView!
 }
