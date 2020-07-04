@@ -891,6 +891,7 @@
                         <viewLayoutGuide key="safeArea" id="O33-MZ-Ael"/>
                     </view>
                     <connections>
+                        <outlet property="articleView" destination="Sp1-zG-Ffo" id="y8J-t0-69W"/>
                         <segue destination="Rgo-h0-uDj" kind="unwind" identifier="UnwindToArticlesCollection" unwindAction="unwindToArticlesCollection:" id="FVA-Zi-rZr"/>
                     </connections>
                 </viewController>

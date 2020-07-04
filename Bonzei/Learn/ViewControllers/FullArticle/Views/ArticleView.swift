@@ -41,12 +41,11 @@ class ArticleView: UIView {
     
     // MARK: - Initialization
     private func commonInit() {
-        setupCoverImage()
+        setupCoverImageView()
     }
     
-    private func setupCoverImage() {
-        //coverImageView.backgroundColor = UIColor.systemIndigo
-        coverImageView.image = UIImage(named: "default-article-cover")!
+    private func setupCoverImageView() {
+        coverImageView.image = UIImage(named: "default-article-cover")
         addSubview(coverImageView)
     }
     
@@ -56,16 +55,16 @@ class ArticleView: UIView {
     }
     
     private func layoutCoverImage() {
-//        coverImageView.frame = CGRect(
-//            x: self.bounds.width - coverImageWidth.cgFloat,
-//            y: 0,
-//            width: coverImageWidth.cgFloat,
-//            height: coverImageHeight.cgFloat)
-        
         coverImageView.frame = CGRect(
-            x: 0,
+            x: self.bounds.width - coverImageWidth.cgFloat + 10, // this setting comes from the designer
             y: 0,
-            width: frame.width,
-            height: frame.width)
+            width: coverImageWidth.cgFloat,
+            height: coverImageHeight.cgFloat)
+        
+//        coverImageView.frame = CGRect(
+//            x: 0,
+//            y: 0,
+//            width: frame.width,
+//            height: frame.width)
     }
 }
