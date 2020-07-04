@@ -871,9 +871,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVC-ag-j4c">
-                                <rect key="frame" x="30" y="40" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVC-ag-j4c">
+                                <rect key="frame" x="-10" y="52" width="73" height="48"/>
+                                <state key="normal" image="article-back-button"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="rPh-zk-nne" eventType="touchUpInside" id="OxH-ks-wug"/>
                                 </connections>
@@ -883,9 +883,9 @@
                         <constraints>
                             <constraint firstItem="Sp1-zG-Ffo" firstAttribute="leading" secondItem="O33-MZ-Ael" secondAttribute="leading" id="1ty-PC-ay1"/>
                             <constraint firstAttribute="bottom" secondItem="Sp1-zG-Ffo" secondAttribute="bottom" id="WKi-Lc-kWM"/>
-                            <constraint firstItem="RVC-ag-j4c" firstAttribute="top" secondItem="rLT-IN-HyR" secondAttribute="top" constant="40" id="ffb-Zy-Hlj"/>
+                            <constraint firstItem="RVC-ag-j4c" firstAttribute="top" secondItem="rLT-IN-HyR" secondAttribute="top" constant="52" id="ffb-Zy-Hlj"/>
                             <constraint firstItem="Sp1-zG-Ffo" firstAttribute="trailing" secondItem="O33-MZ-Ael" secondAttribute="trailing" id="ggx-kZ-aty"/>
-                            <constraint firstItem="RVC-ag-j4c" firstAttribute="leading" secondItem="O33-MZ-Ael" secondAttribute="leading" constant="30" id="hK9-u1-0l1"/>
+                            <constraint firstItem="RVC-ag-j4c" firstAttribute="leading" secondItem="O33-MZ-Ael" secondAttribute="leading" constant="-10" id="hK9-u1-0l1"/>
                             <constraint firstItem="Sp1-zG-Ffo" firstAttribute="top" secondItem="rLT-IN-HyR" secondAttribute="top" id="r35-Lc-D2w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O33-MZ-Ael"/>
@@ -926,6 +926,7 @@
         <segue reference="Qew-y1-UeD"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="article-back-button" width="73" height="48"/>
         <image name="book.fill" catalog="system" width="128" height="100"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
