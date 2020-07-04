@@ -17,15 +17,8 @@ class FullArticleViewController: UIViewController {
     
     @IBOutlet weak var articleView: ArticleView!
     
-    //   @IBOutlet weak var webView: WKWebView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if let article = self.article {
-//            webView.loadHTMLString(article.text, baseURL: nil)
-//        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

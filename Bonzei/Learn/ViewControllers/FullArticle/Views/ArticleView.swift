@@ -24,12 +24,15 @@ class ArticleView: UIView {
         didSet {
             guard let htmlText = self.htmlText else { return }
             webView.loadHTMLString(htmlText, baseURL: nil)
+            webView.scrollView.delegate = self
         }
     }
     
     private var coverImageView: UIImageView = UIImageView()
     
     private var webView: WKWebView!
+    
+    private var scrollView = UIScrollView()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -77,7 +80,18 @@ class ArticleView: UIView {
             x: 0,
             y: frame.width - 50,
             width: frame.width,
-            height: frame.height - frame.width + 50
+            height: frame.height
         )
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = UIBezierPath(roundedRect: webView.bounds, cornerRadius: 15).cgPath
+        webView.layer.mask = maskLayer
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension ArticleView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
     }
 }
