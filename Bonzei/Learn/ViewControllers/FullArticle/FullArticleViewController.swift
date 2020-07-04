@@ -34,7 +34,6 @@ class FullArticleViewController: UIViewController {
         guard var article = article else { return }
         
         articleView.htmlText = article.text
-        print("THIS: \(articleView.htmlText)")
         
         if let largeCoverImage = article.largeCoverImage {
             articleView.coverImage = largeCoverImage
