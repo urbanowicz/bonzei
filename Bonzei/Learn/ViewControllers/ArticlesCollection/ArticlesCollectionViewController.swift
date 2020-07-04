@@ -14,7 +14,7 @@ class ArticlesCollectionViewController: UICollectionViewController {
     
     private var articles: [Article] = []
     
-    private var selectedArticle: Article?
+    private var selectedArticleId: String = ""
     
     private let reuseIdentifier = "ArticleCoverCell"
     
@@ -34,7 +34,7 @@ class ArticlesCollectionViewController: UICollectionViewController {
             
             
             for i in 0..<self.articles.count {
-                print(self.articles[i].string())
+               
                 if self.articles[i].coverImage != nil {
                     continue
                 }
@@ -97,7 +97,7 @@ extension ArticlesCollectionViewController {
 // MARK: - UICollectionViewDelegate
 extension ArticlesCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedArticle = articles[indexPath.row]
+        selectedArticleId = articles[indexPath.row].id
         
         performSegue(withIdentifier: "FullArticle", sender: self)
         
@@ -122,7 +122,8 @@ extension ArticlesCollectionViewController {
         if segue.identifier! == "FullArticle" {
             let fullArticleViewController = segue.destination as! FullArticleViewController
             
-            fullArticleViewController.article = selectedArticle
+            fullArticleViewController.article = ArticlePersistenceService.sharedInstance
+                .read(articleId: selectedArticleId)
         }
     }
     

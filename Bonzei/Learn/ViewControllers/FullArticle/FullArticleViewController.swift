@@ -13,6 +13,8 @@ class FullArticleViewController: UIViewController {
     
     var article: Article?
     
+    private var articlesProvider = FirebaseArticlesProvider.sharedInstance
+    
     @IBOutlet weak var articleView: ArticleView!
     
     //   @IBOutlet weak var webView: WKWebView!
@@ -26,6 +28,24 @@ class FullArticleViewController: UIViewController {
 //            webView.loadHTMLString(article.text, baseURL: nil)
 //        }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard var article = article else { return }
+        
+        if let largeCoverImage = article.largeCoverImage {
+            articleView.coverImage = largeCoverImage
+        } else {
+            articleView.coverImage = UIImage(named: "default-large-article-cover")
+            articlesProvider.getUIImage(forURL: article.largeCoverImageURL) {
+                largeCoverImage in
+                self.articleView.coverImage = largeCoverImage
+                article.largeCoverImage = largeCoverImage
+                ArticlePersistenceService.sharedInstance.update(article: article)
+            }
+        }
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
