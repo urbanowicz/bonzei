@@ -85,16 +85,11 @@ extension ArticlesCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,
                                  at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            return collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: "ArticlesCollectionHeader",
-                for: indexPath)
 
-        default:
-            assert(false, "Invalid element type")
-        }
+        return collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: "ArticlesCollectionHeader",
+            for: indexPath)
     }
 }
 
