@@ -20,9 +20,16 @@ class ArticleView: UIView {
         }
     }
     
-    public var htmlText: String?
+    public var htmlText: String? {
+        didSet {
+            guard let htmlText = self.htmlText else { return }
+            webView.loadHTMLString(htmlText, baseURL: nil)
+        }
+    }
     
     private var coverImageView: UIImageView = UIImageView()
+    
+    private var webView: WKWebView!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -37,15 +44,23 @@ class ArticleView: UIView {
     // MARK: - Initialization
     private func commonInit() {
         setupCoverImageView()
+        
+        setupWebView()
     }
     
     private func setupCoverImageView() {
         addSubview(coverImageView)
     }
     
+    private func setupWebView() {
+        webView = WKWebView()
+        addSubview(webView)
+    }
+    
     // MARK: - Layout
     override func layoutSubviews() {
         layoutCoverImage()
+        layoutWebView()
     }
     
     private func layoutCoverImage() {
@@ -55,5 +70,14 @@ class ArticleView: UIView {
             y: 0,
             width: frame.width,
             height: frame.width)
+    }
+    
+    private func layoutWebView() {
+        webView.frame = CGRect(
+            x: 0,
+            y: frame.width - 50,
+            width: frame.width,
+            height: frame.height - frame.width + 50
+        )
     }
 }

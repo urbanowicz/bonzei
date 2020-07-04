@@ -22,8 +22,6 @@ class FullArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        articleView.coverImage = article?.coverImage
-        articleView.htmlText = article?.text
 //        if let article = self.article {
 //            webView.loadHTMLString(article.text, baseURL: nil)
 //        }
@@ -34,6 +32,9 @@ class FullArticleViewController: UIViewController {
         super.viewWillAppear(animated)
         
         guard var article = article else { return }
+        
+        articleView.htmlText = article.text
+        print("THIS: \(articleView.htmlText)")
         
         if let largeCoverImage = article.largeCoverImage {
             articleView.coverImage = largeCoverImage
