@@ -133,10 +133,15 @@ class ArticlePersistenceService {
                               text: managedArticle.text!,
                               creationDate: managedArticle.creationDate!,
                               id: managedArticle.id!,
-                              coverImageURL: managedArticle.coverImageURL!)
+                              coverImageURL: managedArticle.coverImageURL!,
+                              largeCoverImageURL: managedArticle.largeCoverImageURL!)
         
         if let coverImageData = managedArticle.coverImage {
             article.coverImage = UIImage(data: coverImageData)
+        }
+        
+        if let largeCoverImageData = managedArticle.largeCoverImage {
+            article.largeCoverImage = UIImage(data: largeCoverImageData)
         }
         
         return article
@@ -150,6 +155,8 @@ class ArticlePersistenceService {
         managedArticle.text = article.text
         managedArticle.coverImageURL = article.coverImageURL
         managedArticle.coverImage = article.coverImage?.pngData()
+        managedArticle.largeCoverImageURL = article.largeCoverImageURL
+        managedArticle.largeCoverImage = article.largeCoverImage?.pngData()
     }
 
 }

@@ -34,17 +34,18 @@ class ArticlesCollectionViewController: UICollectionViewController {
             
             
             for i in 0..<self.articles.count {
+                print(self.articles[i].string())
                 if self.articles[i].coverImage != nil {
                     continue
                 }
-                let coverImage = self.articlesProvider.getUIImage(forURL: self.articles[i].coverImageURL) {
+                self.articlesProvider.getUIImage(forURL: self.articles[i].coverImageURL) {
                     coverImage in
                     
                     self.articles[i].coverImage = coverImage
                     self.collectionView.reloadData()
                     localArticlesDb.update(article: self.articles[i])
                 }
-                self.articles[i].coverImage = coverImage
+                self.articles[i].coverImage = UIImage(named: "default-article-cover")!
             }
             
             self.collectionView.reloadData()

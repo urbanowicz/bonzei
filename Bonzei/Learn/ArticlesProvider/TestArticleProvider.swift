@@ -23,7 +23,8 @@ class TestArticlesProvider: ArticlesProvider {
                 text: "This article explains what a cold bath is and why you really need one.",
                 creationDate: df.date(from: "2020-06-30 21:28:00")!,
                 id: "1",
-                coverImageURL: "https://some.storage/cover_image_1.png")
+                coverImageURL: "https://some.storage/cover_image_1.png",
+                largeCoverImageURL: "https://some.storage/large_cover_image_1.png")
         ]
     }
     

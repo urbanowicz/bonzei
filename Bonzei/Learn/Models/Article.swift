@@ -26,10 +26,17 @@ struct Article {
     /// Unique ID of the article
     var id: String
     
-    /// Cover image  URL
+    /// Cover image  URL, used in articles collection view
     var coverImageURL: String
     
+    /// Large cover image, used in full article view
+    var largeCoverImageURL: String
+    
+    /// Cover image, used in articles collection view
     var coverImage: UIImage?
+    
+    /// Large cover image, used in full article view
+    var largeCoverImage: UIImage?
 }
 
 extension Article {
@@ -40,9 +47,17 @@ extension Article {
             let text = dictionary["text"] as? String,
             let creationDate = dictionary["creationDate"] as? Date,
             let id = dictionary["id"] as? String,
-            let coverImageURL = dictionary["coverImageURL"] as? String else { return nil }
+            let coverImageURL = dictionary["coverImageURL"] as? String,
+            let largeCoverImageURL = dictionary["largeCoverImageURL"] as? String else { return nil }
 
-        self.init(title: title, subtitle: subtitle, text: text, creationDate: creationDate, id: id, coverImageURL: coverImageURL)
+        self.init(
+            title: title,
+            subtitle: subtitle,
+            text: text,
+            creationDate: creationDate,
+            id: id,
+            coverImageURL: coverImageURL,
+            largeCoverImageURL: largeCoverImageURL)
     }
     
     func string() -> String {
@@ -50,6 +65,7 @@ extension Article {
         id: \(id)
         creationDate: \(creationDate)
         coverImageURL: \(coverImageURL)
+        largeCoverImageURL: \(largeCoverImageURL)
         title: \(title)
         subtitle: \(subtitle)
         text: \(text)

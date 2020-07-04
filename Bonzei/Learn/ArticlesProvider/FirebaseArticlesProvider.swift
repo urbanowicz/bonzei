@@ -58,7 +58,7 @@ class FirebaseArticlesProvider: ArticlesProvider {
         }
     }
     
-    public func getUIImage(forURL url:String, completionHandler: @escaping (UIImage?) -> Void ) -> UIImage {
+    public func getUIImage(forURL url:String, completionHandler: @escaping (UIImage?) -> Void ) {
         let gsReference = self.storage.reference(forURL: url)
         
         gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
@@ -73,32 +73,9 @@ class FirebaseArticlesProvider: ArticlesProvider {
                 }
             }
         }
-        
-        return UIImage(named: "default-article-cover")!
     }
     
     // MARK:- Private API
-    
-    func getAll() -> [Article]? {
-        let timeStamp = date(from: "2020-06-01 00:00:00")
-        
-        firestore
-            .collection("articles")
-            .whereField("creationDate", isGreaterThan: timeStamp)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    os_log("Failed to get documents from Firestore db: %{public}s", log: self.log, type: .error, err.localizedDescription)
-                } else {
-                    for document in querySnapshot!.documents {
-                        guard let article = self.convertToArticle(document: document) else { continue }
-                        print(article.string())
-                        print()
-                    }
-                }
-        }
-        
-        return nil
-    }
     
     private func convertToArticle(document: DocumentSnapshot) -> Article? {
         guard var dictionary = document.data() else { return nil }

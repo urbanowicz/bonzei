@@ -24,11 +24,6 @@ class ArticleView: UIView {
     
     private var coverImageView: UIImageView = UIImageView()
     
-    private var coverImageWidth = 773.0 // This value comes from the designer
-    
-    private var coverImageHeight = 359.0 // This value comes from the designer
-    
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
@@ -45,7 +40,6 @@ class ArticleView: UIView {
     }
     
     private func setupCoverImageView() {
-        coverImageView.image = UIImage(named: "default-article-cover")
         addSubview(coverImageView)
     }
     
@@ -55,11 +49,11 @@ class ArticleView: UIView {
     }
     
     private func layoutCoverImage() {
-        coverImageView.frame = CGRect(
-            x: self.bounds.width - coverImageWidth.cgFloat + 10, // this setting comes from the designer
-            y: 0,
-            width: coverImageWidth.cgFloat,
-            height: coverImageHeight.cgFloat)
         
+        coverImageView.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: frame.width,
+            height: frame.width)
     }
 }
