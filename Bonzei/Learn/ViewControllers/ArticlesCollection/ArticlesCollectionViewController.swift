@@ -24,6 +24,8 @@ class ArticlesCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
         let localArticlesDb = ArticlePersistenceService.sharedInstance
         
+        localArticlesDb.deleteAll()
+        
         articlesProvider.syncWithBackend() {
             guard let allArticles = localArticlesDb.readAll() else { return }
             

@@ -13,7 +13,7 @@ class FullArticleViewController: UIViewController {
     
     var article: Article?
     
-   // @IBOutlet weak var webView: WKWebView!
+//   @IBOutlet weak var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

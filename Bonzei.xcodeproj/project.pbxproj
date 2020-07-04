@@ -13,6 +13,8 @@
 		F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */; };
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
 		F1199EBD24B0627D00EA7B3B /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1199EBC24B0627D00EA7B3B /* AppVersion.swift */; };
+		F1199EBF24B0677900EA7B3B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1199EBE24B0677900EA7B3B /* WebKit.framework */; };
+		F1199EC324B06FE900EA7B3B /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1199EC224B06FE900EA7B3B /* ArticleView.swift */; };
 		F11BFFE824AE3C8E003A4D45 /* FullArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */; };
 		F11ED05424A4EE12002CA419 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11ED05324A4EE12002CA419 /* TimePickerView.swift */; };
 		F121851C24A8D8B6000BE34B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */; };
@@ -112,6 +114,8 @@
 		F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonzeiClockFace.swift; sourceTree = "<group>"; };
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
 		F1199EBC24B0627D00EA7B3B /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
+		F1199EBE24B0677900EA7B3B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		F1199EC224B06FE900EA7B3B /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullArticleViewController.swift; sourceTree = "<group>"; };
 		F11ED05324A4EE12002CA419 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1199EBF24B0677900EA7B3B /* WebKit.framework in Frameworks */,
 				D08169CFEBC8B3E70EBDF4AC /* Pods_Bonzei.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,6 +232,7 @@
 		906BC5DD63FF49398FB79CDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1199EBE24B0677900EA7B3B /* WebKit.framework */,
 				8F6D397B511E4530007BCA40 /* Pods_Bonzei.framework */,
 				5452D96417A6D570681ABA72 /* Pods_BonzeiTests.framework */,
 			);
@@ -240,6 +246,23 @@
 				F16770E1248C0C7800797F0A /* Variation1 */,
 			);
 			path = BonzeiClock;
+			sourceTree = "<group>";
+		};
+		F1199EC024B06FA500EA7B3B /* FullArticle */ = {
+			isa = PBXGroup;
+			children = (
+				F1199EC124B06FCD00EA7B3B /* Views */,
+				F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */,
+			);
+			path = FullArticle;
+			sourceTree = "<group>";
+		};
+		F1199EC124B06FCD00EA7B3B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1199EC224B06FE900EA7B3B /* ArticleView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F11E3F1C244EFEF400CF6B4A /* ViewControllers */ = {
@@ -475,8 +498,8 @@
 		F17D199324AA0E7800633BBC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F1199EC024B06FA500EA7B3B /* FullArticle */,
 				F1BAE26624ADF5A400C71199 /* ArticlesCollection */,
-				F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -781,6 +804,7 @@
 				F180E44324AF9592001F702E /* ArticlesCollectionHeaderView.swift in Sources */,
 				F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */,
 				F1CA2D4F24AB55B100524860 /* TestArticleProvider.swift in Sources */,
+				F1199EC324B06FE900EA7B3B /* ArticleView.swift in Sources */,
 				F142BDE424704CF200B5857C /* DateExtension.swift in Sources */,
 				F195A8EE24850F81009D54A3 /* TimePicker_AM_PM.swift in Sources */,
 				F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */,
