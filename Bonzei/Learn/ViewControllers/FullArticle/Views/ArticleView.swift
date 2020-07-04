@@ -61,10 +61,5 @@ class ArticleView: UIView {
             width: coverImageWidth.cgFloat,
             height: coverImageHeight.cgFloat)
         
-//        coverImageView.frame = CGRect(
-//            x: 0,
-//            y: 0,
-//            width: frame.width,
-//            height: frame.width)
     }
 }
