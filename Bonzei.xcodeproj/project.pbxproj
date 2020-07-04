@@ -12,6 +12,7 @@
 		F106311F24AC962800CBB9C6 /* FirebaseArticlesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */; };
 		F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */; };
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
+		F1199EBD24B0627D00EA7B3B /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1199EBC24B0627D00EA7B3B /* AppVersion.swift */; };
 		F11BFFE824AE3C8E003A4D45 /* FullArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */; };
 		F11ED05424A4EE12002CA419 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11ED05324A4EE12002CA419 /* TimePickerView.swift */; };
 		F121851C24A8D8B6000BE34B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */; };
@@ -110,6 +111,7 @@
 		F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseArticlesProvider.swift; sourceTree = "<group>"; };
 		F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonzeiClockFace.swift; sourceTree = "<group>"; };
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
+		F1199EBC24B0627D00EA7B3B /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullArticleViewController.swift; sourceTree = "<group>"; };
 		F11ED05324A4EE12002CA419 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 				F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */,
 				F17ABEF5244708A2008E9227 /* Info.plist */,
 				F17ABEED2447089F008E9227 /* Bonzei.xcdatamodeld */,
+				F1199EBC24B0627D00EA7B3B /* AppVersion.swift */,
 			);
 			path = Bonzei;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 				F15526C4244A060300741E80 /* Alarm.swift in Sources */,
 				F1D2D695248E27C1000DE8D2 /* MovingGradientView.swift in Sources */,
 				F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */,
+				F1199EBD24B0627D00EA7B3B /* AppVersion.swift in Sources */,
 				F195A8EC24850F81009D54A3 /* TimePickerDelegate.swift in Sources */,
 				F1BC60D3247FE7AF00BB6CB0 /* GradientView.swift in Sources */,
 				F1E0FFE224A3757700F75FDF /* TimePicker_24.swift in Sources */,
