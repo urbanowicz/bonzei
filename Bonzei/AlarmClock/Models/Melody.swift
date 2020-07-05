@@ -15,4 +15,5 @@ let melodies = ["Ambient Waves",
                 "Coast Cliffs",
                 "Ocean Horizon",
                 "Sunriser",
-                "Early Riser"]
+                "Early Riser",
+                "Endorphin Birds"]

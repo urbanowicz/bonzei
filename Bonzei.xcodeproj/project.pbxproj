@@ -70,6 +70,7 @@
 		F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */; };
 		F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */; };
 		F180E44324AF9592001F702E /* ArticlesCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */; };
+		F183B5DE24B23188007A96B2 /* Endorphin Birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F183B5DD24B23187007A96B2 /* Endorphin Birds.mp3 */; };
 		F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */; };
 		F18A86EB247949C000C5597C /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F18A86EA247949C000C5597C /* alarm.mp3 */; };
 		F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E624850F81009D54A3 /* PickerVIew.swift */; };
@@ -174,6 +175,7 @@
 		F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsTableDataSource.swift; sourceTree = "<group>"; };
 		F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesCollectionHeaderView.xib; sourceTree = "<group>"; };
 		F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCollectionHeaderView.swift; sourceTree = "<group>"; };
+		F183B5DD24B23187007A96B2 /* Endorphin Birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Endorphin Birds.mp3"; path = "../../../../../../../Downloads/Endorphin Birds.mp3"; sourceTree = "<group>"; };
 		F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodiesTableDataSource.swift; sourceTree = "<group>"; };
 		F18A86EA247949C000C5597C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		F195A8E624850F81009D54A3 /* PickerVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerVIew.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 		F15590F7245EE3F400928589 /* SoundFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F183B5DD24B23187007A96B2 /* Endorphin Birds.mp3 */,
 				F15B681424A6724200A34C3D /* Ambient Waves.mp3 */,
 				F15B681324A6724100A34C3D /* Coast Cliffs.mp3 */,
 				F15B681624A6724300A34C3D /* Early Riser.mp3 */,
@@ -666,6 +669,7 @@
 				F147773E247D2B0000D12C60 /* Muli-ExtraLightItalic.ttf in Resources */,
 				F1477725247D1FE100D12C60 /* Muli-Regular.ttf in Resources */,
 				F147773A247D2B0000D12C60 /* Muli-BoldItalic.ttf in Resources */,
+				F183B5DE24B23188007A96B2 /* Endorphin Birds.mp3 in Resources */,
 				F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */,
 				F1477741247D2B0000D12C60 /* Muli-Italic.ttf in Resources */,
 				F121851C24A8D8B6000BE34B /* GoogleService-Info.plist in Resources */,

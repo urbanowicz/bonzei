@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     private var lifeCycleLog = OSLog(subsystem: "App", category: "LifeCycle")
     
+    private let dispatchGroup = DispatchGroup()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -25,7 +27,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Initialize Firebase
         FirebaseApp.configure()
         
+        syncArticles()
+        dispatchGroup.notify(queue: .main) {
+            print("B")
+        }
         return true
+    }
+    
+    func syncArticles() {
+        self.dispatchGroup.enter()
+        
+        let articlesProvider = FirebaseArticlesProvider.sharedInstance
+        let localArticlesDb =  ArticlePersistenceService.sharedInstance
+        let appVersionService = AppVersionService.sharedInstance
+        
+        if appVersionService.getAppVersionInstalledOnDevice() != APP_VERSION {
+            print("DELETE")
+            localArticlesDb.deleteAll()
+            appVersionService.updateAppVersion(to: APP_VERSION)
+        }
+        
+        print("A0")
+        articlesProvider.syncWithBackend() {
+            
+            guard var articles = localArticlesDb.readAll() else { return }
+        
+            for i in 0..<articles.count {
+               
+                if articles[i].coverImage == nil {
+                    self.dispatchGroup.enter()
+                    articlesProvider.getUIImage(forURL: articles[i].coverImageURL) {
+                        coverImage in
+                        
+                        articles[i].coverImage = coverImage
+                        localArticlesDb.update(article: articles[i])
+                        self.dispatchGroup.leave()
+                        print("A1")
+                    }
+                }
+                
+                if articles[i].largeCoverImage == nil {
+                    self.dispatchGroup.enter()
+                    articlesProvider.getUIImage(forURL: articles[i].largeCoverImageURL) {
+                        largeCoverImage in
+                        
+                        articles[i].largeCoverImage = largeCoverImage
+                        localArticlesDb.update(article: articles[i])
+                        self.dispatchGroup.leave()
+                        print("A2")
+                    }
+                }
+            }
+            self.dispatchGroup.leave()
+            print("A3")
+        }
+
     }
     
     @objc func applicationWillEnterForeground(_ application: UIApplication) {

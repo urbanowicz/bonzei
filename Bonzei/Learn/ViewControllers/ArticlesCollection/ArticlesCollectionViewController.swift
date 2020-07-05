@@ -26,12 +26,6 @@ class ArticlesCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         let localArticlesDb = ArticlePersistenceService.sharedInstance
-        let appVersionService = AppVersionService.sharedInstance
-        
-        if appVersionService.getAppVersionInstalledOnDevice() != APP_VERSION {
-            localArticlesDb.deleteAll()
-            appVersionService.updateAppVersion(to: APP_VERSION)
-        }
         
         articlesProvider.syncWithBackend() {
             guard let allArticles = localArticlesDb.readAll() else { return }
