@@ -24,15 +24,26 @@ class ArticleView: UIView {
         didSet {
             guard let htmlText = self.htmlText else { return }
             webView.loadHTMLString(htmlText, baseURL: nil)
-            webView.scrollView.delegate = self
         }
     }
     
+    public var delegate: ArticleViewDelegate?
+    
     private var coverImageView: UIImageView = UIImageView()
+    
+    private var darkOverlayView = UIView()
+    
+    private var isDarkOverlayOn = false
     
     private var webView: WKWebView!
     
-    private var scrollView = UIScrollView()
+    private var webViewCurrentContentSize = CGFloat(0.0)
+    
+    private var spacer = UIView()
+    
+    private var overlapBy = CGFloat(50.0)
+    
+    private var containerScrollView = UIScrollView()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -46,43 +57,57 @@ class ArticleView: UIView {
     
     // MARK: - Initialization
     private func commonInit() {
-        setupCoverImageView()
+        self.backgroundColor = superview?.backgroundColor
         
-        setupWebView()
-    }
-    
-    private func setupCoverImageView() {
+        coverImageView.backgroundColor = backgroundColor
+        coverImageView.isUserInteractionEnabled = false
         addSubview(coverImageView)
+        
+        darkOverlayView.backgroundColor = UIColor.black
+        darkOverlayView.alpha = 0.0
+        addSubview(darkOverlayView)
+        
+        spacer.backgroundColor = UIColor.clear
+        containerScrollView.addSubview(spacer)
+        
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.scrollView.isScrollEnabled = false
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
+        webView.backgroundColor = backgroundColor
+        containerScrollView.addSubview(webView)
+        
+        containerScrollView.isPagingEnabled = false
+        containerScrollView.bounces = false
+        containerScrollView.contentInsetAdjustmentBehavior = .never
+        containerScrollView.showsVerticalScrollIndicator = false 
+        containerScrollView.delegate = self
+        containerScrollView.backgroundColor = UIColor.clear
+        addSubview(containerScrollView)
     }
     
-    private func setupWebView() {
-        webView = WKWebView()
-        addSubview(webView)
-    }
     
     // MARK: - Layout
     override func layoutSubviews() {
-        layoutCoverImage()
-        layoutWebView()
+        super.layoutSubviews()
+        
+        let k = bounds.width - overlapBy
+        let h = bounds.height
+        let w = bounds.width
+        
+        coverImageView.frame = CGRect( x: 0, y: 0, width: w, height: w)
+        darkOverlayView.frame = coverImageView.frame
+        
+        containerScrollView.frame = CGRect(x: 0, y: 0, width: w, height: h)
+        containerScrollView.contentSize = CGSize(width: w, height: h + k)
+        
+        spacer.frame = CGRect(x: 0, y: 0, width: w, height: k)
+        
+        webView.frame = CGRect(x: 0, y: k, width: w, height: h)
+        addRoundedCornersToWebView()
     }
     
-    private func layoutCoverImage() {
-        
-        coverImageView.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: frame.width,
-            height: frame.width)
-    }
-    
-    private func layoutWebView() {
-        webView.frame = CGRect(
-            x: 0,
-            y: frame.width - 50,
-            width: frame.width,
-            height: frame.height
-        )
-        
+    private func addRoundedCornersToWebView() {
         let maskLayer = CAShapeLayer()
         maskLayer.path = UIBezierPath(roundedRect: webView.bounds, cornerRadius: 15).cgPath
         webView.layer.mask = maskLayer
@@ -93,5 +118,43 @@ class ArticleView: UIView {
 extension ArticleView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
+        if webView.scrollView.contentSize.height != webViewCurrentContentSize {
+            webViewCurrentContentSize = webView.scrollView.contentSize.height
+            let k = bounds.width - overlapBy
+            let h = max(bounds.height, webViewCurrentContentSize)
+            let w = bounds.width
+            
+            webView.frame = CGRect(x: 0, y: k, width: w, height: h)
+            addRoundedCornersToWebView()
+            containerScrollView.contentSize = CGSize(width: w, height: h + k)
+        }
+        
+        if scrollView.contentOffset.y > 0 && !isDarkOverlayOn {
+            isDarkOverlayOn = true
+            UIView.animate(withDuration: 0.2) {
+                self.darkOverlayView.alpha = 0.55
+            }
+        } else if scrollView.contentOffset.y == 0 && isDarkOverlayOn {
+            isDarkOverlayOn = false
+            UIView.animate(withDuration: 0.2) {
+                self.darkOverlayView.alpha = 0.0
+            }
+        }
+        
+        delegate?.scrollViewDidScroll(scrollView)
     }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        delegate?.scrollViewDidBeginDragging(scrollView)
+//        if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0 {
+//            // handle dragging to the right
+//        } else {
+//            // handle dragging to the left
+//        }
+    }
+}
+
+protocol ArticleViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    func scrollViewDidBeginDragging(_ scrollView: UIScrollView)
 }
