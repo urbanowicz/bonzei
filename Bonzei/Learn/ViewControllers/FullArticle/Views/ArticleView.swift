@@ -33,8 +33,6 @@ class ArticleView: UIView {
     
     private var darkOverlayView = UIView()
     
-    private var isDarkOverlayOn = false
-    
     private var webView: WKWebView!
     
     private var webViewCurrentContentSize = CGFloat(0.0)
@@ -117,39 +115,25 @@ class ArticleView: UIView {
 // MARK: - UIScrollViewDelegate
 extension ArticleView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+        let k = bounds.width - overlapBy
+        let h = max(bounds.height, webViewCurrentContentSize)
+        let w = bounds.width
+        
         if webView.scrollView.contentSize.height != webViewCurrentContentSize {
             webViewCurrentContentSize = webView.scrollView.contentSize.height
-            let k = bounds.width - overlapBy
-            let h = max(bounds.height, webViewCurrentContentSize)
-            let w = bounds.width
             
             webView.frame = CGRect(x: 0, y: k, width: w, height: h)
             addRoundedCornersToWebView()
             containerScrollView.contentSize = CGSize(width: w, height: h + k)
         }
         
-        if scrollView.contentOffset.y > 0 && !isDarkOverlayOn {
-            isDarkOverlayOn = true
-            UIView.animate(withDuration: 0.2) {
-                self.darkOverlayView.alpha = 0.55
-            }
-        } else if scrollView.contentOffset.y == 0 && isDarkOverlayOn {
-            isDarkOverlayOn = false
-            UIView.animate(withDuration: 0.2) {
-                self.darkOverlayView.alpha = 0.0
-            }
-        }
+        let dy = min(scrollView.contentOffset.y, k)
+        self.darkOverlayView.alpha = dy/k
         
         delegate?.scrollViewDidScroll(scrollView)
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        delegate?.scrollViewWillBeginDragging(scrollView)
     }
 }
 
 protocol ArticleViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView)
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
 }

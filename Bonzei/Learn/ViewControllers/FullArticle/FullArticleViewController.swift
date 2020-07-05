@@ -61,22 +61,16 @@ extension FullArticleViewController: ArticleViewDelegate {
         if deltaY < 0 && backButton.isHidden {
             backButton.alpha = 0.0
             backButton.isHidden = false
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: 0.25) {
                 self.backButton.alpha = 1.0
             }
         } else if deltaY > 0 && !backButton.isHidden {
             UIView.animate(
-                withDuration: 0.2,
+                withDuration: 0.25,
                 animations: { self.backButton.alpha = 0.0 },
                 completion: {success in self.backButton.isHidden = true }
             )
         }
         scrollContentOffsetY = scrollView.contentOffset.y
     }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        // do nothing
-    }
-    
-    
 }
