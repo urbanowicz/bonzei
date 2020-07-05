@@ -145,16 +145,11 @@ extension ArticleView: UIScrollViewDelegate {
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        delegate?.scrollViewDidBeginDragging(scrollView)
-//        if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0 {
-//            // handle dragging to the right
-//        } else {
-//            // handle dragging to the left
-//        }
+        delegate?.scrollViewWillBeginDragging(scrollView)
     }
 }
 
 protocol ArticleViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView)
-    func scrollViewDidBeginDragging(_ scrollView: UIScrollView)
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
 }

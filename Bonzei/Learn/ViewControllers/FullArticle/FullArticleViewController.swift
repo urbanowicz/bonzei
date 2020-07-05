@@ -17,8 +17,13 @@ class FullArticleViewController: UIViewController {
     
     @IBOutlet weak var articleView: ArticleView!
     
+    @IBOutlet weak var backButton: UIButton!
+    
+    private var scrollContentOffsetY = CGFloat(0.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        articleView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,4 +50,33 @@ class FullArticleViewController: UIViewController {
         performSegue(withIdentifier: "UnwindToArticlesCollection", sender: self)
     }
 
+}
+
+// MARK: - ArticleViewDelegate
+
+extension FullArticleViewController: ArticleViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let deltaY = scrollView.contentOffset.y - scrollContentOffsetY
+        if deltaY < 0 && backButton.isHidden {
+            backButton.alpha = 0.0
+            backButton.isHidden = false
+            UIView.animate(withDuration: 0.2) {
+                self.backButton.alpha = 1.0
+            }
+        } else if deltaY > 0 && !backButton.isHidden {
+            UIView.animate(
+                withDuration: 0.2,
+                animations: { self.backButton.alpha = 0.0 },
+                completion: {success in self.backButton.isHidden = true }
+            )
+        }
+        scrollContentOffsetY = scrollView.contentOffset.y
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // do nothing
+    }
+    
+    
 }

@@ -892,6 +892,7 @@
                     </view>
                     <connections>
                         <outlet property="articleView" destination="Sp1-zG-Ffo" id="y8J-t0-69W"/>
+                        <outlet property="backButton" destination="RVC-ag-j4c" id="7E2-wF-PgK"/>
                         <segue destination="Rgo-h0-uDj" kind="unwind" identifier="UnwindToArticlesCollection" unwindAction="unwindToArticlesCollection:" id="FVA-Zi-rZr"/>
                     </connections>
                 </viewController>
