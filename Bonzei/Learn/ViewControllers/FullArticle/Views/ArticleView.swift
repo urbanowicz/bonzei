@@ -76,7 +76,7 @@ class ArticleView: UIView {
         containerScrollView.addSubview(webView)
         
         containerScrollView.isPagingEnabled = false
-        containerScrollView.bounces = false
+        containerScrollView.bounces = true
         containerScrollView.contentInsetAdjustmentBehavior = .never
         containerScrollView.showsVerticalScrollIndicator = false 
         containerScrollView.delegate = self
@@ -90,13 +90,15 @@ class ArticleView: UIView {
         super.layoutSubviews()
         
         let k = bounds.width - overlapBy
-        let h = bounds.height
+        var h = bounds.height
         let w = bounds.width
         
         coverImageView.frame = CGRect( x: 0, y: 0, width: w, height: w)
         darkOverlayView.frame = coverImageView.frame
         
         containerScrollView.frame = CGRect(x: 0, y: 0, width: w, height: h)
+        
+        h = max(bounds.height, webViewCurrentContentSize)
         containerScrollView.contentSize = CGSize(width: w, height: h + k)
         
         spacer.frame = CGRect(x: 0, y: 0, width: w, height: k)

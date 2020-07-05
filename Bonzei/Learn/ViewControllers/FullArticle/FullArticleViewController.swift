@@ -56,6 +56,7 @@ class FullArticleViewController: UIViewController {
 
 extension FullArticleViewController: ArticleViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView.contentOffset.y >= 0 else { return }
         
         let deltaY = scrollView.contentOffset.y - scrollContentOffsetY
         if deltaY < 0 && backButton.isHidden {
