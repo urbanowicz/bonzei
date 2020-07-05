@@ -11,7 +11,7 @@ import CoreData
 import UIKit
 import os.log
 
-let APP_VERSION:Int64 = 2
+let APP_VERSION:Int64 = 3
 
 class AppVersionService {
     

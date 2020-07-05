@@ -115,18 +115,19 @@ class ArticleView: UIView {
 // MARK: - UIScrollViewDelegate
 extension ArticleView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let k = bounds.width - overlapBy
-        let h = max(bounds.height, webViewCurrentContentSize)
-        let w = bounds.width
-        
+
         if webView.scrollView.contentSize.height != webViewCurrentContentSize {
             webViewCurrentContentSize = webView.scrollView.contentSize.height
+            let k = bounds.width - overlapBy
+            let h = max(bounds.height, webViewCurrentContentSize)
+            let w = bounds.width
             
             webView.frame = CGRect(x: 0, y: k, width: w, height: h)
             addRoundedCornersToWebView()
             containerScrollView.contentSize = CGSize(width: w, height: h + k)
         }
         
+        let k = bounds.width - overlapBy
         let dy = min(scrollView.contentOffset.y, k)
         self.darkOverlayView.alpha = dy/k
         
