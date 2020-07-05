@@ -20,8 +20,11 @@ class ArticlesCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        // Do any additional setup after loading the view.
         let localArticlesDb = ArticlePersistenceService.sharedInstance
         let appVersionService = AppVersionService.sharedInstance
         
@@ -56,6 +59,7 @@ class ArticlesCollectionViewController: UICollectionViewController {
         }
     }
 }
+
 
 // MARK: - UICollectionViewDataSource
 extension ArticlesCollectionViewController {
