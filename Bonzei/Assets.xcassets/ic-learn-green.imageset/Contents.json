@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "ic-learn.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ic-learn@2x.png",
+      "filename" : "ic-learn.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

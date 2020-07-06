@@ -855,7 +855,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </collectionReusableView>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Learn" image="book.fill" catalog="system" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Learn" image="ic-learn-green" id="cPa-gy-q4n"/>
                     <connections>
                         <segue destination="rPh-zk-nne" kind="presentation" identifier="FullArticle" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="vfl-Sf-AHA"/>
                     </connections>
@@ -933,11 +933,11 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="article-back-button" width="73" height="48"/>
-        <image name="book.fill" catalog="system" width="128" height="100"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="clock-green" width="32" height="32"/>
         <image name="clock-white" width="32" height="32"/>
+        <image name="ic-learn-green" width="32" height="32"/>
         <image name="learn-stars" width="303" height="97"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
