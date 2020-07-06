@@ -20,6 +20,8 @@ class ArticlesCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.collectionView.alwaysBounceVertical = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

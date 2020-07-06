@@ -17,7 +17,6 @@
 		F1199EC324B06FE900EA7B3B /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1199EC224B06FE900EA7B3B /* ArticleView.swift */; };
 		F11BFFE824AE3C8E003A4D45 /* FullArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */; };
 		F11ED05424A4EE12002CA419 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11ED05324A4EE12002CA419 /* TimePickerView.swift */; };
-		F121851C24A8D8B6000BE34B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */; };
 		F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127AC542468265B007F9734 /* HeartBeatService.swift */; };
 		F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1329B172460912300E7F7A2 /* OvalButton.swift */; };
 		F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1421C252454B710003D226A /* DayOfWeekPicker.swift */; };
@@ -67,6 +66,7 @@
 		F17D199624AA0EE200633BBC /* ArticlesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D199524AA0EE200633BBC /* ArticlesCollectionViewController.swift */; };
 		F17D199824AA654D00633BBC /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D199724AA654D00633BBC /* Article.swift */; };
 		F17D199A24AA6F2E00633BBC /* ArticlePersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D199924AA6F2E00633BBC /* ArticlePersistenceService.swift */; };
+		F17FA50D24B38FD00093E96A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F17FA50C24B38FD00093E96A /* GoogleService-Info.plist */; };
 		F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */; };
 		F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */; };
 		F180E44324AF9592001F702E /* ArticlesCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */; };
@@ -119,7 +119,6 @@
 		F1199EC224B06FE900EA7B3B /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		F11BFFE724AE3C8E003A4D45 /* FullArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullArticleViewController.swift; sourceTree = "<group>"; };
 		F11ED05324A4EE12002CA419 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
-		F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F127AC542468265B007F9734 /* HeartBeatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatService.swift; sourceTree = "<group>"; };
 		F1329B172460912300E7F7A2 /* OvalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButton.swift; sourceTree = "<group>"; };
 		F1421C252454B710003D226A /* DayOfWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekPicker.swift; sourceTree = "<group>"; };
@@ -172,6 +171,7 @@
 		F17D199524AA0EE200633BBC /* ArticlesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCollectionViewController.swift; sourceTree = "<group>"; };
 		F17D199724AA654D00633BBC /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		F17D199924AA6F2E00633BBC /* ArticlePersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePersistenceService.swift; sourceTree = "<group>"; };
+		F17FA50C24B38FD00093E96A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsTableDataSource.swift; sourceTree = "<group>"; };
 		F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesCollectionHeaderView.xib; sourceTree = "<group>"; };
 		F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCollectionHeaderView.swift; sourceTree = "<group>"; };
@@ -458,10 +458,10 @@
 				F17ABEEA2447089F008E9227 /* Main.storyboard */,
 				F17ABEF0244708A2008E9227 /* Assets.xcassets */,
 				F17ABEF2244708A2008E9227 /* LaunchScreen.storyboard */,
-				F121851B24A8D8B6000BE34B /* GoogleService-Info.plist */,
 				F17ABEF5244708A2008E9227 /* Info.plist */,
 				F17ABEED2447089F008E9227 /* Bonzei.xcdatamodeld */,
 				F1199EBC24B0627D00EA7B3B /* AppVersion.swift */,
+				F17FA50C24B38FD00093E96A /* GoogleService-Info.plist */,
 			);
 			path = Bonzei;
 			sourceTree = "<group>";
@@ -672,9 +672,9 @@
 				F183B5DE24B23188007A96B2 /* Endorphin Birds.mp3 in Resources */,
 				F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */,
 				F1477741247D2B0000D12C60 /* Muli-Italic.ttf in Resources */,
-				F121851C24A8D8B6000BE34B /* GoogleService-Info.plist in Resources */,
 				F17ABEEC2447089F008E9227 /* Main.storyboard in Resources */,
 				F147773F247D2B0000D12C60 /* Muli-Black.ttf in Resources */,
+				F17FA50D24B38FD00093E96A /* GoogleService-Info.plist in Resources */,
 				F15B681924A6724400A34C3D /* Ambient Waves.mp3 in Resources */,
 				F1477738247D2B0000D12C60 /* Muli-SemiBold.ttf in Resources */,
 				F1477723247D0C3200D12C60 /* Muli-Bold.ttf in Resources */,

@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>60819642277-vhbjrth22b91supd9gje27fcf6ug817g.apps.googleusercontent.com</string>
+	<string>766310107333-7mgctqgu2bsblib7355e0tv99q6t3hdg.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.60819642277-vhbjrth22b91supd9gje27fcf6ug817g</string>
+	<string>com.googleusercontent.apps.766310107333-7mgctqgu2bsblib7355e0tv99q6t3hdg</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAlu0rhJQhI3UveRzHrE2Jf49GEPI8Hka4</string>
+	<string>AIzaSyD1DVZnbcHuqspOWbZdDV58hHT7Dzz6pGk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>60819642277</string>
+	<string>766310107333</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>app.bonzei.Bonzei</string>
 	<key>PROJECT_ID</key>
-	<string>bonzei-test</string>
+	<string>bonzei-fcfc8</string>
 	<key>STORAGE_BUCKET</key>
-	<string>bonzei-test.appspot.com</string>
+	<string>bonzei-fcfc8.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:60819642277:ios:ec005c9313880fbcf47a4c</string>
+	<string>1:766310107333:ios:9f79bc83b234ff1bbb88ac</string>
 	<key>DATABASE_URL</key>
-	<string>https://bonzei-test.firebaseio.com</string>
+	<string>https://bonzei-fcfc8.firebaseio.com</string>
 </dict>
 </plist>
