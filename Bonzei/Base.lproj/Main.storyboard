@@ -761,7 +761,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="0Ex-bh-Cz2"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="24" minimumInteritemSpacing="10" id="dlN-I8-TEk">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="12" minimumInteritemSpacing="10" id="dlN-I8-TEk">
                             <size key="itemSize" width="373" height="160"/>
                             <size key="headerReferenceSize" width="50" height="230"/>
                             <size key="footerReferenceSize" width="50" height="24"/>

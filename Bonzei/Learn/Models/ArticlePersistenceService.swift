@@ -33,6 +33,8 @@ class ArticlePersistenceService {
     /// Stores an article in the local db
     /// - Parameter article: an article to be saved in the local db
     public func create(article: Article) {
+        guard fetchManagedArticle(articleId: article.id) == nil else { return }
+        
         let managedArticle = ManagedArticle(context: viewContext)
         
         copyValues(from: article, to: managedArticle)

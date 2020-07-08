@@ -68,7 +68,6 @@ extension Article {
         largeCoverImageURL: \(largeCoverImageURL)
         title: \(title)
         subtitle: \(subtitle)
-        text: \(text)
         """
     }
 }

@@ -18,6 +18,10 @@ class ArticlesCollectionViewController: UICollectionViewController {
     
     private let reuseIdentifier = "ArticleCoverCell"
     
+    private var lastSyncDate:Date?
+    
+    private var dontSync = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +31,22 @@ class ArticlesCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//        if let lastSyncDate = lastSyncDate {
+//            if lastSyncDate.new(byAdding: .second, value: 15) >= Date() {
+//                return
+//            }
+//        }
+        
+        if dontSync {
+            dontSync = false
+            return
+        }
+        
         let localArticlesDb = ArticlePersistenceService.sharedInstance
+        
+        localArticlesDb.deleteAll()
+        articles = []
+        collectionView.reloadData()
         
         articlesProvider.syncWithBackend() {
             guard let allArticles = localArticlesDb.readAll() else { return }
@@ -37,7 +56,6 @@ class ArticlesCollectionViewController: UICollectionViewController {
             
             
             for i in 0..<self.articles.count {
-               
                 if self.articles[i].coverImage != nil {
                     continue
                 }
@@ -51,6 +69,7 @@ class ArticlesCollectionViewController: UICollectionViewController {
                 self.articles[i].coverImage = UIImage(named: "default-article-cover")!
             }
             
+            self.lastSyncDate = Date()
             self.collectionView.reloadData()
         }
     }
@@ -138,6 +157,7 @@ extension ArticlesCollectionViewController {
     }
     
     @IBAction func unwindToArticlesCollection(_ unwindSegue: UIStoryboardSegue) {
+        dontSync = true
         //nothing to do here.
     }
 }
