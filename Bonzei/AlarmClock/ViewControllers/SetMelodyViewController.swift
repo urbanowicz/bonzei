@@ -11,12 +11,6 @@ import AVFoundation
 
 class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     
-    /// Data source for the `melodiesTable`
-    var melodiesTableDataSource = MelodiesTableDataSource()
-    
-    /// Delegate for the `melodiesTable`
-    var melodiesTableDelegate = MelodiesTableDelegate()
-    
     /// After a user has chosen a melody, the melodie's name will be stored here
     var selectedMelody:String?
     
@@ -39,6 +33,7 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     /// A table with names of available melodies.
     @IBOutlet weak var melodiesTable: UITableView!
     
+    let cellReuseId = "MelodiesTableCell"
     
     // MARK: - Initialization
     
@@ -47,9 +42,9 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         
         backButton.backgroundColor = UIColor.clear
         
-        melodiesTable.dataSource = melodiesTableDataSource
+        melodiesTable.dataSource = self
         
-        melodiesTable.delegate = melodiesTableDelegate
+        melodiesTable.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,10 +56,6 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     // MARK: - Navigation
 
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        if let selectedRowIndex = melodiesTable.indexPathForSelectedRow {
-            let selectedCell = melodiesTable.cellForRow(at: selectedRowIndex) as! MelodyCell
-            selectedMelody = selectedCell.melodyName
-        }
         
         stopCurrentlyPlayingCell()
         
@@ -177,9 +168,10 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         let queue = DispatchQueue(label: "PlaybackProgress", qos: .utility)
         queue.async {
             if let audioPlayer = self.audioPlayer {
-                while audioPlayer.isPlaying {
+                while audioPlayer.isPlaying && cell.isPlaying {
                     let progress = Float(audioPlayer.currentTime / audioPlayer.duration)
                     self.setProgress(progress, forCell: cell)
+
                     Thread.sleep(forTimeInterval: 0.25)
                 }
             }
@@ -197,7 +189,7 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         melodiesTable.selectRow(at: IndexPath(row: indexOfSelectedMelody, section: 0),
                                 animated: false,
                                 scrollPosition: .none)
-        melodiesTableDelegate.tableView(melodiesTable, didSelectRowAt: IndexPath(row: indexOfSelectedMelody, section: 0))
+        self.tableView(melodiesTable, didSelectRowAt: IndexPath(row: indexOfSelectedMelody, section: 0))
     }
 }
 
@@ -280,16 +272,47 @@ class MelodyCell: UITableViewCell {
     }
 }
 
+extension SetMelodyViewController: UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return melodies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId) as! MelodyCell
+        
+        cell.melodyNameLabel.text = melodies[indexPath.row]
+        cell.isPicked = cell.melodyNameLabel.text == selectedMelody
+        
+        if indexPath.row == indexOfCurrentlyPlayingCell {
+            if audioPlayer != nil && audioPlayer!.isPlaying {
+                cell.play()
+                startUpdatingProgressBarFor(cell: cell)
+            } else {
+                cell.pause()
+            }
+        } else {
+            cell.stop()
+        }
+        
+        return cell
+    }
+}
+
 /// A delegate for the table that displays names of melodies
-class MelodiesTableDelegate: NSObject, UITableViewDelegate {
+extension SetMelodyViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! MelodyCell
-        cell.isPicked = true
+        if let cell = tableView.cellForRow(at: indexPath) as? MelodyCell {
+            cell.isPicked = true
+            selectedMelody = cell.melodyName
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! MelodyCell
-        cell.isPicked = false
+        if let cell = tableView.cellForRow(at: indexPath) as? MelodyCell {
+            cell.isPicked = false
+        }
     }
 }

@@ -76,7 +76,6 @@
 		F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */; };
 		F180E44324AF9592001F702E /* ArticlesCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */; };
 		F183B5DE24B23188007A96B2 /* Endorphin Birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F183B5DD24B23187007A96B2 /* Endorphin Birds.mp3 */; };
-		F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */; };
 		F18A86EB247949C000C5597C /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F18A86EA247949C000C5597C /* alarm.mp3 */; };
 		F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E624850F81009D54A3 /* PickerVIew.swift */; };
 		F195A8EC24850F81009D54A3 /* TimePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */; };
@@ -186,7 +185,6 @@
 		F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesCollectionHeaderView.xib; sourceTree = "<group>"; };
 		F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCollectionHeaderView.swift; sourceTree = "<group>"; };
 		F183B5DD24B23187007A96B2 /* Endorphin Birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Endorphin Birds.mp3"; path = "../../../../../../../Downloads/Endorphin Birds.mp3"; sourceTree = "<group>"; };
-		F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodiesTableDataSource.swift; sourceTree = "<group>"; };
 		F18A86EA247949C000C5597C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		F195A8E624850F81009D54A3 /* PickerVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerVIew.swift; sourceTree = "<group>"; };
 		F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerDelegate.swift; sourceTree = "<group>"; };
@@ -293,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */,
-				F18A325E244EF13B00162D1B /* MelodiesTableDataSource.swift */,
 			);
 			path = TableDataSources;
 			sourceTree = "<group>";
@@ -796,7 +793,6 @@
 				F15C1ABA2461734A00F47CCC /* AlarmScheduler.swift in Sources */,
 				F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */,
 				F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */,
-				F18A325F244EF13B00162D1B /* MelodiesTableDataSource.swift in Sources */,
 				F1607DAE248AAE5300968586 /* TimerView.swift in Sources */,
 				F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */,
 				F1A26FA6247284A300A13B3C /* DismissAlarmViewController.swift in Sources */,
