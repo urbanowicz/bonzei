@@ -16,4 +16,9 @@ let melodies = ["Ambient Waves",
                 "Ocean Horizon",
                 "Sunriser",
                 "Early Riser",
-                "Endorphin Birds"]
+                "Endorphin Birds",
+                "LIPIEC_01",
+                "LIPIEC_02",
+                "LIPIEC_03",
+                "LIPIEC_04",
+                "LIPIEC_05"]
