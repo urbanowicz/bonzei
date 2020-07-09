@@ -33,6 +33,7 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     /// A table with names of available melodies.
     @IBOutlet weak var melodiesTable: UITableView!
     
+    @IBOutlet weak var overlayView: UIView!
     let cellReuseId = "MelodiesTableCell"
     
     // MARK: - Initialization
@@ -51,6 +52,13 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         if isBeingPresented {
             selectRowFor(melody: selectedMelody!)
         }
+        
+        let gradient = CAGradientLayer()
+
+        gradient.frame = overlayView.bounds
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.0,0.5]
+        overlayView.layer.mask = gradient
     }
     
     // MARK: - Navigation

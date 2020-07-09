@@ -727,12 +727,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRT-KU-RcR" userLabel="OveralyView">
+                                <rect key="frame" x="0.0" y="726" width="375" height="86"/>
+                                <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="z9h-qi-FXJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="hRT-KU-RcR" firstAttribute="leading" secondItem="afu-yN-PUz" secondAttribute="leading" id="4bE-oA-FFc"/>
                             <constraint firstItem="gcm-1M-TKd" firstAttribute="centerX" secondItem="afu-yN-PUz" secondAttribute="centerX" id="8Ae-uF-r7V"/>
                             <constraint firstItem="n6l-lS-POV" firstAttribute="top" secondItem="afu-yN-PUz" secondAttribute="top" constant="120" id="Mux-c6-HhC"/>
                             <constraint firstItem="afu-yN-PUz" firstAttribute="trailing" secondItem="n6l-lS-POV" secondAttribute="trailing" constant="24" id="OcK-t1-7j8"/>
+                            <constraint firstAttribute="bottom" secondItem="hRT-KU-RcR" secondAttribute="bottom" id="Qsw-aa-iFD"/>
+                            <constraint firstItem="hRT-KU-RcR" firstAttribute="trailing" secondItem="afu-yN-PUz" secondAttribute="trailing" id="W5M-Zq-xa3"/>
                             <constraint firstItem="woo-qV-J7H" firstAttribute="leading" secondItem="afu-yN-PUz" secondAttribute="leading" constant="24" id="cTq-RS-VHS"/>
                             <constraint firstItem="woo-qV-J7H" firstAttribute="centerY" secondItem="gcm-1M-TKd" secondAttribute="centerY" id="cdn-jo-Rjl"/>
                             <constraint firstItem="n6l-lS-POV" firstAttribute="leading" secondItem="afu-yN-PUz" secondAttribute="leading" constant="24" id="j1q-u0-sob"/>
@@ -744,13 +754,14 @@
                     <connections>
                         <outlet property="backButton" destination="woo-qV-J7H" id="Yis-9V-dCP"/>
                         <outlet property="melodiesTable" destination="n6l-lS-POV" id="DWN-wG-G6m"/>
+                        <outlet property="overlayView" destination="hRT-KU-RcR" id="1kS-U5-kLb"/>
                         <segue destination="DdJ-FN-jBh" kind="unwind" identifier="UnwindSetMelody" unwindAction="unwindSetMelody:" id="qj6-wz-AaF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbB-UX-Tma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="DdJ-FN-jBh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2541" y="-727"/>
+            <point key="canvasLocation" x="2540" y="-727.09359605911334"/>
         </scene>
         <!--Learn-->
         <scene sceneID="wg7-f3-ORb">
