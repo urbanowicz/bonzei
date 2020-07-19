@@ -23,7 +23,10 @@ class ArticleView: UIView {
     public var htmlText: String? {
         didSet {
             guard let htmlText = self.htmlText else { return }
-            webView.loadHTMLString(htmlText, baseURL: nil)
+            if let resourcePath = Bundle.main.resourcePath {
+                let url = URL.init(fileURLWithPath: resourcePath)
+                webView.loadHTMLString(htmlText, baseURL: url)
+            }
         }
     }
     
