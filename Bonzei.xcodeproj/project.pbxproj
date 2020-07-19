@@ -58,6 +58,10 @@
 		F1607DAE248AAE5300968586 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1607DAD248AAE5300968586 /* TimerView.swift */; };
 		F16770E0248C0C4E00797F0A /* ClockFaceAndDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16770DF248C0C4E00797F0A /* ClockFaceAndDots.swift */; };
 		F16770E4248C0D3200797F0A /* BonzeiClockV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16770E3248C0D3200797F0A /* BonzeiClockV2.swift */; };
+		F1737D3124C0D207009C83A5 /* LIPIEC_08.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1737D2D24C0D205009C83A5 /* LIPIEC_08.mp3 */; };
+		F1737D3224C0D207009C83A5 /* LIPIEC_09.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1737D2E24C0D206009C83A5 /* LIPIEC_09.mp3 */; };
+		F1737D3324C0D207009C83A5 /* LIPIEC_07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1737D2F24C0D206009C83A5 /* LIPIEC_07.mp3 */; };
+		F1737D3424C0D207009C83A5 /* LIPIEC_06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1737D3024C0D207009C83A5 /* LIPIEC_06.mp3 */; };
 		F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE22447089F008E9227 /* AppDelegate.swift */; };
 		F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE42447089F008E9227 /* SceneDelegate.swift */; };
 		F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE62447089F008E9227 /* WakeUpViewController.swift */; };
@@ -163,6 +167,10 @@
 		F1607DAD248AAE5300968586 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		F16770DF248C0C4E00797F0A /* ClockFaceAndDots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockFaceAndDots.swift; sourceTree = "<group>"; };
 		F16770E3248C0D3200797F0A /* BonzeiClockV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClockV2.swift; sourceTree = "<group>"; };
+		F1737D2D24C0D205009C83A5 /* LIPIEC_08.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_08.mp3; sourceTree = "<group>"; };
+		F1737D2E24C0D206009C83A5 /* LIPIEC_09.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_09.mp3; sourceTree = "<group>"; };
+		F1737D2F24C0D206009C83A5 /* LIPIEC_07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_07.mp3; sourceTree = "<group>"; };
+		F1737D3024C0D207009C83A5 /* LIPIEC_06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_06.mp3; sourceTree = "<group>"; };
 		F17ABEDF2447089F008E9227 /* Bonzei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bonzei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17ABEE22447089F008E9227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17ABEE42447089F008E9227 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -384,6 +392,10 @@
 		F15590F7245EE3F400928589 /* SoundFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F1737D3024C0D207009C83A5 /* LIPIEC_06.mp3 */,
+				F1737D2F24C0D206009C83A5 /* LIPIEC_07.mp3 */,
+				F1737D2D24C0D205009C83A5 /* LIPIEC_08.mp3 */,
+				F1737D2E24C0D206009C83A5 /* LIPIEC_09.mp3 */,
 				F15AFC9424B63B80002F8CFE /* LIPIEC_02.mp3 */,
 				F15AFC8C24B63B56002F8CFE /* LIPIEC_01.mp3 */,
 				F15AFC8E24B63B58002F8CFE /* LIPIEC_03.mp3 */,
@@ -682,9 +694,11 @@
 				F15AFC9024B63B58002F8CFE /* LIPIEC_01.mp3 in Resources */,
 				F147773E247D2B0000D12C60 /* Muli-ExtraLightItalic.ttf in Resources */,
 				F1477725247D1FE100D12C60 /* Muli-Regular.ttf in Resources */,
+				F1737D3324C0D207009C83A5 /* LIPIEC_07.mp3 in Resources */,
 				F15AFC9224B63B58002F8CFE /* LIPIEC_03.mp3 in Resources */,
 				F15AFC9324B63B58002F8CFE /* LIPIEC_04.mp3 in Resources */,
 				F147773A247D2B0000D12C60 /* Muli-BoldItalic.ttf in Resources */,
+				F1737D3224C0D207009C83A5 /* LIPIEC_09.mp3 in Resources */,
 				F183B5DE24B23188007A96B2 /* Endorphin Birds.mp3 in Resources */,
 				F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */,
 				F15AFC9524B63B81002F8CFE /* LIPIEC_02.mp3 in Resources */,
@@ -697,9 +711,11 @@
 				F1477723247D0C3200D12C60 /* Muli-Bold.ttf in Resources */,
 				F15B681A24A6724400A34C3D /* Ocean Horizon.mp3 in Resources */,
 				F1477721247D073E00D12C60 /* Gilam-Light.ttf in Resources */,
+				F1737D3124C0D207009C83A5 /* LIPIEC_08.mp3 in Resources */,
 				F147773B247D2B0000D12C60 /* Muli-ExtraLight.ttf in Resources */,
 				F1477743247D2B0000D12C60 /* Muli-Light.ttf in Resources */,
 				F1477742247D2B0000D12C60 /* Muli-ExtraBold.ttf in Resources */,
+				F1737D3424C0D207009C83A5 /* LIPIEC_06.mp3 in Resources */,
 				F1477739247D2B0000D12C60 /* Muli-MediumItalic.ttf in Resources */,
 				F1477736247D2B0000D12C60 /* Muli-Medium.ttf in Resources */,
 				F1477737247D2B0000D12C60 /* Muli-SemiBoldItalic.ttf in Resources */,
@@ -997,7 +1013,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1018,7 +1034,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

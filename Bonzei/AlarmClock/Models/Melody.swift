@@ -21,4 +21,8 @@ let melodies = ["Ambient Waves",
                 "LIPIEC_02",
                 "LIPIEC_03",
                 "LIPIEC_04",
-                "LIPIEC_05"]
+                "LIPIEC_05",
+                "LIPIEC_06",
+                "LIPIEC_07",
+                "LIPIEC_08",
+                "LIPIEC_09"]
