@@ -28,7 +28,7 @@ class BonzeiTabBar: UIView {
     
     private var iconColorInactive = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.5)
     
-    private var borderColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.2)
+    private var borderColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.15)
     
     private var labelFont = UIFont(name: "Muli-SemiBold", size: 10.0)
     

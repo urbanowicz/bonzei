@@ -38,9 +38,8 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         let tabItems: [TabItem] = [.wakeUp, .learn]
         self.setupCustomTabBar(tabItems) { (controllers) in
             self.viewControllers = controllers
+            self.selectedIndex = 0
         }
-        
-        self.selectedIndex = 0
     }
     
     private func setupCustomTabBar(_ items: [TabItem], completion: @escaping ([UIViewController]) -> Void) {
@@ -55,7 +54,7 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         view.addSubview(customTabBar)
         
         // Add positioning constraints to place the nav menu right where the tab bar should be
-        let tabBarHeight: CGFloat = tabBar.frame.width * 0.2694
+        let tabBarHeight: CGFloat = 100 //tabBar.frame.width * 0.2694
         NSLayoutConstraint.activate([
             customTabBar.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor),
             customTabBar.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor),

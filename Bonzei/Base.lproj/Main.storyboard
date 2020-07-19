@@ -786,7 +786,7 @@
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="12" minimumInteritemSpacing="10" id="dlN-I8-TEk">
                             <size key="itemSize" width="373" height="160"/>
                             <size key="headerReferenceSize" width="50" height="215"/>
-                            <size key="footerReferenceSize" width="50" height="24"/>
+                            <size key="footerReferenceSize" width="50" height="87"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
@@ -873,7 +873,7 @@
                             </constraints>
                         </collectionReusableView>
                         <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ArticlesCollectionFooter" id="Rsl-xp-DgE">
-                            <rect key="frame" x="0.0" y="375" width="375" height="24"/>
+                            <rect key="frame" x="0.0" y="375" width="375" height="87"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </collectionReusableView>
                     </collectionView>
