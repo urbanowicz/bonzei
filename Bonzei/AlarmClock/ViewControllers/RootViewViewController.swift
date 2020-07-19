@@ -12,6 +12,8 @@ import MediaPlayer
 class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
     
     private var dismissAlarmViewController: DismissAlarmViewController?
+    
+    private var customTabBar: BonzeiTabBar!
 
     private var volumeView: MPVolumeView!
     override func viewDidLoad() {
@@ -28,6 +30,50 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         volumeView = MPVolumeView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
         volumeView.isHidden = true
         view.addSubview(volumeView)
+        
+        createTabBar()
+    }
+    
+    private func createTabBar() {
+        let tabItems: [TabItem] = [.wakeUp, .learn]
+        self.setupCustomTabBar(tabItems) { (controllers) in
+            self.viewControllers = controllers
+        }
+        
+        self.selectedIndex = 0
+    }
+    
+    private func setupCustomTabBar(_ items: [TabItem], completion: @escaping ([UIViewController]) -> Void) {
+        let frame = tabBar.frame
+        var controllers = [UIViewController]()
+        
+        tabBar.isHidden = true
+        
+        customTabBar = BonzeiTabBar(menuItems: items, frame: frame)
+        customTabBar.translatesAutoresizingMaskIntoConstraints = false
+        customTabBar.itemTapped = self.changeTab
+        view.addSubview(customTabBar)
+        
+        // Add positioning constraints to place the nav menu right where the tab bar should be
+        let tabBarHeight: CGFloat = tabBar.frame.width * 0.2694
+        NSLayoutConstraint.activate([
+            customTabBar.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor),
+            customTabBar.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor),
+            customTabBar.widthAnchor.constraint(equalToConstant: tabBar.frame.width),
+            customTabBar.heightAnchor.constraint(equalToConstant: tabBarHeight),
+            customTabBar.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor)
+        ])
+        
+        for i in 0 ..< items.count {
+            controllers.append(items[i].viewController)
+        }
+        
+        self.view.layoutIfNeeded()
+        completion(controllers)
+    }
+    
+    func changeTab(tab: Int) {
+        self.selectedIndex = tab
     }
     
     /// Called  after application has been launched or has moved to foreground

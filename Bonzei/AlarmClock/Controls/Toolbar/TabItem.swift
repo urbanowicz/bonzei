@@ -17,16 +17,19 @@ enum TabItem: String, CaseIterable {
     var viewController: UIViewController {
         switch self {
         case .wakeUp:
-            return WakeUpViewController()
+            return UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "WakeUpViewController")
+            
         case .learn:
-            return ArticlesCollectionViewController()
+            return UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "ArticlesCollectionViewController")
         }
     }
     
     var icon: UIImage? {
         switch self {
         case .wakeUp:
-            return UIImage(named: "ic-wakeup-green")!
+            return UIImage(named: "clock-green")!
         case .learn:
             return UIImage(named: "ic-learn-green")!
         }
