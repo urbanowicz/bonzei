@@ -48,9 +48,13 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         
         backButton.backgroundColor = UIColor.clear
         
-        melodiesTable.dataSource = self
+        overlayTopView.isUserInteractionEnabled = false
+        overlayView.isUserInteractionEnabled = false
         
+        melodiesTable.dataSource = self
         melodiesTable.delegate = self
+        
+        melodiesTable.contentInset = UIEdgeInsets(top: 25, left: 0, bottom: 0, right: 0)
     }
     
     override func viewDidLayoutSubviews() {
