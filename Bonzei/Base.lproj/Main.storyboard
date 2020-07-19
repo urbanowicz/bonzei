@@ -71,7 +71,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-Yu-6ic" userLabel="AlarmsTable">
-                                <rect key="frame" x="0.0" y="221" width="375" height="508"/>
+                                <rect key="frame" x="0.0" y="221" width="375" height="491"/>
                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,7 +195,7 @@
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="VAZ-Yu-6ic" secondAttribute="trailing" id="7dP-Z5-F6q"/>
                             <constraint firstItem="VAZ-Yu-6ic" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="8u4-uW-bgK"/>
                             <constraint firstItem="VAZ-Yu-6ic" firstAttribute="top" secondItem="pp5-aH-gMu" secondAttribute="bottom" constant="82" id="Bms-nK-PHq"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="VAZ-Yu-6ic" secondAttribute="bottom" id="CEE-s4-xdV"/>
+                            <constraint firstAttribute="bottom" secondItem="VAZ-Yu-6ic" secondAttribute="bottom" constant="100" id="CEE-s4-xdV"/>
                             <constraint firstItem="pp5-aH-gMu" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="24" id="DO6-9k-Mik"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="7hp-Kn-lhZ" secondAttribute="trailing" constant="24" id="bBD-Cd-ZiT"/>
                             <constraint firstItem="7hp-Kn-lhZ" firstAttribute="centerY" secondItem="PQr-Ze-W5v" secondAttribute="centerY" id="jqi-G8-Y1V"/>
