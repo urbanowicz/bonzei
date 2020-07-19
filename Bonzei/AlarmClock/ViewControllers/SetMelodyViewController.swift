@@ -33,7 +33,12 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     /// A table with names of available melodies.
     @IBOutlet weak var melodiesTable: UITableView!
     
+    /// A semi transparent view that covers the top of the melodies table
+    @IBOutlet weak var overlayTopView: UIView!
+    
+    /// A semi transparent view that covers the bottom of the melodies table
     @IBOutlet weak var overlayView: UIView!
+    
     let cellReuseId = "MelodiesTableCell"
     
     // MARK: - Initialization
@@ -53,11 +58,19 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
             selectRowFor(melody: selectedMelody!)
         }
         
+        // top overlay
+        let topOverlayMask = CAGradientLayer()
+        topOverlayMask.frame = overlayTopView.bounds
+        topOverlayMask.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        topOverlayMask.locations = [0.5, 1.0]
+        overlayTopView.layer.mask = topOverlayMask
+        
+        // bottom overlay
         let gradient = CAGradientLayer()
 
         gradient.frame = overlayView.bounds
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        gradient.locations = [0.0,0.5]
+        gradient.locations = [0.0, 0.5]
         overlayView.layer.mask = gradient
     }
     

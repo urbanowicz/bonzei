@@ -727,7 +727,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRT-KU-RcR" userLabel="OveralyView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iMt-v7-zKX" userLabel="OverlayViewTop">
+                                <rect key="frame" x="24" y="121" width="327" height="86"/>
+                                <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="ygo-uE-nWY"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRT-KU-RcR" userLabel="OveralyViewBottom">
                                 <rect key="frame" x="0.0" y="726" width="375" height="86"/>
                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -742,18 +749,22 @@
                             <constraint firstItem="n6l-lS-POV" firstAttribute="top" secondItem="afu-yN-PUz" secondAttribute="top" constant="120" id="Mux-c6-HhC"/>
                             <constraint firstItem="afu-yN-PUz" firstAttribute="trailing" secondItem="n6l-lS-POV" secondAttribute="trailing" constant="24" id="OcK-t1-7j8"/>
                             <constraint firstAttribute="bottom" secondItem="hRT-KU-RcR" secondAttribute="bottom" id="Qsw-aa-iFD"/>
+                            <constraint firstItem="n6l-lS-POV" firstAttribute="leading" secondItem="iMt-v7-zKX" secondAttribute="leading" id="V8c-oa-Zco"/>
                             <constraint firstItem="hRT-KU-RcR" firstAttribute="trailing" secondItem="afu-yN-PUz" secondAttribute="trailing" id="W5M-Zq-xa3"/>
                             <constraint firstItem="woo-qV-J7H" firstAttribute="leading" secondItem="afu-yN-PUz" secondAttribute="leading" constant="24" id="cTq-RS-VHS"/>
                             <constraint firstItem="woo-qV-J7H" firstAttribute="centerY" secondItem="gcm-1M-TKd" secondAttribute="centerY" id="cdn-jo-Rjl"/>
                             <constraint firstItem="n6l-lS-POV" firstAttribute="leading" secondItem="afu-yN-PUz" secondAttribute="leading" constant="24" id="j1q-u0-sob"/>
+                            <constraint firstItem="n6l-lS-POV" firstAttribute="trailing" secondItem="iMt-v7-zKX" secondAttribute="trailing" id="sJ0-FC-iek"/>
                             <constraint firstItem="gcm-1M-TKd" firstAttribute="top" secondItem="afu-yN-PUz" secondAttribute="top" constant="12" id="tOk-8B-LMt"/>
                             <constraint firstItem="n6l-lS-POV" firstAttribute="bottom" secondItem="afu-yN-PUz" secondAttribute="bottom" id="vbp-Cp-LGx"/>
+                            <constraint firstItem="n6l-lS-POV" firstAttribute="top" secondItem="iMt-v7-zKX" secondAttribute="centerY" id="z4P-Nl-O16"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="afu-yN-PUz"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="woo-qV-J7H" id="Yis-9V-dCP"/>
                         <outlet property="melodiesTable" destination="n6l-lS-POV" id="DWN-wG-G6m"/>
+                        <outlet property="overlayTopView" destination="iMt-v7-zKX" id="3yd-HX-KIA"/>
                         <outlet property="overlayView" destination="hRT-KU-RcR" id="1kS-U5-kLb"/>
                         <segue destination="DdJ-FN-jBh" kind="unwind" identifier="UnwindSetMelody" unwindAction="unwindSetMelody:" id="qj6-wz-AaF"/>
                     </connections>
