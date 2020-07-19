@@ -54,7 +54,7 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
         melodiesTable.dataSource = self
         melodiesTable.delegate = self
         
-        melodiesTable.contentInset = UIEdgeInsets(top: 25, left: 0, bottom: 0, right: 0)
+        melodiesTable.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
     }
     
     override func viewDidLayoutSubviews() {

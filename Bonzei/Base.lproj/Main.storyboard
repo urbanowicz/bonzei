@@ -650,14 +650,8 @@
                                     <action selector="backButtonPressed:" destination="471-3X-WLW" eventType="touchUpInside" id="dxI-3G-2gO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Melody" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcm-1M-TKd" userLabel="MelodyLabel">
-                                <rect key="frame" x="139.66666666666666" y="56" width="95.666666666666657" height="35.333333333333343"/>
-                                <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n6l-lS-POV" userLabel="MelodiesTable">
-                                <rect key="frame" x="24" y="164" width="327" height="614"/>
+                                <rect key="frame" x="24" y="129" width="327" height="649"/>
                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MelodiesTableCell" id="dln-UK-mql" userLabel="Cell" customClass="MelodyCell" customModule="Bonzei" customModuleProvider="target">
@@ -728,12 +722,18 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iMt-v7-zKX" userLabel="OverlayViewTop">
-                                <rect key="frame" x="24" y="121" width="327" height="86"/>
+                                <rect key="frame" x="24" y="86" width="327" height="86"/>
                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="86" id="ygo-uE-nWY"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Melody" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcm-1M-TKd" userLabel="MelodyLabel">
+                                <rect key="frame" x="139.66666666666666" y="56" width="95.666666666666657" height="35.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRT-KU-RcR" userLabel="OveralyViewBottom">
                                 <rect key="frame" x="0.0" y="726" width="375" height="86"/>
                                 <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -746,7 +746,7 @@
                         <constraints>
                             <constraint firstItem="hRT-KU-RcR" firstAttribute="leading" secondItem="afu-yN-PUz" secondAttribute="leading" id="4bE-oA-FFc"/>
                             <constraint firstItem="gcm-1M-TKd" firstAttribute="centerX" secondItem="afu-yN-PUz" secondAttribute="centerX" id="8Ae-uF-r7V"/>
-                            <constraint firstItem="n6l-lS-POV" firstAttribute="top" secondItem="afu-yN-PUz" secondAttribute="top" constant="120" id="Mux-c6-HhC"/>
+                            <constraint firstItem="n6l-lS-POV" firstAttribute="top" secondItem="afu-yN-PUz" secondAttribute="top" constant="85" id="Mux-c6-HhC"/>
                             <constraint firstItem="afu-yN-PUz" firstAttribute="trailing" secondItem="n6l-lS-POV" secondAttribute="trailing" constant="24" id="OcK-t1-7j8"/>
                             <constraint firstAttribute="bottom" secondItem="hRT-KU-RcR" secondAttribute="bottom" id="Qsw-aa-iFD"/>
                             <constraint firstItem="n6l-lS-POV" firstAttribute="leading" secondItem="iMt-v7-zKX" secondAttribute="leading" id="V8c-oa-Zco"/>
