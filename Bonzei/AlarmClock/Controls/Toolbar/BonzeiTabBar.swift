@@ -22,7 +22,7 @@ class BonzeiTabBar: UIView {
     
     private var borderLayer = CAShapeLayer()
     
-    private var tabBarColor = UIColor.white
+    private var tabBarColor = BonzeiColors.offWhite
     
     private var iconColorActive = UIColor.white
     
@@ -30,7 +30,7 @@ class BonzeiTabBar: UIView {
     
     private var borderColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.2)
     
-    private var labelFont = UIFont(name: "Muli-SemiBold", size: 11.0)
+    private var labelFont = UIFont(name: "Muli-SemiBold", size: 10.0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -130,7 +130,7 @@ class BonzeiTabBar: UIView {
             //itemIconView.leadingAnchor.constraint(,
             
             // Height of the title label
-            label.heightAnchor.constraint(equalToConstant: 10),
+            label.heightAnchor.constraint(equalToConstant: 14),
             
             // Label width
             label.widthAnchor.constraint(equalTo: tabBarItem.widthAnchor),
