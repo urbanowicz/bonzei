@@ -240,7 +240,7 @@ private class CircleSelectionView: UIView {
     
     var innerCircleBottomColor = UIColor(red: 0.14, green: 0.24, blue: 0.21, alpha: 1.00)
     
-    var outerCircleColor = UIColor.white
+    var outerCircleColor = BonzeiColors.offWhite
     
     var borderColor = UIColor.red {
         didSet {

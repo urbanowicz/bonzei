@@ -187,7 +187,7 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
         //nothing to do here.
     }
     
-    //MARK: - Helper functions
+    //MARK: - Private API
     
     private func addTapGestureRecognizerToAlarmsTable() {
         let tapGestureRecognizer = UITapGestureRecognizer()
@@ -257,15 +257,14 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
     }
 }
 
+// MARK:- AlarmsTableCell
+
 /// A custom cell for the 'Alarms Table'
-/// Note: It should live in a separate file (eg. Views/AlarmsTableCell.swift) but for some reason 'Assistant Editor' didn't allow me to connect outlets if the class weren't here.
 class AlarmsTableCell: UITableViewCell {
     
     var alarm: Alarm! {
         didSet {
-            
             setupTimeLabel()
-            setupAmLabel()
             setupMelodyLabel()
             setupIsActiveSwitch()
             setupRepeatOnLabel()
@@ -280,8 +279,6 @@ class AlarmsTableCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     
-    @IBOutlet weak var amLabel: UILabel!
-    
     @IBOutlet weak var isActiveSwitch: UISwitch!
     
     internal func setupViews() {
@@ -289,30 +286,28 @@ class AlarmsTableCell: UITableViewCell {
     }
     
     private func setupTimeLabel() {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = alarm.date.timeZone
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        
         var foregroundColor = BonzeiColors.darkGrayDisabled
         
         if alarm.isActive {
             foregroundColor = BonzeiColors.darkTextColor
         }
         
-        timeLabel.textColor = foregroundColor
+        let timeString = NSMutableAttributedString(string: dateFormatter.string(from: alarm.date))
         
-        var dateString = alarm.dateString
-        dateString = String(dateString.prefix(dateString.count - 3))
-       
-        timeLabel.text = dateString
-    }
-    
-    private func setupAmLabel() {
-        var foregroundColor = BonzeiColors.darkGrayDisabled
+        timeString.addAttributes([.font: UIFont(name: "Muli-SemiBold", size: 40)!, .foregroundColor: foregroundColor], range: NSRange(location: 0, length: timeString.length))
         
-        if alarm.isActive {
-            foregroundColor = BonzeiColors.darkTextColor
+        if !shouldUse24HourMode() {
+            timeString.addAttribute(.font, value: UIFont(name: "Muli-SemiBold", size: 16)!,
+                                    range: NSRange(location: timeString.length - 2, length: 2))
         }
-        
-        amLabel.textColor = foregroundColor
-        
-        amLabel.text = String(alarm.dateString.suffix(2))
+        timeLabel.attributedText = timeString
     }
     
     private func setupMelodyLabel() {

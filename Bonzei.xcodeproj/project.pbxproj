@@ -90,6 +90,7 @@
 		F1A608BD24713C00008A45EF /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F1A608BE24716416008A45EF /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
 		F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB936D2465EFFD008FAA1D /* Constants.swift */; };
+		F1BB762024C7640D00538465 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BB761F24C7640D00538465 /* Helpers.swift */; };
 		F1BC60D3247FE7AF00BB6CB0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */; };
 		F1C76B6C247EBDBF0099F1F1 /* BonzeiClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */; };
 		F1C76B6E247ED7CD0099F1F1 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */; };
@@ -203,6 +204,7 @@
 		F195A8EA24850F81009D54A3 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
 		F1A26FA5247284A300A13B3C /* DismissAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAlarmViewController.swift; sourceTree = "<group>"; };
 		F1AB936D2465EFFD008FAA1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F1BB761F24C7640D00538465 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClock.swift; sourceTree = "<group>"; };
 		F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				F142BDE324704CF200B5857C /* DateExtension.swift */,
 				F14EF8AB24766537006A40D8 /* NotificationExtension.swift */,
 				F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */,
+				F1BB761F24C7640D00538465 /* Helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */,
 				F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */,
 				F1607DAE248AAE5300968586 /* TimerView.swift in Sources */,
+				F1BB762024C7640D00538465 /* Helpers.swift in Sources */,
 				F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */,
 				F1CBD48524C4A212006980AF /* TabItem.swift in Sources */,
 				F1A26FA6247284A300A13B3C /* DismissAlarmViewController.swift in Sources */,
@@ -1029,7 +1033,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1050,7 +1054,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

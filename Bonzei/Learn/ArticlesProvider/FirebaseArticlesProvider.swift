@@ -87,6 +87,7 @@ class FirebaseArticlesProvider: ArticlesProvider {
     
     private func date(from: String) -> Date {
         let df = DateFormatter()
+        df.locale = Locale(identifier: "en_US_POSIX")
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return df.date(from: from)!
     }

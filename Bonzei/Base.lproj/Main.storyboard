@@ -91,14 +91,8 @@
                                                     <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNK-s6-mQb">
-                                                    <rect key="frame" x="168" y="24.333333333333336" width="25.666666666666657" height="20.333333333333336"/>
-                                                    <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="16"/>
-                                                    <color key="textColor" red="0.10980392160000001" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="&lt;Melody&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R82-Pj-IU8" userLabel="Melody">
-                                                    <rect key="frame" x="211.66666666666666" y="28.333333333333332" width="54.999999999999972" height="15.333333333333332"/>
+                                                    <rect key="frame" x="182" y="28.333333333333332" width="55" height="15.333333333333332"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="12"/>
                                                     <color key="textColor" red="0.10980392160000001" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -122,6 +116,7 @@
                                             <constraints>
                                                 <constraint firstItem="1IJ-h7-Pff" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dHv-wg-m6g" secondAttribute="leading" constant="1" id="2Fg-vf-ABC"/>
                                                 <constraint firstItem="dHv-wg-m6g" firstAttribute="centerY" secondItem="Kii-g2-JUS" secondAttribute="firstBaseline" id="Ct0-gL-nUB"/>
+                                                <constraint firstItem="R82-Pj-IU8" firstAttribute="leading" secondItem="Kii-g2-JUS" secondAttribute="trailing" constant="18" id="MQ1-fZ-H8B"/>
                                                 <constraint firstItem="1IJ-h7-Pff" firstAttribute="leading" secondItem="WUJ-f4-lPi" secondAttribute="leading" constant="24" id="QPg-1J-Pj5"/>
                                                 <constraint firstItem="R82-Pj-IU8" firstAttribute="firstBaseline" secondItem="Kii-g2-JUS" secondAttribute="firstBaseline" id="WcM-0E-JGT"/>
                                                 <constraint firstItem="dHv-wg-m6g" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="R82-Pj-IU8" secondAttribute="trailing" constant="1" id="ZDV-oC-bBJ"/>
@@ -129,13 +124,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="dHv-wg-m6g" secondAttribute="trailing" constant="24" id="f1q-up-uej"/>
                                                 <constraint firstItem="Kii-g2-JUS" firstAttribute="leading" secondItem="WUJ-f4-lPi" secondAttribute="leading" constant="24" id="gXP-LJ-F7V"/>
                                                 <constraint firstItem="Kii-g2-JUS" firstAttribute="top" secondItem="WUJ-f4-lPi" secondAttribute="top" id="gbn-AQ-J7u"/>
-                                                <constraint firstItem="xNK-s6-mQb" firstAttribute="leading" secondItem="Kii-g2-JUS" secondAttribute="trailing" constant="4" id="n2c-p6-lpD"/>
-                                                <constraint firstItem="xNK-s6-mQb" firstAttribute="firstBaseline" secondItem="Kii-g2-JUS" secondAttribute="firstBaseline" id="nhR-3x-RBa"/>
-                                                <constraint firstItem="R82-Pj-IU8" firstAttribute="leading" secondItem="xNK-s6-mQb" secondAttribute="trailing" constant="18" id="y4y-5Y-HVj"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="amLabel" destination="xNK-s6-mQb" id="Wiq-SQ-8SC"/>
                                             <outlet property="isActiveSwitch" destination="dHv-wg-m6g" id="XH4-yv-hpz"/>
                                             <outlet property="melodyLabel" destination="R82-Pj-IU8" id="H8p-AE-u1r"/>
                                             <outlet property="repeatOnLabel" destination="1IJ-h7-Pff" id="16M-Ju-nwP"/>
