@@ -15,7 +15,6 @@ import os.log
 /// An alarm scheduler.
 ///
 /// Provides a convenient API for scheduling of recurring alarms.
-/// Rrelies on services provided by the`UNUserNotificationCenter`
 /// To schedule an alarm, client code must create an instance of the `Alarm` class and pass it to the scheduler
 /// There is one, shared instance of the scheduler in the application. It can be accessed like so:
 ///
@@ -30,9 +29,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     /// A delegate for the scheduler
     public var delegate: AlarmSchedulerDelegate?
-    
-    /// Name of the file with the loud alarm. It will be played if the soft alarm is not dismissed.
-    public var loudAlarmFileName: String = "alarm.mp3"
     
     /// State of the scheduler. There are two states:
     /// - `waiting`. No alarm is being played. The scheduler is waiting for an alarm to be triggered. Can transition to `alarmTriggered`
@@ -57,7 +53,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    public let snoozeTimeMinutes = 8
+    let snoozeTimeMinutes = 8
+    
+    let numberOfLoops = 200
     
     /// All scheduled alarms
     private var scheduledAlarms = [Alarm]()
@@ -66,12 +64,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     /// When an alarm is triggerd,  a melody is played by the audio player
     private var audioPlayer: AVAudioPlayer?
-    
-    /// Number of times we've tried to wake up a user
-    private var numberOfAttempts = 0
-    
-    /// How many times should the looud alarm be played before auto snoozing.
-    private let numberOfLoppsForLoudAlarm = 0
     
     private let noLaterThanSeconds = 15
     
@@ -253,7 +245,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         }
         
         state = .waiting
-        numberOfAttempts = 0
         
         HeartBeatService.sharedInstance.start()
         
@@ -286,8 +277,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         deactivateAudioSession()
         
         HeartBeatService.sharedInstance.start()
-        
-        numberOfAttempts = 0
         
         ifNotificationsAreAllowed {
             let content = self.prepareNotificationContentForAlarm(alarmToSnooze)
@@ -338,17 +327,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     // MARK: - AVAudioPlayerDelegate
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        if numberOfAttempts == 0 {
-            os_log("Finished playing a soft melody.", log: log, type: .info)
-           
-            numberOfAttempts += 1
-            
-            playAudio(fileName: loudAlarmFileName, numberOfLoops: numberOfLoppsForLoudAlarm)
-        } else {
-            os_log("Finished playing the loud alarm.", log: log, type: .info)
-            
-            snooze()
-        }
+        os_log("Finished playing the melody.", log: log, type: .info)
+        snooze()
     }
     
     // MARK: - Private API
@@ -637,7 +617,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     }
     
     private func playAlarm(_ alarm: Alarm) {
-        playAudio(fileName: alarm.melodyName + ".mp3", numberOfLoops: 0)
+        playAudio(fileName: alarm.melodyName + ".mp3", numberOfLoops: numberOfLoops)
     }
     
     private func shouldTriggerSnoozedAlarm(_ alarm: Alarm, now: Date) -> Bool {
