@@ -31,11 +31,11 @@ class ArticlesCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if let lastSyncDate = lastSyncDate {
-//            if lastSyncDate.new(byAdding: .second, value: 15) >= Date() {
-//                return
-//            }
-//        }
+        if let lastSyncDate = lastSyncDate {
+            if lastSyncDate.new(byAdding: .second, value: 15) >= Date() {
+                return
+            }
+        }
         
         if dontSync {
             dontSync = false
