@@ -142,7 +142,7 @@
                                 <color key="highlightedColor" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="7hp-Kn-lhZ" userLabel="VStack">
-                                <rect key="frame" x="24" y="286.33333333333331" width="327" height="200.33333333333331"/>
+                                <rect key="frame" x="24" y="311" width="327" height="200.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Own your morning by starting the day effectively with the best sounding alarm clock." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUD-6f-SEE">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="64.333333333333329"/>
@@ -151,7 +151,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3P-5f-fSd" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="144.33333333333337" width="327" height="56"/>
+                                        <rect key="frame" x="0.0" y="144.33333333333331" width="327" height="56"/>
                                         <color key="backgroundColor" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="5ud-dY-5fU"/>
@@ -931,10 +931,6 @@
                         <color key="barTintColor" red="0.99873024225234985" green="0.99270755052566528" blue="0.99225538969039917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" red="0.14013546705245972" green="0.24258783459663391" blue="0.21357369422912598" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>

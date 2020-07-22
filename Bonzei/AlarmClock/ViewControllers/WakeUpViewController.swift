@@ -51,9 +51,6 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
         registerForAlarmTriggeredNotification()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        stopReceivingAlarmTriggeredNotification()
-    }
     
     // MARK: - Actions
     
@@ -82,7 +79,6 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
     @objc func didTriggerAlarm(_ notification: Notification) {
         let userInfo = notification.userInfo as! [String: Any]
         let alarm = userInfo["alarm"] as! Alarm
-       
         // If it is a 'one time' alarm that has triggered, AlarmScheduler has changed its state to inactive.
         // This is because we don't want a 'one time' alarm to go off the next day.
         // To reflect the change from active to inactive in the UI we need to refresh the alarmsTable
