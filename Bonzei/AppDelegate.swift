@@ -27,10 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Initialize Firebase
         FirebaseApp.configure()
         
-        syncArticles()
-        dispatchGroup.notify(queue: .main) {
-            print("B")
-        }
+//        syncArticles()
+//        dispatchGroup.notify(queue: .main) {
+//            print("B")
+//        }
         return true
     }
     
