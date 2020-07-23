@@ -212,7 +212,12 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     private func selectRowFor(melody: String) {
-        let indexOfSelectedMelody = melodies.firstIndex(of: melody)!
+        var indexOfSelectedMelody = 0
+        if melody == "Shuffle" {
+            indexOfSelectedMelody = melodies.count
+        } else {
+            indexOfSelectedMelody = melodies.firstIndex(of: melody)!
+        }
         melodiesTable.selectRow(at: IndexPath(row: indexOfSelectedMelody, section: 0),
                                 animated: false,
                                 scrollPosition: .none)
@@ -229,7 +234,9 @@ extension SetMelodyViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == melodies.count  {
-            return tableView.dequeueReusableCell(withIdentifier: shuffleCellReuseId)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: shuffleCellReuseId) as! ShuffleCell
+            cell.isPicked = selectedMelody == "Shuffle"
+            return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: melodyCellReuseId) as! MelodyCell
@@ -257,6 +264,7 @@ extension SetMelodyViewController: UITableViewDataSource {
 extension SetMelodyViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         if let cell = tableView.cellForRow(at: indexPath) as? MelodiesTableCell {
             cell.select()
             selectedMelody = cell.getMelodyName()

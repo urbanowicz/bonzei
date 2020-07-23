@@ -131,8 +131,13 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
             return
         }
         
+        var soundFileName = selectedMelody + ".mp3"
+        if selectedMelody == "Shuffle" {
+            soundFileName = melodies[Int.random(in: 0..<melodies.count)] + ".mp3"
+        }
+        
         // Play the selected melody
-        if let path = Bundle.main.path(forResource: selectedMelody + ".mp3", ofType: nil) {
+        if let path = Bundle.main.path(forResource: soundFileName, ofType: nil) {
             
             let url = URL(fileURLWithPath: path)
             
@@ -148,11 +153,11 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
                 audioPlayer?.play()
                 isMelodyPlaying = true
             } catch {
-                print("Playing a melody failed. \"\(selectedMelody).mp3\"")
+                print("Playing a melody failed. \"\(soundFileName)\"")
             }
             
         } else {
-            print("Couldn't preview a melody because the sound file was not found: \"\(selectedMelody).mp3\"")
+            print("Couldn't preview a melody because the sound file was not found: \"\(soundFileName)\"")
         }
     }
 
@@ -223,7 +228,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         
         if timePicker.is24mode {
             
-            // In 24 hour mode progress of 0.5 means 12
+            // In 24 hour mode progress of 0.5 means 12 o'clock
             // and progress of 1.0 means 24
             // we need to adjust the progress so that the values between 0.5 and 1.0
             // mean the same thing as values between 0.0 and 0.5.

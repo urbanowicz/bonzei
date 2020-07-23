@@ -75,7 +75,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         // it might be that the set of available melodies changed
         // In such a case we must delete alarms that reference nonexisting melodies
-        let alarmsWithMissingMelodyFiles = scheduledAlarms.filter( { alarm in !melodies.contains(alarm.melodyName) })
+        let alarmsWithMissingMelodyFiles = scheduledAlarms.filter( { alarm in !melodies.contains(alarm.melodyName) && alarm.melodyName != "Shuffle" })
         alarmsWithMissingMelodyFiles.forEach({ alarm in self.unscheduleAlarm(withId: alarm.id) })
 
     }
@@ -541,7 +541,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     private func prepareNotificationContentForAlarm(_ alarm: Alarm) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = "Wake up"
-        content.body = alarm.melodyName
+        content.body = "" //alarm.melodyName
         content.categoryIdentifier = "alarm"
         content.sound = .none
         return content
@@ -617,7 +617,11 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     }
     
     private func playAlarm(_ alarm: Alarm) {
-        playAudio(fileName: alarm.melodyName + ".mp3", numberOfLoops: numberOfLoops)
+        var soundFileName = alarm.melodyName + ".mp3"
+        if alarm.melodyName == "Shuffle" {
+            soundFileName = melodies[Int.random(in: 0..<melodies.count)] + ".mp3"
+        }
+        playAudio(fileName: soundFileName, numberOfLoops: numberOfLoops)
     }
     
     private func shouldTriggerSnoozedAlarm(_ alarm: Alarm, now: Date) -> Bool {
@@ -704,7 +708,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     func dump() {
         var s = "\n"
-        s+="--------------------ALARMS--------------------\n"
+        s+="--------------------Alarm--------------------\n"
         for alarm in scheduledAlarms {
             
             let notificationRequests = getNotificationRequestsForAlarm(withId: alarm.id)!
