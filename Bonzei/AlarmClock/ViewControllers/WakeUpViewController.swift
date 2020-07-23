@@ -301,7 +301,7 @@ class AlarmsTableCell: UITableViewCell {
         
         if !shouldUse24HourMode() {
             timeString.addAttribute(.font, value: UIFont(name: "Muli-SemiBold", size: 16)!,
-                                    range: NSRange(location: timeString.length - 2, length: 2))
+                                    range: NSRange(location: timeString.length - 3, length: 3))
         }
         timeLabel.attributedText = timeString
     }
