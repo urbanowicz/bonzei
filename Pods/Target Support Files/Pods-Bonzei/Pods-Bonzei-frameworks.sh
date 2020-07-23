@@ -1,4 +1,19 @@
 #!/bin/sh
+                
+# ---- this is added by cocoapods-binary ---
+# Readlink cannot handle relative symlink well, so we override it to a new one
+# If the path isn't an absolute path, we add a realtive prefix.
+old_read_link=`which readlink`
+readlink () {
+    path=`$old_read_link $1`;
+    if [ $(echo "$path" | cut -c 1-1) = '/' ]; then
+        echo $path;
+    else
+        echo "`dirname $1`/$path";
+    fi
+}
+# --- 
+#!/bin/sh
 set -e
 set -u
 set -o pipefail
@@ -46,8 +61,8 @@ install_framework()
   fi
 
   # Use filter instead of exclude so missing patterns don't throw errors.
-  echo "rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --links --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${source}\" \"${destination}\""
-  rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --links --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${source}" "${destination}"
+  echo "rsync --copy-links --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --links --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${source}\" \"${destination}\""
+  rsync --copy-links --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --links --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${source}" "${destination}"
 
   local basename
   basename="$(basename -s .framework "$1")"
@@ -87,8 +102,8 @@ install_dsym() {
   warn_missing_arch=${2:-true}
   if [ -r "$source" ]; then
     # Copy the dSYM into the targets temp dir.
-    echo "rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${source}\" \"${DERIVED_FILES_DIR}\""
-    rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${source}" "${DERIVED_FILES_DIR}"
+    echo "rsync --copy-links --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${source}\" \"${DERIVED_FILES_DIR}\""
+    rsync --copy-links --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${source}" "${DERIVED_FILES_DIR}"
 
     local basename
     basename="$(basename -s .dSYM "$source")"
@@ -102,8 +117,8 @@ install_dsym() {
 
     if [[ $STRIP_BINARY_RETVAL == 1 ]]; then
       # Move the stripped file into its final destination.
-      echo "rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --links --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${DERIVED_FILES_DIR}/${basename}.framework.dSYM\" \"${DWARF_DSYM_FOLDER_PATH}\""
-      rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --links --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${DERIVED_FILES_DIR}/${basename}.dSYM" "${DWARF_DSYM_FOLDER_PATH}"
+      echo "rsync --copy-links --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --links --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${DERIVED_FILES_DIR}/${basename}.framework.dSYM\" \"${DWARF_DSYM_FOLDER_PATH}\""
+      rsync --copy-links --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --links --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${DERIVED_FILES_DIR}/${basename}.dSYM" "${DWARF_DSYM_FOLDER_PATH}"
     else
       # The dSYM was not stripped at all, in this case touch a fake folder so the input/output paths from Xcode do not reexecute this script because the file is missing.
       touch "${DWARF_DSYM_FOLDER_PATH}/${basename}.dSYM"
@@ -115,8 +130,8 @@ install_dsym() {
 install_bcsymbolmap() {
     local bcsymbolmap_path="$1"
     local destination="${BUILT_PRODUCTS_DIR}"
-    echo "rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${bcsymbolmap_path}" "${destination}""
-    rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${bcsymbolmap_path}" "${destination}"
+    echo "rsync --copy-links --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${bcsymbolmap_path}" "${destination}""
+    rsync --copy-links --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" --filter "- Headers" --filter "- PrivateHeaders" --filter "- Modules" "${bcsymbolmap_path}" "${destination}"
 }
 
 # Signs a framework with the provided identity
@@ -197,26 +212,44 @@ if [ -r "${ARTIFACT_LIST_FILE}" ]; then
 fi
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/abseil/absl.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
+  install_framework "${PODS_ROOT}/BoringSSL-GRPC/openssl_grpc.framework"
+  install_dsym "${PODS_ROOT}/BoringSSL-GRPC/openssl_grpc.framework.dSYM"
+  install_framework "${PODS_ROOT}/GTMSessionFetcher/GTMSessionFetcher.framework"
+  install_dsym "${PODS_ROOT}/GTMSessionFetcher/GTMSessionFetcher.framework.dSYM"
+  install_framework "${PODS_ROOT}/GoogleUtilities/GoogleUtilities.framework"
+  install_dsym "${PODS_ROOT}/GoogleUtilities/GoogleUtilities.framework.dSYM"
+  install_framework "${PODS_ROOT}/PromisesObjC/FBLPromises.framework"
+  install_dsym "${PODS_ROOT}/PromisesObjC/FBLPromises.framework.dSYM"
+  install_framework "${PODS_ROOT}/abseil/absl.framework"
+  install_dsym "${PODS_ROOT}/abseil/absl.framework.dSYM"
+  install_framework "${PODS_ROOT}/gRPC-C++/grpcpp.framework"
+  install_dsym "${PODS_ROOT}/gRPC-C++/grpcpp.framework.dSYM"
+  install_framework "${PODS_ROOT}/gRPC-Core/grpc.framework"
+  install_dsym "${PODS_ROOT}/gRPC-Core/grpc.framework.dSYM"
+  install_framework "${PODS_ROOT}/leveldb-library/leveldb.framework"
+  install_dsym "${PODS_ROOT}/leveldb-library/leveldb.framework.dSYM"
+  install_framework "${PODS_ROOT}/nanopb/nanopb.framework"
+  install_dsym "${PODS_ROOT}/nanopb/nanopb.framework.dSYM"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/abseil/absl.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
+  install_framework "${PODS_ROOT}/BoringSSL-GRPC/openssl_grpc.framework"
+  install_dsym "${PODS_ROOT}/BoringSSL-GRPC/openssl_grpc.framework.dSYM"
+  install_framework "${PODS_ROOT}/GTMSessionFetcher/GTMSessionFetcher.framework"
+  install_dsym "${PODS_ROOT}/GTMSessionFetcher/GTMSessionFetcher.framework.dSYM"
+  install_framework "${PODS_ROOT}/GoogleUtilities/GoogleUtilities.framework"
+  install_dsym "${PODS_ROOT}/GoogleUtilities/GoogleUtilities.framework.dSYM"
+  install_framework "${PODS_ROOT}/PromisesObjC/FBLPromises.framework"
+  install_dsym "${PODS_ROOT}/PromisesObjC/FBLPromises.framework.dSYM"
+  install_framework "${PODS_ROOT}/abseil/absl.framework"
+  install_dsym "${PODS_ROOT}/abseil/absl.framework.dSYM"
+  install_framework "${PODS_ROOT}/gRPC-C++/grpcpp.framework"
+  install_dsym "${PODS_ROOT}/gRPC-C++/grpcpp.framework.dSYM"
+  install_framework "${PODS_ROOT}/gRPC-Core/grpc.framework"
+  install_dsym "${PODS_ROOT}/gRPC-Core/grpc.framework.dSYM"
+  install_framework "${PODS_ROOT}/leveldb-library/leveldb.framework"
+  install_dsym "${PODS_ROOT}/leveldb-library/leveldb.framework.dSYM"
+  install_framework "${PODS_ROOT}/nanopb/nanopb.framework"
+  install_dsym "${PODS_ROOT}/nanopb/nanopb.framework.dSYM"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
