@@ -39,7 +39,9 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     /// A semi transparent view that covers the bottom of the melodies table
     @IBOutlet weak var overlayView: UIView!
     
-    let cellReuseId = "MelodiesTableCell"
+    let melodyCellReuseId = "MelodiesTableCell"
+    
+    let shuffleCellReuseId = "ShuffleCell"
     
     // MARK: - Initialization
     
@@ -218,8 +220,66 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     }
 }
 
+//MARK:- UITableViewDataSource
+extension SetMelodyViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return melodies.count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == melodies.count  {
+            return tableView.dequeueReusableCell(withIdentifier: shuffleCellReuseId)!
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: melodyCellReuseId) as! MelodyCell
+        
+        cell.melodyNameLabel.text = melodies[indexPath.row]
+        cell.isPicked = cell.melodyNameLabel.text == selectedMelody
+        
+        if indexPath.row == indexOfCurrentlyPlayingCell {
+            if audioPlayer != nil && audioPlayer!.isPlaying {
+                cell.play()
+                startUpdatingProgressBarFor(cell: cell)
+            } else {
+                cell.pause()
+            }
+        } else {
+            cell.stop()
+        }
+        
+        return cell
+    }
+}
+
+//MARK: - UITableViewDelegate
+/// A delegate for the table that displays names of melodies
+extension SetMelodyViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? MelodiesTableCell {
+            cell.select()
+            selectedMelody = cell.getMelodyName()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? MelodiesTableCell {
+            cell.deselect()
+        }
+    }
+}
+
+private protocol MelodiesTableCell {
+    func select()
+    func deselect()
+    func getMelodyName() -> String?
+}
+
+
+//MARK:- MelodyCell
 /// A custom `UITableViewCell` for the `melodiesTable`
-class MelodyCell: UITableViewCell {
+class MelodyCell: UITableViewCell, MelodiesTableCell {
     
     /// Indicates whether a user has picked this melody by selecting a corresponding row in the table
     var isPicked = false {
@@ -253,6 +313,18 @@ class MelodyCell: UITableViewCell {
         get {
             return melodyNameLabel.text
         }
+    }
+    
+    func select() {
+        isPicked = true
+    }
+    
+    func deselect() {
+        isPicked = false
+    }
+    
+    func getMelodyName() -> String? {
+        return melodyName
     }
     
     /// Makes the cell enter the `Playing` state
@@ -297,47 +369,33 @@ class MelodyCell: UITableViewCell {
     }
 }
 
-extension SetMelodyViewController: UITableViewDataSource {
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return melodies.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId) as! MelodyCell
-        
-        cell.melodyNameLabel.text = melodies[indexPath.row]
-        cell.isPicked = cell.melodyNameLabel.text == selectedMelody
-        
-        if indexPath.row == indexOfCurrentlyPlayingCell {
-            if audioPlayer != nil && audioPlayer!.isPlaying {
-                cell.play()
-                startUpdatingProgressBarFor(cell: cell)
-            } else {
-                cell.pause()
-            }
-        } else {
-            cell.stop()
-        }
-        
-        return cell
-    }
-}
+//MARK:- ShuffleCell
 
-/// A delegate for the table that displays names of melodies
-extension SetMelodyViewController: UITableViewDelegate {
+class ShuffleCell: UITableViewCell, MelodiesTableCell {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? MelodyCell {
-            cell.isPicked = true
-            selectedMelody = cell.melodyName
+    @IBOutlet weak var checkMarkLabel: UILabel!
+    
+    var isPicked = false {
+        didSet {
+            if isPicked {
+                checkMarkLabel.text = "\u{2713}"
+                checkMarkLabel.isHidden = false
+            } else {
+                checkMarkLabel.isHidden = true
+            }
+            setNeedsDisplay()
         }
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? MelodyCell {
-            cell.isPicked = false
-        }
+    func select() {
+        isPicked = true
+    }
+    
+    func deselect() {
+        isPicked = false
+    }
+    
+    func getMelodyName() -> String? {
+        return "Shuffle"
     }
 }
