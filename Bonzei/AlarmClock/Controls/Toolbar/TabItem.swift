@@ -12,7 +12,7 @@ import UIKit
 enum TabItem: String, CaseIterable {
     case wakeUp = "Wake Up"
     case learn = "Learn"
-    
+    case powerMode = "Powermode"
     
     var viewController: UIViewController {
         switch self {
@@ -23,6 +23,10 @@ enum TabItem: String, CaseIterable {
         case .learn:
             return UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "ArticlesCollectionViewController")
+            
+        case .powerMode:
+            return UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "PowerModeViewController")
         }
     }
     
@@ -32,7 +36,10 @@ enum TabItem: String, CaseIterable {
             return UIImage(named: "clock-green")!
         case .learn:
             return UIImage(named: "ic-learn-green")!
+        case .powerMode:
+            return UIImage(named: "ic-super")!
         }
+        
     }
     
     var displayTitle: String {

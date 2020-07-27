@@ -11,6 +11,7 @@
 		D08169CFEBC8B3E70EBDF4AC /* Pods_Bonzei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6D397B511E4530007BCA40 /* Pods_Bonzei.framework */; };
 		F106311F24AC962800CBB9C6 /* FirebaseArticlesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */; };
 		F10B5CA62485588C0042D915 /* BonzeiClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */; };
+		F10C8E5524CF31B1003B26F6 /* PowerModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10C8E5424CF31B1003B26F6 /* PowerModeViewController.swift */; };
 		F118BED424478FAD00C38981 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118BED324478FAD00C38981 /* SetAlarmViewController.swift */; };
 		F1199EBD24B0627D00EA7B3B /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1199EBC24B0627D00EA7B3B /* AppVersion.swift */; };
 		F1199EBF24B0677900EA7B3B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1199EBE24B0677900EA7B3B /* WebKit.framework */; };
@@ -124,6 +125,7 @@
 		950F93ED70126B3B2F742D3D /* Pods-BonzeiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BonzeiTests.release.xcconfig"; path = "Target Support Files/Pods-BonzeiTests/Pods-BonzeiTests.release.xcconfig"; sourceTree = "<group>"; };
 		F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseArticlesProvider.swift; sourceTree = "<group>"; };
 		F10B5CA52485588C0042D915 /* BonzeiClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonzeiClockFace.swift; sourceTree = "<group>"; };
+		F10C8E5424CF31B1003B26F6 /* PowerModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerModeViewController.swift; sourceTree = "<group>"; };
 		F118BED324478FAD00C38981 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
 		F1199EBC24B0627D00EA7B3B /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		F1199EBE24B0677900EA7B3B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -270,6 +272,14 @@
 				F16770E1248C0C7800797F0A /* Variation1 */,
 			);
 			path = BonzeiClock;
+			sourceTree = "<group>";
+		};
+		F10C8E5324CF3145003B26F6 /* PowerMode */ = {
+			isa = PBXGroup;
+			children = (
+				F10C8E5424CF31B1003B26F6 /* PowerModeViewController.swift */,
+			);
+			path = PowerMode;
 			sourceTree = "<group>";
 		};
 		F1199EC024B06FA500EA7B3B /* FullArticle */ = {
@@ -479,6 +489,7 @@
 		F17ABEE12447089F008E9227 /* Bonzei */ = {
 			isa = PBXGroup;
 			children = (
+				F10C8E5324CF3145003B26F6 /* PowerMode */,
 				F17D199224AA0BBE00633BBC /* Learn */,
 				F17D199124AA0B5300633BBC /* AlarmClock */,
 				F147771D247D070300D12C60 /* Fonts */,
@@ -831,6 +842,7 @@
 				F1BB762024C7640D00538465 /* Helpers.swift in Sources */,
 				F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */,
 				F1CBD48524C4A212006980AF /* TabItem.swift in Sources */,
+				F10C8E5524CF31B1003B26F6 /* PowerModeViewController.swift in Sources */,
 				F1A26FA6247284A300A13B3C /* DismissAlarmViewController.swift in Sources */,
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F17D199824AA654D00633BBC /* Article.swift in Sources */,

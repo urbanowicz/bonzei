@@ -822,6 +822,21 @@ wake up the senses.</string>
             </objects>
             <point key="canvasLocation" x="2540" y="-727.09359605911334"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="WAc-8x-JEM">
+            <objects>
+                <viewController storyboardIdentifier="PowerModeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3mA-vd-1g2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Qf-Wj-fZ6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="sCq-au-t0o"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N7j-88-Son" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5231" y="-1504"/>
+        </scene>
         <!--Learn-->
         <scene sceneID="wg7-f3-ORb">
             <objects>

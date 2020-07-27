@@ -35,7 +35,7 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
     }
     
     private func createTabBar() {
-        let tabItems: [TabItem] = [.wakeUp, .learn]
+        let tabItems: [TabItem] = [.wakeUp, .learn, .powerMode]
         self.setupCustomTabBar(tabItems) { (controllers) in
             self.viewControllers = controllers
             self.selectedIndex = 0
