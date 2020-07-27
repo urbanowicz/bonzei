@@ -836,7 +836,7 @@ wake up the senses.</string>
                                 <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where everybody can feel like a superhuman" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUq-FN-7Cx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where everybody can feel like a superhuman." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUq-FN-7Cx">
                                 <rect key="frame" x="24" y="148" width="237" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="iM8-tm-iAd"/>
@@ -845,13 +845,43 @@ wake up the senses.</string>
                                 <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="powermode-coming-soon" translatesAutoresizingMaskIntoConstraints="NO" id="B6c-rI-wYg">
+                                <rect key="frame" x="24" y="266" width="311" height="185"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="311" id="IcQ-0g-6qI"/>
+                                    <constraint firstAttribute="width" secondItem="B6c-rI-wYg" secondAttribute="height" multiplier="311:185" id="chu-1O-4SB"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power nap with binaural beats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub6-1E-swY">
+                                <rect key="frame" x="24" y="475" width="238" height="22"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
+                                <color key="textColor" red="0.10980392160000001" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PU-Dn-5C4">
+                                <rect key="frame" x="24" y="505" width="272.33333333333331" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="FSX-g8-na5"/>
+                                </constraints>
+                                <string key="text">Binaural beats are an auditory biohack designed to facilitate brainwave entrainment. Experience theta waves recharge effect with a mid-day power nap with our unique ambient soundtrack.</string>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
+                                <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="sCq-au-t0o" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3PU-Dn-5C4" secondAttribute="trailing" constant="77" id="78R-9P-9CQ"/>
+                            <constraint firstItem="Ub6-1E-swY" firstAttribute="top" secondItem="B6c-rI-wYg" secondAttribute="bottom" constant="24" id="8MS-uM-SYk"/>
                             <constraint firstItem="IJz-nR-bED" firstAttribute="leading" secondItem="sCq-au-t0o" secondAttribute="leading" constant="24" id="BbB-15-CNx"/>
                             <constraint firstItem="IJz-nR-bED" firstAttribute="top" secondItem="sCq-au-t0o" secondAttribute="top" constant="52" id="GEP-nE-onw"/>
+                            <constraint firstItem="B6c-rI-wYg" firstAttribute="top" secondItem="dUq-FN-7Cx" secondAttribute="bottom" constant="67" id="Ib7-hp-5cI"/>
+                            <constraint firstItem="3PU-Dn-5C4" firstAttribute="leading" secondItem="sCq-au-t0o" secondAttribute="leading" constant="24" id="PCe-0x-0U8"/>
                             <constraint firstItem="dUq-FN-7Cx" firstAttribute="leading" secondItem="sCq-au-t0o" secondAttribute="leading" constant="24" id="RkC-8X-5Wa"/>
                             <constraint firstItem="dUq-FN-7Cx" firstAttribute="top" secondItem="IJz-nR-bED" secondAttribute="bottom" constant="16" id="SaV-DU-QO2"/>
+                            <constraint firstItem="3PU-Dn-5C4" firstAttribute="top" secondItem="Ub6-1E-swY" secondAttribute="bottom" constant="8" id="W6k-Ss-BRQ"/>
+                            <constraint firstItem="B6c-rI-wYg" firstAttribute="leading" secondItem="sCq-au-t0o" secondAttribute="leading" constant="24" id="jkl-LB-7FN"/>
+                            <constraint firstItem="Ub6-1E-swY" firstAttribute="leading" secondItem="sCq-au-t0o" secondAttribute="leading" constant="24" id="szR-Ga-fwO"/>
                             <constraint firstItem="sCq-au-t0o" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dUq-FN-7Cx" secondAttribute="trailing" constant="109" id="ydK-4W-ndD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sCq-au-t0o"/>
@@ -1047,6 +1077,7 @@ wake up the senses.</string>
         <image name="learn-stars" width="303" height="97"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="powermode-coming-soon" width="375" height="223"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
     </resources>
 </document>
