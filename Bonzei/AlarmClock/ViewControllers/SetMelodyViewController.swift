@@ -276,6 +276,14 @@ extension SetMelodyViewController: UITableViewDelegate {
             cell.deselect()
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == melodies.count {
+            return ShuffleCell.rowHeight
+        } else {
+            return MelodyCell.rowHeight
+        }
+    }
 }
 
 private protocol MelodiesTableCell {
@@ -288,6 +296,8 @@ private protocol MelodiesTableCell {
 //MARK:- MelodyCell
 /// A custom `UITableViewCell` for the `melodiesTable`
 class MelodyCell: UITableViewCell, MelodiesTableCell {
+    
+    public static let rowHeight: CGFloat = 75.0
     
     /// Indicates whether a user has picked this melody by selecting a corresponding row in the table
     var isPicked = false {
@@ -380,6 +390,8 @@ class MelodyCell: UITableViewCell, MelodiesTableCell {
 //MARK:- ShuffleCell
 
 class ShuffleCell: UITableViewCell, MelodiesTableCell {
+    
+    public static let rowHeight: CGFloat = 120.0
     
     @IBOutlet weak var checkMarkLabel: UILabel!
     

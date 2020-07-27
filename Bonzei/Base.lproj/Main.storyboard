@@ -736,9 +736,19 @@
                                                         <constraint firstAttribute="width" constant="40" id="Zzj-d2-TlM"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can’t decide? Get surprised by random sound each day." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgR-3g-eqH" userLabel="ShuffleDescription">
+                                                    <rect key="frame" x="56" y="42.666666666666657" width="196" height="46"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="46" id="LDB-q5-4tY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
+                                                    <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.99873024229999996" green="0.99270755050000004" blue="0.99225538970000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WgR-3g-eqH" secondAttribute="trailing" constant="52" id="7GA-KQ-nEi"/>
                                                 <constraint firstItem="2Id-Jl-sZb" firstAttribute="centerY" secondItem="GXL-2N-yD4" secondAttribute="centerY" id="BJs-mw-CSe"/>
                                                 <constraint firstItem="2Id-Jl-sZb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GXL-2N-yD4" secondAttribute="trailing" constant="5" id="JnA-sD-o7x"/>
                                                 <constraint firstItem="GXL-2N-yD4" firstAttribute="top" secondItem="0ak-SQ-FIn" secondAttribute="top" constant="9.6666666666666643" id="KhD-zU-hht"/>
@@ -747,6 +757,8 @@
                                                 <constraint firstItem="TSB-bu-aZV" firstAttribute="centerY" secondItem="GXL-2N-yD4" secondAttribute="centerY" id="VYu-aY-bNv"/>
                                                 <constraint firstItem="GXL-2N-yD4" firstAttribute="leading" secondItem="TSB-bu-aZV" secondAttribute="trailing" constant="16" id="mT2-2f-1Qa"/>
                                                 <constraint firstItem="TSB-bu-aZV" firstAttribute="leading" secondItem="0ak-SQ-FIn" secondAttribute="leading" id="oaI-E8-XYT"/>
+                                                <constraint firstItem="WgR-3g-eqH" firstAttribute="top" secondItem="GXL-2N-yD4" secondAttribute="bottom" constant="12" id="tKa-Jl-SbX"/>
+                                                <constraint firstItem="WgR-3g-eqH" firstAttribute="leading" secondItem="GXL-2N-yD4" secondAttribute="leading" id="udf-2M-TZz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
