@@ -237,7 +237,7 @@
                                             <constraint firstAttribute="height" constant="56" id="a2c-GJ-b0S"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="16"/>
-                                        <state key="normal" title="I am awake">
+                                        <state key="normal" title="Snooze">
                                             <color key="titleColor" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -246,7 +246,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="dismissAlarmButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="H6y-pg-xh7"/>
+                                            <action selector="snoozeButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="dRH-Ko-ugg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtw-4h-hsz" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
@@ -256,7 +256,7 @@
                                             <constraint firstAttribute="height" constant="56" id="nhU-lq-WsW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="16"/>
-                                        <state key="normal" title="Snooze">
+                                        <state key="normal" title="Begin my day">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -271,7 +271,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="snoozeButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="Qw5-VC-w0e"/>
+                                            <action selector="dismissAlarmButtonPressed:" destination="NXM-oz-kLD" eventType="touchUpInside" id="UUE-1D-HMp"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMK-Wm-gZV" customClass="TimerView" customModule="Bonzei" customModuleProvider="target">
@@ -397,7 +397,7 @@
                         <outlet property="alarmTriggeredView" destination="bzp-ep-qS4" id="c4r-g4-aHU"/>
                         <outlet property="clockTimer" destination="sMK-Wm-gZV" id="VWJ-Dp-kMx"/>
                         <outlet property="countDownTimer" destination="Jwb-Fp-3YV" id="IGu-Ak-ZgD"/>
-                        <outlet property="snoozeButton" destination="xtw-4h-hsz" id="b2Y-fo-1Ar"/>
+                        <outlet property="snoozeButton" destination="qWe-8A-y3z" id="f9F-zs-WzX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoK-Ru-mfq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
