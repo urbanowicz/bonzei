@@ -34,6 +34,8 @@ class DismissAlarmViewController: UIViewController {
     
     private var currentView: UIView!
     
+    private var melodyName: String!
+    
     // MARK:- Initialization
     
     override func viewDidLoad() {
@@ -139,7 +141,8 @@ class DismissAlarmViewController: UIViewController {
         countDownTimer.start()
     }
     
-    func didTriggerAlarm(_ alarm: Alarm) {
+    func didTriggerAlarm(_ alarm: Alarm, withMelody melody: String) {
+        melodyName = melody
         if currentView == alarmSnoozedView {
             switchViews(from: alarmSnoozedView, to: alarmTriggeredView)
             currentView = alarmTriggeredView

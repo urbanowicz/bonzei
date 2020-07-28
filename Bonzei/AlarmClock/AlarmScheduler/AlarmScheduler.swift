@@ -350,15 +350,18 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         alarm.lastTriggerDate = Date()
         alarm.snoozeDate = nil
+        if alarm.isOneTime {
+            alarm.isActive = false
+        }
         refreshAlarm(alarm)
         
         self.currentlyTriggeredAlarm = alarm
         
-        playAlarm(alarm)
+        let melodyName = playAlarm(alarm)
         
-        delegate?.didTriggerAlarm(alarm)
+        delegate?.didTriggerAlarm(alarm, withMelody: melodyName)
         
-        NotificationCenter.default.post(name: .didTriggerAlarm, object: self, userInfo: ["alarm": alarm])
+        NotificationCenter.default.post(name: .didTriggerAlarm, object: self, userInfo: ["alarm": alarm, "melodyName": melodyName])
     }
     
     private func triggerSnoozedAlarm(_ alarmToTrigger: Alarm) {
@@ -385,12 +388,12 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         self.currentlyTriggeredAlarm = alarm
         self.currentlySnoozedAlarm = nil
         
-        playAlarm(alarm)
+        let melodyName = playAlarm(alarm)
         
-        delegate?.didTriggerAlarm(alarm)
+        delegate?.didTriggerAlarm(alarm, withMelody: melodyName)
         
         // post didTriggerAlarm notification
-        NotificationCenter.default.post(name: .didTriggerAlarm, object: self, userInfo: ["alarm": alarm])
+        NotificationCenter.default.post(name: .didTriggerAlarm, object: self, userInfo: ["alarm": alarm, "melodyName": melodyName])
     }
     
     private func dismissCurrentlySnoozedAlarm() {
@@ -448,13 +451,18 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         sortAlarms()
     }
     
-    private func playAlarm(_ alarm: Alarm) {
-        var soundFileName = alarm.melodyName + ".mp3"
+    private func playAlarm(_ alarm: Alarm) -> String {
+        var melodyName = alarm.melodyName
         if alarm.melodyName == "Shuffle" {
-            soundFileName = melodies[Int.random(in: 0..<melodies.count)] + ".mp3"
+            melodyName = melodies[Int.random(in: 0..<melodies.count)]
         }
-        sendNotificationNow(title: "Wake up", body: soundFileName)
+       
+        let soundFileName = melodyName + ".mp3"
+        
+        sendNotificationNow(title: "Wake up", body: "\u{266A} \(melodyName)")
         playAudio(fileName: soundFileName, numberOfLoops: numberOfLoops)
+        
+        return melodyName
     }
     
     private func shouldTriggerSnoozedAlarm(_ alarm: Alarm, now: Date) -> Bool {
