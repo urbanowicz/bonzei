@@ -10,7 +10,7 @@ import Foundation
 
 protocol AlarmSchedulerDelegate {
     
-    func didTriggerAlarm(_ alarm: Alarm, withMelody melody: String)
+    func didTriggerAlarm(_ alarm: Alarm)
     
     func didSnoozeAlarm(_ alarm: Alarm)
     

@@ -41,6 +41,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     private(set) var currentlySnoozedAlarm: Alarm?
     
+    private(set) var currentlyPlayedMelody: String?
+    
     public var isAlarmPlaying: Bool {
         get {
             return state == .alarmTriggered
@@ -359,7 +361,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         let melodyName = playAlarm(alarm)
         
-        delegate?.didTriggerAlarm(alarm, withMelody: melodyName)
+        delegate?.didTriggerAlarm(alarm)
         
         NotificationCenter.default.post(name: .didTriggerAlarm, object: self, userInfo: ["alarm": alarm, "melodyName": melodyName])
     }
@@ -390,7 +392,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         let melodyName = playAlarm(alarm)
         
-        delegate?.didTriggerAlarm(alarm, withMelody: melodyName)
+        delegate?.didTriggerAlarm(alarm)
         
         // post didTriggerAlarm notification
         NotificationCenter.default.post(name: .didTriggerAlarm, object: self, userInfo: ["alarm": alarm, "melodyName": melodyName])
@@ -461,6 +463,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         sendNotificationNow(title: "Wake up", body: "\u{266A} \(melodyName)")
         playAudio(fileName: soundFileName, numberOfLoops: numberOfLoops)
+        currentlyPlayedMelody = melodyName
         
         return melodyName
     }

@@ -20,6 +20,8 @@ class DismissAlarmViewController: UIViewController {
     
     @IBOutlet weak var countDownTimer: TimerView!
     
+    @IBOutlet weak var melodyNameLabel: UILabel!
+    
     private var clockTimerFontName = "Muli-SemiBold"
     
     private var clockTimerFontSize = 40.0
@@ -34,7 +36,11 @@ class DismissAlarmViewController: UIViewController {
     
     private var currentView: UIView!
     
-    private var melodyName: String!
+    private var melodyName: String? {
+        didSet {
+            melodyNameLabel.text = "\u{266A} \(melodyName ?? "")"
+        }
+    }
     
     // MARK:- Initialization
     
@@ -141,8 +147,9 @@ class DismissAlarmViewController: UIViewController {
         countDownTimer.start()
     }
     
-    func didTriggerAlarm(_ alarm: Alarm, withMelody melody: String) {
-        melodyName = melody
+    func didTriggerAlarm(_ alarm: Alarm) {
+        print("HELLLOOO")
+        melodyName = AlarmScheduler.sharedInstance.currentlyPlayedMelody
         if currentView == alarmSnoozedView {
             switchViews(from: alarmSnoozedView, to: alarmTriggeredView)
             currentView = alarmTriggeredView
@@ -158,6 +165,8 @@ class DismissAlarmViewController: UIViewController {
         loadViewIfNeeded()
         
         if AlarmScheduler.sharedInstance.isAlarmPlaying {
+            melodyName = AlarmScheduler.sharedInstance.currentlyPlayedMelody
+            
             let alarmToDismiss = AlarmScheduler.sharedInstance.currentlyTriggeredAlarm!
             
             snoozeButton.isHidden = !alarmToDismiss.snoozeEnabled

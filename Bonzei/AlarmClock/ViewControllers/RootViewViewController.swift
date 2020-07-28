@@ -85,14 +85,14 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
     
     // MARK: - AlarmSchedulerDelegate
     
-    func didTriggerAlarm(_ alarm: Alarm, withMelody melody: String) {
+    func didTriggerAlarm(_ alarm: Alarm) {
         // if the app is open and alarm has been triggered present `DismissAlarmViewController`
         let state = UIApplication.shared.applicationState
         
         if self.isViewLoaded && state == .active && dismissAlarmViewController == nil {
             presentDismissAlarmViewController()
         } else if dismissAlarmViewController != nil {
-            dismissAlarmViewController!.didTriggerAlarm(alarm, withMelody: melody)
+            dismissAlarmViewController!.didTriggerAlarm(alarm)
         }
         
         turnSystemVolumeUp()
