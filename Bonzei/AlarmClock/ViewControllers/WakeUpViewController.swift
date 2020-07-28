@@ -176,6 +176,15 @@ class WakeUpViewController: UIViewController, UIGestureRecognizerDelegate, UITab
             HeartBeatService.sharedInstance.start()
         }
         
+        // Authorize notifications
+        UNUserNotificationCenter
+            .current()
+            .requestAuthorization(options: [.alert, .sound ,.badge] ) { granted, error in
+                guard granted == true && error == nil else {
+                    return
+                }
+        }
+        
     }
     
     /// Called when a user cancels editing in 'SetAlarmView'

@@ -107,10 +107,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             return
         }
         
-        ifNotificationsAreAllowed {
-            self.setupNotificationsForAlarm(newAlarm)
-        }
-        
         os_log("Added a new alarm to the scheduler. The alarm is active.", log: log, type: .info)
     }
 
@@ -123,9 +119,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     ///
     public func unscheduleAlarm(withId alarmId: String) {
         guard indexOfAlarm(withId: alarmId) != nil else { return }
-        
-        cancelNotificationsForAlarm(withId: alarmId)
-    
+
         scheduledAlarms = scheduledAlarms.filter({ $0.id != alarmId })
     
         AlarmPersistenceService.sharedInstance.deleteAlarm(withId: alarmId)
@@ -167,7 +161,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                                  lastUpdateDate: Date())
         
         
-        refreshAlarmAndNotificationRequests(updatedAlarm)
+        refreshAlarm(updatedAlarm)
         
         sortAlarms()
         
@@ -278,19 +272,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         
         HeartBeatService.sharedInstance.start()
         
-        ifNotificationsAreAllowed {
-            let content = self.prepareNotificationContentForAlarm(alarmToSnooze)
-
-            let trigger = self.prepareNotificationTriggerForSnooze(alarmToSnooze)
-            
-            let request = UNNotificationRequest(
-                identifier: UUID().uuidString,
-                content: content,
-                trigger: trigger)
-
-            self.requestNotificationForAlarm(alarmToSnooze, request: request)
-        }
-        
         delegate?.didSnoozeAlarm(alarmToSnooze)
         NotificationCenter.default.post(name: .didSnoozeAlarm, object: self, userInfo: ["alarm": alarmToSnooze])
        
@@ -311,7 +292,7 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
                     alarm.isActive = false
                 }
                 
-                refreshAlarmAndNotificationRequests(alarm)
+                refreshAlarm(alarm)
                 
                 countSnoozedAlarms += 1
             }
@@ -333,78 +314,25 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     
     // MARK: - Private API
     
-    private func ifNotificationsAreAllowed(run: @escaping () -> Void) {
-        UNUserNotificationCenter
-            .current()
-            .requestAuthorization(options: [.alert, .sound, .badge] ) { granted, error in
-                guard granted == true && error == nil else {
-                    return
-                }
-                
-                run()
-        }
-    }
-    
-    private func setupNotificationsForAlarm(_ alarm: Alarm) {
-        if alarm.isRecurring {
-            setupRecurringNotificationsForAlarm(alarm)
-        } else {
-            setupOneTimeNotificationForAlarm(alarm)
-        }
-    }
-    
-    /// Setup one time notification request for a given alarm
-    ///
-    /// - Parameter alarm: an alarm for which you want to request a notification.
-    ///
-    private func setupOneTimeNotificationForAlarm(_ alarm: Alarm) {
-        let content = prepareNotificationContentForAlarm(alarm)
-        
-        let trigger = prepareNotificationTriggerForOneTimeAlarm(alarm)
-        
-        let request = UNNotificationRequest(
-            identifier: UUID().uuidString,
-            content: content,
-            trigger: trigger)
-        
-        requestNotificationForAlarm(alarm, request: request)
-    }
-    
-    /// Setup  recurring notifications for a given alarm
-    ///
-    /// - Parameter alarm: an alarm for which notifications need to be added.
-    ///
-    private func setupRecurringNotificationsForAlarm(_ alarm: Alarm) {
-        let content = prepareNotificationContentForAlarm(alarm)
-
-        for dayOfWeek in alarm.repeatOn {
+    private func sendNotificationNow(title: String, body: String) {
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { settings in
+            guard (settings.authorizationStatus == .authorized) else { return }
             
-            let datePattern = DateComponents(
-                timeZone: .current,
-                hour: alarm.hour,
-                minute: alarm.minute,
-                weekday: (dayOfWeek + 1) % 7 + 1)
+            let content = UNMutableNotificationContent()
+            content.title = title
+            content.body = body
+            content.categoryIdentifier = "alarm"
+            content.sound = .none
             
-            let trigger = UNCalendarNotificationTrigger (dateMatching: datePattern, repeats: true)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             
             let request = UNNotificationRequest(
                 identifier: UUID().uuidString,
                 content: content,
                 trigger: trigger)
             
-            requestNotificationForAlarm(alarm, request: request)
-        }
-    }
-    
-    private func requestNotificationForAlarm(_ alarm: Alarm, request: UNNotificationRequest) {
-        let notificationCenter = UNUserNotificationCenter.current()
-        
-        let dao = AlarmPersistenceService.sharedInstance
-        
-        notificationCenter.add(request) { error in
-            guard error == nil else { return }
-            
-            dao.createNotificationRequest(NotificationRequest(identifier: request.identifier, alarmId: alarm.id))
+            center.add(request, withCompletionHandler: nil)
         }
     }
     
@@ -421,16 +349,8 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         state = .alarmTriggered
         
         alarm.lastTriggerDate = Date()
-        
         alarm.snoozeDate = nil
-        
-        // if this is a one time alarm, make sure we change it to inactive and remove related notification requests.
-        if alarm.isOneTime {
-            alarm.isActive = false
-            refreshAlarmAndNotificationRequests(alarm)
-        } else {
-            refreshAlarmOnly(alarm)
-        }
+        refreshAlarm(alarm)
         
         self.currentlyTriggeredAlarm = alarm
         
@@ -445,17 +365,14 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         os_log("Triggering a snoozed alarm", log: log, type: .info)
         
         var alarm = alarmToTrigger
-        
         alarm.lastTriggerDate = Date()
-        
         alarm.snoozeDate = nil
         
-        // if this is a one time alarm, make sure we change it to inactive and remove related notification requests.
         if alarm.isOneTime {
             alarm.isActive = false
         }
 
-        refreshAlarmAndNotificationRequests(alarm)
+        refreshAlarm(alarm)
         
         if state == .alarmTriggered {
              // There already is a new alarm playing. Snooze must be ignored
@@ -482,51 +399,17 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         let i = indexOfAlarm(withId: currentlySnoozedAlarm!.id)!
         
         scheduledAlarms[i].snoozeDate = nil
-        refreshAlarmAndNotificationRequests(scheduledAlarms[i])
+        refreshAlarm(scheduledAlarms[i])
         currentlySnoozedAlarm = nil
     }
     
-    private func refreshAlarmOnly(_ alarm: Alarm) {
+    private func refreshAlarm(_ alarm: Alarm) {
         AlarmPersistenceService
             .sharedInstance
             .updateAlarm(withId: alarm.id, using: alarm)
         
         let i = indexOfAlarm(withId: alarm.id)!
         scheduledAlarms[i] = alarm
-    }
-    
-    private func refreshAlarmAndNotificationRequests(_ alarm: Alarm) {
-        let dao = AlarmPersistenceService.sharedInstance
-        
-        // 1. Update the alarm in the database
-        dao.updateAlarm(withId: alarm.id, using: alarm)
-        
-        let i = indexOfAlarm(withId: alarm.id)!
-        scheduledAlarms[i] = alarm
-        
-        // 2. Cancel all pending notifications
-        cancelNotificationsForAlarm(withId: alarm.id)
-        dao.deleteNotificationRequestsForAlarm(withId: alarm.id)
-        
-        // 3. Setup notifications anew
-        ifNotificationsAreAllowed {
-            guard alarm.isActive else { return }
-            
-            self.setupNotificationsForAlarm(alarm)
-        }
-    }
-    
-    /// Cancel  pending notifications for a given alarm.
-    private func cancelNotificationsForAlarm(withId alarmId: String) {
-        guard let notificationRequests = getNotificationRequestsForAlarm(withId: alarmId) else  {
-            return
-        }
-        
-        let notificationRequestIds:[String] = notificationRequests.map({ return $0.identifier })
-        
-        UNUserNotificationCenter
-            .current()
-            .removePendingNotificationRequests(withIdentifiers: notificationRequestIds)
     }
     
     /// cancel all pending notifications
@@ -536,41 +419,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
             .removeAllPendingNotificationRequests()
         
         AlarmPersistenceService.sharedInstance.deleteAllNotificationRequests()
-    }
-    
-    private func prepareNotificationContentForAlarm(_ alarm: Alarm) -> UNMutableNotificationContent {
-        let content = UNMutableNotificationContent()
-        content.title = "Wake up"
-        content.body = "" //alarm.melodyName
-        content.categoryIdentifier = "alarm"
-        content.sound = .none
-        return content
-    }
-    
-    private func prepareNotificationTriggerForOneTimeAlarm(_ alarm: Alarm) -> UNCalendarNotificationTrigger {
-        let now = Date()
-        
-        var triggerDate = now
-            .new(bySetting: .hour, to: alarm.hour)
-            .new(bySetting: .minute, to: alarm.minute)
-            .new(bySetting: .second, to: 0)
-
-        if now.hour > alarm.hour ||
-           (now.hour == alarm.hour && now.minute >= alarm.minute) {
-            triggerDate = triggerDate.new(byAdding: .day, value: 1)
-        }
-        
-        let triggerDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: triggerDate)
-        
-        return UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
-    }
-    
-    private func prepareNotificationTriggerForSnooze(_ alarm: Alarm) -> UNCalendarNotificationTrigger {
-        let triggerDateComponents = Calendar
-            .current
-            .dateComponents([.year, .month, .day, .hour, .minute, .second], from: alarm.snoozeDate!)
-        
-        return UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
     }
     
     /// sorts the `scheduledAlarms` array
@@ -600,27 +448,12 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         sortAlarms()
     }
     
-    private func getNotificationRequestsForAlarm(withId alarmId: String) -> [NotificationRequest]? {
-        let dao = AlarmPersistenceService.sharedInstance
-        
-        guard let persistedNotificationRequests = dao.readNotificationRequestsForAlarm(withId: alarmId) else {
-            return nil
-        }
-        
-        var notificationRequests = [NotificationRequest]()
-        
-        persistedNotificationRequests.forEach({notificationRequest in
-            notificationRequests.append(notificationRequest)
-        })
-        
-        return notificationRequests
-    }
-    
     private func playAlarm(_ alarm: Alarm) {
         var soundFileName = alarm.melodyName + ".mp3"
         if alarm.melodyName == "Shuffle" {
             soundFileName = melodies[Int.random(in: 0..<melodies.count)] + ".mp3"
         }
+        sendNotificationNow(title: "Wake up", body: soundFileName)
         playAudio(fileName: soundFileName, numberOfLoops: numberOfLoops)
     }
     
@@ -711,19 +544,9 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
         s+="--------------------Alarm--------------------\n"
         for alarm in scheduledAlarms {
             
-            let notificationRequests = getNotificationRequestsForAlarm(withId: alarm.id)!
-            
-            let requests:[String] = notificationRequests.map({ return $0.identifier })
-            
             s+="{\n"
             s+="    \(alarm.dateString)\n"
             s+="    \(alarm.melodyName)\n"
-            s+="    Notifications:\n"
-            s+="    [\n"
-            for notificationRequestId  in requests {
-                s+="        \(notificationRequestId)\n"
-            }
-            s+="    ]\n"
             s+="}\n"
         }
         dbg_log(s)
@@ -749,8 +572,6 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
 
 public enum AlarmSchedulerState {
     case waiting
-    
     case alarmTriggered
-    
     case alarmSnoozed
 }

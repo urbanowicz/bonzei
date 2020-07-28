@@ -100,7 +100,7 @@ class BonzeiTabBar: UIView {
         let attributes: [NSAttributedString.Key: Any] = [
             .font: labelFont!,
             .foregroundColor: iconColorInactive,
-            .kern: 1.1
+            .kern: 0.9
         ]
         label.attributedText = NSAttributedString(string: item.displayTitle, attributes: attributes)
         //label.font = labelFont
