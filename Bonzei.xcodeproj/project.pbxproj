@@ -277,6 +277,7 @@
 		F10C8E5324CF3145003B26F6 /* PowerMode */ = {
 			isa = PBXGroup;
 			children = (
+				F149788024D7064300E25ECF /* Models */,
 				F10C8E5424CF31B1003B26F6 /* PowerModeViewController.swift */,
 			);
 			path = PowerMode;
@@ -397,6 +398,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		F149788024D7064300E25ECF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F15526C2244A01E900741E80 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,7 +499,7 @@
 			children = (
 				F10C8E5324CF3145003B26F6 /* PowerMode */,
 				F17D199224AA0BBE00633BBC /* Learn */,
-				F17D199124AA0B5300633BBC /* AlarmClock */,
+				F17D199124AA0B5300633BBC /* WakeUp */,
 				F147771D247D070300D12C60 /* Fonts */,
 				F142BDE224704CBF00B5857C /* Extensions */,
 				F1AB936C2465EFE1008FAA1D /* Constants */,
@@ -518,7 +526,7 @@
 			path = BonzeiTests;
 			sourceTree = "<group>";
 		};
-		F17D199124AA0B5300633BBC /* AlarmClock */ = {
+		F17D199124AA0B5300633BBC /* WakeUp */ = {
 			isa = PBXGroup;
 			children = (
 				F1421C242454B6BF003D226A /* Controls */,
@@ -528,7 +536,7 @@
 				F15526C2244A01E900741E80 /* Models */,
 				F15C1AB82461731800F47CCC /* AlarmScheduler */,
 			);
-			path = AlarmClock;
+			path = WakeUp;
 			sourceTree = "<group>";
 		};
 		F17D199224AA0BBE00633BBC /* Learn */ = {
