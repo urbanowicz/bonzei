@@ -572,7 +572,7 @@
 		F17D199224AA0BBE00633BBC /* Learn */ = {
 			isa = PBXGroup;
 			children = (
-				F1CA2D4B24AB545600524860 /* ArticlesProvider */,
+				F1CA2D4B24AB545600524860 /* backend */,
 				F17D199424AA0E8D00633BBC /* Models */,
 				F17D199324AA0E7800633BBC /* ViewControllers */,
 			);
@@ -635,14 +635,14 @@
 			path = ArticlesCollection;
 			sourceTree = "<group>";
 		};
-		F1CA2D4B24AB545600524860 /* ArticlesProvider */ = {
+		F1CA2D4B24AB545600524860 /* backend */ = {
 			isa = PBXGroup;
 			children = (
 				F1CA2D4C24AB549100524860 /* ArticlesProvider.swift */,
 				F1CA2D4E24AB55B100524860 /* TestArticleProvider.swift */,
 				F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */,
 			);
-			path = ArticlesProvider;
+			path = backend;
 			sourceTree = "<group>";
 		};
 		F1CBD48324C4A1DD006980AF /* Toolbar */ = {
