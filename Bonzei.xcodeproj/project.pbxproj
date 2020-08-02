@@ -41,6 +41,7 @@
 		F1477741247D2B0000D12C60 /* Muli-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1477733247D2B0000D12C60 /* Muli-Italic.ttf */; };
 		F1477742247D2B0000D12C60 /* Muli-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1477734247D2B0000D12C60 /* Muli-ExtraBold.ttf */; };
 		F1477743247D2B0000D12C60 /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1477735247D2B0000D12C60 /* Muli-Light.ttf */; };
+		F149788224D70A2500E25ECF /* PowerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F149788124D70A2500E25ECF /* PowerMode.swift */; };
 		F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */; };
 		F14EF8AC24766537006A40D8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14EF8AB24766537006A40D8 /* NotificationExtension.swift */; };
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
@@ -154,6 +155,7 @@
 		F1477733247D2B0000D12C60 /* Muli-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Italic.ttf"; sourceTree = "<group>"; };
 		F1477734247D2B0000D12C60 /* Muli-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-ExtraBold.ttf"; sourceTree = "<group>"; };
 		F1477735247D2B0000D12C60 /* Muli-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Light.ttf"; sourceTree = "<group>"; };
+		F149788124D70A2500E25ECF /* PowerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerMode.swift; sourceTree = "<group>"; };
 		F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMelodyViewController.swift; sourceTree = "<group>"; };
 		F14EF8AB24766537006A40D8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 		F149788024D7064300E25ECF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F149788124D70A2500E25ECF /* PowerMode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				F1D2D695248E27C1000DE8D2 /* MovingGradientView.swift in Sources */,
 				F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */,
 				F1199EBD24B0627D00EA7B3B /* AppVersion.swift in Sources */,
+				F149788224D70A2500E25ECF /* PowerMode.swift in Sources */,
 				F195A8EC24850F81009D54A3 /* TimePickerDelegate.swift in Sources */,
 				F1BC60D3247FE7AF00BB6CB0 /* GradientView.swift in Sources */,
 				F1E0FFE224A3757700F75FDF /* TimePicker_24.swift in Sources */,
