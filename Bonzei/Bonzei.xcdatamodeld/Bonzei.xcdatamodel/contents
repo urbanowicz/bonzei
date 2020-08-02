@@ -30,10 +30,18 @@
         <attribute name="identifier" optional="YES" attributeType="String"/>
         <relationship name="alarm" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedAlarm" inverseName="notificationRequests" inverseEntity="ManagedAlarm"/>
     </entity>
+    <entity name="ManagedPowerNap" representedClassName="ManagedPowerNap" syncable="YES" codeGenerationType="class">
+        <attribute name="about" optional="YES" attributeType="String"/>
+        <attribute name="alarmMelodyName" optional="YES" attributeType="String"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="melodyName" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="ManagedAlarm" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="ManagedApp" positionX="-54" positionY="99" width="128" height="58"/>
         <element name="ManagedArticle" positionX="-54" positionY="72" width="128" height="178"/>
         <element name="ManagedNotificationRequest" positionX="-54" positionY="36" width="128" height="73"/>
-        <element name="ManagedApp" positionX="-54" positionY="99" width="128" height="58"/>
+        <element name="ManagedPowerNap" positionX="-54" positionY="99" width="128" height="118"/>
     </elements>
 </model>

@@ -44,6 +44,7 @@
 		F149788224D70A2500E25ECF /* PowerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F149788124D70A2500E25ECF /* PowerMode.swift */; };
 		F149788624D70DDB00E25ECF /* PowerNap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F149788524D70DDB00E25ECF /* PowerNap.swift */; };
 		F149788924D7290400E25ECF /* FirebasePowerNapProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F149788824D7290400E25ECF /* FirebasePowerNapProvider.swift */; };
+		F149788B24D731F800E25ECF /* PowerNapPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F149788A24D731F800E25ECF /* PowerNapPersistenceService.swift */; };
 		F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */; };
 		F14EF8AC24766537006A40D8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14EF8AB24766537006A40D8 /* NotificationExtension.swift */; };
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
@@ -160,6 +161,7 @@
 		F149788124D70A2500E25ECF /* PowerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerMode.swift; sourceTree = "<group>"; };
 		F149788524D70DDB00E25ECF /* PowerNap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerNap.swift; sourceTree = "<group>"; };
 		F149788824D7290400E25ECF /* FirebasePowerNapProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePowerNapProvider.swift; sourceTree = "<group>"; };
+		F149788A24D731F800E25ECF /* PowerNapPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerNapPersistenceService.swift; sourceTree = "<group>"; };
 		F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMelodyViewController.swift; sourceTree = "<group>"; };
 		F14EF8AB24766537006A40D8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				F149788524D70DDB00E25ECF /* PowerNap.swift */,
+				F149788A24D731F800E25ECF /* PowerNapPersistenceService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -896,6 +899,7 @@
 				F195A8EC24850F81009D54A3 /* TimePickerDelegate.swift in Sources */,
 				F1BC60D3247FE7AF00BB6CB0 /* GradientView.swift in Sources */,
 				F1E0FFE224A3757700F75FDF /* TimePicker_24.swift in Sources */,
+				F149788B24D731F800E25ECF /* PowerNapPersistenceService.swift in Sources */,
 				F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */,
 				F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */,
 				F16770E0248C0C4E00797F0A /* ClockFaceAndDots.swift in Sources */,
