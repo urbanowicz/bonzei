@@ -73,6 +73,11 @@ class AlarmScheduler: NSObject, AVAudioPlayerDelegate {
     private override init() {
         super.init()
         
+        if AppVersionService.sharedInstance.getAppVersionInstalledOnDevice() != APP_VERSION {
+            AppVersionService.sharedInstance.updateAppVersion(to: APP_VERSION)
+            purge()
+        }
+        
         readAlarmsAndNotificationsFromDisk()
         
         // it might be that the set of available melodies changed
