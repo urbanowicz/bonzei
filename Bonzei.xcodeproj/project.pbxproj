@@ -414,7 +414,7 @@
 		F149788324D70D2000E25ECF /* PowerNap */ = {
 			isa = PBXGroup;
 			children = (
-				F149788724D7254500E25ECF /* backend */,
+				F149788724D7254500E25ECF /* Backend */,
 				F149788424D70D5A00E25ECF /* Models */,
 			);
 			path = PowerNap;
@@ -428,11 +428,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F149788724D7254500E25ECF /* backend */ = {
+		F149788724D7254500E25ECF /* Backend */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = backend;
+			path = Backend;
 			sourceTree = "<group>";
 		};
 		F15526C2244A01E900741E80 /* Models */ = {
@@ -572,7 +572,7 @@
 		F17D199224AA0BBE00633BBC /* Learn */ = {
 			isa = PBXGroup;
 			children = (
-				F1CA2D4B24AB545600524860 /* backend */,
+				F1CA2D4B24AB545600524860 /* Backend */,
 				F17D199424AA0E8D00633BBC /* Models */,
 				F17D199324AA0E7800633BBC /* ViewControllers */,
 			);
@@ -635,14 +635,14 @@
 			path = ArticlesCollection;
 			sourceTree = "<group>";
 		};
-		F1CA2D4B24AB545600524860 /* backend */ = {
+		F1CA2D4B24AB545600524860 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
 				F1CA2D4C24AB549100524860 /* ArticlesProvider.swift */,
 				F1CA2D4E24AB55B100524860 /* TestArticleProvider.swift */,
 				F106311E24AC962700CBB9C6 /* FirebaseArticlesProvider.swift */,
 			);
-			path = backend;
+			path = Backend;
 			sourceTree = "<group>";
 		};
 		F1CBD48324C4A1DD006980AF /* Toolbar */ = {
