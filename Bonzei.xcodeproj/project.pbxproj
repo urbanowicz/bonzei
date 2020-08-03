@@ -60,6 +60,7 @@
 		F15B681B24A6724400A34C3D /* Early Riser.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15B681624A6724300A34C3D /* Early Riser.mp3 */; };
 		F15B681C24A6724400A34C3D /* Sunriser.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15B681724A6724400A34C3D /* Sunriser.mp3 */; };
 		F15C1ABA2461734A00F47CCC /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
+		F15CCF3824D85D20008E4405 /* SoundPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CCF3724D85D20008E4405 /* SoundPickerViewController.swift */; };
 		F1607DAE248AAE5300968586 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1607DAD248AAE5300968586 /* TimerView.swift */; };
 		F16770E0248C0C4E00797F0A /* ClockFaceAndDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16770DF248C0C4E00797F0A /* ClockFaceAndDots.swift */; };
 		F16770E4248C0D3200797F0A /* BonzeiClockV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16770E3248C0D3200797F0A /* BonzeiClockV2.swift */; };
@@ -177,6 +178,7 @@
 		F15B681624A6724300A34C3D /* Early Riser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Early Riser.mp3"; sourceTree = "<group>"; };
 		F15B681724A6724400A34C3D /* Sunriser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sunriser.mp3; sourceTree = "<group>"; };
 		F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmScheduler.swift; sourceTree = "<group>"; };
+		F15CCF3724D85D20008E4405 /* SoundPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPickerViewController.swift; sourceTree = "<group>"; };
 		F1607DAD248AAE5300968586 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		F16770DF248C0C4E00797F0A /* ClockFaceAndDots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockFaceAndDots.swift; sourceTree = "<group>"; };
 		F16770E3248C0D3200797F0A /* BonzeiClockV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClockV2.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		F10C8E5324CF3145003B26F6 /* Powermode */ = {
 			isa = PBXGroup;
 			children = (
+				F15CCF3624D85CC7008E4405 /* SoundTimer */,
 				F149788324D70D2000E25ECF /* PowerNap */,
 				F149788024D7064300E25ECF /* Models */,
 				F10C8E5424CF31B1003B26F6 /* PowerModeViewController.swift */,
@@ -482,6 +485,14 @@
 				F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */,
 			);
 			path = AlarmScheduler;
+			sourceTree = "<group>";
+		};
+		F15CCF3624D85CC7008E4405 /* SoundTimer */ = {
+			isa = PBXGroup;
+			children = (
+				F15CCF3724D85D20008E4405 /* SoundPickerViewController.swift */,
+			);
+			path = SoundTimer;
 			sourceTree = "<group>";
 		};
 		F1607DAC248AAE0A00968586 /* TimerView */ = {
@@ -874,6 +885,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F17D199A24AA6F2E00633BBC /* ArticlePersistenceService.swift in Sources */,
+				F15CCF3824D85D20008E4405 /* SoundPickerViewController.swift in Sources */,
 				F195A8ED24850F81009D54A3 /* WraparoundPickerView.swift in Sources */,
 				F1FF6CE72469B26C00B07237 /* AlarmPersistenceService.swift in Sources */,
 				F17C609E24A38DA80076F49D /* TimePicker.swift in Sources */,
