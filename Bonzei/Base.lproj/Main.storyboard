@@ -944,7 +944,7 @@ wake up the senses.</string>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Q3Z-Wi-Z1b">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SoundCell" id="Q3Z-Wi-Z1b" customClass="SoundCell" customModule="Bonzei" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WDB-rK-Udy">
@@ -972,6 +972,7 @@ wake up the senses.</string>
                     <connections>
                         <outlet property="mainHeaderLabel" destination="aKG-cT-eIB" id="eZz-px-GxR"/>
                         <outlet property="soundHeaderLabel" destination="Hda-QG-Ix6" id="0OX-Dt-KaC"/>
+                        <outlet property="soundsCollectionView" destination="XQ9-U4-NAf" id="yZA-U5-4gs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0c-Wo-hWG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
