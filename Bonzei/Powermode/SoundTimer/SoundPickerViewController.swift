@@ -11,6 +11,7 @@ import UIKit
 class SoundPickerViewController: UIViewController {
     
     @IBOutlet weak var mainHeaderLabel: UILabel!
+    @IBOutlet weak var soundHeaderLabel: UILabel!
     
     var mainHeader: String? {
         didSet {
@@ -18,7 +19,11 @@ class SoundPickerViewController: UIViewController {
         }
     }
     
-    var soundHeader: String?
+    var soundHeader: String? {
+        didSet {
+            soundHeaderLabel.text = soundHeader
+        }
+    }
     
     var timeHeader: String?
 

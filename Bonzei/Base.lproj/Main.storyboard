@@ -925,24 +925,59 @@ wake up the senses.</string>
                                     <segue destination="ElH-Nh-r69" kind="unwind" unwindAction="unwindSoundSelection:" id="rLI-jY-xUV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;SoundHeader&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hda-QG-Ix6" userLabel="SoundHeader">
+                                <rect key="frame" x="23.999999999999993" y="131.66666666666666" width="106.33333333333331" height="17.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="14"/>
+                                <color key="textColor" red="0.67005228999999999" green="0.66670066120000004" blue="0.66290986539999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XQ9-U4-NAf">
+                                <rect key="frame" x="0.0" y="172.33333333333337" width="375" height="275"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="275" id="Wqp-JB-MTb"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L79-Xx-dQd">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Q3Z-Wi-Z1b">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WDB-rK-Udy">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="XQ9-U4-NAf" firstAttribute="top" secondItem="Hda-QG-Ix6" secondAttribute="bottom" constant="23" id="1eh-7M-OVr"/>
                             <constraint firstItem="t4z-1W-eV0" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" constant="12" id="47T-zw-g5a"/>
                             <constraint firstItem="aKG-cT-eIB" firstAttribute="centerX" secondItem="CRh-z0-hu4" secondAttribute="centerX" id="5lB-fz-ycF"/>
                             <constraint firstItem="aKG-cT-eIB" firstAttribute="top" secondItem="CRh-z0-hu4" secondAttribute="top" constant="12" id="AP5-Jt-yGA"/>
+                            <constraint firstItem="XQ9-U4-NAf" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" id="BAY-Lm-Fd1"/>
+                            <constraint firstItem="Hda-QG-Ix6" firstAttribute="top" secondItem="aKG-cT-eIB" secondAttribute="bottom" constant="40" id="JTl-gk-ops"/>
+                            <constraint firstItem="XQ9-U4-NAf" firstAttribute="trailing" secondItem="CRh-z0-hu4" secondAttribute="trailing" id="LKF-ic-y6L"/>
+                            <constraint firstItem="Hda-QG-Ix6" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" constant="24" id="TCC-yy-c3y"/>
                             <constraint firstItem="t4z-1W-eV0" firstAttribute="centerY" secondItem="aKG-cT-eIB" secondAttribute="centerY" id="Ya2-AD-m7U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CRh-z0-hu4"/>
                     </view>
                     <connections>
                         <outlet property="mainHeaderLabel" destination="aKG-cT-eIB" id="eZz-px-GxR"/>
+                        <outlet property="soundHeaderLabel" destination="Hda-QG-Ix6" id="0OX-Dt-KaC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0c-Wo-hWG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="ElH-Nh-r69" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6396" y="-1513"/>
+            <point key="canvasLocation" x="6396" y="-1513.3004926108374"/>
         </scene>
         <!--Learn-->
         <scene sceneID="wg7-f3-ORb">
