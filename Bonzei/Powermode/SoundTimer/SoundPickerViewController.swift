@@ -14,6 +14,7 @@ class SoundPickerViewController: UIViewController {
     
     @IBOutlet weak var mainHeaderLabel: UILabel!
     @IBOutlet weak var soundHeaderLabel: UILabel!
+    @IBOutlet weak var timeHeaderLabel: UILabel!
     @IBOutlet weak var soundsCollectionView: UICollectionView!
     
     private var customFlowLayout = SoundsCollectionViewFlowLayout()
@@ -32,7 +33,11 @@ class SoundPickerViewController: UIViewController {
         }
     }
     
-    var timeHeader: String?
+    var timeHeader: String? {
+        didSet {
+            timeHeaderLabel.text = timeHeader
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
