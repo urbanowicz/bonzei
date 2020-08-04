@@ -44,17 +44,7 @@ class SoundPickerViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        adjustInsetsForSoundsCollectionView()
-    }
-    
-    private func adjustInsetsForSoundsCollectionView() {
-        let sideInset = (soundsCollectionView.frame.width - customFlowLayout.itemSize.width) / 2.0
-        soundsCollectionView.contentInset = UIEdgeInsets(top: 0, left: sideInset, bottom: 0, right: sideInset)
-    }
-    
+        
     private func setupSoundsCollectionView() {
         soundsCollectionView.decelerationRate = .fast
         soundsCollectionView.backgroundColor = UIColor.systemGray3
@@ -100,18 +90,6 @@ extension SoundPickerViewController: UICollectionViewDataSource {
 extension SoundPickerViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView is UICollectionView else { return }
-        
-        let w = soundsCollectionView.frame.width
-        let h = soundsCollectionView.frame.height
-        let a = customFlowLayout.itemSize.width
-        let d = customFlowLayout.minimumLineSpacing // spacing between items
-        let inset = soundsCollectionView.contentInset.left
-        let deltaX = scrollView.contentOffset.x
-        
-        // distance between the centers of two neighbor cells
-        let x = a + d
-    
-        let k = round((deltaX) / x)
     
     }
 }
@@ -130,6 +108,9 @@ class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
         scrollDirection = .horizontal
         minimumLineSpacing = 25.0
         itemSize = CGSize(width: 183.3, height: 183.3)
+        
+        let sideInset = (collectionView!.frame.width - itemSize.width) / 2.0
+        collectionView!.contentInset = UIEdgeInsets(top: 0, left: sideInset, bottom: 0, right: sideInset)
     }
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
@@ -144,7 +125,6 @@ class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
         let distanceBetweenCellCenters = itemSize.width + minimumLineSpacing
     
         let k = round((deltaX + inset) / distanceBetweenCellCenters)
-        print(deltaX, k * distanceBetweenCellCenters)
         
         return CGPoint(x: k * distanceBetweenCellCenters - inset, y: proposedContentOffset.y)
     }
