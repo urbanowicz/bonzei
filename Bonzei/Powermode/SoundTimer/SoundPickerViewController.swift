@@ -52,6 +52,7 @@ class SoundPickerViewController: UIViewController {
     
     private func setupSoundsCollectionView() {
         soundsCollectionView.decelerationRate = .fast
+        soundsCollectionView.isPagingEnabled = false
         soundsCollectionView.backgroundColor = UIColor.systemGray3
         soundsCollectionView.delegate = self
         soundsCollectionView.dataSource = self
@@ -140,7 +141,6 @@ class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        
         guard collectionView != nil else {
             return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
         }
@@ -150,9 +150,13 @@ class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         let distanceBetweenCellCenters = itemSize.width + minimumLineSpacing
     
-        let k = round((deltaX + inset) / distanceBetweenCellCenters)
+        let k = velocity.x > 0 ? ceil((deltaX + inset) / distanceBetweenCellCenters) : floor((deltaX + inset) / distanceBetweenCellCenters)
         
         return CGPoint(x: k * distanceBetweenCellCenters - inset, y: proposedContentOffset.y)
+    }
+    
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
+        return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
     }
 }
 
