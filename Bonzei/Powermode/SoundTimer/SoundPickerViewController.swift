@@ -18,6 +18,8 @@ class SoundPickerViewController: UIViewController {
     
     private var customFlowLayout = SoundsCollectionViewFlowLayout()
     
+    private var centerCell: SoundCell?
+    
     var mainHeader: String? {
         didSet {
             mainHeaderLabel.text = mainHeader
@@ -43,7 +45,18 @@ class SoundPickerViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        adjustInsetsForSoundsCollectionView()
+    }
+    
+    private func adjustInsetsForSoundsCollectionView() {
+        let sideInset = (soundsCollectionView.frame.width - customFlowLayout.itemSize.width) / 2.0
+        soundsCollectionView.contentInset = UIEdgeInsets(top: 0, left: sideInset, bottom: 0, right: sideInset)
+    }
+    
     private func setupSoundsCollectionView() {
+        soundsCollectionView.decelerationRate = .fast
         soundsCollectionView.backgroundColor = UIColor.systemGray3
         soundsCollectionView.delegate = self
         soundsCollectionView.dataSource = self
@@ -85,27 +98,72 @@ extension SoundPickerViewController: UICollectionViewDataSource {
 
 //MARK:- UICollectionViewDelegate
 extension SoundPickerViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView is UICollectionView else { return }
+        
+        let w = soundsCollectionView.frame.width
+        let h = soundsCollectionView.frame.height
+        let a = customFlowLayout.itemSize.width
+        let d = customFlowLayout.minimumLineSpacing // spacing between items
+        let inset = soundsCollectionView.contentInset.left
+        let deltaX = scrollView.contentOffset.x
+        
+        // distance between the centers of two neighbor cells
+        let x = a + d
     
+        let k = round((deltaX) / x)
+    
+    }
 }
 
 //MARK:- UICollectionViewDelegateFlowLayout
 extension SoundPickerViewController: UICollectionViewDelegateFlowLayout {
-    
+
 }
 
 //MARK:- SoundsCollectionViewFlowLayout
 class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
     override func prepare() {
         super.prepare()
         
         scrollDirection = .horizontal
-        minimumInteritemSpacing = 24.0
-        minimumLineSpacing = 24.0
-        itemSize = CGSize(width: 275, height: 275)
+        minimumLineSpacing = 25.0
+        itemSize = CGSize(width: 183.3, height: 183.3)
+    }
+    
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        
+        guard collectionView != nil else {
+            return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
+        }
+        
+        let inset = collectionView!.contentInset.left
+        let deltaX = proposedContentOffset.x
+        
+        let distanceBetweenCellCenters = itemSize.width + minimumLineSpacing
+    
+        let k = round((deltaX + inset) / distanceBetweenCellCenters)
+        print(deltaX, k * distanceBetweenCellCenters)
+        
+        return CGPoint(x: k * distanceBetweenCellCenters - inset, y: proposedContentOffset.y)
     }
 }
 
 //MARK:- SoundCell
 class SoundCell: UICollectionViewCell {
     static let reuseId = "SoundCell"
+    
+    /// marks the cell as selected
+    func select() {
+        UIView.animate(withDuration: 0.2) {
+            self.transform = CGAffineTransform(scaleX: 1.50, y: 1.50)
+        }
+    }
+    
+    func deselect() {
+        UIView.animate(withDuration: 0.2) {
+            self.transform = CGAffineTransform.identity
+        }
+    }
 }
