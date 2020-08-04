@@ -90,7 +90,13 @@ extension SoundPickerViewController: UICollectionViewDataSource {
 extension SoundPickerViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView is UICollectionView else { return }
-    
+        
+        let visibleCells = soundsCollectionView.visibleCells
+        
+        for cell in visibleCells {
+            
+        }
+        
     }
 }
 
