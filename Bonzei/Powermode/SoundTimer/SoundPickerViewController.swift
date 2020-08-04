@@ -92,9 +92,18 @@ extension SoundPickerViewController: UICollectionViewDelegate {
         guard scrollView is UICollectionView else { return }
         
         let visibleCells = soundsCollectionView.visibleCells
+        let inset = soundsCollectionView.contentInset.left
+        let cellWidth = customFlowLayout.itemSize.width
+        let distanceBetweenCellCenters = cellWidth + customFlowLayout.minimumLineSpacing
         
         for cell in visibleCells {
-            
+            let k = abs(cell.center.x - (scrollView.contentOffset.x + inset + cellWidth/2.0)) / distanceBetweenCellCenters
+            let scaleFactor = CGFloat(1.0 + (1 - k) * 0.5)
+            if k < 1 {
+                cell.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
+            } else {
+                cell.transform = CGAffineTransform.identity
+            }
         }
         
     }
@@ -112,8 +121,8 @@ class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
         super.prepare()
         
         scrollDirection = .horizontal
-        minimumLineSpacing = 25.0
-        itemSize = CGSize(width: 183.3, height: 183.3)
+        minimumLineSpacing = 65.0
+        itemSize = CGSize(width: 183, height: 183)
         
         let sideInset = (collectionView!.frame.width - itemSize.width) / 2.0
         collectionView!.contentInset = UIEdgeInsets(top: 0, left: sideInset, bottom: 0, right: sideInset)
@@ -141,10 +150,8 @@ class SoundCell: UICollectionViewCell {
     static let reuseId = "SoundCell"
     
     /// marks the cell as selected
-    func select() {
-        UIView.animate(withDuration: 0.2) {
-            self.transform = CGAffineTransform(scaleX: 1.50, y: 1.50)
-        }
+    func scaleBy(factor: Double) {
+        self.transform = CGAffineTransform(scaleX: CGFloat(factor), y: CGFloat(factor))
     }
     
     func deselect() {
