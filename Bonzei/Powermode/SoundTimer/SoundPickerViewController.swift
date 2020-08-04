@@ -18,7 +18,7 @@ class SoundPickerViewController: UIViewController {
     
     private var customFlowLayout = SoundsCollectionViewFlowLayout()
     
-    private var centerCell: SoundCell?
+    private var viewIsAppearing = true
     
     var mainHeader: String? {
         didSet {
@@ -44,7 +44,12 @@ class SoundPickerViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-        
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewIsAppearing = true
+    }
+    
     private func setupSoundsCollectionView() {
         soundsCollectionView.decelerationRate = .fast
         soundsCollectionView.backgroundColor = UIColor.systemGray3
@@ -77,10 +82,17 @@ extension SoundPickerViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SoundCell.reuseId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SoundCell.reuseId, for: indexPath) as! SoundCell
         
         cell.layer.cornerRadius = cell.frame.height/2.0
         cell.backgroundColor = UIColor.systemRed
+        
+        if viewIsAppearing {
+            viewIsAppearing = false
+            if indexPath.row == 0 {
+                cell.select()
+            }
+        }
         
         return cell
     }
@@ -119,7 +131,6 @@ class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
         super.prepare()
-        
         scrollDirection = .horizontal
         minimumLineSpacing = 65.0
         itemSize = CGSize(width: 183, height: 183)
@@ -150,13 +161,11 @@ class SoundCell: UICollectionViewCell {
     static let reuseId = "SoundCell"
     
     /// marks the cell as selected
-    func scaleBy(factor: Double) {
-        self.transform = CGAffineTransform(scaleX: CGFloat(factor), y: CGFloat(factor))
+    func select() {
+        self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
     }
     
     func deselect() {
-        UIView.animate(withDuration: 0.2) {
-            self.transform = CGAffineTransform.identity
-        }
+        self.transform = CGAffineTransform.identity
     }
 }
