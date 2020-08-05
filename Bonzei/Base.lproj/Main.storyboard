@@ -992,6 +992,12 @@ wake up the senses.</string>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.0078431372550000003" green="0.35686274509999999" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <size key="customSize" width="275" height="275"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="640-lV-aGC" id="DF9-Qk-1o0"/>
+                                            <outlet property="melodyNameLabel" destination="xeh-ER-Hf5" id="KQL-Y9-vOO"/>
+                                            <outlet property="tagBackground" destination="efL-KV-R5e" id="yuy-E7-uJe"/>
+                                            <outlet property="tagLabel" destination="APN-Hh-mFk" id="Xbp-LX-HNq"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

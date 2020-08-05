@@ -91,8 +91,12 @@ extension SoundPickerViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SoundCell.reuseId, for: indexPath) as! SoundCell
         
         cell.layer.cornerRadius = cell.frame.height/2.0
-        cell.backgroundColor = UIColor.systemRed
-        
+        cell.backgroundColor = UIColor.black
+        cell.tagBackground.layer.cornerRadius = 5.0
+        cell.tagLabel.text = "THETA"
+        cell.melodyNameLabel.text = sounds[indexPath.row]
+        cell.descriptionLabel.text = "Experience this wonderful sound while naping and dreaming of milons of milions of dollars."
+
         if viewIsAppearing {
             viewIsAppearing = false
             if indexPath.row == 0 {
@@ -168,6 +172,11 @@ class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
 //MARK:- SoundCell
 class SoundCell: UICollectionViewCell {
     static let reuseId = "SoundCell"
+    
+    @IBOutlet weak var tagLabel: UILabel!
+    @IBOutlet weak var tagBackground: UIView!
+    @IBOutlet weak var melodyNameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     /// marks the cell as selected
     func select() {
