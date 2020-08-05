@@ -93,6 +93,7 @@ class SoundPickerViewController: UIViewController {
         durationPicker.textColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.5)
         durationPicker.textColorSelected = BonzeiColors.jungleGreen
         
+        durationPickerSelectionRect.backgroundColor = UIColor.clear
         durationPickerSelectionRect.layer.borderWidth = 1.0
         durationPickerSelectionRect.layer.borderColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00).cgColor
         durationPickerSelectionRect.layer.cornerRadius = 8.0

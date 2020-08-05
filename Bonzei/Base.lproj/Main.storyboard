@@ -933,7 +933,7 @@ wake up the senses.</string>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XQ9-U4-NAf">
                                 <rect key="frame" x="0.0" y="172" width="375" height="275"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.97649627920000004" green="0.97628325220000001" blue="0.97256141900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="275" id="Wqp-JB-MTb"/>
                                 </constraints>
@@ -1016,14 +1016,14 @@ wake up the senses.</string>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7A-2P-gcy" userLabel="DurationPickerSelector">
                                 <rect key="frame" x="123.66666666666669" y="594" width="128" height="53"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="0.1229918573943662" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="q7A-2P-gcy" secondAttribute="height" multiplier="128:53" id="XiB-ej-uRw"/>
                                     <constraint firstAttribute="width" constant="128" id="qey-Po-1Ui"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.97649627920000004" green="0.97628325220000001" blue="0.97256141900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XQ9-U4-NAf" firstAttribute="top" secondItem="Hda-QG-Ix6" secondAttribute="bottom" constant="23" id="1eh-7M-OVr"/>
                             <constraint firstItem="CRh-z0-hu4" firstAttribute="trailing" secondItem="4iW-4r-ro8" secondAttribute="trailing" constant="24" id="21V-D3-3gI"/>
