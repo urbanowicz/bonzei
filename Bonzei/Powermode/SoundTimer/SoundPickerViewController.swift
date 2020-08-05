@@ -17,6 +17,8 @@ class SoundPickerViewController: UIViewController {
     @IBOutlet weak var timeHeaderLabel: UILabel!
     @IBOutlet weak var durationPicker: PickerView!
     @IBOutlet weak var durationPickerSelectionRect: UIView!
+    @IBOutlet weak var durationPickerOverlayTop: UIView!
+    @IBOutlet weak var durationPickerOverlayBottom: UIView!
     @IBOutlet weak var soundsCollectionView: UICollectionView!
     
     private var customFlowLayout = SoundsCollectionViewFlowLayout()
@@ -65,6 +67,25 @@ class SoundPickerViewController: UIViewController {
         viewIsAppearing = true
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // Top overlay for the duration picker
+        let topOverlayMask = CAGradientLayer()
+        topOverlayMask.frame = durationPickerOverlayTop.bounds
+        topOverlayMask.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        topOverlayMask.locations = [0.5, 1.0]
+        durationPickerOverlayTop.layer.mask = topOverlayMask
+        
+        // Bottom overlay for the duration picker
+        let bottomOverlayMask = CAGradientLayer()
+        bottomOverlayMask.frame = durationPickerOverlayBottom.bounds
+        bottomOverlayMask.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        bottomOverlayMask.locations = [0.0, 0.5]
+        durationPickerOverlayBottom.layer.mask = bottomOverlayMask
+        
+    }
+    
     private func setupSoundsCollectionView() {
         soundsCollectionView.decelerationRate = .fast
         soundsCollectionView.isPagingEnabled = false
@@ -98,6 +119,11 @@ class SoundPickerViewController: UIViewController {
         durationPickerSelectionRect.layer.borderColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00).cgColor
         durationPickerSelectionRect.layer.cornerRadius = 8.0
         durationPickerSelectionRect.isUserInteractionEnabled = false
+        
+        durationPickerOverlayTop.backgroundColor = view.backgroundColor
+        durationPickerOverlayTop.isUserInteractionEnabled = false
+        durationPickerOverlayBottom.backgroundColor = view.backgroundColor
+        durationPickerOverlayBottom.isUserInteractionEnabled = false
         
         durationPicker.selectItem(withIndex: 1)
     }
