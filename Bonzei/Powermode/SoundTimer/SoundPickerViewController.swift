@@ -193,8 +193,9 @@ class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         scrollDirection = .horizontal
-        minimumLineSpacing = 65.0
-        itemSize = CGSize(width: 183, height: 183)
+        let cellSize = collectionView!.frame.height / 1.5
+        itemSize = CGSize(width: cellSize, height: cellSize)
+        minimumLineSpacing = 0.355 * cellSize
         
         let sideInset = (collectionView!.frame.width - itemSize.width) / 2.0
         collectionView!.contentInset = UIEdgeInsets(top: 0, left: sideInset, bottom: 0, right: sideInset)
