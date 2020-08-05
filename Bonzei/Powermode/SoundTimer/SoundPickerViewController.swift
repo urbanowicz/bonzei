@@ -142,7 +142,7 @@ extension SoundPickerViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SoundCell.reuseId, for: indexPath) as! SoundCell
         
         cell.layer.cornerRadius = cell.frame.height/2.0
-        cell.backgroundColor = UIColor.black
+        cell.backgroundColor = BonzeiColors.jungleGreen
         cell.tagBackground.layer.cornerRadius = 3.0
         cell.tagLabel.text = "THETA"
         cell.melodyNameLabel.text = sounds[indexPath.row]
