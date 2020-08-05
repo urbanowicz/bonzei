@@ -15,6 +15,7 @@ class SoundPickerViewController: UIViewController {
     @IBOutlet weak var mainHeaderLabel: UILabel!
     @IBOutlet weak var soundHeaderLabel: UILabel!
     @IBOutlet weak var timeHeaderLabel: UILabel!
+    @IBOutlet weak var durationPicker: PickerView!
     @IBOutlet weak var soundsCollectionView: UICollectionView!
     
     private var customFlowLayout = SoundsCollectionViewFlowLayout()
@@ -38,6 +39,13 @@ class SoundPickerViewController: UIViewController {
             timeHeaderLabel.text = timeHeader
         }
     }
+    
+    var durations: [Int]? {
+        didSet {
+            guard durations != nil else { return }
+            durationPicker.data = durations!.map() {"\($0) min"}
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +54,7 @@ class SoundPickerViewController: UIViewController {
         setupMainHeader()
         setupSoundHeader()
         setupTimeHeader()
+        setupDurationPicker()
         
         // Do any additional setup after loading the view.
     }
@@ -74,6 +83,11 @@ class SoundPickerViewController: UIViewController {
     
     private func setupTimeHeader() {
         timeHeader = "NAP TIME"
+    }
+    
+    private func setupDurationPicker() {
+        durations = [10, 15, 25]
+        durationPicker.scrollView.decelerationRate = .fast
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {

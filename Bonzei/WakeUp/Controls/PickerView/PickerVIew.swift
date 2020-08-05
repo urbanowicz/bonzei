@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@IBDesignable
 class PickerView: UIView, UIScrollViewDelegate {
     
     public var data: [String] = ["A", "B", "C"] {
@@ -24,6 +25,8 @@ class PickerView: UIView, UIScrollViewDelegate {
         }
     }
     
+    public var scrollView = UIScrollView()
+    
     public var textColorSelected: UIColor = UIColor.darkText
     
     public var font:UIFont?
@@ -34,8 +37,6 @@ class PickerView: UIView, UIScrollViewDelegate {
     public var delegate: PickerViewDelegate?
     
     private var labels = [UILabel]()
-    
-    private var scrollView = UIScrollView()
     
     private var hapticFeedbackGenerator = UISelectionFeedbackGenerator()
     

@@ -1007,6 +1007,14 @@ wake up the senses.</string>
                                 <color key="textColor" red="0.6705882352941176" green="0.66666666666666663" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iW-4r-ro8" customClass="PickerView" customModule="Bonzei" customModuleProvider="target">
+                                <rect key="frame" x="67.666666666666686" y="540" width="240" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Wug-Fe-Cxc"/>
+                                    <constraint firstAttribute="width" secondItem="4iW-4r-ro8" secondAttribute="height" multiplier="15:8" id="u2X-vL-NIH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -1019,12 +1027,15 @@ wake up the senses.</string>
                             <constraint firstItem="Hda-QG-Ix6" firstAttribute="top" secondItem="aKG-cT-eIB" secondAttribute="bottom" constant="40" id="JTl-gk-ops"/>
                             <constraint firstItem="b9T-9u-ZgQ" firstAttribute="top" secondItem="XQ9-U4-NAf" secondAttribute="bottom" constant="55" id="KJw-O9-78U"/>
                             <constraint firstItem="XQ9-U4-NAf" firstAttribute="trailing" secondItem="CRh-z0-hu4" secondAttribute="trailing" id="LKF-ic-y6L"/>
+                            <constraint firstItem="4iW-4r-ro8" firstAttribute="centerX" secondItem="CRh-z0-hu4" secondAttribute="centerX" id="Swx-TU-xpH"/>
                             <constraint firstItem="Hda-QG-Ix6" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" constant="24" id="TCC-yy-c3y"/>
                             <constraint firstItem="t4z-1W-eV0" firstAttribute="centerY" secondItem="aKG-cT-eIB" secondAttribute="centerY" id="Ya2-AD-m7U"/>
+                            <constraint firstItem="4iW-4r-ro8" firstAttribute="top" secondItem="b9T-9u-ZgQ" secondAttribute="bottom" constant="20.333333333333371" id="xau-vF-m3Z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CRh-z0-hu4"/>
                     </view>
                     <connections>
+                        <outlet property="durationPicker" destination="4iW-4r-ro8" id="0zg-R4-jaX"/>
                         <outlet property="mainHeaderLabel" destination="aKG-cT-eIB" id="eZz-px-GxR"/>
                         <outlet property="soundHeaderLabel" destination="Hda-QG-Ix6" id="0OX-Dt-KaC"/>
                         <outlet property="soundsCollectionView" destination="XQ9-U4-NAf" id="yZA-U5-4gs"/>
