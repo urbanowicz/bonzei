@@ -58,7 +58,6 @@ class SoundPickerViewController: UIViewController {
     private func setupSoundsCollectionView() {
         soundsCollectionView.decelerationRate = .fast
         soundsCollectionView.isPagingEnabled = false
-        soundsCollectionView.backgroundColor = UIColor.systemGray3
         soundsCollectionView.delegate = self
         soundsCollectionView.dataSource = self
         soundsCollectionView.collectionViewLayout = customFlowLayout
@@ -92,7 +91,7 @@ extension SoundPickerViewController: UICollectionViewDataSource {
         
         cell.layer.cornerRadius = cell.frame.height/2.0
         cell.backgroundColor = UIColor.black
-        cell.tagBackground.layer.cornerRadius = 5.0
+        cell.tagBackground.layer.cornerRadius = 3.0
         cell.tagLabel.text = "THETA"
         cell.melodyNameLabel.text = sounds[indexPath.row]
         cell.descriptionLabel.text = "Experience this wonderful sound while naping and dreaming of milons of milions of dollars."
