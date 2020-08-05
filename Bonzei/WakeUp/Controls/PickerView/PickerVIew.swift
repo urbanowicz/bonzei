@@ -29,7 +29,11 @@ class PickerView: UIView, UIScrollViewDelegate {
     
     public var textColorSelected: UIColor = UIColor.darkText
     
-    public var font:UIFont?
+    public var font:UIFont? {
+        didSet {
+            updateAndDrawLabels()
+        }
+    }
     
     // This version of the picker always shows three rows
     public let numberOfVisibleRows = 3

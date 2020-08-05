@@ -88,6 +88,7 @@ class SoundPickerViewController: UIViewController {
     private func setupDurationPicker() {
         durations = [10, 15, 25]
         durationPicker.scrollView.decelerationRate = .fast
+        durationPicker.font = UIFont(name: "Muli-Regular", size: 24)
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
