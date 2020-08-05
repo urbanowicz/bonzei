@@ -1014,6 +1014,14 @@ wake up the senses.</string>
                                     <constraint firstAttribute="height" constant="161" id="vMl-Oo-cWy"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7A-2P-gcy" userLabel="DurationPickerSelector">
+                                <rect key="frame" x="123.66666666666669" y="594" width="128" height="53"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="q7A-2P-gcy" secondAttribute="height" multiplier="128:53" id="XiB-ej-uRw"/>
+                                    <constraint firstAttribute="width" constant="128" id="qey-Po-1Ui"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -1031,12 +1039,15 @@ wake up the senses.</string>
                             <constraint firstItem="Hda-QG-Ix6" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" constant="24" id="TCC-yy-c3y"/>
                             <constraint firstItem="4iW-4r-ro8" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" constant="24" id="Wv2-fR-jut"/>
                             <constraint firstItem="t4z-1W-eV0" firstAttribute="centerY" secondItem="aKG-cT-eIB" secondAttribute="centerY" id="Ya2-AD-m7U"/>
+                            <constraint firstItem="q7A-2P-gcy" firstAttribute="centerY" secondItem="4iW-4r-ro8" secondAttribute="centerY" id="riP-Wh-5Ic"/>
                             <constraint firstItem="4iW-4r-ro8" firstAttribute="top" secondItem="b9T-9u-ZgQ" secondAttribute="bottom" constant="20.333333333333371" id="xau-vF-m3Z"/>
+                            <constraint firstItem="q7A-2P-gcy" firstAttribute="centerX" secondItem="4iW-4r-ro8" secondAttribute="centerX" id="ymq-x1-0Jh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CRh-z0-hu4"/>
                     </view>
                     <connections>
                         <outlet property="durationPicker" destination="4iW-4r-ro8" id="0zg-R4-jaX"/>
+                        <outlet property="durationPickerSelectionRect" destination="q7A-2P-gcy" id="nhC-dE-vme"/>
                         <outlet property="mainHeaderLabel" destination="aKG-cT-eIB" id="eZz-px-GxR"/>
                         <outlet property="soundHeaderLabel" destination="Hda-QG-Ix6" id="0OX-Dt-KaC"/>
                         <outlet property="soundsCollectionView" destination="XQ9-U4-NAf" id="yZA-U5-4gs"/>

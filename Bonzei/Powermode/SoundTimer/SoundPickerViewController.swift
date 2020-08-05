@@ -16,6 +16,7 @@ class SoundPickerViewController: UIViewController {
     @IBOutlet weak var soundHeaderLabel: UILabel!
     @IBOutlet weak var timeHeaderLabel: UILabel!
     @IBOutlet weak var durationPicker: PickerView!
+    @IBOutlet weak var durationPickerSelectionRect: UIView!
     @IBOutlet weak var soundsCollectionView: UICollectionView!
     
     private var customFlowLayout = SoundsCollectionViewFlowLayout()
@@ -91,6 +92,13 @@ class SoundPickerViewController: UIViewController {
         durationPicker.font = UIFont(name: "Muli-Regular", size: 24)
         durationPicker.textColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.5)
         durationPicker.textColorSelected = BonzeiColors.jungleGreen
+        
+        durationPickerSelectionRect.layer.borderWidth = 1.0
+        durationPickerSelectionRect.layer.borderColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00).cgColor
+        durationPickerSelectionRect.layer.cornerRadius = 8.0
+        durationPickerSelectionRect.isUserInteractionEnabled = false
+        
+        durationPicker.selectItem(withIndex: 1)
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
