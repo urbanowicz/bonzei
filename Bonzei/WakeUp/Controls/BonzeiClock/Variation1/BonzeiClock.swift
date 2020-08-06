@@ -385,7 +385,7 @@ fileprivate class ClockFaceView: UIView {
     }
 }
 
-class CircleView: GradientView {
+fileprivate class CircleView: GradientView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
