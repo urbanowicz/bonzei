@@ -25,6 +25,12 @@ class GradientView: UIView {
             updateGradient()
         }
     }
+    
+    var locations: [NSNumber] = [0.0, 1.0] {
+        didSet {
+            updateGradient()
+        }
+    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,5 +45,6 @@ class GradientView: UIView {
     private func updateGradient() {
         let gradientLayer = layer as! CAGradientLayer
         gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
+        gradientLayer.locations = locations
     }
 }
