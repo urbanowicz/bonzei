@@ -935,7 +935,7 @@ wake up the senses.</string>
                                 <rect key="frame" x="0.0" y="164.33333333333337" width="375" height="275"/>
                                 <color key="backgroundColor" red="0.97649627920000004" green="0.97628325220000001" blue="0.97256141900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="275" id="Wqp-JB-MTb"/>
+                                    <constraint firstAttribute="height" priority="750" constant="275" id="Wqp-JB-MTb"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L79-Xx-dQd">
                                     <size key="itemSize" width="274" height="204"/>
@@ -1064,6 +1064,7 @@ wake up the senses.</string>
                             <constraint firstItem="t4z-1W-eV0" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" constant="12" id="47T-zw-g5a"/>
                             <constraint firstItem="CRh-z0-hu4" firstAttribute="bottom" secondItem="AgX-jc-OYj" secondAttribute="bottom" priority="750" constant="20" id="4Pg-m8-p1z"/>
                             <constraint firstItem="aKG-cT-eIB" firstAttribute="centerX" secondItem="CRh-z0-hu4" secondAttribute="centerX" id="5lB-fz-ycF"/>
+                            <constraint firstItem="b9T-9u-ZgQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XQ9-U4-NAf" secondAttribute="bottom" constant="5" id="7kT-Ws-If8"/>
                             <constraint firstItem="b9T-9u-ZgQ" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" constant="24" id="7vI-XD-moS"/>
                             <constraint firstItem="aKG-cT-eIB" firstAttribute="top" secondItem="CRh-z0-hu4" secondAttribute="top" constant="12" id="AP5-Jt-yGA"/>
                             <constraint firstItem="XQ9-U4-NAf" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" id="BAY-Lm-Fd1"/>
@@ -1077,7 +1078,7 @@ wake up the senses.</string>
                             <constraint firstItem="AgX-jc-OYj" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" constant="24" id="U79-jW-T2x"/>
                             <constraint firstItem="4iW-4r-ro8" firstAttribute="leading" secondItem="CRh-z0-hu4" secondAttribute="leading" constant="24" id="Wv2-fR-jut"/>
                             <constraint firstItem="t4z-1W-eV0" firstAttribute="centerY" secondItem="aKG-cT-eIB" secondAttribute="centerY" id="Ya2-AD-m7U"/>
-                            <constraint firstItem="AgX-jc-OYj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vWw-bJ-1tg" secondAttribute="bottom" constant="1" id="aXT-BL-DFU"/>
+                            <constraint firstItem="AgX-jc-OYj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vWw-bJ-1tg" secondAttribute="bottom" constant="5" id="aXT-BL-DFU"/>
                             <constraint firstItem="vWw-bJ-1tg" firstAttribute="top" secondItem="4iW-4r-ro8" secondAttribute="bottom" constant="-28" id="fGB-bV-NTZ"/>
                             <constraint firstItem="ior-VY-RmT" firstAttribute="top" secondItem="b9T-9u-ZgQ" secondAttribute="bottom" id="h0f-uF-K74"/>
                             <constraint firstItem="b9T-9u-ZgQ" firstAttribute="centerY" secondItem="CRh-z0-hu4" secondAttribute="centerY" multiplier="1.19" id="pUV-Ad-8Cn"/>
