@@ -106,6 +106,7 @@
 		F1CBD48724C4A297006980AF /* BonzeiTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CBD48624C4A297006980AF /* BonzeiTabBar.swift */; };
 		F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D298FE247D74A500D25238 /* RoundedButton.swift */; };
 		F1D2D695248E27C1000DE8D2 /* MovingGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */; };
+		F1DCAEA824DBFE1500440581 /* SoundTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DCAEA724DBFE1500440581 /* SoundTimerViewController.swift */; };
 		F1E0FFE224A3757700F75FDF /* TimePicker_24.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E0FFE124A3757700F75FDF /* TimePicker_24.swift */; };
 		F1F83E1E2472F7490072630A /* RootViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E1D2472F7490072630A /* RootViewViewController.swift */; };
 		F1F83E222472FD0C0072630A /* AlarmSchedulerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */; };
@@ -226,6 +227,7 @@
 		F1CBD48624C4A297006980AF /* BonzeiTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiTabBar.swift; sourceTree = "<group>"; };
 		F1D298FE247D74A500D25238 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingGradientView.swift; sourceTree = "<group>"; };
+		F1DCAEA724DBFE1500440581 /* SoundTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTimerViewController.swift; sourceTree = "<group>"; };
 		F1E0FFE124A3757700F75FDF /* TimePicker_24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker_24.swift; sourceTree = "<group>"; };
 		F1F83E1D2472F7490072630A /* RootViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewViewController.swift; sourceTree = "<group>"; };
 		F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSchedulerDelegate.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				F15CCF3724D85D20008E4405 /* SoundPickerViewController.swift */,
+				F1DCAEA724DBFE1500440581 /* SoundTimerViewController.swift */,
 			);
 			path = SoundTimer;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				F1CBD48524C4A212006980AF /* TabItem.swift in Sources */,
 				F10C8E5524CF31B1003B26F6 /* PowerModeViewController.swift in Sources */,
 				F1A26FA6247284A300A13B3C /* DismissAlarmViewController.swift in Sources */,
+				F1DCAEA824DBFE1500440581 /* SoundTimerViewController.swift in Sources */,
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F17D199824AA654D00633BBC /* Article.swift in Sources */,
 				F1C76B6E247ED7CD0099F1F1 /* DoubleExtension.swift in Sources */,
