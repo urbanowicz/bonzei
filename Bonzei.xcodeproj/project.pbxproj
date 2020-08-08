@@ -22,6 +22,7 @@
 		F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1329B172460912300E7F7A2 /* OvalButton.swift */; };
 		F13B355A24DE857D0047DFD6 /* BonzeiClockV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B355924DE857D0047DFD6 /* BonzeiClockV3.swift */; };
 		F13B355C24DE95280047DFD6 /* Endorphin Birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F13B355B24DE95280047DFD6 /* Endorphin Birds.mp3 */; };
+		F13B355F24DECC250047DFD6 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B355E24DECC250047DFD6 /* CircularProgressView.swift */; };
 		F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1421C252454B710003D226A /* DayOfWeekPicker.swift */; };
 		F142BDE424704CF200B5857C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142BDE324704CF200B5857C /* DateExtension.swift */; };
 		F142BDE524704CF200B5857C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142BDE324704CF200B5857C /* DateExtension.swift */; };
@@ -143,6 +144,7 @@
 		F1329B172460912300E7F7A2 /* OvalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButton.swift; sourceTree = "<group>"; };
 		F13B355924DE857D0047DFD6 /* BonzeiClockV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClockV3.swift; sourceTree = "<group>"; };
 		F13B355B24DE95280047DFD6 /* Endorphin Birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Endorphin Birds.mp3"; sourceTree = "<group>"; };
+		F13B355E24DECC250047DFD6 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		F1421C252454B710003D226A /* DayOfWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekPicker.swift; sourceTree = "<group>"; };
 		F142BDE324704CF200B5857C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F147771E247D073E00D12C60 /* Gilam-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilam-Bold.ttf"; sourceTree = "<group>"; };
@@ -371,9 +373,18 @@
 			path = Variation3;
 			sourceTree = "<group>";
 		};
+		F13B355D24DECB9E0047DFD6 /* CircularProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				F13B355E24DECC250047DFD6 /* CircularProgressView.swift */,
+			);
+			path = CircularProgressView;
+			sourceTree = "<group>";
+		};
 		F1421C242454B6BF003D226A /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				F13B355D24DECB9E0047DFD6 /* CircularProgressView */,
 				F1CBD48324C4A1DD006980AF /* Toolbar */,
 				F11ED05224A3F257002CA419 /* PickerView */,
 				F1D2D693248E2781000DE8D2 /* GradientView */,
@@ -956,6 +967,7 @@
 				F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */,
 				F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */,
 				F13B355A24DE857D0047DFD6 /* BonzeiClockV3.swift in Sources */,
+				F13B355F24DECC250047DFD6 /* CircularProgressView.swift in Sources */,
 				F1C76B6C247EBDBF0099F1F1 /* BonzeiClock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
