@@ -1046,7 +1046,7 @@ wake up the senses.</string>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="saveButtonPressed:" destination="WKb-vj-sEy" eventType="touchUpInside" id="DBn-a7-H7S"/>
-                                    <segue destination="OS6-oB-YJ9" kind="presentation" id="K8x-Sg-zM5"/>
+                                    <segue destination="OS6-oB-YJ9" kind="presentation" modalPresentationStyle="fullScreen" id="K8x-Sg-zM5"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWw-bJ-1tg" userLabel="DurationPickerOverlayBottom">
@@ -1114,21 +1114,31 @@ wake up the senses.</string>
             <objects>
                 <viewController id="OS6-oB-YJ9" customClass="SoundTimerViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mCJ-Dd-gXO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDo-fZ-nxc" userLabel="BackGroundView" customClass="GradientView" customModule="Bonzei" customModuleProvider="target">
-                                <rect key="frame" x="-312.66666666666669" y="-428" width="1000.3333333333335" height="1000.6666666666666"/>
+                                <rect key="frame" x="-348.33333333333331" y="-453.66666666666669" width="1071.6666666666667" height="1071.6666666666667"/>
                                 <color key="backgroundColor" red="0.14131990080000001" green="0.34102275970000001" blue="0.26348507399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iDo-fZ-nxc" secondAttribute="height" id="MKa-2G-Lju"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hnt-9B-5lo" customClass="BonzeiClockV3" customModule="Bonzei" customModuleProvider="target">
+                                <rect key="frame" x="70" y="121" width="235" height="235"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Hnt-9B-5lo" secondAttribute="height" multiplier="1:1" id="OrJ-Z8-yKP"/>
+                                    <constraint firstAttribute="height" constant="235" id="tQj-hQ-44d"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97649627920000004" green="0.97628325220000001" blue="0.97256141900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Hnt-9B-5lo" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="Ip1-2N-eWd"/>
                             <constraint firstItem="iDo-fZ-nxc" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="0.2" id="OCm-fD-4hn"/>
                             <constraint firstItem="iDo-fZ-nxc" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="Zed-lb-5de"/>
+                            <constraint firstItem="Hnt-9B-5lo" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="0.58" id="afJ-xz-6SX"/>
                             <constraint firstItem="iDo-fZ-nxc" firstAttribute="height" secondItem="mCJ-Dd-gXO" secondAttribute="height" multiplier="1.32" id="h1L-6u-IYx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2ev-ft-blA"/>

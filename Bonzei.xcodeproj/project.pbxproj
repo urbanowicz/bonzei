@@ -20,6 +20,8 @@
 		F11ED05424A4EE12002CA419 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11ED05324A4EE12002CA419 /* TimePickerView.swift */; };
 		F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127AC542468265B007F9734 /* HeartBeatService.swift */; };
 		F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1329B172460912300E7F7A2 /* OvalButton.swift */; };
+		F13B355824DE84E10047DFD6 /* ClockFaceV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B355724DE84E10047DFD6 /* ClockFaceV3.swift */; };
+		F13B355A24DE857D0047DFD6 /* BonzeiClockV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B355924DE857D0047DFD6 /* BonzeiClockV3.swift */; };
 		F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1421C252454B710003D226A /* DayOfWeekPicker.swift */; };
 		F142BDE424704CF200B5857C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142BDE324704CF200B5857C /* DateExtension.swift */; };
 		F142BDE524704CF200B5857C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142BDE324704CF200B5857C /* DateExtension.swift */; };
@@ -140,6 +142,8 @@
 		F11ED05324A4EE12002CA419 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		F127AC542468265B007F9734 /* HeartBeatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatService.swift; sourceTree = "<group>"; };
 		F1329B172460912300E7F7A2 /* OvalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButton.swift; sourceTree = "<group>"; };
+		F13B355724DE84E10047DFD6 /* ClockFaceV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockFaceV3.swift; sourceTree = "<group>"; };
+		F13B355924DE857D0047DFD6 /* BonzeiClockV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClockV3.swift; sourceTree = "<group>"; };
 		F1421C252454B710003D226A /* DayOfWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekPicker.swift; sourceTree = "<group>"; };
 		F142BDE324704CF200B5857C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F147771E247D073E00D12C60 /* Gilam-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilam-Bold.ttf"; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 		F10B5CA4248558730042D915 /* BonzeiClock */ = {
 			isa = PBXGroup;
 			children = (
+				F13B355624DE84B70047DFD6 /* Variation3 */,
 				F16770E2248C0C9800797F0A /* Variation2 */,
 				F16770E1248C0C7800797F0A /* Variation1 */,
 			);
@@ -358,6 +363,15 @@
 				F195A8E824850F81009D54A3 /* WraparoundPickerView.swift */,
 			);
 			path = PickerView;
+			sourceTree = "<group>";
+		};
+		F13B355624DE84B70047DFD6 /* Variation3 */ = {
+			isa = PBXGroup;
+			children = (
+				F13B355724DE84E10047DFD6 /* ClockFaceV3.swift */,
+				F13B355924DE857D0047DFD6 /* BonzeiClockV3.swift */,
+			);
+			path = Variation3;
 			sourceTree = "<group>";
 		};
 		F1421C242454B6BF003D226A /* Controls */ = {
@@ -898,6 +912,7 @@
 				F17ABEE92447089F008E9227 /* SecondViewController.swift in Sources */,
 				F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */,
 				F1607DAE248AAE5300968586 /* TimerView.swift in Sources */,
+				F13B355824DE84E10047DFD6 /* ClockFaceV3.swift in Sources */,
 				F1BB762024C7640D00538465 /* Helpers.swift in Sources */,
 				F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */,
 				F1CBD48524C4A212006980AF /* TabItem.swift in Sources */,
@@ -944,6 +959,7 @@
 				F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */,
 				F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */,
 				F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */,
+				F13B355A24DE857D0047DFD6 /* BonzeiClockV3.swift in Sources */,
 				F1C76B6C247EBDBF0099F1F1 /* BonzeiClock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
