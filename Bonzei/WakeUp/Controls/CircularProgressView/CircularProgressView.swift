@@ -59,6 +59,14 @@ class CircularProgressView: UIView {
         trackLayer.lineWidth = CGFloat(trackWidth)
         
         layer.addSublayer(trackLayer)
+        
+        progressLayer.backgroundColor = UIColor.clear.cgColor
+        progressLayer.fillColor = UIColor.clear.cgColor
+        progressLayer.strokeColor = progressColor.cgColor
+        progressLayer.lineCap = .round
+        progressLayer.lineWidth = CGFloat(trackWidth)
+        
+        layer.addSublayer(progressLayer)
     }
     
     override func layoutSubviews() {
@@ -66,9 +74,14 @@ class CircularProgressView: UIView {
         
         trackLayer.frame = self.bounds
         trackLayer.path = UIBezierPath.init(ovalIn: trackLayer.bounds).cgPath
+        
+        progressLayer.frame = self.bounds
+        progressLayer.path = UIBezierPath.init(ovalIn: progressLayer.bounds).cgPath
+        
+        updateProgress()
     }
     
     private func updateProgress() {
-        
+        progressLayer.strokeEnd = CGFloat(progress)
     }
 }
