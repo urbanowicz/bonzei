@@ -24,7 +24,12 @@ class CircularProgressView: UIView {
         }
     }
     
-    @IBInspectable var trackWidth: Double = 3.0
+    @IBInspectable var trackWidth: Double = 3.0 {
+        didSet {
+            trackLayer.lineWidth = CGFloat(trackWidth)
+            progressLayer.lineWidth = CGFloat(trackWidth)
+        }
+    }
     
     public var progress: Double = 0.7 {
         didSet {
@@ -60,6 +65,7 @@ class CircularProgressView: UIView {
         super.layoutSubviews()
         
         trackLayer.frame = self.bounds
+        trackLayer.path = UIBezierPath.init(ovalIn: trackLayer.bounds).cgPath
     }
     
     private func updateProgress() {
