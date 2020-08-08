@@ -1124,15 +1124,30 @@ wake up the senses.</string>
                                     <constraint firstAttribute="width" secondItem="iDo-fZ-nxc" secondAttribute="height" id="MKa-2G-Lju"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uph-sY-tqy" customClass="TimerView" customModule="Bonzei" customModuleProvider="target">
-                                <rect key="frame" x="65" y="116" width="245" height="245"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fub-Aq-T4t" userLabel="VStack">
+                                <rect key="frame" x="65" y="183.66666666666666" width="245" height="109.66666666666666"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uph-sY-tqy" customClass="TimerView" customModule="Bonzei" customModuleProvider="target">
+                                        <rect key="frame" x="47" y="0.0" width="151" height="72"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="72" id="NPm-59-AKA"/>
+                                            <constraint firstAttribute="width" secondItem="uph-sY-tqy" secondAttribute="height" multiplier="151:72" id="a3P-Rf-22K"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3D-kz-clZ">
+                                        <rect key="frame" x="81" y="88.000000000000028" width="83.333333333333314" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hnt-9B-5lo" customClass="BonzeiClockV3" customModule="Bonzei" customModuleProvider="target">
                                 <rect key="frame" x="65" y="116" width="245" height="245"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1169,17 +1184,16 @@ wake up the senses.</string>
                         </subviews>
                         <color key="backgroundColor" red="0.97649627920000004" green="0.97628325220000001" blue="0.97256141900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="uph-sY-tqy" firstAttribute="width" secondItem="Hnt-9B-5lo" secondAttribute="width" id="Evn-Ni-bdS"/>
+                            <constraint firstItem="fub-Aq-T4t" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="202-a9-wbd"/>
                             <constraint firstItem="Hnt-9B-5lo" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="Ip1-2N-eWd"/>
+                            <constraint firstItem="fub-Aq-T4t" firstAttribute="width" secondItem="Hnt-9B-5lo" secondAttribute="width" id="JLm-ai-xDq"/>
                             <constraint firstItem="dxS-m4-nUg" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="LKI-Zf-OAc"/>
                             <constraint firstItem="iDo-fZ-nxc" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="0.2" id="OCm-fD-4hn"/>
+                            <constraint firstItem="fub-Aq-T4t" firstAttribute="centerY" secondItem="Hnt-9B-5lo" secondAttribute="centerY" id="TQw-Nl-nKQ"/>
                             <constraint firstItem="iDo-fZ-nxc" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="Zed-lb-5de"/>
                             <constraint firstItem="Hnt-9B-5lo" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="0.58" id="afJ-xz-6SX"/>
-                            <constraint firstItem="uph-sY-tqy" firstAttribute="centerX" secondItem="Hnt-9B-5lo" secondAttribute="centerX" id="d0j-zZ-0sE"/>
-                            <constraint firstItem="uph-sY-tqy" firstAttribute="height" secondItem="Hnt-9B-5lo" secondAttribute="height" id="g2e-fI-rFr"/>
                             <constraint firstItem="dxS-m4-nUg" firstAttribute="width" secondItem="Hnt-9B-5lo" secondAttribute="width" multiplier="0.961702" id="gBw-Ht-h65"/>
                             <constraint firstItem="iDo-fZ-nxc" firstAttribute="height" secondItem="mCJ-Dd-gXO" secondAttribute="height" multiplier="1.32" id="h1L-6u-IYx"/>
-                            <constraint firstItem="uph-sY-tqy" firstAttribute="centerY" secondItem="Hnt-9B-5lo" secondAttribute="centerY" id="kwO-gw-ZEn"/>
                             <constraint firstItem="dxS-m4-nUg" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="1.73" id="lvC-mU-o2E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2ev-ft-blA"/>
@@ -1193,7 +1207,7 @@ wake up the senses.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="la6-wj-O3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7121" y="-1514"/>
+            <point key="canvasLocation" x="7120.8000000000002" y="-1514.0394088669952"/>
         </scene>
         <!--Learn-->
         <scene sceneID="wg7-f3-ORb">
