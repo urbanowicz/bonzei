@@ -31,12 +31,19 @@ class SoundTimerViewController: UIViewController {
     
     @IBOutlet weak var timerView: TimerView!
     
+    private var isTimerPaused = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupBackgroundCircleView()
         setupTimerView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        startNap()
     }
     
     private func setupBackgroundCircleView() {
@@ -71,9 +78,26 @@ class SoundTimerViewController: UIViewController {
     }
     
     @IBAction func playPauseButtonPressed(_ sender: Any) {
+        if (isTimerPaused) {
+            timerView.start()
+            isTimerPaused = false
+            playPauseButton.setImage(UIImage(named: "pause-button"), for: .normal)
+        } else {
+            timerView.pause()
+            isTimerPaused = true
+            playPauseButton.setImage(UIImage(named: "play-button"), for: .normal)
+        }
     }
     
     @IBAction func stopButtonPressed(_ sender: Any) {
+    }
+    
+    private func startNap() {
+        timerView.start()
+    }
+    
+    private func pauseNap() {
+        timerView.pause()
     }
 }
 

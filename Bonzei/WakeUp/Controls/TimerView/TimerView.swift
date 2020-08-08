@@ -38,7 +38,13 @@ class TimerView: UIView {
     public var label = UILabel()
     
     /// In`timer` mode  the length of the timer.
-    public var countDownTimeSeconds: Int = 0
+    public var countDownTimeSeconds: Int = 0 {
+        didSet {
+            if mode == .timer {
+                label.text = formatCountDownString(secondsLeft: countDownTimeSeconds)
+            }
+        }
+    }
     
     /// In `clock` mode, this is the format that will be used to display the current time.
     public var timeFormat:String = "HH:mm"
@@ -46,6 +52,8 @@ class TimerView: UIView {
     private var timer: Timer?
     
     private var stopDate: Date?
+    
+    private var timeLeft:Int = 0
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -132,6 +140,7 @@ class TimerView: UIView {
             
             let timeLeftString = self.formatCountDownString(secondsLeft: timeLeft)
             self.label.text = timeLeftString
+            self.timeLeft = timeLeft
         }
     }
     
@@ -170,5 +179,12 @@ class TimerView: UIView {
         timer?.invalidate()
         stopDate = nil
         countDownTimeSeconds = 0
+    }
+    
+    public func pause() {
+        guard mode == .timer else { return }
+        timer?.invalidate()
+        stopDate = nil
+        countDownTimeSeconds = timeLeft
     }
 }
