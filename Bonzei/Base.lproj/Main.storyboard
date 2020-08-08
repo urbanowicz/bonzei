@@ -1223,7 +1223,7 @@ wake up the senses.</string>
                         <outlet property="playPauseButton" destination="bRf-hD-2f2" id="zn3-6Z-62r"/>
                         <outlet property="stopButton" destination="Kxy-3D-J9S" id="ghm-aq-Cc1"/>
                         <outlet property="timerView" destination="uph-sY-tqy" id="1cU-Kv-XtC"/>
-                        <segue destination="Lah-b4-Hod" kind="modal" identifier="SoundTimerDone" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="0zv-dC-agn"/>
+                        <segue destination="Lah-b4-Hod" kind="modal" identifier="SoundTimerDone" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="0zv-dC-agn"/>
                         <segue destination="aMt-Bf-49u" kind="unwind" identifier="UnwindToSoundPicker" unwindAction="unwindToSoundPicker:" id="Krg-vu-iYH"/>
                     </connections>
                 </viewController>
@@ -1308,10 +1308,17 @@ wake up the senses.</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isCountDown" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CO0-X5-8st">
+                                <rect key="frame" x="68.000000000000014" y="375.33333333333331" width="239.33333333333337" height="71.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="57"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.14131990080000001" green="0.34102275970000001" blue="0.26348507399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="G88-dn-iCL" firstAttribute="centerX" secondItem="ohM-7m-EU9" secondAttribute="centerX" id="9i6-Oo-7Su"/>
+                            <constraint firstItem="CO0-X5-8st" firstAttribute="centerY" secondItem="buK-sd-zej" secondAttribute="centerY" id="JYK-AN-PUT"/>
                             <constraint firstItem="ohM-7m-EU9" firstAttribute="centerX" secondItem="buK-sd-zej" secondAttribute="centerX" id="NLG-W8-FDu"/>
                             <constraint firstItem="G88-dn-iCL" firstAttribute="height" secondItem="ohM-7m-EU9" secondAttribute="height" multiplier="0.75" id="Qjh-fx-TwQ"/>
                             <constraint firstItem="iGi-lv-X4t" firstAttribute="centerX" secondItem="buK-sd-zej" secondAttribute="centerX" id="bWG-tE-RTO"/>
@@ -1321,6 +1328,7 @@ wake up the senses.</string>
                             <constraint firstItem="G88-dn-iCL" firstAttribute="centerY" secondItem="ohM-7m-EU9" secondAttribute="centerY" id="uQM-XL-uhW"/>
                             <constraint firstItem="iGi-lv-X4t" firstAttribute="centerY" secondItem="ohM-7m-EU9" secondAttribute="centerY" id="vZL-Xm-dxo"/>
                             <constraint firstItem="6B8-JQ-XUl" firstAttribute="leading" secondItem="buK-sd-zej" secondAttribute="leading" constant="24" id="wmw-mZ-nru"/>
+                            <constraint firstItem="CO0-X5-8st" firstAttribute="centerX" secondItem="buK-sd-zej" secondAttribute="centerX" id="yQq-Pd-S1x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="buK-sd-zej"/>
                     </view>
