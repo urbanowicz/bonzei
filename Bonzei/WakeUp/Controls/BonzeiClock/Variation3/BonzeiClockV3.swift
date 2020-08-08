@@ -17,7 +17,10 @@ class BonzeiClockV3: UIView {
     private var smallCircleRadius: Double =  2.0
     
     /// Small circles will be drawn in this layer
+    
+    private var bigCircleLayer = CAShapeLayer()
     private var smallCirclesLayer = CAShapeLayer()
+    
     
     // MARK:- Initialization
     
@@ -34,13 +37,19 @@ class BonzeiClockV3: UIView {
     private func commonInit() {
         backgroundColor = UIColor.clear
         
+        setupBigCircleLayer()
         setupSmallCirclesLayer()
     }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+    }
+    
+    private func setupBigCircleLayer() {
+        bigCircleLayer.backgroundColor = UIColor.clear.cgColor
+        bigCircleLayer.fillColor = smallCircleColor.cgColor
         
-        ClockFaceV3.drawCanvas1(frame: rect, resizing: .aspectFit)
+        layer.addSublayer(bigCircleLayer)
     }
     
     private func setupSmallCirclesLayer() {
@@ -56,7 +65,19 @@ class BonzeiClockV3: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        layoutBigCircle()
         layoutSmallCircles()
+    }
+    
+    private func layoutBigCircle() {
+        let bigCircleBoundsWidth = self.bounds.width * 0.8
+        
+        bigCircleLayer.frame = CGRect(x: (bounds.width - bigCircleBoundsWidth) / 2,
+                                      y: (bounds.height - bigCircleBoundsWidth) / 2,
+                                      width: bigCircleBoundsWidth,
+                                      height: bigCircleBoundsWidth)
+        
+        bigCircleLayer.path = UIBezierPath.init(ovalIn: bigCircleLayer.bounds).cgPath
     }
     
     private func layoutSmallCircles() {
@@ -70,7 +91,7 @@ class BonzeiClockV3: UIView {
         
         let smallCirclesPath = CGMutablePath()
         
-        let distance = (0.71 * bounds.width) / 2.0
+        let distance = (0.9 * bounds.width) / 2.0
         
         for _ in 1...12 {
             angle += deltaAngle
