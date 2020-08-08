@@ -55,6 +55,12 @@ class TimerView: UIView {
     
     private(set) var timeLeft: TimeInterval = 0
     
+    var timerDone: Bool {
+        get {
+            return stopDate == nil && timeLeft == 0
+        }
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()

@@ -107,7 +107,7 @@ class SoundTimerViewController: UIViewController {
             let progress = (self.napTime - self.timerView.timeLeft) / self.napTime
             self.circularProgressView.progress = progress
             
-            if self.timerView.countDownTimeSeconds == 0 {
+            if self.timerView.timerDone {
                 self.performSegue(withIdentifier: "SoundTimerDone", sender: self)
             }
         }
