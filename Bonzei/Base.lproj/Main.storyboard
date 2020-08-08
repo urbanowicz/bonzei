@@ -1267,11 +1267,59 @@ wake up the senses.</string>
                                     <action selector="saveButtonPressed:" destination="WKb-vj-sEy" eventType="touchUpInside" id="6mB-Kc-NKe"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohM-7m-EU9" customClass="BonzeiClockV3" customModule="Bonzei" customModuleProvider="target">
+                                <rect key="frame" x="62.666666666666657" y="113.33333333333331" width="249.99999999999997" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="PYD-0q-aUQ"/>
+                                    <constraint firstAttribute="width" secondItem="ohM-7m-EU9" secondAttribute="height" multiplier="1:1" id="XmJ-P4-OSB"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iGi-lv-X4t" userLabel="VStack">
+                                <rect key="frame" x="112.33333333333333" y="183.66666666666666" width="150.66666666666669" height="109.33333333333334"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFV-3X-YDi">
+                                        <rect key="frame" x="0.0" y="0.0" width="150.66666666666666" height="71.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="57"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfC-yC-LGb">
+                                        <rect key="frame" x="33.000000000000007" y="87.666666666666657" width="84.666666666666686" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G88-dn-iCL" customClass="CircularProgressView" customModule="Bonzei" customModuleProvider="target">
+                                <rect key="frame" x="93.666666666666671" y="144.66666666666663" width="187.66666666666663" height="187.33333333333337"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="G88-dn-iCL" secondAttribute="height" multiplier="1:1" id="dOF-QV-2pU"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                        <color key="value" white="1" alpha="0.30009352989999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isCountDown" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.14131990080000001" green="0.34102275970000001" blue="0.26348507399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="G88-dn-iCL" firstAttribute="centerX" secondItem="ohM-7m-EU9" secondAttribute="centerX" id="9i6-Oo-7Su"/>
+                            <constraint firstItem="ohM-7m-EU9" firstAttribute="centerX" secondItem="buK-sd-zej" secondAttribute="centerX" id="NLG-W8-FDu"/>
+                            <constraint firstItem="G88-dn-iCL" firstAttribute="height" secondItem="ohM-7m-EU9" secondAttribute="height" multiplier="0.75" id="Qjh-fx-TwQ"/>
+                            <constraint firstItem="iGi-lv-X4t" firstAttribute="centerX" secondItem="buK-sd-zej" secondAttribute="centerX" id="bWG-tE-RTO"/>
                             <constraint firstItem="buK-sd-zej" firstAttribute="trailing" secondItem="6B8-JQ-XUl" secondAttribute="trailing" constant="24" id="gc4-PJ-q9C"/>
                             <constraint firstItem="6B8-JQ-XUl" firstAttribute="centerY" secondItem="buK-sd-zej" secondAttribute="centerY" multiplier="1.73" id="la7-KU-FyH"/>
+                            <constraint firstItem="ohM-7m-EU9" firstAttribute="centerY" secondItem="buK-sd-zej" secondAttribute="centerY" multiplier="0.58" id="oHF-i7-zl4"/>
+                            <constraint firstItem="G88-dn-iCL" firstAttribute="centerY" secondItem="ohM-7m-EU9" secondAttribute="centerY" id="uQM-XL-uhW"/>
+                            <constraint firstItem="iGi-lv-X4t" firstAttribute="centerY" secondItem="ohM-7m-EU9" secondAttribute="centerY" id="vZL-Xm-dxo"/>
                             <constraint firstItem="6B8-JQ-XUl" firstAttribute="leading" secondItem="buK-sd-zej" secondAttribute="leading" constant="24" id="wmw-mZ-nru"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="buK-sd-zej"/>
