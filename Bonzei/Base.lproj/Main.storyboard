@@ -1141,8 +1141,8 @@ wake up the senses.</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3D-kz-clZ">
-                                        <rect key="frame" x="81" y="88.000000000000028" width="83.333333333333314" height="21.666666666666671"/>
-                                        <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
+                                        <rect key="frame" x="80.333333333333343" y="88.000000000000028" width="84.666666666666657" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1159,7 +1159,7 @@ wake up the senses.</string>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="82" translatesAutoresizingMaskIntoConstraints="NO" id="dxS-m4-nUg" userLabel="HStack">
                                 <rect key="frame" x="69.666666666666671" y="672.66666666666663" width="235.66666666666663" height="76.666666666666629"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRf-hD-2f2" userLabel="PlayButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRf-hD-2f2" userLabel="PlayButton">
                                         <rect key="frame" x="0.0" y="0.0" width="77" height="76.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="bRf-hD-2f2" secondAttribute="height" multiplier="1:1" id="JaB-2R-gYI"/>
@@ -1169,7 +1169,7 @@ wake up the senses.</string>
                                             <action selector="playPauseButtonPressed:" destination="OS6-oB-YJ9" eventType="touchUpInside" id="s4e-GY-Awc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxy-3D-J9S">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxy-3D-J9S">
                                         <rect key="frame" x="159" y="0.0" width="76.666666666666686" height="76.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Kxy-3D-J9S" secondAttribute="height" multiplier="1:1" id="dar-ij-Ake"/>
