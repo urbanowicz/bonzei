@@ -53,7 +53,7 @@ class TimerView: UIView {
     
     private var stopDate: Date?
     
-    private var timeLeft:Int = 0
+    private(set) var timeLeft: TimeInterval = 0
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -112,7 +112,7 @@ class TimerView: UIView {
         }
     }
     
-    private func startTimer() {
+    private func startTimer(interval: Double, handler: (()->Void)? ) {
         guard countDownTimeSeconds >= 0 else {
             fatalError("Can't create a timer with a negative count down time.")
         }
@@ -126,21 +126,25 @@ class TimerView: UIView {
         
         label.text = formatCountDownString(secondsLeft: Int(stopDate!.timeIntervalSinceNow))
         
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) {
             timer in
             
-            var timeLeft = Int(self.stopDate!.timeIntervalSinceNow)
-            if timeLeft > self.countDownTimeSeconds {
-                timeLeft = self.countDownTimeSeconds
+            self.timeLeft = self.stopDate!.timeIntervalSinceNow
+            
+            var timeLeftSeconds = Int(self.stopDate!.timeIntervalSinceNow)
+            if timeLeftSeconds > self.countDownTimeSeconds {
+                timeLeftSeconds = self.countDownTimeSeconds
             }
-            if timeLeft < 0 {
-                timeLeft = 0
+            if timeLeftSeconds < 0 {
+                timeLeftSeconds = 0
                 self.stop()
             }
             
-            let timeLeftString = self.formatCountDownString(secondsLeft: timeLeft)
+            let timeLeftString = self.formatCountDownString(secondsLeft: timeLeftSeconds)
             self.label.text = timeLeftString
-            self.timeLeft = timeLeft
+            if let handler = handler {
+                handler()
+            }
         }
     }
     
@@ -166,12 +170,15 @@ class TimerView: UIView {
     /// Call this method to start the timer.
     public func start() {
         timer?.invalidate()
-        
-        switch(mode){
+        start(interval: 1.0, handler: nil)
+    }
+    
+    public func start(interval: Double, handler: (()->Void)?) {
+        switch(mode) {
         case .clock:
             startClock()
         case .timer:
-            startTimer()
+            startTimer(interval: interval, handler: handler)
         }
     }
     /// Call this method when the timer is no longer needed.
@@ -179,12 +186,15 @@ class TimerView: UIView {
         timer?.invalidate()
         stopDate = nil
         countDownTimeSeconds = 0
+        timeLeft = 0.0
     }
     
     public func pause() {
         guard mode == .timer else { return }
+        guard timeLeft > 0 else {return}
+        
         timer?.invalidate()
         stopDate = nil
-        countDownTimeSeconds = timeLeft
+        countDownTimeSeconds = Int(timeLeft)
     }
 }

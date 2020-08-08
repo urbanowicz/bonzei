@@ -1219,6 +1219,7 @@ wake up the senses.</string>
                     </view>
                     <connections>
                         <outlet property="backgroundCircleView" destination="iDo-fZ-nxc" id="0Ln-tc-mYO"/>
+                        <outlet property="circularProgressView" destination="1ZN-TI-BD1" id="FPE-3a-P17"/>
                         <outlet property="playPauseButton" destination="bRf-hD-2f2" id="zn3-6Z-62r"/>
                         <outlet property="stopButton" destination="Kxy-3D-J9S" id="ghm-aq-Cc1"/>
                         <outlet property="timerView" destination="uph-sY-tqy" id="1cU-Kv-XtC"/>

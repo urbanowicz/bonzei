@@ -21,10 +21,14 @@ class SoundTimerViewController: UIViewController {
         }
     }
     
+    public var napTime: TimeInterval = 60.0 * 1.0
+    
     @IBOutlet weak var backgroundCircleView: GradientView!
     
     private let backgroundCircleBorder = CAShapeLayer()
    
+    @IBOutlet weak var circularProgressView: CircularProgressView!
+    
     @IBOutlet weak var playPauseButton: UIButton!
     
     @IBOutlet weak var stopButton: UIButton!
@@ -59,7 +63,7 @@ class SoundTimerViewController: UIViewController {
     
     private func setupTimerView() {
         timerView.mode = .timer
-        timerView.countDownTimeSeconds = 25 * 60
+        timerView.countDownTimeSeconds = Int(napTime)
         if let font = UIFont(name: "Muli-SemiBold", size: 57) {
             timerView.font = font
         }
@@ -79,11 +83,11 @@ class SoundTimerViewController: UIViewController {
     
     @IBAction func playPauseButtonPressed(_ sender: Any) {
         if (isTimerPaused) {
-            timerView.start()
+            startNap()
             isTimerPaused = false
             playPauseButton.setImage(UIImage(named: "pause-button"), for: .normal)
         } else {
-            timerView.pause()
+            pauseNap()
             isTimerPaused = true
             playPauseButton.setImage(UIImage(named: "play-button"), for: .normal)
         }
@@ -93,7 +97,16 @@ class SoundTimerViewController: UIViewController {
     }
     
     private func startNap() {
-        timerView.start()
+        guard timerView.countDownTimeSeconds > 0 else { return }
+        
+        timerView.start(interval: 0.1) {
+            let progress = (self.napTime - self.timerView.timeLeft) / self.napTime
+            self.circularProgressView.progress = progress
+            
+            if self.timerView.countDownTimeSeconds == 0 {
+                print("KONIEC")
+            }
+        }
     }
     
     private func pauseNap() {
