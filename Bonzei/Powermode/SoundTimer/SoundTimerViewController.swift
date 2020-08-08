@@ -22,8 +22,11 @@ class SoundTimerViewController: UIViewController {
     }
     
     @IBOutlet weak var backgroundCircleView: GradientView!
+    @IBOutlet weak var playPauseButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
     
     private let backgroundCircleBorder = CAShapeLayer()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +55,12 @@ class SoundTimerViewController: UIViewController {
         
         backgroundCircleBorder.frame = backgroundCircleView.frame
         backgroundCircleBorder.path = UIBezierPath.init(ovalIn: backgroundCircleBorder.bounds).cgPath
+    }
+    
+    @IBAction func playPauseButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func stopButtonPressed(_ sender: Any) {
     }
 }
 

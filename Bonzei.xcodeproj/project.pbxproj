@@ -21,6 +21,7 @@
 		F127AC552468265B007F9734 /* HeartBeatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127AC542468265B007F9734 /* HeartBeatService.swift */; };
 		F1329B182460912300E7F7A2 /* OvalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1329B172460912300E7F7A2 /* OvalButton.swift */; };
 		F13B355A24DE857D0047DFD6 /* BonzeiClockV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B355924DE857D0047DFD6 /* BonzeiClockV3.swift */; };
+		F13B355C24DE95280047DFD6 /* Endorphin Birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F13B355B24DE95280047DFD6 /* Endorphin Birds.mp3 */; };
 		F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1421C252454B710003D226A /* DayOfWeekPicker.swift */; };
 		F142BDE424704CF200B5857C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142BDE324704CF200B5857C /* DateExtension.swift */; };
 		F142BDE524704CF200B5857C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142BDE324704CF200B5857C /* DateExtension.swift */; };
@@ -86,7 +87,6 @@
 		F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */; };
 		F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */; };
 		F180E44324AF9592001F702E /* ArticlesCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */; };
-		F183B5DE24B23188007A96B2 /* Endorphin Birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F183B5DD24B23187007A96B2 /* Endorphin Birds.mp3 */; };
 		F18A86EB247949C000C5597C /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F18A86EA247949C000C5597C /* alarm.mp3 */; };
 		F195A8EB24850F81009D54A3 /* PickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E624850F81009D54A3 /* PickerVIew.swift */; };
 		F195A8EC24850F81009D54A3 /* TimePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */; };
@@ -142,6 +142,7 @@
 		F127AC542468265B007F9734 /* HeartBeatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatService.swift; sourceTree = "<group>"; };
 		F1329B172460912300E7F7A2 /* OvalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButton.swift; sourceTree = "<group>"; };
 		F13B355924DE857D0047DFD6 /* BonzeiClockV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClockV3.swift; sourceTree = "<group>"; };
+		F13B355B24DE95280047DFD6 /* Endorphin Birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Endorphin Birds.mp3"; sourceTree = "<group>"; };
 		F1421C252454B710003D226A /* DayOfWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekPicker.swift; sourceTree = "<group>"; };
 		F142BDE324704CF200B5857C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F147771E247D073E00D12C60 /* Gilam-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilam-Bold.ttf"; sourceTree = "<group>"; };
@@ -210,7 +211,6 @@
 		F1804BC524486ACA00FF4197 /* AlarmsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsTableDataSource.swift; sourceTree = "<group>"; };
 		F180E44024AF8C11001F702E /* ArticlesCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesCollectionHeaderView.xib; sourceTree = "<group>"; };
 		F180E44224AF9592001F702E /* ArticlesCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCollectionHeaderView.swift; sourceTree = "<group>"; };
-		F183B5DD24B23187007A96B2 /* Endorphin Birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Endorphin Birds.mp3"; path = "../../../../../../../Downloads/Endorphin Birds.mp3"; sourceTree = "<group>"; };
 		F18A86EA247949C000C5597C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		F195A8E624850F81009D54A3 /* PickerVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerVIew.swift; sourceTree = "<group>"; };
 		F195A8E724850F81009D54A3 /* TimePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerDelegate.swift; sourceTree = "<group>"; };
@@ -470,6 +470,7 @@
 		F15590F7245EE3F400928589 /* SoundFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F13B355B24DE95280047DFD6 /* Endorphin Birds.mp3 */,
 				F1737D3024C0D207009C83A5 /* LIPIEC_06.mp3 */,
 				F1737D2F24C0D206009C83A5 /* LIPIEC_07.mp3 */,
 				F1737D2D24C0D205009C83A5 /* LIPIEC_08.mp3 */,
@@ -479,7 +480,6 @@
 				F15AFC8E24B63B58002F8CFE /* LIPIEC_03.mp3 */,
 				F15AFC8F24B63B58002F8CFE /* LIPIEC_04.mp3 */,
 				F15AFC8D24B63B57002F8CFE /* LIPIEC_05.mp3 */,
-				F183B5DD24B23187007A96B2 /* Endorphin Birds.mp3 */,
 				F15B681424A6724200A34C3D /* Ambient Waves.mp3 */,
 				F15B681324A6724100A34C3D /* Coast Cliffs.mp3 */,
 				F15B681624A6724300A34C3D /* Early Riser.mp3 */,
@@ -796,7 +796,6 @@
 				F15AFC9324B63B58002F8CFE /* LIPIEC_04.mp3 in Resources */,
 				F147773A247D2B0000D12C60 /* Muli-BoldItalic.ttf in Resources */,
 				F1737D3224C0D207009C83A5 /* LIPIEC_09.mp3 in Resources */,
-				F183B5DE24B23188007A96B2 /* Endorphin Birds.mp3 in Resources */,
 				F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */,
 				F15AFC9524B63B81002F8CFE /* LIPIEC_02.mp3 in Resources */,
 				F1477741247D2B0000D12C60 /* Muli-Italic.ttf in Resources */,
@@ -815,6 +814,7 @@
 				F1737D3424C0D207009C83A5 /* LIPIEC_06.mp3 in Resources */,
 				F1477739247D2B0000D12C60 /* Muli-MediumItalic.ttf in Resources */,
 				F1477736247D2B0000D12C60 /* Muli-Medium.ttf in Resources */,
+				F13B355C24DE95280047DFD6 /* Endorphin Birds.mp3 in Resources */,
 				F1477737247D2B0000D12C60 /* Muli-SemiBoldItalic.ttf in Resources */,
 				F1477720247D073E00D12C60 /* Gilam-Bold.ttf in Resources */,
 			);
