@@ -22,16 +22,21 @@ class SoundTimerViewController: UIViewController {
     }
     
     @IBOutlet weak var backgroundCircleView: GradientView!
-    @IBOutlet weak var playPauseButton: UIButton!
-    @IBOutlet weak var stopButton: UIButton!
     
     private let backgroundCircleBorder = CAShapeLayer()
+   
+    @IBOutlet weak var playPauseButton: UIButton!
+    
+    @IBOutlet weak var stopButton: UIButton!
+    
+    @IBOutlet weak var timerView: TimerView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupBackgroundCircleView()
+        setupTimerView()
     }
     
     private func setupBackgroundCircleView() {
@@ -43,6 +48,14 @@ class SoundTimerViewController: UIViewController {
         backgroundCircleBorder.fillColor = UIColor.clear.cgColor
         backgroundCircleBorder.lineWidth = 3.0
         view.layer.addSublayer(backgroundCircleBorder)
+    }
+    
+    private func setupTimerView() {
+        timerView.mode = .timer
+        timerView.countDownTimeSeconds = 25 * 60
+        if let font = UIFont(name: "Muli-SemiBold", size: 57) {
+            timerView.font = font
+        }
     }
     
     override func viewDidLayoutSubviews() {

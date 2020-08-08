@@ -1124,22 +1124,30 @@ wake up the senses.</string>
                                     <constraint firstAttribute="width" secondItem="iDo-fZ-nxc" secondAttribute="height" id="MKa-2G-Lju"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uph-sY-tqy" customClass="TimerView" customModule="Bonzei" customModuleProvider="target">
+                                <rect key="frame" x="65" y="116" width="245" height="245"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hnt-9B-5lo" customClass="BonzeiClockV3" customModule="Bonzei" customModuleProvider="target">
-                                <rect key="frame" x="70" y="121" width="235" height="235"/>
+                                <rect key="frame" x="65" y="116" width="245" height="245"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Hnt-9B-5lo" secondAttribute="height" multiplier="1:1" id="OrJ-Z8-yKP"/>
-                                    <constraint firstAttribute="height" constant="235" id="tQj-hQ-44d"/>
+                                    <constraint firstAttribute="height" constant="245" id="tQj-hQ-44d"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="82" translatesAutoresizingMaskIntoConstraints="NO" id="dxS-m4-nUg" userLabel="HStack">
-                                <rect key="frame" x="74.666666666666686" y="675" width="226" height="72"/>
+                                <rect key="frame" x="69.666666666666671" y="672.66666666666663" width="235.66666666666663" height="76.666666666666629"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRf-hD-2f2" userLabel="PlayButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="77" height="76.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="bRf-hD-2f2" secondAttribute="height" multiplier="1:1" id="JaB-2R-gYI"/>
-                                            <constraint firstAttribute="width" constant="72" id="ciw-e9-5D1"/>
                                         </constraints>
                                         <state key="normal" image="pause-button"/>
                                         <connections>
@@ -1147,9 +1155,8 @@ wake up the senses.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxy-3D-J9S">
-                                        <rect key="frame" x="154" y="0.0" width="72" height="72"/>
+                                        <rect key="frame" x="159" y="0.0" width="76.666666666666686" height="76.666666666666671"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="72" id="GR0-TH-8hV"/>
                                             <constraint firstAttribute="width" secondItem="Kxy-3D-J9S" secondAttribute="height" multiplier="1:1" id="dar-ij-Ake"/>
                                         </constraints>
                                         <state key="normal" image="stop-button"/>
@@ -1162,13 +1169,17 @@ wake up the senses.</string>
                         </subviews>
                         <color key="backgroundColor" red="0.97649627920000004" green="0.97628325220000001" blue="0.97256141900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="uph-sY-tqy" firstAttribute="width" secondItem="Hnt-9B-5lo" secondAttribute="width" id="Evn-Ni-bdS"/>
                             <constraint firstItem="Hnt-9B-5lo" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="Ip1-2N-eWd"/>
                             <constraint firstItem="dxS-m4-nUg" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="LKI-Zf-OAc"/>
                             <constraint firstItem="iDo-fZ-nxc" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="0.2" id="OCm-fD-4hn"/>
                             <constraint firstItem="iDo-fZ-nxc" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="Zed-lb-5de"/>
                             <constraint firstItem="Hnt-9B-5lo" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="0.58" id="afJ-xz-6SX"/>
+                            <constraint firstItem="uph-sY-tqy" firstAttribute="centerX" secondItem="Hnt-9B-5lo" secondAttribute="centerX" id="d0j-zZ-0sE"/>
+                            <constraint firstItem="uph-sY-tqy" firstAttribute="height" secondItem="Hnt-9B-5lo" secondAttribute="height" id="g2e-fI-rFr"/>
                             <constraint firstItem="dxS-m4-nUg" firstAttribute="width" secondItem="Hnt-9B-5lo" secondAttribute="width" multiplier="0.961702" id="gBw-Ht-h65"/>
                             <constraint firstItem="iDo-fZ-nxc" firstAttribute="height" secondItem="mCJ-Dd-gXO" secondAttribute="height" multiplier="1.32" id="h1L-6u-IYx"/>
+                            <constraint firstItem="uph-sY-tqy" firstAttribute="centerY" secondItem="Hnt-9B-5lo" secondAttribute="centerY" id="kwO-gw-ZEn"/>
                             <constraint firstItem="dxS-m4-nUg" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="1.73" id="lvC-mU-o2E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2ev-ft-blA"/>
@@ -1177,6 +1188,7 @@ wake up the senses.</string>
                         <outlet property="backgroundCircleView" destination="iDo-fZ-nxc" id="0Ln-tc-mYO"/>
                         <outlet property="playPauseButton" destination="bRf-hD-2f2" id="zn3-6Z-62r"/>
                         <outlet property="stopButton" destination="Kxy-3D-J9S" id="ghm-aq-Cc1"/>
+                        <outlet property="timerView" destination="uph-sY-tqy" id="1cU-Kv-XtC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="la6-wj-O3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
