@@ -21,7 +21,7 @@ class SoundTimerViewController: UIViewController {
         }
     }
     
-    public var napTime: TimeInterval = 15.0
+    public var napTime: TimeInterval = 30.0
     
     @IBOutlet weak var backgroundCircleView: GradientView!
     
