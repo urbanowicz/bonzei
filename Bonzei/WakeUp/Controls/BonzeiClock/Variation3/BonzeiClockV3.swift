@@ -12,7 +12,7 @@ import UIKit
 @IBDesignable
 class BonzeiClockV3: UIView {
     
-    private var smallCircleColor: UIColor = UIColor.white.withAlphaComponent(0.3)
+    private var smallCircleColor: UIColor = UIColor.white.withAlphaComponent(0.1)
     
     private var smallCircleRadius: Double =  2.0
     
@@ -70,7 +70,7 @@ class BonzeiClockV3: UIView {
     }
     
     private func layoutBigCircle() {
-        let bigCircleBoundsWidth = self.bounds.width * 0.8
+        let bigCircleBoundsWidth = self.bounds.width * 0.85
         
         bigCircleLayer.frame = CGRect(x: (bounds.width - bigCircleBoundsWidth) / 2,
                                       y: (bounds.height - bigCircleBoundsWidth) / 2,
@@ -91,7 +91,7 @@ class BonzeiClockV3: UIView {
         
         let smallCirclesPath = CGMutablePath()
         
-        let distance = (0.9 * bounds.width) / 2.0
+        let distance = (0.95 * bounds.width) / 2.0
         
         for _ in 1...12 {
             angle += deltaAngle
