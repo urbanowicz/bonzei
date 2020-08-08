@@ -52,25 +52,11 @@
 		F14EF8AC24766537006A40D8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14EF8AB24766537006A40D8 /* NotificationExtension.swift */; };
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F15590FD245EF27300928589 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15590FC245EF27300928589 /* Melody.swift */; };
-		F15AFC9024B63B58002F8CFE /* LIPIEC_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15AFC8C24B63B56002F8CFE /* LIPIEC_01.mp3 */; };
-		F15AFC9124B63B58002F8CFE /* LIPIEC_05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15AFC8D24B63B57002F8CFE /* LIPIEC_05.mp3 */; };
-		F15AFC9224B63B58002F8CFE /* LIPIEC_03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15AFC8E24B63B58002F8CFE /* LIPIEC_03.mp3 */; };
-		F15AFC9324B63B58002F8CFE /* LIPIEC_04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15AFC8F24B63B58002F8CFE /* LIPIEC_04.mp3 */; };
-		F15AFC9524B63B81002F8CFE /* LIPIEC_02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15AFC9424B63B80002F8CFE /* LIPIEC_02.mp3 */; };
-		F15B681824A6724400A34C3D /* Coast Cliffs.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15B681324A6724100A34C3D /* Coast Cliffs.mp3 */; };
-		F15B681924A6724400A34C3D /* Ambient Waves.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15B681424A6724200A34C3D /* Ambient Waves.mp3 */; };
-		F15B681A24A6724400A34C3D /* Ocean Horizon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15B681524A6724200A34C3D /* Ocean Horizon.mp3 */; };
-		F15B681B24A6724400A34C3D /* Early Riser.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15B681624A6724300A34C3D /* Early Riser.mp3 */; };
-		F15B681C24A6724400A34C3D /* Sunriser.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F15B681724A6724400A34C3D /* Sunriser.mp3 */; };
 		F15C1ABA2461734A00F47CCC /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
 		F15CCF3824D85D20008E4405 /* SoundPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CCF3724D85D20008E4405 /* SoundPickerViewController.swift */; };
 		F1607DAE248AAE5300968586 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1607DAD248AAE5300968586 /* TimerView.swift */; };
 		F16770E0248C0C4E00797F0A /* ClockFaceAndDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16770DF248C0C4E00797F0A /* ClockFaceAndDots.swift */; };
 		F16770E4248C0D3200797F0A /* BonzeiClockV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16770E3248C0D3200797F0A /* BonzeiClockV2.swift */; };
-		F1737D3124C0D207009C83A5 /* LIPIEC_08.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1737D2D24C0D205009C83A5 /* LIPIEC_08.mp3 */; };
-		F1737D3224C0D207009C83A5 /* LIPIEC_09.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1737D2E24C0D206009C83A5 /* LIPIEC_09.mp3 */; };
-		F1737D3324C0D207009C83A5 /* LIPIEC_07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1737D2F24C0D206009C83A5 /* LIPIEC_07.mp3 */; };
-		F1737D3424C0D207009C83A5 /* LIPIEC_06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1737D3024C0D207009C83A5 /* LIPIEC_06.mp3 */; };
 		F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE22447089F008E9227 /* AppDelegate.swift */; };
 		F17ABEE52447089F008E9227 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE42447089F008E9227 /* SceneDelegate.swift */; };
 		F17ABEE72447089F008E9227 /* WakeUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ABEE62447089F008E9227 /* WakeUpViewController.swift */; };
@@ -107,6 +93,16 @@
 		F1CBD48524C4A212006980AF /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CBD48424C4A212006980AF /* TabItem.swift */; };
 		F1CBD48724C4A297006980AF /* BonzeiTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CBD48624C4A297006980AF /* BonzeiTabBar.swift */; };
 		F1D267F224DF114C002E174B /* SoundTimerDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D267F124DF114C002E174B /* SoundTimerDoneViewController.swift */; };
+		F1D267FD24DF2C25002E174B /* Crystal Vision.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1D267F324DF2C1C002E174B /* Crystal Vision.mp3 */; };
+		F1D267FE24DF2C25002E174B /* Earth Tribe.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1D267F424DF2C1E002E174B /* Earth Tribe.mp3 */; };
+		F1D267FF24DF2C25002E174B /* Ocean Cliffs.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1D267F524DF2C20002E174B /* Ocean Cliffs.mp3 */; };
+		F1D2680024DF2C25002E174B /* 5AM Club.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1D267F624DF2C20002E174B /* 5AM Club.mp3 */; };
+		F1D2680124DF2C25002E174B /* Sea Horizon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1D267F724DF2C21002E174B /* Sea Horizon.mp3 */; };
+		F1D2680224DF2C25002E174B /* Peace of Mind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1D267F824DF2C22002E174B /* Peace of Mind.mp3 */; };
+		F1D2680324DF2C25002E174B /* Sky Sailing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1D267F924DF2C22002E174B /* Sky Sailing.mp3 */; };
+		F1D2680424DF2C25002E174B /* Into The Source.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1D267FA24DF2C23002E174B /* Into The Source.mp3 */; };
+		F1D2680524DF2C25002E174B /* Bellflowers Dew.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1D267FB24DF2C24002E174B /* Bellflowers Dew.mp3 */; };
+		F1D2680624DF2C25002E174B /* Stellar Outflow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1D267FC24DF2C25002E174B /* Stellar Outflow.mp3 */; };
 		F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D298FE247D74A500D25238 /* RoundedButton.swift */; };
 		F1D2D695248E27C1000DE8D2 /* MovingGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */; };
 		F1DCAEA824DBFE1500440581 /* SoundTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DCAEA724DBFE1500440581 /* SoundTimerViewController.swift */; };
@@ -174,25 +170,11 @@
 		F14EF8AB24766537006A40D8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		F15590FC245EF27300928589 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
-		F15AFC8C24B63B56002F8CFE /* LIPIEC_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_01.mp3; sourceTree = "<group>"; };
-		F15AFC8D24B63B57002F8CFE /* LIPIEC_05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_05.mp3; sourceTree = "<group>"; };
-		F15AFC8E24B63B58002F8CFE /* LIPIEC_03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_03.mp3; sourceTree = "<group>"; };
-		F15AFC8F24B63B58002F8CFE /* LIPIEC_04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_04.mp3; sourceTree = "<group>"; };
-		F15AFC9424B63B80002F8CFE /* LIPIEC_02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_02.mp3; sourceTree = "<group>"; };
-		F15B681324A6724100A34C3D /* Coast Cliffs.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Coast Cliffs.mp3"; sourceTree = "<group>"; };
-		F15B681424A6724200A34C3D /* Ambient Waves.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ambient Waves.mp3"; sourceTree = "<group>"; };
-		F15B681524A6724200A34C3D /* Ocean Horizon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ocean Horizon.mp3"; sourceTree = "<group>"; };
-		F15B681624A6724300A34C3D /* Early Riser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Early Riser.mp3"; sourceTree = "<group>"; };
-		F15B681724A6724400A34C3D /* Sunriser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sunriser.mp3; sourceTree = "<group>"; };
 		F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmScheduler.swift; sourceTree = "<group>"; };
 		F15CCF3724D85D20008E4405 /* SoundPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPickerViewController.swift; sourceTree = "<group>"; };
 		F1607DAD248AAE5300968586 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		F16770DF248C0C4E00797F0A /* ClockFaceAndDots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockFaceAndDots.swift; sourceTree = "<group>"; };
 		F16770E3248C0D3200797F0A /* BonzeiClockV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClockV2.swift; sourceTree = "<group>"; };
-		F1737D2D24C0D205009C83A5 /* LIPIEC_08.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_08.mp3; sourceTree = "<group>"; };
-		F1737D2E24C0D206009C83A5 /* LIPIEC_09.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_09.mp3; sourceTree = "<group>"; };
-		F1737D2F24C0D206009C83A5 /* LIPIEC_07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_07.mp3; sourceTree = "<group>"; };
-		F1737D3024C0D207009C83A5 /* LIPIEC_06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LIPIEC_06.mp3; sourceTree = "<group>"; };
 		F17ABEDF2447089F008E9227 /* Bonzei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bonzei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17ABEE22447089F008E9227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17ABEE42447089F008E9227 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +213,16 @@
 		F1CBD48424C4A212006980AF /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		F1CBD48624C4A297006980AF /* BonzeiTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiTabBar.swift; sourceTree = "<group>"; };
 		F1D267F124DF114C002E174B /* SoundTimerDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTimerDoneViewController.swift; sourceTree = "<group>"; };
+		F1D267F324DF2C1C002E174B /* Crystal Vision.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Crystal Vision.mp3"; sourceTree = "<group>"; };
+		F1D267F424DF2C1E002E174B /* Earth Tribe.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Earth Tribe.mp3"; sourceTree = "<group>"; };
+		F1D267F524DF2C20002E174B /* Ocean Cliffs.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ocean Cliffs.mp3"; sourceTree = "<group>"; };
+		F1D267F624DF2C20002E174B /* 5AM Club.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "5AM Club.mp3"; sourceTree = "<group>"; };
+		F1D267F724DF2C21002E174B /* Sea Horizon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sea Horizon.mp3"; sourceTree = "<group>"; };
+		F1D267F824DF2C22002E174B /* Peace of Mind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Peace of Mind.mp3"; sourceTree = "<group>"; };
+		F1D267F924DF2C22002E174B /* Sky Sailing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sky Sailing.mp3"; sourceTree = "<group>"; };
+		F1D267FA24DF2C23002E174B /* Into The Source.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Into The Source.mp3"; sourceTree = "<group>"; };
+		F1D267FB24DF2C24002E174B /* Bellflowers Dew.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bellflowers Dew.mp3"; sourceTree = "<group>"; };
+		F1D267FC24DF2C25002E174B /* Stellar Outflow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Stellar Outflow.mp3"; sourceTree = "<group>"; };
 		F1D298FE247D74A500D25238 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingGradientView.swift; sourceTree = "<group>"; };
 		F1DCAEA724DBFE1500440581 /* SoundTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTimerViewController.swift; sourceTree = "<group>"; };
@@ -483,21 +475,17 @@
 		F15590F7245EE3F400928589 /* SoundFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F1D267F624DF2C20002E174B /* 5AM Club.mp3 */,
+				F1D267FB24DF2C24002E174B /* Bellflowers Dew.mp3 */,
+				F1D267F324DF2C1C002E174B /* Crystal Vision.mp3 */,
+				F1D267F424DF2C1E002E174B /* Earth Tribe.mp3 */,
+				F1D267FA24DF2C23002E174B /* Into The Source.mp3 */,
+				F1D267F524DF2C20002E174B /* Ocean Cliffs.mp3 */,
+				F1D267F824DF2C22002E174B /* Peace of Mind.mp3 */,
+				F1D267F724DF2C21002E174B /* Sea Horizon.mp3 */,
+				F1D267F924DF2C22002E174B /* Sky Sailing.mp3 */,
+				F1D267FC24DF2C25002E174B /* Stellar Outflow.mp3 */,
 				F13B355B24DE95280047DFD6 /* Endorphin Birds.mp3 */,
-				F1737D3024C0D207009C83A5 /* LIPIEC_06.mp3 */,
-				F1737D2F24C0D206009C83A5 /* LIPIEC_07.mp3 */,
-				F1737D2D24C0D205009C83A5 /* LIPIEC_08.mp3 */,
-				F1737D2E24C0D206009C83A5 /* LIPIEC_09.mp3 */,
-				F15AFC9424B63B80002F8CFE /* LIPIEC_02.mp3 */,
-				F15AFC8C24B63B56002F8CFE /* LIPIEC_01.mp3 */,
-				F15AFC8E24B63B58002F8CFE /* LIPIEC_03.mp3 */,
-				F15AFC8F24B63B58002F8CFE /* LIPIEC_04.mp3 */,
-				F15AFC8D24B63B57002F8CFE /* LIPIEC_05.mp3 */,
-				F15B681424A6724200A34C3D /* Ambient Waves.mp3 */,
-				F15B681324A6724100A34C3D /* Coast Cliffs.mp3 */,
-				F15B681624A6724300A34C3D /* Early Riser.mp3 */,
-				F15B681524A6724200A34C3D /* Ocean Horizon.mp3 */,
-				F15B681724A6724400A34C3D /* Sunriser.mp3 */,
 				F18A86EA247949C000C5597C /* alarm.mp3 */,
 			);
 			path = SoundFiles;
@@ -792,43 +780,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1D267FD24DF2C25002E174B /* Crystal Vision.mp3 in Resources */,
+				F1D2680024DF2C25002E174B /* 5AM Club.mp3 in Resources */,
 				F17ABEF4244708A2008E9227 /* LaunchScreen.storyboard in Resources */,
-				F15B681C24A6724400A34C3D /* Sunriser.mp3 in Resources */,
-				F15B681824A6724400A34C3D /* Coast Cliffs.mp3 in Resources */,
+				F1D2680124DF2C25002E174B /* Sea Horizon.mp3 in Resources */,
 				F147773C247D2B0000D12C60 /* Muli-BlackItalic.ttf in Resources */,
 				F18A86EB247949C000C5597C /* alarm.mp3 in Resources */,
-				F15AFC9124B63B58002F8CFE /* LIPIEC_05.mp3 in Resources */,
+				F1D2680424DF2C25002E174B /* Into The Source.mp3 in Resources */,
 				F1477740247D2B0000D12C60 /* Muli-ExtraBoldItalic.ttf in Resources */,
-				F15B681B24A6724400A34C3D /* Early Riser.mp3 in Resources */,
 				F147773D247D2B0000D12C60 /* Muli-LightItalic.ttf in Resources */,
 				F17ABEF1244708A2008E9227 /* Assets.xcassets in Resources */,
-				F15AFC9024B63B58002F8CFE /* LIPIEC_01.mp3 in Resources */,
+				F1D2680524DF2C25002E174B /* Bellflowers Dew.mp3 in Resources */,
 				F147773E247D2B0000D12C60 /* Muli-ExtraLightItalic.ttf in Resources */,
 				F1477725247D1FE100D12C60 /* Muli-Regular.ttf in Resources */,
-				F1737D3324C0D207009C83A5 /* LIPIEC_07.mp3 in Resources */,
-				F15AFC9224B63B58002F8CFE /* LIPIEC_03.mp3 in Resources */,
-				F15AFC9324B63B58002F8CFE /* LIPIEC_04.mp3 in Resources */,
+				F1D2680324DF2C25002E174B /* Sky Sailing.mp3 in Resources */,
 				F147773A247D2B0000D12C60 /* Muli-BoldItalic.ttf in Resources */,
-				F1737D3224C0D207009C83A5 /* LIPIEC_09.mp3 in Resources */,
 				F180E44124AF8C11001F702E /* ArticlesCollectionHeaderView.xib in Resources */,
-				F15AFC9524B63B81002F8CFE /* LIPIEC_02.mp3 in Resources */,
 				F1477741247D2B0000D12C60 /* Muli-Italic.ttf in Resources */,
+				F1D2680224DF2C25002E174B /* Peace of Mind.mp3 in Resources */,
 				F17ABEEC2447089F008E9227 /* Main.storyboard in Resources */,
 				F147773F247D2B0000D12C60 /* Muli-Black.ttf in Resources */,
 				F17FA50D24B38FD00093E96A /* GoogleService-Info.plist in Resources */,
-				F15B681924A6724400A34C3D /* Ambient Waves.mp3 in Resources */,
 				F1477738247D2B0000D12C60 /* Muli-SemiBold.ttf in Resources */,
 				F1477723247D0C3200D12C60 /* Muli-Bold.ttf in Resources */,
-				F15B681A24A6724400A34C3D /* Ocean Horizon.mp3 in Resources */,
 				F1477721247D073E00D12C60 /* Gilam-Light.ttf in Resources */,
-				F1737D3124C0D207009C83A5 /* LIPIEC_08.mp3 in Resources */,
 				F147773B247D2B0000D12C60 /* Muli-ExtraLight.ttf in Resources */,
+				F1D267FF24DF2C25002E174B /* Ocean Cliffs.mp3 in Resources */,
 				F1477743247D2B0000D12C60 /* Muli-Light.ttf in Resources */,
 				F1477742247D2B0000D12C60 /* Muli-ExtraBold.ttf in Resources */,
-				F1737D3424C0D207009C83A5 /* LIPIEC_06.mp3 in Resources */,
+				F1D267FE24DF2C25002E174B /* Earth Tribe.mp3 in Resources */,
 				F1477739247D2B0000D12C60 /* Muli-MediumItalic.ttf in Resources */,
 				F1477736247D2B0000D12C60 /* Muli-Medium.ttf in Resources */,
 				F13B355C24DE95280047DFD6 /* Endorphin Birds.mp3 in Resources */,
+				F1D2680624DF2C25002E174B /* Stellar Outflow.mp3 in Resources */,
 				F1477737247D2B0000D12C60 /* Muli-SemiBoldItalic.ttf in Resources */,
 				F1477720247D073E00D12C60 /* Gilam-Bold.ttf in Resources */,
 			);
