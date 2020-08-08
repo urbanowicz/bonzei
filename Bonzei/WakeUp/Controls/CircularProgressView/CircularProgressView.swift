@@ -31,7 +31,13 @@ class CircularProgressView: UIView {
         }
     }
     
-    public var progress: Double = 0.7 {
+    @IBInspectable var isCountDown: Bool = false {
+        didSet {
+            updateProgress()
+        }
+    }
+    
+    public var progress: Double = 0.0 {
         didSet {
             updateProgress()
         }
@@ -65,6 +71,7 @@ class CircularProgressView: UIView {
         progressLayer.strokeColor = progressColor.cgColor
         progressLayer.lineCap = .round
         progressLayer.lineWidth = CGFloat(trackWidth)
+        progressLayer.transform = CATransform3DMakeRotation(-(.pi / 2.0), 0, 0, 1)
         
         layer.addSublayer(progressLayer)
     }
@@ -82,6 +89,10 @@ class CircularProgressView: UIView {
     }
     
     private func updateProgress() {
-        progressLayer.strokeEnd = CGFloat(progress)
+        if isCountDown {
+           progressLayer.strokeStart = CGFloat(progress)
+        } else {
+            progressLayer.strokeEnd = CGFloat(progress)
+        }
     }
 }
