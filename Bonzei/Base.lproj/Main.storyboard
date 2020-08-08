@@ -1223,11 +1223,27 @@ wake up the senses.</string>
                         <outlet property="playPauseButton" destination="bRf-hD-2f2" id="zn3-6Z-62r"/>
                         <outlet property="stopButton" destination="Kxy-3D-J9S" id="ghm-aq-Cc1"/>
                         <outlet property="timerView" destination="uph-sY-tqy" id="1cU-Kv-XtC"/>
+                        <segue destination="Lah-b4-Hod" kind="modal" identifier="SoundTimerDone" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="0zv-dC-agn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="la6-wj-O3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7120.8000000000002" y="-1514.0394088669952"/>
+        </scene>
+        <!--Sound Timer Done View Controller-->
+        <scene sceneID="MfC-dm-6H7">
+            <objects>
+                <viewController id="Lah-b4-Hod" customClass="SoundTimerDoneViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eny-2t-mZ3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="buK-sd-zej"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ppg-F7-JTJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7894" y="-1519"/>
         </scene>
         <!--Learn-->
         <scene sceneID="wg7-f3-ORb">

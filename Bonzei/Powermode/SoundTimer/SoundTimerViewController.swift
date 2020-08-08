@@ -104,7 +104,7 @@ class SoundTimerViewController: UIViewController {
             self.circularProgressView.progress = progress
             
             if self.timerView.countDownTimeSeconds == 0 {
-                print("KONIEC")
+                self.performSegue(withIdentifier: "SoundTimerDone", sender: self)
             }
         }
     }

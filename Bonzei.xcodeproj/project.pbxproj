@@ -106,6 +106,7 @@
 		F1CA2D4F24AB55B100524860 /* TestArticleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA2D4E24AB55B100524860 /* TestArticleProvider.swift */; };
 		F1CBD48524C4A212006980AF /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CBD48424C4A212006980AF /* TabItem.swift */; };
 		F1CBD48724C4A297006980AF /* BonzeiTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CBD48624C4A297006980AF /* BonzeiTabBar.swift */; };
+		F1D267F224DF114C002E174B /* SoundTimerDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D267F124DF114C002E174B /* SoundTimerDoneViewController.swift */; };
 		F1D298FF247D74A500D25238 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D298FE247D74A500D25238 /* RoundedButton.swift */; };
 		F1D2D695248E27C1000DE8D2 /* MovingGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */; };
 		F1DCAEA824DBFE1500440581 /* SoundTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DCAEA724DBFE1500440581 /* SoundTimerViewController.swift */; };
@@ -229,6 +230,7 @@
 		F1CA2D4E24AB55B100524860 /* TestArticleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestArticleProvider.swift; sourceTree = "<group>"; };
 		F1CBD48424C4A212006980AF /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		F1CBD48624C4A297006980AF /* BonzeiTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiTabBar.swift; sourceTree = "<group>"; };
+		F1D267F124DF114C002E174B /* SoundTimerDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTimerDoneViewController.swift; sourceTree = "<group>"; };
 		F1D298FE247D74A500D25238 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingGradientView.swift; sourceTree = "<group>"; };
 		F1DCAEA724DBFE1500440581 /* SoundTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTimerViewController.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 			children = (
 				F15CCF3724D85D20008E4405 /* SoundPickerViewController.swift */,
 				F1DCAEA724DBFE1500440581 /* SoundTimerViewController.swift */,
+				F1D267F124DF114C002E174B /* SoundTimerDoneViewController.swift */,
 			);
 			path = SoundTimer;
 			sourceTree = "<group>";
@@ -964,6 +967,7 @@
 				F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */,
 				F11ED05424A4EE12002CA419 /* TimePickerView.swift in Sources */,
 				F1421C262454B710003D226A /* DayOfWeekPicker.swift in Sources */,
+				F1D267F224DF114C002E174B /* SoundTimerDoneViewController.swift in Sources */,
 				F17ABEEF2447089F008E9227 /* Bonzei.xcdatamodeld in Sources */,
 				F1804BC624486ACA00FF4197 /* AlarmsTableDataSource.swift in Sources */,
 				F13B355A24DE857D0047DFD6 /* BonzeiClockV3.swift in Sources */,
