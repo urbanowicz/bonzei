@@ -1236,10 +1236,43 @@ wake up the senses.</string>
         <scene sceneID="MfC-dm-6H7">
             <objects>
                 <viewController id="Lah-b4-Hod" customClass="SoundTimerDoneViewController" customModule="Bonzei" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eny-2t-mZ3">
+                    <view key="view" contentMode="scaleToFill" id="eny-2t-mZ3" customClass="GradientView" customModule="Bonzei" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6B8-JQ-XUl" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
+                                <rect key="frame" x="24" y="683" width="327" height="56"/>
+                                <color key="backgroundColor" red="0.1413967609" green="0.23913186789999999" blue="0.2135997117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="AQN-KF-rQV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="16"/>
+                                <color key="tintColor" red="0.14013546709999999" green="0.2425878346" blue="0.2135736942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="I am awake">
+                                    <color key="titleColor" red="0.14013546709999999" green="0.2425878346" blue="0.2135736942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
+                                        <color key="value" red="0.80778664349999996" green="0.86135506630000003" blue="0.8456643224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
+                                        <color key="value" red="0.80778664349999996" green="0.86135506630000003" blue="0.8456643224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="WKb-vj-sEy" eventType="touchUpInside" id="6mB-Kc-NKe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14131990080000001" green="0.34102275970000001" blue="0.26348507399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="buK-sd-zej" firstAttribute="trailing" secondItem="6B8-JQ-XUl" secondAttribute="trailing" constant="24" id="gc4-PJ-q9C"/>
+                            <constraint firstItem="6B8-JQ-XUl" firstAttribute="centerY" secondItem="buK-sd-zej" secondAttribute="centerY" multiplier="1.73" id="la7-KU-FyH"/>
+                            <constraint firstItem="6B8-JQ-XUl" firstAttribute="leading" secondItem="buK-sd-zej" secondAttribute="leading" constant="24" id="wmw-mZ-nru"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="buK-sd-zej"/>
                     </view>
                 </viewController>
