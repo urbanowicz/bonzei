@@ -1263,6 +1263,7 @@ wake up the senses.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="dismissButtonPressed:" destination="Lah-b4-Hod" eventType="touchUpInside" id="kfU-qC-XJf"/>
                                     <action selector="saveButtonPressed:" destination="WKb-vj-sEy" eventType="touchUpInside" id="6mB-Kc-NKe"/>
                                 </connections>
                             </button>
@@ -1275,8 +1276,12 @@ wake up the senses.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="buK-sd-zej"/>
                     </view>
+                    <connections>
+                        <segue destination="xHL-6Z-uQD" kind="unwind" identifier="SoundTimerDoneToSoundPicker" unwindAction="unwindToSoundPicker:" id="s1N-co-ckk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ppg-F7-JTJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="xHL-6Z-uQD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="7894" y="-1519"/>
         </scene>

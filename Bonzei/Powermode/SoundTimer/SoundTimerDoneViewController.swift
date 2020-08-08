@@ -33,4 +33,7 @@ class SoundTimerDoneViewController: UIViewController {
         backgroundBottomColor = #colorLiteral(red: 0.1411813796, green: 0.3443938792, blue: 0.2596455514, alpha: 1)
     }
 
+    @IBAction func dismissButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "SoundTimerDoneToSoundPicker", sender: self)
+    }
 }

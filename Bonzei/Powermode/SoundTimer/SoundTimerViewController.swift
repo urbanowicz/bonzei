@@ -47,6 +47,9 @@ class SoundTimerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Clip the circle in the background
+        self.view.clipsToBounds = true
+        
         startNap()
     }
     
@@ -94,9 +97,6 @@ class SoundTimerViewController: UIViewController {
     }
     
     @IBAction func stopButtonPressed(_ sender: Any) {
-        // Clip the circle in the  background before animating the transition
-        self.view.clipsToBounds = true
-        
         performSegue(withIdentifier: "UnwindToSoundPicker", sender: self)
     }
     
