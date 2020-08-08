@@ -130,6 +130,10 @@ class SoundPickerViewController: UIViewController {
     
     @IBAction func backButtonPressed(_ sender: Any) {
     }
+    
+    @IBAction func unwindToSoundPicker(_ unwindSegue: UIStoryboardSegue) {
+        
+    }
 }
 
 //MARK:- UICollectionViewDataSource

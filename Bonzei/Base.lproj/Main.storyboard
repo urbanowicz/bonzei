@@ -1224,9 +1224,11 @@ wake up the senses.</string>
                         <outlet property="stopButton" destination="Kxy-3D-J9S" id="ghm-aq-Cc1"/>
                         <outlet property="timerView" destination="uph-sY-tqy" id="1cU-Kv-XtC"/>
                         <segue destination="Lah-b4-Hod" kind="modal" identifier="SoundTimerDone" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="0zv-dC-agn"/>
+                        <segue destination="aMt-Bf-49u" kind="unwind" identifier="UnwindToSoundPicker" unwindAction="unwindToSoundPicker:" id="Krg-vu-iYH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="la6-wj-O3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="aMt-Bf-49u" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="7120.8000000000002" y="-1514.0394088669952"/>
         </scene>
