@@ -1277,16 +1277,16 @@ wake up the senses.</string>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iGi-lv-X4t" userLabel="VStack">
-                                <rect key="frame" x="116.33333333333333" y="187" width="142.66666666666669" height="102.66666666666669"/>
+                                <rect key="frame" x="112.33333333333333" y="183.66666666666666" width="150.66666666666669" height="109.33333333333334"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFV-3X-YDi">
-                                        <rect key="frame" x="0.0" y="0.0" width="142.66666666666666" height="66.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150.66666666666666" height="71.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="57"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfC-yC-LGb">
-                                        <rect key="frame" x="31.000000000000007" y="82.666666666666686" width="80.666666666666686" height="20"/>
+                                        <rect key="frame" x="33.000000000000007" y="87.666666666666657" width="84.666666666666686" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1307,10 +1307,13 @@ wake up the senses.</string>
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isCountDown" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CO0-X5-8st">
-                                <rect key="frame" x="76" y="377.66666666666669" width="223" height="66.666666666666686"/>
+                                <rect key="frame" x="68.000000000000014" y="375.33333333333331" width="239.33333333333337" height="71.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="57"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>

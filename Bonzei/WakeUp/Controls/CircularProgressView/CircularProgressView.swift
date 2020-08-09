@@ -37,7 +37,7 @@ class CircularProgressView: UIView {
         }
     }
     
-    public var progress: Double = 0.0 {
+    @IBInspectable var progress: Double = 0.0 {
         didSet {
             updateProgress()
         }
