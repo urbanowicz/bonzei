@@ -1126,13 +1126,13 @@ wake up the senses.</string>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="COq-g9-1hz" userLabel="HStack">
-                                <rect key="frame" x="120.00000000000001" y="64" width="135.33333333333337" height="20"/>
+                                <rect key="frame" x="117.33333333333333" y="62.999999999999993" width="140.33333333333337" height="21.666666666666664"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music-note" translatesAutoresizingMaskIntoConstraints="NO" id="nHF-DG-3xn">
-                                        <rect key="frame" x="0.0" y="0.0" width="12" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="12" height="21.666666666666668"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;SoundName&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm6-0j-tIU">
-                                        <rect key="frame" x="19.999999999999993" y="0.0" width="115.33333333333331" height="20"/>
+                                        <rect key="frame" x="20.000000000000021" y="0.0" width="120.33333333333331" height="21.666666666666668"/>
                                         <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1140,7 +1140,7 @@ wake up the senses.</string>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fub-Aq-T4t" userLabel="VStack">
-                                <rect key="frame" x="62.666666666666657" y="184.33333333333334" width="249.99999999999997" height="108.00000000000003"/>
+                                <rect key="frame" x="62.666666666666657" y="183.66666666666666" width="249.99999999999997" height="109.66666666666666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uph-sY-tqy" customClass="TimerView" customModule="Bonzei" customModuleProvider="target">
                                         <rect key="frame" x="49.333333333333343" y="0.0" width="151" height="72"/>
@@ -1156,7 +1156,7 @@ wake up the senses.</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3D-kz-clZ">
-                                        <rect key="frame" x="84.666666666666686" y="87.999999999999972" width="80.666666666666686" height="20"/>
+                                        <rect key="frame" x="82.666666666666686" y="88.000000000000028" width="84.666666666666686" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1212,15 +1212,24 @@ wake up the senses.</string>
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="static-wave" translatesAutoresizingMaskIntoConstraints="NO" id="5fh-fw-1Cu">
+                                <rect key="frame" x="-141.66666666666666" y="355" width="587" height="153"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5fh-fw-1Cu" secondAttribute="height" multiplier="587:153" id="tHH-2M-ton"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97649627920000004" green="0.97628325220000001" blue="0.97256141900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fub-Aq-T4t" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="202-a9-wbd"/>
                             <constraint firstItem="COq-g9-1hz" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="0.18" id="3Z5-Rr-wpQ"/>
+                            <constraint firstItem="5fh-fw-1Cu" firstAttribute="height" secondItem="mCJ-Dd-gXO" secondAttribute="height" multiplier="0.188424" id="6y6-fu-1yo"/>
+                            <constraint firstItem="5fh-fw-1Cu" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" multiplier="0.81" id="9GK-ON-rRh"/>
                             <constraint firstItem="1ZN-TI-BD1" firstAttribute="centerY" secondItem="Hnt-9B-5lo" secondAttribute="centerY" id="DR9-Jk-Oix"/>
                             <constraint firstItem="Hnt-9B-5lo" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="Ip1-2N-eWd"/>
                             <constraint firstItem="1ZN-TI-BD1" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="J7p-ru-Pvq"/>
                             <constraint firstItem="fub-Aq-T4t" firstAttribute="width" secondItem="Hnt-9B-5lo" secondAttribute="width" id="JLm-ai-xDq"/>
+                            <constraint firstItem="5fh-fw-1Cu" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="1.05" id="KQW-s4-U5U"/>
                             <constraint firstItem="dxS-m4-nUg" firstAttribute="centerX" secondItem="2ev-ft-blA" secondAttribute="centerX" id="LKI-Zf-OAc"/>
                             <constraint firstItem="iDo-fZ-nxc" firstAttribute="centerY" secondItem="2ev-ft-blA" secondAttribute="centerY" multiplier="0.2" id="OCm-fD-4hn"/>
                             <constraint firstItem="fub-Aq-T4t" firstAttribute="centerY" secondItem="Hnt-9B-5lo" secondAttribute="centerY" id="TQw-Nl-nKQ"/>
@@ -1294,16 +1303,16 @@ wake up the senses.</string>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iGi-lv-X4t" userLabel="VStack">
-                                <rect key="frame" x="116.33333333333333" y="187" width="142.66666666666669" height="102.66666666666669"/>
+                                <rect key="frame" x="112.33333333333333" y="183.66666666666666" width="150.66666666666669" height="109.33333333333334"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFV-3X-YDi">
-                                        <rect key="frame" x="0.0" y="0.0" width="142.66666666666666" height="66.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150.66666666666666" height="71.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="57"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfC-yC-LGb">
-                                        <rect key="frame" x="31.000000000000007" y="82.666666666666686" width="80.666666666666686" height="20"/>
+                                        <rect key="frame" x="33.000000000000007" y="87.666666666666657" width="84.666666666666686" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1330,7 +1339,7 @@ wake up the senses.</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CO0-X5-8st">
-                                <rect key="frame" x="76" y="377.66666666666669" width="223" height="66.666666666666686"/>
+                                <rect key="frame" x="68.000000000000014" y="375.33333333333331" width="239.33333333333337" height="71.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="57"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1342,13 +1351,13 @@ wake up the senses.</string>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-ZX-qTs" userLabel="HStack">
-                                <rect key="frame" x="120.00000000000001" y="64" width="135.33333333333337" height="20"/>
+                                <rect key="frame" x="117.33333333333333" y="62.999999999999993" width="140.33333333333337" height="21.666666666666664"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music-note" translatesAutoresizingMaskIntoConstraints="NO" id="b0N-a8-eXw">
-                                        <rect key="frame" x="0.0" y="0.0" width="12" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="12" height="21.666666666666668"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;SoundName&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FN-8F-0lS">
-                                        <rect key="frame" x="19.999999999999993" y="0.0" width="115.33333333333331" height="20"/>
+                                        <rect key="frame" x="20.000000000000021" y="0.0" width="120.33333333333331" height="21.666666666666668"/>
                                         <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1579,6 +1588,7 @@ wake up the senses.</string>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="powermode-coming-soon" width="375" height="223"/>
+        <image name="static-wave" width="587" height="153"/>
         <image name="stop-button" width="72" height="72"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
     </resources>
