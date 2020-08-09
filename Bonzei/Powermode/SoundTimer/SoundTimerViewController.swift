@@ -23,7 +23,7 @@ class SoundTimerViewController: UIViewController {
         }
     }
     
-    public var napTime: TimeInterval = 30.0
+    public var napTime: TimeInterval = 10.0
     
     @IBOutlet weak var backgroundCircleView: GradientView!
     
@@ -37,10 +37,14 @@ class SoundTimerViewController: UIViewController {
     
     @IBOutlet weak var timerView: TimerView!
     
+    @IBOutlet weak var soundNameLabel: UILabel!
+    
     private var isTimerPaused = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        soundNameLabel.text = powerNap.melodyName
         
         setupBackgroundCircleView()
         setupTimerView()

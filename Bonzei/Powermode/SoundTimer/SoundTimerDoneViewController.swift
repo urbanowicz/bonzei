@@ -26,6 +26,8 @@ class SoundTimerDoneViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var soundNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
