@@ -64,7 +64,9 @@ class SoundPickerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewIsAppearing = true
+        if isBeingPresented {
+            viewIsAppearing = true
+        }
     }
     
     override func viewDidLayoutSubviews() {
