@@ -80,7 +80,7 @@ let pn2 = PowerNap(id: "InfiniteBliss",
                    creationDate: Date(),
                    coverColor: "#6F463D",
                    gradientTopColor: "#6F463D",
-                   gradientBottomColor: "#3E2B23")
+                   gradientBottomColor: "#452F27")
 
 let pn3 = PowerNap(id: "FoamyWaves",
                    melodyName: "Foamy Waves",

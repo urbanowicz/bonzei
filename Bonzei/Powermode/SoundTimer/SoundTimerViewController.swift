@@ -62,7 +62,7 @@ class SoundTimerViewController: UIViewController {
         backgroundCircleBorder.backgroundColor = UIColor.clear.cgColor
         backgroundCircleBorder.strokeColor = backgroundBottomColor.cgColor
         backgroundCircleBorder.fillColor = UIColor.clear.cgColor
-        backgroundCircleBorder.lineWidth = 3.0
+        backgroundCircleBorder.lineWidth = 1.0
         view.layer.addSublayer(backgroundCircleBorder)
     }
     
@@ -99,6 +99,7 @@ class SoundTimerViewController: UIViewController {
     }
     
     @IBAction func stopButtonPressed(_ sender: Any) {
+        stopNap()
         performSegue(withIdentifier: "UnwindToSoundPicker", sender: self)
     }
     
