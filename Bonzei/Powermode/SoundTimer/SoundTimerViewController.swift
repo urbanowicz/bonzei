@@ -67,7 +67,7 @@ class SoundTimerViewController: UIViewController {
         backgroundCircleBorder.strokeColor = backgroundBottomColor.cgColor
         backgroundCircleBorder.fillColor = UIColor.clear.cgColor
         backgroundCircleBorder.lineWidth = 1.0
-        view.layer.addSublayer(backgroundCircleBorder)
+        view.layer.insertSublayer(backgroundCircleBorder, at: 0)
     }
     
     private func setupTimerView() {
