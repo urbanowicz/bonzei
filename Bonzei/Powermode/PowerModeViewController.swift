@@ -17,9 +17,9 @@ class PowerModeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        FirebasePowerNapProvider.sharedInstance.syncWithBackend {
-            print("Done.")
-        }
+//        FirebasePowerNapProvider.sharedInstance.syncWithBackend {
+//            print("Done.")
+//        }
     }
     
     @IBAction func unwindSoundSelection(_ unwindSegue: UIStoryboardSegue) {

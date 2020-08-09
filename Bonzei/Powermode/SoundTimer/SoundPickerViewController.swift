@@ -157,7 +157,11 @@ class SoundPickerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SoundPickerToSoundTimer" {
             let soundTimerVC = segue.destination as! SoundTimerViewController
+            
             soundTimerVC.powerNap = selectedPowerNap!
+            
+            let selectedDurationIndex = durationPicker.getIndexOfCurrentlyPickedItem()
+            soundTimerVC.napTime = Double(durations![selectedDurationIndex] * 60)
         }
     }
     
