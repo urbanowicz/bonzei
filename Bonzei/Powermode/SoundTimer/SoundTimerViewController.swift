@@ -10,6 +10,8 @@ import UIKit
 
 class SoundTimerViewController: UIViewController {
     
+    public var powerNap: PowerNap!
+    
     public var backgroundTopColor = #colorLiteral(red: 0.137254902, green: 0.2509803922, blue: 0.2156862745, alpha: 1) {
         didSet {
             backgroundCircleView.topColor = backgroundTopColor
@@ -54,8 +56,8 @@ class SoundTimerViewController: UIViewController {
     }
     
     private func setupBackgroundCircleView() {
-        backgroundTopColor = #colorLiteral(red: 0.1377221048, green: 0.249750644, blue: 0.2173544168, alpha: 1)
-        backgroundBottomColor = #colorLiteral(red: 0.1411813796, green: 0.3443938792, blue: 0.2596455514, alpha: 1)
+        backgroundTopColor = UIColor(hexString: powerNap.gradientTopColor)
+        backgroundBottomColor = UIColor(hexString: powerNap.gradientBottomColor)
         
         backgroundCircleBorder.backgroundColor = UIColor.clear.cgColor
         backgroundCircleBorder.strokeColor = backgroundBottomColor.cgColor

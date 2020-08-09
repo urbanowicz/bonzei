@@ -48,6 +48,8 @@ class SoundPickerViewController: UIViewController {
         }
     }
 
+    private var selectedPowerNap: PowerNap?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -146,7 +148,15 @@ class SoundPickerViewController: UIViewController {
     
     @IBAction func startButtonPressed(_ sender: Any) {
         guard let powerNap = getSelectedPowerNap() else { return }
+        selectedPowerNap = powerNap
         performSegue(withIdentifier: "SoundPickerToSoundTimer", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SoundPickerToSoundTimer" {
+            let soundTimerVC = segue.destination as! SoundTimerViewController
+            soundTimerVC.powerNap = selectedPowerNap!
+        }
     }
     
     @IBAction func unwindToSoundPicker(_ unwindSegue: UIStoryboardSegue) {
