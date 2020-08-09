@@ -126,12 +126,34 @@ class SoundPickerViewController: UIViewController {
         durationPicker.selectItem(withIndex: 1)
     }
     
+    // MARK:- Private API
+    
+    private func getSelectedPowerNap() -> PowerNap? {
+        
+        let x = view.bounds.width / 2.0
+        let y = soundsCollectionView.frame.origin.y + soundsCollectionView.frame.height / 2.0
+        
+        let center = view.convert(CGPoint(x: x, y: y), to: soundsCollectionView)
+        
+        if let indexPath = soundsCollectionView.indexPathForItem(at: center) {
+            return sounds[indexPath.row]
+        }
+        return nil
+    }
+    
     @IBAction func backButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func startButtonPressed(_ sender: Any) {
+        guard let powerNap = getSelectedPowerNap() else { return }
+        performSegue(withIdentifier: "SoundPickerToSoundTimer", sender: self)
     }
     
     @IBAction func unwindToSoundPicker(_ unwindSegue: UIStoryboardSegue) {
         
     }
+    
+    
 }
 
 //MARK:- UICollectionViewDataSource
