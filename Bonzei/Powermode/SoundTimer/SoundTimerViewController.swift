@@ -10,12 +10,12 @@ import UIKit
 
 class SoundTimerViewController: UIViewController {
     
-    public var backgroundTopColor = #colorLiteral(red: 0.1377221048, green: 0.249750644, blue: 0.2173544168, alpha: 1) {
+    public var backgroundTopColor = #colorLiteral(red: 0.137254902, green: 0.2509803922, blue: 0.2156862745, alpha: 1) {
         didSet {
             backgroundCircleView.topColor = backgroundTopColor
         }
     }
-    public var backgroundBottomColor = #colorLiteral(red: 0.1411813796, green: 0.3443938792, blue: 0.2596455514, alpha: 1) {
+    public var backgroundBottomColor = #colorLiteral(red: 0.1411764706, green: 0.3450980392, blue: 0.2588235294, alpha: 1) {
         didSet {
             backgroundCircleView.bottomColor = backgroundBottomColor
         }

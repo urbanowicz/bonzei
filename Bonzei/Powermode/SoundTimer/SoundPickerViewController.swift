@@ -10,8 +10,6 @@ import UIKit
 
 class SoundPickerViewController: UIViewController {
     
-    let sounds = ["Rainforest", "Infinite Bliss", "Foamy Waves"]
-    
     @IBOutlet weak var mainHeaderLabel: UILabel!
     @IBOutlet weak var soundHeaderLabel: UILabel!
     @IBOutlet weak var timeHeaderLabel: UILabel!
@@ -144,13 +142,18 @@ extension SoundPickerViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SoundCell.reuseId, for: indexPath) as! SoundCell
+        let powerNap = sounds[indexPath.row]
         
+        // appearance of the cell
         cell.layer.cornerRadius = cell.frame.height/2.0
-        cell.backgroundColor = BonzeiColors.jungleGreen
+        cell.backgroundColor = UIColor(hexString: powerNap.coverColor)
         cell.tagBackground.layer.cornerRadius = 3.0
-        cell.tagLabel.text = "THETA"
-        cell.melodyNameLabel.text = sounds[indexPath.row]
-        cell.descriptionLabel.text = "Experience this wonderful sound while naping and dreaming of milons of milions of dollars."
+        
+        // contents of the cell
+       
+        cell.tagLabel.text = powerNap.waveType
+        cell.melodyNameLabel.text = powerNap.melodyName
+        cell.descriptionLabel.text = powerNap.description
 
         if viewIsAppearing {
             viewIsAppearing = false

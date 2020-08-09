@@ -107,6 +107,7 @@
 		F1D2D695248E27C1000DE8D2 /* MovingGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */; };
 		F1DCAEA824DBFE1500440581 /* SoundTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DCAEA724DBFE1500440581 /* SoundTimerViewController.swift */; };
 		F1E0FFE224A3757700F75FDF /* TimePicker_24.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E0FFE124A3757700F75FDF /* TimePicker_24.swift */; };
+		F1E40D0A24DFEB4200D0189D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E40D0924DFEB4200D0189D /* UIColorExtension.swift */; };
 		F1F83E1E2472F7490072630A /* RootViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E1D2472F7490072630A /* RootViewViewController.swift */; };
 		F1F83E222472FD0C0072630A /* AlarmSchedulerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */; };
 		F1FF6CE72469B26C00B07237 /* AlarmPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */; };
@@ -227,6 +228,7 @@
 		F1D2D694248E27C1000DE8D2 /* MovingGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingGradientView.swift; sourceTree = "<group>"; };
 		F1DCAEA724DBFE1500440581 /* SoundTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTimerViewController.swift; sourceTree = "<group>"; };
 		F1E0FFE124A3757700F75FDF /* TimePicker_24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker_24.swift; sourceTree = "<group>"; };
+		F1E40D0924DFEB4200D0189D /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F1F83E1D2472F7490072630A /* RootViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewViewController.swift; sourceTree = "<group>"; };
 		F1F83E212472FD0C0072630A /* AlarmSchedulerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSchedulerDelegate.swift; sourceTree = "<group>"; };
 		F1FF6CE62469B26C00B07237 /* AlarmPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPersistenceService.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				F14EF8AB24766537006A40D8 /* NotificationExtension.swift */,
 				F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */,
 				F1BB761F24C7640D00538465 /* Helpers.swift */,
+				F1E40D0924DFEB4200D0189D /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -913,6 +916,7 @@
 				F10C8E5524CF31B1003B26F6 /* PowerModeViewController.swift in Sources */,
 				F1A26FA6247284A300A13B3C /* DismissAlarmViewController.swift in Sources */,
 				F1DCAEA824DBFE1500440581 /* SoundTimerViewController.swift in Sources */,
+				F1E40D0A24DFEB4200D0189D /* UIColorExtension.swift in Sources */,
 				F17ABEE32447089F008E9227 /* AppDelegate.swift in Sources */,
 				F17D199824AA654D00633BBC /* Article.swift in Sources */,
 				F1C76B6E247ED7CD0099F1F1 /* DoubleExtension.swift in Sources */,
@@ -1121,7 +1125,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Bonzei/Info.plist;
@@ -1143,7 +1147,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = RW79CPXREY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Bonzei/Info.plist;

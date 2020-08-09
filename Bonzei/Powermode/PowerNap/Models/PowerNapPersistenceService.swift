@@ -131,10 +131,14 @@ class PowerNapPersistenceService {
     
     private func convertToPowerNap(managedPowerNap: ManagedPowerNap) -> PowerNap {
         let powerNap = PowerNap(id: managedPowerNap.id!,
-                              melodyName:  managedPowerNap.melodyName!,
-                              alarmMelodyName: managedPowerNap.alarmMelodyName!,
-                              description: managedPowerNap.about!,
-                              creationDate: managedPowerNap.creationDate!)
+                                melodyName:  managedPowerNap.melodyName!,
+                                alarmMelodyName: managedPowerNap.alarmMelodyName!,
+                                waveType: managedPowerNap.waveType!,
+                                description: managedPowerNap.about!,
+                                creationDate: managedPowerNap.creationDate!,
+                                coverColor: managedPowerNap.coverColor!,
+                                gradientTopColor: managedPowerNap.gradientTopColor!,
+                                gradientBottomColor: managedPowerNap.gradientBottomColor!)
         
         return powerNap
     }
@@ -143,8 +147,11 @@ class PowerNapPersistenceService {
         managedPowerNap.id = powerNap.id
         managedPowerNap.melodyName = powerNap.melodyName
         managedPowerNap.alarmMelodyName = powerNap.alarmMelodyName
+        managedPowerNap.waveType = powerNap.waveType
         managedPowerNap.about = powerNap.description
         managedPowerNap.creationDate = powerNap.creationDate
+        managedPowerNap.coverColor = powerNap.coverColor
+        managedPowerNap.gradientTopColor = powerNap.gradientTopColor
+        managedPowerNap.gradientBottomColor = powerNap.gradientBottomColor
     }
-
 }
