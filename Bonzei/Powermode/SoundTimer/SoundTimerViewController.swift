@@ -127,6 +127,14 @@ class SoundTimerViewController: UIViewController {
     private func stopNap() {
         timerView.stop()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SoundTimerDone" {
+            let timerDoneVC = segue.destination as! SoundTimerDoneViewController
+            
+            timerDoneVC.powerNap = powerNap
+        }
+    }
 }
 
 fileprivate class CircleView: GradientView {

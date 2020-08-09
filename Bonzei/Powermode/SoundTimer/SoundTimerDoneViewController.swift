@@ -10,6 +10,8 @@ import UIKit
 
 class SoundTimerDoneViewController: UIViewController {
     
+    var powerNap: PowerNap!
+    
     public var backgroundTopColor = #colorLiteral(red: 0.1377221048, green: 0.249750644, blue: 0.2173544168, alpha: 1) {
         didSet {
             if let gradientView = self.view as? GradientView {
@@ -31,8 +33,10 @@ class SoundTimerDoneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        backgroundTopColor = #colorLiteral(red: 0.1377221048, green: 0.249750644, blue: 0.2173544168, alpha: 1)
-        backgroundBottomColor = #colorLiteral(red: 0.1411813796, green: 0.3443938792, blue: 0.2596455514, alpha: 1)
+        soundNameLabel.text = powerNap.melodyName
+        
+        backgroundTopColor = UIColor(hexString: powerNap.gradientTopColor)
+        backgroundBottomColor = UIColor(hexString: powerNap.gradientBottomColor)
     }
 
     @IBAction func dismissButtonPressed(_ sender: Any) {
