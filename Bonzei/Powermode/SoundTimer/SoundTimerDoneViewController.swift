@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SoundTimerDoneViewController: UIViewController {
     
@@ -30,6 +31,8 @@ class SoundTimerDoneViewController: UIViewController {
     
     @IBOutlet weak var soundNameLabel: UILabel!
     
+    private var audioPlayer: AVAudioPlayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -38,8 +41,40 @@ class SoundTimerDoneViewController: UIViewController {
         backgroundTopColor = UIColor(hexString: powerNap.gradientTopColor)
         backgroundBottomColor = UIColor(hexString: powerNap.gradientBottomColor)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        playAudio()
+    }
 
     @IBAction func dismissButtonPressed(_ sender: Any) {
+        audioPlayer?.setVolume(0, fadeDuration: 0.05)
+        Thread.sleep(forTimeInterval: 0.1)
+        audioPlayer?.stop()
+        
         performSegue(withIdentifier: "SoundTimerDoneToSoundPicker", sender: self)
+    }
+    
+    private func playAudio() {
+        let soundFile = melodies[Int.random(in: 0..<melodies.count)] + ".mp3"
+        
+        if let path = Bundle.main.path(forResource: soundFile, ofType: nil) {
+            let url = URL(fileURLWithPath: path)
+            
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                
+            }
+                
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.setVolume(1.0, fadeDuration: 0.1)
+                audioPlayer?.play()
+            } catch {
+                
+            }
+        }
     }
 }

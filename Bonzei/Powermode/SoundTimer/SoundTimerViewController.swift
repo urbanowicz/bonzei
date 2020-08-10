@@ -46,6 +46,8 @@ class SoundTimerViewController: UIViewController {
     
     private var soundFile = "Rainforest.mp3"
     
+    private var isFadingOut = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,6 +131,11 @@ class SoundTimerViewController: UIViewController {
             let progress = (self.napTime - self.timerView.timeLeft) / self.napTime
             self.circularProgressView.progress = progress
             
+            if (self.timerView.timeLeft <= 3 && !self.isFadingOut ) {
+                self.audioPlayer?.setVolume(0.0, fadeDuration: self.timerView.timeLeft)
+                self.isFadingOut = true
+            }
+            
             if self.timerView.timerDone {
                 self.stopNap()
                 self.performSegue(withIdentifier: "SoundTimerDone", sender: self)
@@ -136,6 +143,8 @@ class SoundTimerViewController: UIViewController {
         }
         
         // Play audio
+        isFadingOut = false
+        
         if audioPlayer != nil {
             audioPlayer!.play()
             return
@@ -152,7 +161,7 @@ class SoundTimerViewController: UIViewController {
                 
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
-                //audioPlayer?.delegate = self
+                audioPlayer?.setVolume(1.0, fadeDuration: 0.1)
                 audioPlayer?.play()
             } catch {
                 
