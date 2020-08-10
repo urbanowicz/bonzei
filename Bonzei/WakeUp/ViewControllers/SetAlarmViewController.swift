@@ -104,6 +104,7 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
         
         switch request {
         case .newAlarm:
+            selectedMelody = melodies[Int.random(in: 0..<melodies.count)]
             melodyLabel.text = selectedMelody
             timePicker.setDate(to: Date())
             
