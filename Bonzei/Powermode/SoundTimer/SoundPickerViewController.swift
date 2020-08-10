@@ -252,7 +252,7 @@ class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
         
         let inset = collectionView!.contentInset.left
-        let deltaX = proposedContentOffset.x
+        let deltaX = collectionView!.contentOffset.x //proposedContentOffset.x <- use this if you want
         
         let distanceBetweenCellCenters = itemSize.width + minimumLineSpacing
     
@@ -260,6 +260,8 @@ class SoundsCollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         return CGPoint(x: k * distanceBetweenCellCenters - inset, y: proposedContentOffset.y)
     }
+    
+    
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
         return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
