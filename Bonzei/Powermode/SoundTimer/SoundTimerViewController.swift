@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SoundTimerViewController: UIViewController {
     
@@ -41,6 +42,10 @@ class SoundTimerViewController: UIViewController {
     
     private var isTimerPaused = false
     
+    private var audioPlayer: AVAudioPlayer?
+    
+    private var soundFile = "Rainforest.mp3"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +53,8 @@ class SoundTimerViewController: UIViewController {
         
         setupBackgroundCircleView()
         setupTimerView()
+        
+        setupAudioSession()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,6 +82,14 @@ class SoundTimerViewController: UIViewController {
         timerView.countDownTimeSeconds = Int(napTime)
         if let font = UIFont(name: "Muli-SemiBold", size: 57) {
             timerView.font = font
+        }
+    }
+    
+    private func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        } catch {
+            
         }
     }
     
@@ -115,18 +130,55 @@ class SoundTimerViewController: UIViewController {
             self.circularProgressView.progress = progress
             
             if self.timerView.timerDone {
+                self.stopNap()
                 self.performSegue(withIdentifier: "SoundTimerDone", sender: self)
+            }
+        }
+        
+        // Play audio
+        if audioPlayer != nil {
+            audioPlayer!.play()
+            return
+        }
+        
+        if let path = Bundle.main.path(forResource: soundFile, ofType: nil) {
+            let url = URL(fileURLWithPath: path)
+            
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                
+            }
+                
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                //audioPlayer?.delegate = self
+                audioPlayer?.play()
+            } catch {
+                
             }
         }
     }
     
     private func pauseNap() {
         timerView.pause()
+        
+        if audioPlayer != nil {
+            audioPlayer!.pause()
+        }
     }
     
     private func stopNap() {
         timerView.stop()
+        
+        if audioPlayer != nil {
+            audioPlayer!.setVolume(0, fadeDuration: 0.05)
+            Thread.sleep(forTimeInterval: 0.1)
+            audioPlayer!.stop()
+            audioPlayer = nil
+        }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SoundTimerDone" {
