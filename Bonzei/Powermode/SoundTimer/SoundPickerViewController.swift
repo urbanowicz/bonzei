@@ -19,6 +19,8 @@ class SoundPickerViewController: UIViewController {
     @IBOutlet weak var durationPickerOverlayBottom: UIView!
     @IBOutlet weak var soundsCollectionView: UICollectionView!
     
+    @IBOutlet weak var startButton: RoundedButton!
+    
     private var customFlowLayout = SoundsCollectionViewFlowLayout()
     
     private var viewIsAppearing = true
@@ -219,6 +221,17 @@ extension SoundPickerViewController: UICollectionViewDelegate {
             let scaleFactor = CGFloat(1.0 + (1 - k) * 0.5)
             if k < 1 {
                 cell.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
+                
+                //Delete when not needed anymore
+                if soundsCollectionView.indexPath(for: cell)!.row == 0 {
+                    startButton.alpha = 0.5 + (1 - k) * 0.5
+                    if k <= 0.1 {
+                        startButton.isEnabled = true
+                    } else {
+                        startButton.isEnabled = false
+                    }
+                }
+                //
             } else {
                 cell.transform = CGAffineTransform.identity
             }
