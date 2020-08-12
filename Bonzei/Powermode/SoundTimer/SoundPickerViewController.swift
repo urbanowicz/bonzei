@@ -188,9 +188,13 @@ extension SoundPickerViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = cell.frame.height/2.0
         cell.backgroundColor = UIColor(hexString: powerNap.coverColor)
         cell.tagBackground.layer.cornerRadius = 3.0
+        cell.descriptionLabel.transform = CGAffineTransform(scaleX: (1.0/1.5), y: (1.0/1.5))
+        
+        cell.tagLabel.transform = CGAffineTransform(scaleX: (1.0/1.5), y: (1.0/1.5))
+        cell.tagBackground.transform = CGAffineTransform(scaleX: (1.0/1.5), y: (1.0/1.5))
+        cell.melodyNameLabel.transform = CGAffineTransform(scaleX: (1.0/1.5), y: (1.0/1.5))
         
         // contents of the cell
-       
         cell.tagLabel.text = powerNap.waveType
         cell.melodyNameLabel.text = powerNap.melodyName
         cell.descriptionLabel.text = powerNap.description
