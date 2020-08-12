@@ -83,7 +83,7 @@ class SoundTimerViewController: UIViewController {
     private func setupTimerView() {
         timerView.mode = .timer
         timerView.countDownTimeSeconds = Int(napTime)
-        if let font = UIFont(name: "Muli-SemiBold", size: 57) {
+        if let font = UIFont(name: "Muli-SemiBold", size: 45) {
             timerView.font = font
         }
     }
