@@ -53,6 +53,7 @@ class SoundTimerViewController: UIViewController {
         
         soundNameLabel.text = powerNap.melodyName
         
+        soundFile = "\(powerNap.melodyName)_\(Int(napTime/60)).mp3"
         setupBackgroundCircleView()
         setupTimerView()
         

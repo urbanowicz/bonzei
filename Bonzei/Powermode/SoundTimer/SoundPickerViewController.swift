@@ -110,7 +110,7 @@ class SoundPickerViewController: UIViewController {
     }
     
     private func setupDurationPicker() {
-        durations = [10, 15, 25]
+        durations = [20, 45, 60]
         durationPicker.scrollView.decelerationRate = .fast
         durationPicker.font = UIFont(name: "Muli-Regular", size: 24)
         durationPicker.textColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0.5)

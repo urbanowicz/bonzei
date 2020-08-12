@@ -50,6 +50,9 @@
 		F149788B24D731F800E25ECF /* PowerNapPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F149788A24D731F800E25ECF /* PowerNapPersistenceService.swift */; };
 		F14D5FB8244E11D600266A68 /* SetMelodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */; };
 		F14EF8AC24766537006A40D8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14EF8AB24766537006A40D8 /* NotificationExtension.swift */; };
+		F1536E5824E471E000D200A5 /* Zero Gravity_45.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1536E5724E471E000D200A5 /* Zero Gravity_45.mp3 */; };
+		F1536E5A24E4720B00D200A5 /* Zero Gravity_60.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1536E5924E4720B00D200A5 /* Zero Gravity_60.mp3 */; };
+		F1536E5C24E4723700D200A5 /* Zero Gravity_20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1536E5B24E4723700D200A5 /* Zero Gravity_20.mp3 */; };
 		F15526C4244A060300741E80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15526C3244A060300741E80 /* Alarm.swift */; };
 		F15590FD245EF27300928589 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15590FC245EF27300928589 /* Melody.swift */; };
 		F15C1ABA2461734A00F47CCC /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */; };
@@ -86,7 +89,6 @@
 		F1AB936E2465EFFD008FAA1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB936D2465EFFD008FAA1D /* Constants.swift */; };
 		F1BB762024C7640D00538465 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BB761F24C7640D00538465 /* Helpers.swift */; };
 		F1BC60D3247FE7AF00BB6CB0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */; };
-		F1BE034124E1437F0020D723 /* Rainforest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1BE034024E1437F0020D723 /* Rainforest.mp3 */; };
 		F1C76B6C247EBDBF0099F1F1 /* BonzeiClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */; };
 		F1C76B6E247ED7CD0099F1F1 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */; };
 		F1CA2D4D24AB549100524860 /* ArticlesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA2D4C24AB549100524860 /* ArticlesProvider.swift */; };
@@ -170,6 +172,9 @@
 		F149788A24D731F800E25ECF /* PowerNapPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerNapPersistenceService.swift; sourceTree = "<group>"; };
 		F14D5FB7244E11D600266A68 /* SetMelodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMelodyViewController.swift; sourceTree = "<group>"; };
 		F14EF8AB24766537006A40D8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		F1536E5724E471E000D200A5 /* Zero Gravity_45.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Zero Gravity_45.mp3"; sourceTree = "<group>"; };
+		F1536E5924E4720B00D200A5 /* Zero Gravity_60.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Zero Gravity_60.mp3"; sourceTree = "<group>"; };
+		F1536E5B24E4723700D200A5 /* Zero Gravity_20.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Zero Gravity_20.mp3"; sourceTree = "<group>"; };
 		F15526C3244A060300741E80 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		F15590FC245EF27300928589 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
 		F15C1AB92461734A00F47CCC /* AlarmScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmScheduler.swift; sourceTree = "<group>"; };
@@ -208,7 +213,6 @@
 		F1AB936D2465EFFD008FAA1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F1BB761F24C7640D00538465 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		F1BC60D2247FE7AF00BB6CB0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		F1BE034024E1437F0020D723 /* Rainforest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Rainforest.mp3; sourceTree = "<group>"; };
 		F1C76B6B247EBDBF0099F1F1 /* BonzeiClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonzeiClock.swift; sourceTree = "<group>"; };
 		F1C76B6D247ED7CD0099F1F1 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		F1CA2D4C24AB549100524860 /* ArticlesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesProvider.swift; sourceTree = "<group>"; };
@@ -677,7 +681,9 @@
 		F1BE033F24E143400020D723 /* BinauralBeats */ = {
 			isa = PBXGroup;
 			children = (
-				F1BE034024E1437F0020D723 /* Rainforest.mp3 */,
+				F1536E5B24E4723700D200A5 /* Zero Gravity_20.mp3 */,
+				F1536E5924E4720B00D200A5 /* Zero Gravity_60.mp3 */,
+				F1536E5724E471E000D200A5 /* Zero Gravity_45.mp3 */,
 			);
 			path = BinauralBeats;
 			sourceTree = "<group>";
@@ -804,7 +810,9 @@
 				F1477740247D2B0000D12C60 /* Muli-ExtraBoldItalic.ttf in Resources */,
 				F147773D247D2B0000D12C60 /* Muli-LightItalic.ttf in Resources */,
 				F17ABEF1244708A2008E9227 /* Assets.xcassets in Resources */,
+				F1536E5A24E4720B00D200A5 /* Zero Gravity_60.mp3 in Resources */,
 				F1D2680524DF2C25002E174B /* Bellflowers Dew.mp3 in Resources */,
+				F1536E5824E471E000D200A5 /* Zero Gravity_45.mp3 in Resources */,
 				F147773E247D2B0000D12C60 /* Muli-ExtraLightItalic.ttf in Resources */,
 				F1477725247D1FE100D12C60 /* Muli-Regular.ttf in Resources */,
 				F1D2680324DF2C25002E174B /* Sky Sailing.mp3 in Resources */,
@@ -818,6 +826,7 @@
 				F1477738247D2B0000D12C60 /* Muli-SemiBold.ttf in Resources */,
 				F1477723247D0C3200D12C60 /* Muli-Bold.ttf in Resources */,
 				F1477721247D073E00D12C60 /* Gilam-Light.ttf in Resources */,
+				F1536E5C24E4723700D200A5 /* Zero Gravity_20.mp3 in Resources */,
 				F147773B247D2B0000D12C60 /* Muli-ExtraLight.ttf in Resources */,
 				F1D267FF24DF2C25002E174B /* Ocean Cliffs.mp3 in Resources */,
 				F1477743247D2B0000D12C60 /* Muli-Light.ttf in Resources */,
@@ -827,7 +836,6 @@
 				F1477736247D2B0000D12C60 /* Muli-Medium.ttf in Resources */,
 				F13B355C24DE95280047DFD6 /* Endorphin Birds.mp3 in Resources */,
 				F1D2680624DF2C25002E174B /* Stellar Outflow.mp3 in Resources */,
-				F1BE034124E1437F0020D723 /* Rainforest.mp3 in Resources */,
 				F1477737247D2B0000D12C60 /* Muli-SemiBoldItalic.ttf in Resources */,
 				F1477720247D073E00D12C60 /* Gilam-Bold.ttf in Resources */,
 			);
