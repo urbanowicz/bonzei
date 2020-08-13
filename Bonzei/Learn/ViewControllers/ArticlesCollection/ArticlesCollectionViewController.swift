@@ -164,6 +164,7 @@ extension ArticlesCollectionViewController {
 
 // MARK: - ArtileCoverCell
 class ArticleCoverCell: UICollectionViewCell {
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var subtitleLabel: UILabel!
