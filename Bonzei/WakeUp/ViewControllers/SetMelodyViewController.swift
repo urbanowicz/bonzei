@@ -43,6 +43,8 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
     
     let shuffleCellReuseId = "ShuffleCell"
     
+    let fadeInDuration: TimeInterval = 2.0
+    
     // MARK: - Initialization
     
     override func viewDidLoad() {
@@ -149,8 +151,24 @@ class SetMelodyViewController: UIViewController, AVAudioPlayerDelegate {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.delegate = self
-                audioPlayer?.setVolume(1.0, fadeDuration: 0.1)
+                //audioPlayer?.setVolume(0, fadeDuration: 0)
+                //audioPlayer?.setVolume(1.0, fadeDuration: fadeInDuration)
+                
+                let startTime = melodyStartTime[cell.melodyName!] ?? 0
+                audioPlayer?.currentTime = startTime
+                
+                if startTime > 0 {
+                    audioPlayer?.setVolume(0, fadeDuration: 0)
+                } else {
+                    audioPlayer?.setVolume(1.0, fadeDuration: 0)
+                }
+                
                 audioPlayer?.play()
+                
+                if startTime > 0 {
+                    audioPlayer?.setVolume(1.0, fadeDuration: fadeInDuration * 10)
+                }
+                
                 indexOfCurrentlyPlayingCell = melodiesTable.indexPath(for: cell)!.row
                 cell.play()
                 startUpdatingProgressBarFor(cell: cell)
