@@ -49,7 +49,7 @@ class BonzeiTabBar: UIView {
         
         borderLayer.strokeColor = borderColor.cgColor
         borderLayer.fillColor = UIColor.clear.cgColor
-        layer.addSublayer(borderLayer)
+        //layer.addSublayer(borderLayer)
         
         self.addSubview(roundedRectBackgroundView)
         
@@ -267,7 +267,7 @@ private class CircleSelectionView: UIView {
         
         borderLayer.strokeColor = borderColor.cgColor
         borderLayer.fillColor = UIColor.clear.cgColor
-        layer.addSublayer(borderLayer)
+        //layer.addSublayer(borderLayer)
     }
     
 //    override func draw(_ rect: CGRect) {
