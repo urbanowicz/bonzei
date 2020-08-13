@@ -151,7 +151,18 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.delegate = self
+                
+                let startTime = melodyStartTime[selectedMelody] ?? 0
+                if startTime > 0 {
+                    audioPlayer?.setVolume(0, fadeDuration: 0)
+                } else {
+                    audioPlayer?.setVolume(1.0, fadeDuration: 0)
+                }
+                audioPlayer?.currentTime = startTime
                 audioPlayer?.play()
+                if startTime > 0 {
+                    audioPlayer?.setVolume(1.0, fadeDuration: 20.0)
+                }
                 isMelodyPlaying = true
             } catch {
                 print("Playing a melody failed. \"\(soundFileName)\"")
