@@ -128,7 +128,7 @@ extension ArticlesCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedArticleId = articles[indexPath.row].id
         
-        performSegue(withIdentifier: "FullArticle", sender: self)
+        //performSegue(withIdentifier: "FullArticle", sender: self)
         
     }
 }
