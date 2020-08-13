@@ -45,9 +45,9 @@ class SetAlarmViewController: UIViewController, AVAudioPlayerDelegate, TimePicke
     var isMelodyPlaying = false {
         didSet {
             if isMelodyPlaying {
-                playMelodyButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+                playMelodyButton.setImage(UIImage(named: "pause-button-regular"), for: .normal)
             } else {
-                playMelodyButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                playMelodyButton.setImage(UIImage(named: "play-button-regular"), for: .normal)
             }
         }
     }
