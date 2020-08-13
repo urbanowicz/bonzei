@@ -368,7 +368,7 @@ class MelodyCell: UITableViewCell, MelodiesTableCell {
         if isPlaying {
             return
         }
-        playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        playButton.setImage(UIImage(named: "pause-button-regular"), for: .normal)
         progressBar.isHidden = false
         isPlaying = true
         isPaused = false
@@ -380,7 +380,7 @@ class MelodyCell: UITableViewCell, MelodiesTableCell {
         if !isPlaying {
             return
         }
-        playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        playButton.setImage(UIImage(named: "play-button-regular"), for: .normal)
         isPlaying = false
         isPaused = true
         setNeedsDisplay()
@@ -391,7 +391,7 @@ class MelodyCell: UITableViewCell, MelodiesTableCell {
         if !isPlaying && !isPaused {
             return
         }
-        playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        playButton.setImage(UIImage(named: "play-button-regular"), for: .normal)
         progressBar.setProgress(0, animated: true)
         progressBar.isHidden = true
         isPlaying = false

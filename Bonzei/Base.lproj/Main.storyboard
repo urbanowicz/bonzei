@@ -653,14 +653,14 @@ wake the senses.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="327" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8g-SG-eb0" userLabel="Play" customClass="OvalButton" customModule="Bonzei" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8g-SG-eb0" userLabel="Play">
                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="Ww9-LA-Pwr"/>
                                                         <constraint firstAttribute="height" constant="40" id="vpL-VD-IVi"/>
                                                     </constraints>
-                                                    <state key="normal" image="play.fill" catalog="system"/>
+                                                    <state key="normal" image="play-button-regular"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
                                                             <color key="value" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1597,6 +1597,7 @@ wake the senses.</string>
         <image name="learn-stars" width="303" height="97"/>
         <image name="music-note" width="12" height="16"/>
         <image name="pause-button" width="72" height="72"/>
+        <image name="play-button-regular" width="40" height="40"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="power-nap-tile" width="375" height="223.5"/>
