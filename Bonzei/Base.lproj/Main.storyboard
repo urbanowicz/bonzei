@@ -147,7 +147,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUD-6f-SEE">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="43"/>
                                         <string key="text">Sounds designed to gradually 
-wake up the senses.</string>
+wake the senses.</string>
                                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
                                         <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -775,8 +775,8 @@ wake up the senses.</string>
                                     <constraint firstAttribute="height" constant="86" id="ygo-uE-nWY"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Melody" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcm-1M-TKd" userLabel="MelodyLabel">
-                                <rect key="frame" x="139.66666666666666" y="56" width="95.666666666666657" height="35.333333333333343"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcm-1M-TKd" userLabel="MelodyLabel">
+                                <rect key="frame" x="137.66666666666666" y="56" width="99.666666666666657" height="35.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="28"/>
                                 <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -835,34 +835,33 @@ wake up the senses.</string>
                                 <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where everybody can feel like a superhuman." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUq-FN-7Cx">
-                                <rect key="frame" x="24" y="150.33333333333334" width="237" height="51"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Using binaural sound technology to trigger deeper states of relaxation." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUq-FN-7Cx">
+                                <rect key="frame" x="24" y="150.33333333333334" width="257.66666666666669" height="65"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="iM8-tm-iAd"/>
+                                    <constraint firstAttribute="height" constant="65" id="iM8-tm-iAd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
                                 <color key="textColor" red="0.10980392156862745" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power nap with binaural beats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub6-1E-swY">
-                                <rect key="frame" x="23.999999999999986" y="491.66666666666669" width="250.66666666666663" height="21.666666666666686"/>
+                                <rect key="frame" x="23.999999999999986" y="495.66666666666669" width="250.66666666666663" height="21.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
                                 <color key="textColor" red="0.10980392160000001" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PU-Dn-5C4">
-                                <rect key="frame" x="24" y="521.66666666666663" width="272.33333333333331" height="89"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Experience recharging effect of the mid-day power nap in a calming, ambient soundscape. Headphones required." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PU-Dn-5C4">
+                                <rect key="frame" x="24" y="525.66666666666663" width="272.33333333333331" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="89" id="FSX-g8-na5"/>
+                                    <constraint firstAttribute="height" constant="55" id="FSX-g8-na5"/>
                                     <constraint firstAttribute="width" constant="272.33333333333331" id="SwI-Zc-yuJ"/>
                                 </constraints>
-                                <string key="text">Binaural beats are an auditory biohack designed to facilitate brainwave entrainment. Experience theta waves recharge effect with a mid-day power nap with our unique ambient soundtrack.</string>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                 <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PN-Bs-KZg">
-                                <rect key="frame" x="24" y="268.33333333333331" width="327" height="195"/>
+                                <rect key="frame" x="24" y="272.33333333333331" width="327" height="195"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4PN-Bs-KZg" secondAttribute="height" multiplier="109:65" id="UYO-IV-5cg"/>
                                 </constraints>
@@ -879,13 +878,13 @@ wake up the senses.</string>
                             <constraint firstItem="4PN-Bs-KZg" firstAttribute="leading" secondItem="sCq-au-t0o" secondAttribute="leading" constant="24" id="Cnc-QM-Rn5"/>
                             <constraint firstItem="IJz-nR-bED" firstAttribute="top" secondItem="sCq-au-t0o" secondAttribute="top" constant="55" id="GEP-nE-onw"/>
                             <constraint firstItem="3PU-Dn-5C4" firstAttribute="leading" secondItem="sCq-au-t0o" secondAttribute="leading" constant="24" id="PCe-0x-0U8"/>
-                            <constraint firstItem="4PN-Bs-KZg" firstAttribute="top" secondItem="dUq-FN-7Cx" secondAttribute="bottom" constant="67" id="QbL-l4-j4d"/>
+                            <constraint firstItem="4PN-Bs-KZg" firstAttribute="top" secondItem="dUq-FN-7Cx" secondAttribute="bottom" constant="57" id="QbL-l4-j4d"/>
                             <constraint firstItem="dUq-FN-7Cx" firstAttribute="leading" secondItem="sCq-au-t0o" secondAttribute="leading" constant="24" id="RkC-8X-5Wa"/>
                             <constraint firstItem="dUq-FN-7Cx" firstAttribute="top" secondItem="IJz-nR-bED" secondAttribute="bottom" constant="16" id="SaV-DU-QO2"/>
                             <constraint firstItem="sCq-au-t0o" firstAttribute="trailing" secondItem="4PN-Bs-KZg" secondAttribute="trailing" constant="24" id="Vrh-EI-Z1z"/>
                             <constraint firstItem="3PU-Dn-5C4" firstAttribute="firstBaseline" secondItem="Ub6-1E-swY" secondAttribute="firstBaseline" constant="27" id="W6k-Ss-BRQ"/>
                             <constraint firstItem="Ub6-1E-swY" firstAttribute="leading" secondItem="sCq-au-t0o" secondAttribute="leading" constant="24" id="szR-Ga-fwO"/>
-                            <constraint firstItem="sCq-au-t0o" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dUq-FN-7Cx" secondAttribute="trailing" constant="109" id="ydK-4W-ndD"/>
+                            <constraint firstItem="sCq-au-t0o" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dUq-FN-7Cx" secondAttribute="trailing" constant="80" id="ydK-4W-ndD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sCq-au-t0o"/>
                     </view>
