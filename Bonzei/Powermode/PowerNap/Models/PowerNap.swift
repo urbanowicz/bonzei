@@ -65,7 +65,7 @@ extension PowerNap {
 let pn1 = PowerNap(id: "ZeroGravity",
                    melodyName: "Zero Gravity",
                    alarmMelodyName: "ZeroGravityAlarm",
-                   waveType: "Theta / Delta",
+                   waveType: "THETA / DELTA",
                    description: "Lose gravity and take a flight through the boundless blue sky.",
                    creationDate: Date(),
                    coverColor: "#144C3D",
