@@ -12,7 +12,7 @@ import UIKit
 enum TabItem: String, CaseIterable {
     case wakeUp = "Wake Up"
     case learn = "Learn"
-    case powerMode = "Powermode"
+    case powerMode = "Supermodes"
     
     var viewController: UIViewController {
         switch self {
