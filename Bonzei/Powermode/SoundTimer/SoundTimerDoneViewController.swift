@@ -13,6 +13,8 @@ class SoundTimerDoneViewController: UIViewController {
     
     var powerNap: PowerNap!
     
+    let alarmSoundFileName = "Crystal Vision.mp3"
+    
     public var backgroundTopColor = #colorLiteral(red: 0.1377221048, green: 0.249750644, blue: 0.2173544168, alpha: 1) {
         didSet {
             if let gradientView = self.view as? GradientView {
@@ -57,7 +59,7 @@ class SoundTimerDoneViewController: UIViewController {
     }
     
     private func playAudio() {
-        let soundFile = melodies[Int.random(in: 0..<melodies.count)] + ".mp3"
+        let soundFile = self.alarmSoundFileName
         
         if let path = Bundle.main.path(forResource: soundFile, ofType: nil) {
             let url = URL(fileURLWithPath: path)
