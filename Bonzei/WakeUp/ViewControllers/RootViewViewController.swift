@@ -53,6 +53,11 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
         customTabBar.itemTapped = self.changeTab
         view.addSubview(customTabBar)
         
+        var tabBarTranslationY: CGFloat = 0
+        if UIScreen.main.bounds.height <= 736 {
+            tabBarTranslationY = 20
+        }
+        
         // Add positioning constraints to place the nav menu right where the tab bar should be
         let tabBarHeight: CGFloat = 100 //tabBar.frame.width * 0.2694
         NSLayoutConstraint.activate([
@@ -60,7 +65,7 @@ class RootViewViewController: UITabBarController, AlarmSchedulerDelegate {
             customTabBar.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor),
             customTabBar.widthAnchor.constraint(equalToConstant: tabBar.frame.width),
             customTabBar.heightAnchor.constraint(equalToConstant: tabBarHeight),
-            customTabBar.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor)
+            customTabBar.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor, constant: tabBarTranslationY)
         ])
         
         for i in 0 ..< items.count {
