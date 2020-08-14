@@ -73,6 +73,7 @@ class SoundTimerDoneViewController: UIViewController {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.setVolume(1.0, fadeDuration: 0.1)
+                audioPlayer?.numberOfLoops = 500
                 audioPlayer?.play()
             } catch {
                 
