@@ -223,8 +223,14 @@ extension SoundPickerViewController: UICollectionViewDelegate {
         for cell in visibleCells {
             let k = abs(cell.center.x - (scrollView.contentOffset.x + inset + cellWidth/2.0)) / distanceBetweenCellCenters
             let scaleFactor = CGFloat(1.0 + (1 - k) * 0.5)
+            let textAlpha = (1 - k)
             if k < 1 {
                 cell.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
+                let soundCell = cell as! SoundCell
+                soundCell.melodyNameLabel.alpha = textAlpha
+                soundCell.tagLabel.alpha = textAlpha
+                soundCell.descriptionLabel.alpha = textAlpha
+                soundCell.tagBackground.alpha = textAlpha
                 
                 //Delete when not needed anymore
                 if soundsCollectionView.indexPath(for: cell)!.row == 0 {
@@ -237,6 +243,12 @@ extension SoundPickerViewController: UICollectionViewDelegate {
                 }
                 //
             } else {
+                let soundCell = cell as! SoundCell
+                soundCell.melodyNameLabel.alpha = 0.0
+                soundCell.melodyNameLabel.alpha = textAlpha
+                soundCell.tagLabel.alpha = textAlpha
+                soundCell.descriptionLabel.alpha = textAlpha
+                soundCell.tagBackground.alpha = textAlpha
                 cell.transform = CGAffineTransform.identity
             }
         }
