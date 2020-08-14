@@ -369,7 +369,7 @@ class MelodyCell: UITableViewCell, MelodiesTableCell {
             return
         }
         playButton.setImage(UIImage(named: "pause-button-regular"), for: .normal)
-        progressBar.isHidden = false
+        //progressBar.isHidden = false
         isPlaying = true
         isPaused = false
         setNeedsDisplay()

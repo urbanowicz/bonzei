@@ -13,20 +13,21 @@ import Foundation
 /// For every melody name in the array there must be a corresponding `.mp3` file the `SoundFiles` folder.
 
 
-let melodies = ["5AM Club",
-                "Bellflowers Dew",
-                "Crystal Vision",
-                "Earth Tribe",
-                "Endorphin Birds",
-                "Into The Source",
-                "Ocean Cliffs",
+let melodies = ["Stellar Outflow",
                 "Peace of Mind",
-                "Sea Horizon",
+                "Ocean Cliffs",
+                "Crystal Vision",
+                "Into The Source",
+                "Earth Tribe",
                 "Sky Sailing",
-                "Stellar Outflow"]
+                "Endorphin Birds",
+                "5AM Club",
+                "Bellflowers Dew",
+                "Sea Horizon"
+                ]
 
 let melodyStartTime: [String: TimeInterval] = ["5AM Club" : 25,
-                                  "Bellflowers Dew": 80,
+                                  "Bellflowers Dew": 3,
                                   "Crystal Vision": 11,
                                   "Earth Tribe": 21,
                                   "Endorphin Birds": 7,
