@@ -111,8 +111,8 @@ class SoundTimerViewController: UIViewController {
     }
     
     private func layoutWaveAnimation() {
-        let waveHeight = CGFloat(143.0/375.0) * UIScreen.main.bounds.width
-        let waveY = (view.bounds.height / CGFloat(2.0)) - (waveHeight / CGFloat(2.0)) + 10
+        let waveHeight = CGFloat(153.0/375.0) * UIScreen.main.bounds.width
+        let waveY = (view.bounds.height / CGFloat(2.0)) - (waveHeight / CGFloat(2.0)) + 50
         
         if (wave1.frame.origin.y != waveY) {
         
@@ -235,7 +235,7 @@ class SoundTimerViewController: UIViewController {
         wave1.transform = CGAffineTransform.identity
         
         animator1 = UIViewPropertyAnimator(
-            duration: 10,
+            duration: 20,
             curve: .linear,
             animations: {
                 self.wave1.transform =
@@ -257,7 +257,7 @@ class SoundTimerViewController: UIViewController {
         wave2.transform = CGAffineTransform.identity
         
         animator2 = UIViewPropertyAnimator(
-            duration: 10,
+            duration: 20,
             curve: .linear,
             animations: {
                 self.wave2.transform =

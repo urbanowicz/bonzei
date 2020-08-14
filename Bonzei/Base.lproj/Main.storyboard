@@ -1204,7 +1204,7 @@ wake the senses.</string>
                                     <constraint firstAttribute="width" secondItem="5fh-fw-1Cu" secondAttribute="height" multiplier="587:153" id="tHH-2M-ton"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dots-variation-2" translatesAutoresizingMaskIntoConstraints="NO" id="x4c-9t-ne2">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dots-variation-2" translatesAutoresizingMaskIntoConstraints="NO" id="x4c-9t-ne2">
                                 <rect key="frame" x="38" y="310.66666666666669" width="299" height="324.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="x4c-9t-ne2" secondAttribute="height" multiplier="299:324" id="zlv-x7-RZM"/>
