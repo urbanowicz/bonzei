@@ -18,8 +18,6 @@ class ArticlesCollectionViewController: UICollectionViewController {
     
     private let reuseIdentifier = "ArticleCoverCell"
     
-    private var lastSyncDate:Date?
-    
     private var dontSync = false
     
     override func viewDidLoad() {
@@ -31,8 +29,8 @@ class ArticlesCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let lastSyncDate = lastSyncDate {
-            if lastSyncDate.new(byAdding: .second, value: 15) >= Date() {
+        if let lastSyncDate = articlesLastSyncDate {
+            if lastSyncDate.new(byAdding: .second, value: 86400) >= Date() {
                 return
             }
         }
@@ -69,7 +67,7 @@ class ArticlesCollectionViewController: UICollectionViewController {
                 self.articles[i].coverImage = UIImage(named: "default-article-cover")!
             }
             
-            self.lastSyncDate = Date()
+            articlesLastSyncDate = Date()
             self.collectionView.reloadData()
         }
     }

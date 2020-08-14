@@ -142,10 +142,10 @@
                                 <color key="highlightedColor" red="0.14117647058823529" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="7hp-Kn-lhZ" userLabel="VStack">
-                                <rect key="frame" x="24" y="321.66666666666669" width="327" height="179"/>
+                                <rect key="frame" x="24" y="323.33333333333331" width="327" height="175.66666666666669"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUD-6f-SEE">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="43"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="39.666666666666664"/>
                                         <string key="text">Sounds designed to gradually 
 wake the senses.</string>
                                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
@@ -153,7 +153,7 @@ wake the senses.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3P-5f-fSd" customClass="RoundedButton" customModule="Bonzei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="123" width="327" height="56"/>
+                                        <rect key="frame" x="0.0" y="119.66666666666669" width="327" height="56"/>
                                         <color key="backgroundColor" red="0.13353109360000001" green="0.32952338460000002" blue="0.25182774660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="5ud-dY-5fU"/>
@@ -435,7 +435,7 @@ wake the senses.</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="erj-sZ-6wr" userLabel="VStack">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="76.666666666666671"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MELODY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLc-zD-nbu">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOUND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLc-zD-nbu">
                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="17.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="14"/>
                                                 <color key="textColor" red="0.42352941179999998" green="0.41960784309999999" blue="0.41960784309999999" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -722,7 +722,7 @@ wake the senses.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can’t decide? Get surprised by random sound each day." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgR-3g-eqH" userLabel="ShuffleDescription">
-                                                    <rect key="frame" x="56" y="42" width="196" height="46"/>
+                                                    <rect key="frame" x="56.000000000000014" y="42" width="199.33333333333337" height="46"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="46" id="LDB-q5-4tY"/>
                                                     </constraints>
@@ -820,7 +820,7 @@ wake the senses.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Using binaural sound technology to trigger deeper states of relaxation." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUq-FN-7Cx">
-                                <rect key="frame" x="24" y="150.33333333333334" width="257.66666666666669" height="65"/>
+                                <rect key="frame" x="24" y="150.33333333333334" width="271" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="iM8-tm-iAd"/>
                                 </constraints>
@@ -835,7 +835,7 @@ wake the senses.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Experience recharging effect of the mid-day power nap in a calming, ambient soundscape. Headphones required." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PU-Dn-5C4">
-                                <rect key="frame" x="24" y="525.66666666666663" width="272.33333333333331" height="55"/>
+                                <rect key="frame" x="24" y="526.33333333333337" width="272.33333333333331" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="FSX-g8-na5"/>
                                     <constraint firstAttribute="width" constant="272.33333333333331" id="SwI-Zc-yuJ"/>
@@ -981,7 +981,7 @@ wake the senses.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Description&gt;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="640-lV-aGC">
-                                                    <rect key="frame" x="0.0" y="111" width="183" height="17.666666666666657"/>
+                                                    <rect key="frame" x="0.0" y="111.66666666666667" width="183" height="16.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1404,7 +1404,7 @@ wake the senses.</string>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="12" minimumInteritemSpacing="10" id="dlN-I8-TEk">
                             <size key="itemSize" width="373" height="160"/>
                             <size key="headerReferenceSize" width="50" height="215"/>
-                            <size key="footerReferenceSize" width="50" height="87"/>
+                            <size key="footerReferenceSize" width="50" height="97"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
@@ -1494,7 +1494,7 @@ Coming soon.</string>
                             </constraints>
                         </collectionReusableView>
                         <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ArticlesCollectionFooter" id="Rsl-xp-DgE">
-                            <rect key="frame" x="0.0" y="375" width="375" height="87"/>
+                            <rect key="frame" x="0.0" y="375" width="375" height="97"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </collectionReusableView>
                     </collectionView>

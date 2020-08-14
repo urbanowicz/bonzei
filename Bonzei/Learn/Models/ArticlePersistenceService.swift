@@ -11,6 +11,8 @@ import CoreData
 import UIKit
 import os.log
 
+var articlesLastSyncDate:Date?
+
 /// Provides CRUD operations for articles stored in local db
 class ArticlePersistenceService {
     
