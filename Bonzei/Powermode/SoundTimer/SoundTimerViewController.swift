@@ -155,7 +155,11 @@ class SoundTimerViewController: UIViewController {
         if animator1 == nil && animator2 == nil {
             animateWave1()
             animateWave2()
+        } else {
+            animator1.startAnimation()
+            animator2.startAnimation()
         }
+        
         
         timerView.start(interval: 0.1) {
             let progress = (self.napTime - self.timerView.timeLeft) / self.napTime
@@ -201,6 +205,14 @@ class SoundTimerViewController: UIViewController {
     
     private func pauseNap() {
         timerView.pause()
+        
+        if animator1 != nil && animator1.state == .active {
+            animator1.pauseAnimation()
+        }
+        
+        if animator2 != nil && animator2.state == .active {
+            animator2.pauseAnimation()
+        }
         
         if audioPlayer != nil {
             audioPlayer!.pause()
