@@ -135,6 +135,8 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         
         let (x,y) = convertToPoint(angle: angle, distance: hourHandLength())
         
+        hourCircleRadius = (20.0/210) * self.bounds.width
+        
         hourCircleView.frame = CGRect(
             x: 0,
             y: 0,
@@ -148,6 +150,8 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
         let angle = self.minuteAngle
         
         let (x,y) = convertToPoint(angle: angle, distance: minuteHandleLength())
+        
+        minuteCircleRadius = (10.0/210) * self.bounds.width
         
         minuteCircleView.frame = CGRect(
             x: 0,
@@ -165,6 +169,7 @@ class BonzeiClock: UIControl, CAAnimationDelegate {
     }
     
     private func layoutSmallCircles() {
+        smallCircleRadius = (2.0/210) * self.bounds.width
         smallCirclesLayer.frame = bounds
         
         var angle = 0.0

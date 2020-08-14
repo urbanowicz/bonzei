@@ -79,7 +79,7 @@ class BonzeiTabBar: UIView {
 
         
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.15
+        layer.shadowOpacity = 0.2
         layer.shadowOffset = .zero
         layer.shadowRadius = 50
         layer.shouldRasterize = true
