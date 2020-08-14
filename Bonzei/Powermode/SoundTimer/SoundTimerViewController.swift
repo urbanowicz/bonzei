@@ -66,6 +66,10 @@ class SoundTimerViewController: UIViewController {
         view.addSubview(wave1)
         view.addSubview(wave2)
         
+         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIScene.willDeactivateNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIScene.willEnterForegroundNotification, object: nil)
+        
         setupAudioSession()
     }
     
@@ -228,6 +232,13 @@ class SoundTimerViewController: UIViewController {
             audioPlayer!.stop()
             audioPlayer = nil
         }
+        
+        if animator1 != nil && animator1.state == .active {
+            animator1.stopAnimation(true)
+        }
+        if animator2 != nil && animator2.state == .active {
+            animator2.stopAnimation(true)
+        }
     }
     
     private func animateWave1() {
@@ -272,6 +283,20 @@ class SoundTimerViewController: UIViewController {
             }
         }
         
+    }
+    
+    @objc func willResignActive() {
+        if animator1 != nil && animator1.state == .active {
+            animator1.stopAnimation(true)
+        }
+        if animator2 != nil && animator2.state == .active {
+            animator2.stopAnimation(true)
+        }
+    }
+    
+    @objc func willEnterForeground() {
+        animateWave1()
+        animateWave2()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
