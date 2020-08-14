@@ -48,6 +48,12 @@ class SoundTimerViewController: UIViewController {
     
     private var isFadingOut = false
     
+    private let wave1 = UIImageView(image: UIImage(named: "wave-tile"))
+    private let wave2 = UIImageView(image: UIImage(named: "wave-tile"))
+    private let waveAspectRatio =  CGFloat(171/1015.0)
+    private var animator1: UIViewPropertyAnimator!
+    private var animator2: UIViewPropertyAnimator!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +62,9 @@ class SoundTimerViewController: UIViewController {
         soundFile = "\(powerNap.melodyName)_\(Int(napTime/60)).mp3"
         setupBackgroundCircleView()
         setupTimerView()
+        
+        view.addSubview(wave1)
+        view.addSubview(wave2)
         
         setupAudioSession()
     }
@@ -98,6 +107,21 @@ class SoundTimerViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         layoutBackgroundCircleView()
+        layoutWaveAnimation()
+    }
+    
+    private func layoutWaveAnimation() {
+        let waveHeight = CGFloat(143.0/375.0) * UIScreen.main.bounds.width
+        let waveY = (view.bounds.height / CGFloat(2.0)) - (waveHeight / CGFloat(2.0)) + 10
+        
+        if (wave1.frame.origin.y != waveY) {
+        
+            let width = waveHeight / waveAspectRatio
+        
+            wave1.frame = CGRect(x: 0, y: waveY, width: width, height:  waveAspectRatio * width)
+        
+            wave2.frame = CGRect(x: width, y: waveY, width: width, height:  waveAspectRatio * width)
+        }
     }
     
     private func layoutBackgroundCircleView() {
@@ -127,6 +151,11 @@ class SoundTimerViewController: UIViewController {
     
     private func startNap() {
         guard timerView.countDownTimeSeconds > 0 else { return }
+        
+        if animator1 == nil && animator2 == nil {
+            animateWave1()
+            animateWave2()
+        }
         
         timerView.start(interval: 0.1) {
             let progress = (self.napTime - self.timerView.timeLeft) / self.napTime
@@ -189,6 +218,49 @@ class SoundTimerViewController: UIViewController {
         }
     }
     
+    private func animateWave1() {
+
+        wave1.transform = CGAffineTransform.identity
+        
+        animator1 = UIViewPropertyAnimator(
+            duration: 10,
+            curve: .linear,
+            animations: {
+                self.wave1.transform =
+                    CGAffineTransform(translationX: -self.wave1.frame.width, y: 0)
+        })
+        
+        
+        animator1.startAnimation()
+        animator1.addCompletion() { position in
+            if position == .end {
+                self.animateWave1()
+            }
+        }
+        
+    }
+    
+    private func animateWave2() {
+
+        wave2.transform = CGAffineTransform.identity
+        
+        animator2 = UIViewPropertyAnimator(
+            duration: 10,
+            curve: .linear,
+            animations: {
+                self.wave2.transform =
+                    CGAffineTransform(translationX: -self.wave2.frame.width, y: 0
+                )
+        })
+        
+        animator2.startAnimation()
+        animator2.addCompletion() { position in
+            if position == .end {
+                self.animateWave2()
+            }
+        }
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SoundTimerDone" {

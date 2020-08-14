@@ -1150,7 +1150,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
-				DEVELOPMENT_TEAM = RT7S3Z44J4;
+				DEVELOPMENT_TEAM = RW79CPXREY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1158,7 +1158,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bonzei.Bonzei;
+				PRODUCT_BUNDLE_IDENTIFIER = app.bonzei.Bonei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1172,7 +1172,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
-				DEVELOPMENT_TEAM = RT7S3Z44J4;
+				DEVELOPMENT_TEAM = RW79CPXREY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Bonzei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1180,7 +1180,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bonzei.Bonzei;
+				PRODUCT_BUNDLE_IDENTIFIER = app.bonzei.Bonei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
